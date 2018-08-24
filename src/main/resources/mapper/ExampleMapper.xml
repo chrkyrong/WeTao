@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ExampleMapper">
+  <resultMap id="BaseResultMap" type="bean.Example">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="what" jdbcType="VARCHAR" property="what" />
+    <result column="is" jdbcType="VARCHAR" property="is" />
+    <result column="love" jdbcType="VARCHAR" property="love" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, what, is, love
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from example
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from example
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="bean.Example">
+    insert into example (id, what, is, 
+      love)
+    values (#{id,jdbcType=INTEGER}, #{what,jdbcType=VARCHAR}, #{is,jdbcType=VARCHAR}, 
+      #{love,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="bean.Example">
+    insert into example
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="what != null">
+        what,
+      </if>
+      <if test="is != null">
+        is,
+      </if>
+      <if test="love != null">
+        love,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="what != null">
+        #{what,jdbcType=VARCHAR},
+      </if>
+      <if test="is != null">
+        #{is,jdbcType=VARCHAR},
+      </if>
+      <if test="love != null">
+        #{love,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="bean.Example">
+    update example
+    <set>
+      <if test="what != null">
+        what = #{what,jdbcType=VARCHAR},
+      </if>
+      <if test="is != null">
+        is = #{is,jdbcType=VARCHAR},
+      </if>
+      <if test="love != null">
+        love = #{love,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="bean.Example">
+    update example
+    set what = #{what,jdbcType=VARCHAR},
+      is = #{is,jdbcType=VARCHAR},
+      love = #{love,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
