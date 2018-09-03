@@ -5,6 +5,20 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
-        <package name="com.ssm.bean"></package>
+        <package name="com.weitao.bean"></package>
     </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--配置helperDialect属性来指定分页插件使用哪种方言-->
+            <property name="helperDialect" value="mysql"/>
+            <!--RowBounds 中的两个参数，offset会当成 pageNum 使用，limit 和 pageSize 含义相同，可以用页码和页面大小两个参数进行分页-->
+            <property name="offsetAsPageNum" value="true"/>
+            <!--使用 RowBounds 分页会进行 count 查询-->
+            <property name="rowBoundsWithCount" value="true"/>
+            <!--pageSize为0会查询所有结果-->
+            <property name="pageSizeZero" value="true"/>
+            <!--pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
 </configuration>

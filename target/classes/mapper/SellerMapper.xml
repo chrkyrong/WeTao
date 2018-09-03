@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weitao.dao.SellerMapper">
+  <resultMap id="BaseResultMap" type="com.weitao.bean.Seller">
+    <id column="s_id" jdbcType="INTEGER" property="sId" />
+    <result column="s_account" jdbcType="VARCHAR" property="sAccount" />
+    <result column="s_password" jdbcType="VARCHAR" property="sPassword" />
+    <result column="s_tel" jdbcType="VARCHAR" property="sTel" />
+    <result column="s_address" jdbcType="VARCHAR" property="sAddress" />
+    <result column="s_icon" jdbcType="VARCHAR" property="sIcon" />
+    <result column="s_sex" jdbcType="VARCHAR" property="sSex" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    s_id, s_account, s_password, s_tel, s_address, s_icon, s_sex
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from seller
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from seller
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weitao.bean.Seller">
+    insert into seller (s_id, s_account, s_password, 
+      s_tel, s_address, s_icon, 
+      s_sex)
+    values (#{sId,jdbcType=INTEGER}, #{sAccount,jdbcType=VARCHAR}, #{sPassword,jdbcType=VARCHAR}, 
+      #{sTel,jdbcType=VARCHAR}, #{sAddress,jdbcType=VARCHAR}, #{sIcon,jdbcType=VARCHAR}, 
+      #{sSex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weitao.bean.Seller">
+    insert into seller
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        s_id,
+      </if>
+      <if test="sAccount != null">
+        s_account,
+      </if>
+      <if test="sPassword != null">
+        s_password,
+      </if>
+      <if test="sTel != null">
+        s_tel,
+      </if>
+      <if test="sAddress != null">
+        s_address,
+      </if>
+      <if test="sIcon != null">
+        s_icon,
+      </if>
+      <if test="sSex != null">
+        s_sex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="sAccount != null">
+        #{sAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="sPassword != null">
+        #{sPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sTel != null">
+        #{sTel,jdbcType=VARCHAR},
+      </if>
+      <if test="sAddress != null">
+        #{sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sIcon != null">
+        #{sIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="sSex != null">
+        #{sSex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Seller">
+    update seller
+    <set>
+      <if test="sAccount != null">
+        s_account = #{sAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="sPassword != null">
+        s_password = #{sPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sTel != null">
+        s_tel = #{sTel,jdbcType=VARCHAR},
+      </if>
+      <if test="sAddress != null">
+        s_address = #{sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sIcon != null">
+        s_icon = #{sIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="sSex != null">
+        s_sex = #{sSex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weitao.bean.Seller">
+    update seller
+    set s_account = #{sAccount,jdbcType=VARCHAR},
+      s_password = #{sPassword,jdbcType=VARCHAR},
+      s_tel = #{sTel,jdbcType=VARCHAR},
+      s_address = #{sAddress,jdbcType=VARCHAR},
+      s_icon = #{sIcon,jdbcType=VARCHAR},
+      s_sex = #{sSex,jdbcType=VARCHAR}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>

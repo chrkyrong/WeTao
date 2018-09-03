@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weitao.dao.StoreMapper">
+  <resultMap id="BaseResultMap" type="com.weitao.bean.Store">
+    <id column="st_id" jdbcType="INTEGER" property="stId" />
+    <result column="st_name" jdbcType="VARCHAR" property="stName" />
+    <result column="st_status" jdbcType="TINYINT" property="stStatus" />
+    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    st_id, st_name, st_status, seller_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from store
+    where st_id = #{stId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from store
+    where st_id = #{stId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weitao.bean.Store">
+    insert into store (st_id, st_name, st_status, 
+      seller_id)
+    values (#{stId,jdbcType=INTEGER}, #{stName,jdbcType=VARCHAR}, #{stStatus,jdbcType=TINYINT}, 
+      #{sellerId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weitao.bean.Store">
+    insert into store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stId != null">
+        st_id,
+      </if>
+      <if test="stName != null">
+        st_name,
+      </if>
+      <if test="stStatus != null">
+        st_status,
+      </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stId != null">
+        #{stId,jdbcType=INTEGER},
+      </if>
+      <if test="stName != null">
+        #{stName,jdbcType=VARCHAR},
+      </if>
+      <if test="stStatus != null">
+        #{stStatus,jdbcType=TINYINT},
+      </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Store">
+    update store
+    <set>
+      <if test="stName != null">
+        st_name = #{stName,jdbcType=VARCHAR},
+      </if>
+      <if test="stStatus != null">
+        st_status = #{stStatus,jdbcType=TINYINT},
+      </if>
+      <if test="sellerId != null">
+        seller_id = #{sellerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where st_id = #{stId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weitao.bean.Store">
+    update store
+    set st_name = #{stName,jdbcType=VARCHAR},
+      st_status = #{stStatus,jdbcType=TINYINT},
+      seller_id = #{sellerId,jdbcType=INTEGER}
+    where st_id = #{stId,jdbcType=INTEGER}
+  </update>
+</mapper>
