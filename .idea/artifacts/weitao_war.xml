@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="weitao:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="weitao-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="weitao:war exploded" />
-    </root>
-  </artifact>
-</component>
