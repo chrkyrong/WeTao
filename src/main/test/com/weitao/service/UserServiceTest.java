@@ -25,7 +25,7 @@ public class UserServiceTest {
         user.setuIcon("abc123");
         user.setuAddress1("深圳");
         user.setuSex("男");
-        user.setuUsername("chrky");
+        user.setuUsername("abadsf");
         System.out.println(userService.register(user));
     }
 }
