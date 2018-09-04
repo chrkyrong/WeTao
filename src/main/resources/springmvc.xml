@@ -42,10 +42,10 @@
     <bean class="com.weitao.exception.CustomExceptionResolver"/>
 
     <!--拦截器-->
-    <mvc:interceptors>
+   <!-- <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <bean class="com.weitao.utils.LoginInterceptor"></bean>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
 </beans>

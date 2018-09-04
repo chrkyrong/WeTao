@@ -4,9 +4,9 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-    <typeAliases>
+   <!-- <typeAliases>
         <package name="com.weitao.bean"></package>
-    </typeAliases>
+    </typeAliases>-->
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
             <!--配置helperDialect属性来指定分页插件使用哪种方言-->
