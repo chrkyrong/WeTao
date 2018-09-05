@@ -38,9 +38,6 @@
             </list>
         </property>
     </bean>
-    <!--全局异常处理器-->
-    <bean class="com.weitao.exception.CustomExceptionResolver"/>
-
     <!--拦截器-->
    <!-- <mvc:interceptors>
         <mvc:interceptor>

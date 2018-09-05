@@ -7,6 +7,8 @@ public interface UserMapper {
 
     int insertSelective(User record);//注册用户
 
+    User selectByUserName(String username);//根据用户名查询用户
+
     User selectByPrimaryKey(Integer uId);
 
     int updateByPrimaryKeySelective(User record);

@@ -129,4 +129,10 @@
       u_username = #{uUsername,jdbcType=VARCHAR}
     where u_id = #{uId,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByUserName" parameterType="String" resultType="com.weitao.bean.User">
+    SELECT * FROM user WHERE u_username=#{arg0}
+  </select>
+
+
 </mapper>

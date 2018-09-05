@@ -13,6 +13,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:applicationContext.xml"})
 public class UserServiceTest {
+    @Test
+    public void login() throws Exception {
+        User user=new User();
+        user.setuUsername("chrky");
+        user.setuPassword("123456432");
+        System.out.println(userService.login(user));
+    }
 
     @Autowired
     private UserService userService;
@@ -21,11 +28,8 @@ public class UserServiceTest {
     public void register() throws Exception {
         User user=new User();
         user.setuPassword("123456");
-        user.setuTel("1123123123123");
-        user.setuIcon("abc123");
-        user.setuAddress1("深圳");
         user.setuSex("男");
         user.setuUsername("abadsf");
-        System.out.println(userService.register(user));
+        userService.register(user);
     }
 }

@@ -15,6 +15,11 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class UserMapperTest {
+    @Test
+    public void selectByUserName() throws Exception {
+    System.out.println(userMapper.selectByUserName("chrky"));
+
+    }
 
     @Autowired
     UserMapper userMapper;
@@ -25,9 +30,6 @@ public class UserMapperTest {
         user.setuPassword("123456");
         user.setuTel("1123123123123");
         user.setuIcon("abc123");
-        user.setuAddress1("深圳");
-        user.setuSex("男");
-        user.setuUsername("chrky");
         userMapper.insertSelective(user);
     }
 

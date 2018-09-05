@@ -7,5 +7,7 @@ import com.weitao.bean.User;
  */
 public interface UserService {
 
-    Boolean register(User user);
+    User register(User user) throws Exception;
+
+    Boolean login(User user) throws Exception;
 }
