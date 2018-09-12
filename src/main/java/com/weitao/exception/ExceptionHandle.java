@@ -22,14 +22,15 @@ public class ExceptionHandle {
     @ResponseBody
     public Result handle(Exception e)
     {
-        logger.error(e.getMessage(),e);
         if(e instanceof UserException)
         {
+            logger.error(e.getMessage(),e);
             UserException userException=(UserException)e;
             return ResultUtil.error(userException.getMessage(),userException.getCode());
         }
         else
         {
+            logger.error(e.getMessage(),e);
             return ResultUtil.error(ResultEnum.UNKNOW_ERROR);
         }
     }

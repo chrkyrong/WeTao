@@ -15,6 +15,8 @@ public class Seller {
 
     private String sSex;
 
+    private Byte sStutas;
+
     public Integer getsId() {
         return sId;
     }
@@ -69,5 +71,13 @@ public class Seller {
 
     public void setsSex(String sSex) {
         this.sSex = sSex == null ? null : sSex.trim();
+    }
+
+    public Byte getsStutas() {
+        return sStutas;
+    }
+
+    public void setsStutas(Byte sStutas) {
+        this.sStutas = sStutas;
     }
 }

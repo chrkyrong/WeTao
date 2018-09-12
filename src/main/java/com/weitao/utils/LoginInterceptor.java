@@ -13,18 +13,21 @@ import javax.servlet.http.HttpSession;
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+        //得到url
         String url=httpServletRequest.getRequestURI();
 
+        //判断是否为公开的url，是则放行
         if(url.indexOf("login")>=0)
         {
             return true;
         }
+        //判断用户身份在session是否存在
         HttpSession session=httpServletRequest.getSession();
-        String username= (String) session.getAttribute("username");
-        if(username!=null) {
+        String user= (String) session.getAttribute("user");
+        if(user!=null) {
             return true;
         }
-        httpServletRequest.getRequestDispatcher("login.jsp").forward(httpServletRequest,httpServletResponse);
+        httpServletRequest.getRequestDispatcher("login.html").forward(httpServletRequest,httpServletResponse);
         return false;
     }
 

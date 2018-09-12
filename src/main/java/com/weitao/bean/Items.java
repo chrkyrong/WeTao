@@ -1,5 +1,8 @@
 package com.weitao.bean;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 public class Items {
     private Integer iId;
 
@@ -11,11 +14,17 @@ public class Items {
 
     private Integer iSale;
 
+    private BigDecimal iPrice;
+
+    private Date iDate;
+
     private Byte iStatus;
 
     private Integer storeId;
 
-    private String iIntrodution;
+    private Integer catagoryId;
+
+    private String iIntroduction;
 
     public Integer getiId() {
         return iId;
@@ -57,6 +66,22 @@ public class Items {
         this.iSale = iSale;
     }
 
+    public BigDecimal getiPrice() {
+        return iPrice;
+    }
+
+    public void setiPrice(BigDecimal iPrice) {
+        this.iPrice = iPrice;
+    }
+
+    public Date getiDate() {
+        return iDate;
+    }
+
+    public void setiDate(Date iDate) {
+        this.iDate = iDate;
+    }
+
     public Byte getiStatus() {
         return iStatus;
     }
@@ -73,11 +98,19 @@ public class Items {
         this.storeId = storeId;
     }
 
-    public String getiIntrodution() {
-        return iIntrodution;
+    public Integer getCatagoryId() {
+        return catagoryId;
     }
 
-    public void setiIntrodution(String iIntrodution) {
-        this.iIntrodution = iIntrodution == null ? null : iIntrodution.trim();
+    public void setCatagoryId(Integer catagoryId) {
+        this.catagoryId = catagoryId;
+    }
+
+    public String getiIntroduction() {
+        return iIntroduction;
+    }
+
+    public void setiIntroduction(String iIntroduction) {
+        this.iIntroduction = iIntroduction == null ? null : iIntroduction.trim();
     }
 }

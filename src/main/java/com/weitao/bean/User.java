@@ -5,6 +5,8 @@ public class User {
 
     private String uPassword;
 
+    private String uUserName;
+
     private String uTel;
 
     private String uAddress1;
@@ -17,7 +19,7 @@ public class User {
 
     private String uSex;
 
-    private String uUsername;
+    private Byte uStatus;
 
     public Integer getuId() {
         return uId;
@@ -33,6 +35,14 @@ public class User {
 
     public void setuPassword(String uPassword) {
         this.uPassword = uPassword == null ? null : uPassword.trim();
+    }
+
+    public String getuUserName() {
+        return uUserName;
+    }
+
+    public void setuUserName(String uUserName) {
+        this.uUserName = uUserName == null ? null : uUserName.trim();
     }
 
     public String getuTel() {
@@ -83,36 +93,11 @@ public class User {
         this.uSex = uSex == null ? null : uSex.trim();
     }
 
-    public String getuUsername() {
-        return uUsername;
+    public Byte getuStatus() {
+        return uStatus;
     }
 
-    public void setuUsername(String uUsername) {
-        this.uUsername = uUsername == null ? null : uUsername.trim();
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("{");
-        sb.append("\"uId\":")
-                .append(uId);
-        sb.append(",\"uPassword\":\"")
-                .append(uPassword).append('\"');
-        sb.append(",\"uTel\":\"")
-                .append(uTel).append('\"');
-        sb.append(",\"uAddress1\":\"")
-                .append(uAddress1).append('\"');
-        sb.append(",\"uAddress2\":\"")
-                .append(uAddress2).append('\"');
-        sb.append(",\"uAddress3\":\"")
-                .append(uAddress3).append('\"');
-        sb.append(",\"uIcon\":\"")
-                .append(uIcon).append('\"');
-        sb.append(",\"uSex\":\"")
-                .append(uSex).append('\"');
-        sb.append(",\"uUsername\":\"")
-                .append(uUsername).append('\"');
-        sb.append('}');
-        return sb.toString();
+    public void setuStatus(Byte uStatus) {
+        this.uStatus = uStatus;
     }
 }

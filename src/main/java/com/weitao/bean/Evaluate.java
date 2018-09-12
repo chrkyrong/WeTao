@@ -9,6 +9,12 @@ public class Evaluate {
 
     private Integer orderId;
 
+    private Integer storeId;
+
+    private Integer userId;
+
+    private Integer itemsId;
+
     private String eDescription;
 
     public Integer geteId() {
@@ -41,6 +47,30 @@ public class Evaluate {
 
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
+    }
+
+    public Integer getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getItemsId() {
+        return itemsId;
+    }
+
+    public void setItemsId(Integer itemsId) {
+        this.itemsId = itemsId;
     }
 
     public String geteDescription() {

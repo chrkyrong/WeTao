@@ -5,13 +5,15 @@ import com.weitao.bean.User;
 public interface UserMapper {
     int deleteByPrimaryKey(Integer uId);
 
-    int insertSelective(User record);//注册用户
+    int insert(User record);
 
-    User selectByUserName(String username);//根据用户名查询用户
+    int insertSelective(User record);//添加用户
 
     User selectByPrimaryKey(Integer uId);
 
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectByUserName(String userName);//根据用户名查询用户
 }

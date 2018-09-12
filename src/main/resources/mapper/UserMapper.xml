@@ -4,16 +4,18 @@
   <resultMap id="BaseResultMap" type="com.weitao.bean.User">
     <id column="u_id" jdbcType="INTEGER" property="uId" />
     <result column="u_password" jdbcType="VARCHAR" property="uPassword" />
+    <result column="u_user_name" jdbcType="VARCHAR" property="uUserName" />
     <result column="u_tel" jdbcType="VARCHAR" property="uTel" />
     <result column="u_address1" jdbcType="VARCHAR" property="uAddress1" />
     <result column="u_address2" jdbcType="VARCHAR" property="uAddress2" />
     <result column="u_address3" jdbcType="VARCHAR" property="uAddress3" />
     <result column="u_icon" jdbcType="VARCHAR" property="uIcon" />
     <result column="u_sex" jdbcType="VARCHAR" property="uSex" />
-    <result column="u_username" jdbcType="VARCHAR" property="uUsername" />
+    <result column="u_status" jdbcType="TINYINT" property="uStatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    u_id, u_password, u_tel, u_address1, u_address2, u_address3, u_icon, u_sex, u_username
+    u_id, u_password, u_user_name, u_tel, u_address1, u_address2, u_address3, u_icon, 
+    u_sex, u_status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -25,7 +27,16 @@
     delete from user
     where u_id = #{uId,jdbcType=INTEGER}
   </delete>
-<!--注册用户-->
+  <insert id="insert" parameterType="com.weitao.bean.User">
+    insert into user (u_id, u_password, u_user_name, 
+      u_tel, u_address1, u_address2, 
+      u_address3, u_icon, u_sex, 
+      u_status)
+    values (#{uId,jdbcType=INTEGER}, #{uPassword,jdbcType=VARCHAR}, #{uUserName,jdbcType=VARCHAR}, 
+      #{uTel,jdbcType=VARCHAR}, #{uAddress1,jdbcType=VARCHAR}, #{uAddress2,jdbcType=VARCHAR}, 
+      #{uAddress3,jdbcType=VARCHAR}, #{uIcon,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, 
+      #{uStatus,jdbcType=TINYINT})
+  </insert>
   <insert id="insertSelective" parameterType="com.weitao.bean.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -34,6 +45,9 @@
       </if>
       <if test="uPassword != null">
         u_password,
+      </if>
+      <if test="uUserName != null">
+        u_user_name,
       </if>
       <if test="uTel != null">
         u_tel,
@@ -53,8 +67,8 @@
       <if test="uSex != null">
         u_sex,
       </if>
-      <if test="uUsername != null">
-        u_username,
+      <if test="uStatus != null">
+        u_status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -63,6 +77,9 @@
       </if>
       <if test="uPassword != null">
         #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uUserName != null">
+        #{uUserName,jdbcType=VARCHAR},
       </if>
       <if test="uTel != null">
         #{uTel,jdbcType=VARCHAR},
@@ -82,8 +99,8 @@
       <if test="uSex != null">
         #{uSex,jdbcType=VARCHAR},
       </if>
-      <if test="uUsername != null">
-        #{uUsername,jdbcType=VARCHAR},
+      <if test="uStatus != null">
+        #{uStatus,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -92,6 +109,9 @@
     <set>
       <if test="uPassword != null">
         u_password = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uUserName != null">
+        u_user_name = #{uUserName,jdbcType=VARCHAR},
       </if>
       <if test="uTel != null">
         u_tel = #{uTel,jdbcType=VARCHAR},
@@ -111,8 +131,8 @@
       <if test="uSex != null">
         u_sex = #{uSex,jdbcType=VARCHAR},
       </if>
-      <if test="uUsername != null">
-        u_username = #{uUsername,jdbcType=VARCHAR},
+      <if test="uStatus != null">
+        u_status = #{uStatus,jdbcType=TINYINT},
       </if>
     </set>
     where u_id = #{uId,jdbcType=INTEGER}
@@ -120,19 +140,19 @@
   <update id="updateByPrimaryKey" parameterType="com.weitao.bean.User">
     update user
     set u_password = #{uPassword,jdbcType=VARCHAR},
+      u_user_name = #{uUserName,jdbcType=VARCHAR},
       u_tel = #{uTel,jdbcType=VARCHAR},
       u_address1 = #{uAddress1,jdbcType=VARCHAR},
       u_address2 = #{uAddress2,jdbcType=VARCHAR},
       u_address3 = #{uAddress3,jdbcType=VARCHAR},
       u_icon = #{uIcon,jdbcType=VARCHAR},
       u_sex = #{uSex,jdbcType=VARCHAR},
-      u_username = #{uUsername,jdbcType=VARCHAR}
+      u_status = #{uStatus,jdbcType=TINYINT}
     where u_id = #{uId,jdbcType=INTEGER}
   </update>
-  
-  <select id="selectByUserName" parameterType="String" resultType="com.weitao.bean.User">
-    SELECT * FROM user WHERE u_username=#{arg0}
-  </select>
 
+  <select id="selectByUserName" parameterType="String" resultType="com.weitao.bean.User">
+    SELECT * FROM user WHERE u_user_name=#{arg0}
+  </select>
 
 </mapper>

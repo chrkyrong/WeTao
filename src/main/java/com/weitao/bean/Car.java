@@ -40,5 +40,4 @@ public class Car {
     public void setNumber(Integer number) {
         this.number = number;
     }
-
 }

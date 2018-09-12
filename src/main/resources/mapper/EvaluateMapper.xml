@@ -6,12 +6,15 @@
     <result column="e_level" jdbcType="TINYINT" property="eLevel" />
     <result column="e_photos" jdbcType="VARCHAR" property="ePhotos" />
     <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="store_id" jdbcType="INTEGER" property="storeId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="items_id" jdbcType="INTEGER" property="itemsId" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.weitao.bean.Evaluate">
     <result column="e_description" jdbcType="LONGVARCHAR" property="eDescription" />
   </resultMap>
   <sql id="Base_Column_List">
-    e_id, e_level, e_photos, order_id
+    e_id, e_level, e_photos, order_id, store_id, user_id, items_id
   </sql>
   <sql id="Blob_Column_List">
     e_description
@@ -30,9 +33,11 @@
   </delete>
   <insert id="insert" parameterType="com.weitao.bean.Evaluate">
     insert into evaluate (e_id, e_level, e_photos, 
-      order_id, e_description)
+      order_id, store_id, user_id, 
+      items_id, e_description)
     values (#{eId,jdbcType=INTEGER}, #{eLevel,jdbcType=TINYINT}, #{ePhotos,jdbcType=VARCHAR}, 
-      #{orderId,jdbcType=INTEGER}, #{eDescription,jdbcType=LONGVARCHAR})
+      #{orderId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{itemsId,jdbcType=INTEGER}, #{eDescription,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.weitao.bean.Evaluate">
     insert into evaluate
@@ -48,6 +53,15 @@
       </if>
       <if test="orderId != null">
         order_id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="itemsId != null">
+        items_id,
       </if>
       <if test="eDescription != null">
         e_description,
@@ -66,6 +80,15 @@
       <if test="orderId != null">
         #{orderId,jdbcType=INTEGER},
       </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="itemsId != null">
+        #{itemsId,jdbcType=INTEGER},
+      </if>
       <if test="eDescription != null">
         #{eDescription,jdbcType=LONGVARCHAR},
       </if>
@@ -83,6 +106,15 @@
       <if test="orderId != null">
         order_id = #{orderId,jdbcType=INTEGER},
       </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="itemsId != null">
+        items_id = #{itemsId,jdbcType=INTEGER},
+      </if>
       <if test="eDescription != null">
         e_description = #{eDescription,jdbcType=LONGVARCHAR},
       </if>
@@ -94,6 +126,9 @@
     set e_level = #{eLevel,jdbcType=TINYINT},
       e_photos = #{ePhotos,jdbcType=VARCHAR},
       order_id = #{orderId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      items_id = #{itemsId,jdbcType=INTEGER},
       e_description = #{eDescription,jdbcType=LONGVARCHAR}
     where e_id = #{eId,jdbcType=INTEGER}
   </update>
@@ -101,7 +136,10 @@
     update evaluate
     set e_level = #{eLevel,jdbcType=TINYINT},
       e_photos = #{ePhotos,jdbcType=VARCHAR},
-      order_id = #{orderId,jdbcType=INTEGER}
+      order_id = #{orderId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      items_id = #{itemsId,jdbcType=INTEGER}
     where e_id = #{eId,jdbcType=INTEGER}
   </update>
 </mapper>

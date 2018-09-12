@@ -8,6 +8,7 @@ public enum ResultEnum {
     SUCCESS("0","成功"),
     USERNAME_EXIST("101","用户名已存在"),
     USER_NOT_EXIST("102","用户名不存在"),
+    USER_NOT_FAIL("103","查询用户失败"),
     USER_LOGIN_FAIL("103","登陆失败")
     ;
     private String code;

@@ -3,15 +3,17 @@
 <mapper namespace="com.weitao.dao.OrderMapper">
   <resultMap id="BaseResultMap" type="com.weitao.bean.Order">
     <id column="o_id" jdbcType="INTEGER" property="oId" />
-    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="o_post" jdbcType="TINYINT" property="oPost" />
     <result column="o_price" jdbcType="DECIMAL" property="oPrice" />
     <result column="o_date" jdbcType="TIMESTAMP" property="oDate" />
     <result column="o_status" jdbcType="TINYINT" property="oStatus" />
+    <result column="o_message" jdbcType="VARCHAR" property="oMessage" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+    <result column="store_id" jdbcType="INTEGER" property="storeId" />
   </resultMap>
   <sql id="Base_Column_List">
-    o_id, seller_id, user_id, o_post, o_price, o_date, o_status
+    o_id, o_post, o_price, o_date, o_status, o_message, user_id, seller_id, store_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,24 +26,20 @@
     where o_id = #{oId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.weitao.bean.Order">
-    insert into order (o_id, seller_id, user_id, 
-      o_post, o_price, o_date, 
-      o_status)
-    values (#{oId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{oPost,jdbcType=TINYINT}, #{oPrice,jdbcType=DECIMAL}, #{oDate,jdbcType=TIMESTAMP}, 
-      #{oStatus,jdbcType=TINYINT})
+    insert into order (o_id, o_post, o_price, 
+      o_date, o_status, o_message, 
+      user_id, seller_id, store_id
+      )
+    values (#{oId,jdbcType=INTEGER}, #{oPost,jdbcType=TINYINT}, #{oPrice,jdbcType=DECIMAL}, 
+      #{oDate,jdbcType=TIMESTAMP}, #{oStatus,jdbcType=TINYINT}, #{oMessage,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.weitao.bean.Order">
     insert into order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
         o_id,
-      </if>
-      <if test="sellerId != null">
-        seller_id,
-      </if>
-      <if test="userId != null">
-        user_id,
       </if>
       <if test="oPost != null">
         o_post,
@@ -55,16 +53,22 @@
       <if test="oStatus != null">
         o_status,
       </if>
+      <if test="oMessage != null">
+        o_message,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="oId != null">
         #{oId,jdbcType=INTEGER},
-      </if>
-      <if test="sellerId != null">
-        #{sellerId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
       </if>
       <if test="oPost != null">
         #{oPost,jdbcType=TINYINT},
@@ -78,17 +82,23 @@
       <if test="oStatus != null">
         #{oStatus,jdbcType=TINYINT},
       </if>
+      <if test="oMessage != null">
+        #{oMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Order">
     update order
     <set>
-      <if test="sellerId != null">
-        seller_id = #{sellerId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
       <if test="oPost != null">
         o_post = #{oPost,jdbcType=TINYINT},
       </if>
@@ -101,17 +111,31 @@
       <if test="oStatus != null">
         o_status = #{oStatus,jdbcType=TINYINT},
       </if>
+      <if test="oMessage != null">
+        o_message = #{oMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerId != null">
+        seller_id = #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
     </set>
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.weitao.bean.Order">
     update order
-    set seller_id = #{sellerId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      o_post = #{oPost,jdbcType=TINYINT},
+    set o_post = #{oPost,jdbcType=TINYINT},
       o_price = #{oPrice,jdbcType=DECIMAL},
       o_date = #{oDate,jdbcType=TIMESTAMP},
-      o_status = #{oStatus,jdbcType=TINYINT}
+      o_status = #{oStatus,jdbcType=TINYINT},
+      o_message = #{oMessage,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      seller_id = #{sellerId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=INTEGER}
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
 </mapper>
