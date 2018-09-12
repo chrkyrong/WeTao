@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weitao.dao.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.weitao.bean.Category">
+    <id column="ca_id" jdbcType="INTEGER" property="caId" />
+    <result column="ca_name" jdbcType="VARCHAR" property="caName" />
+    <result column="ca_father" jdbcType="VARCHAR" property="caFather" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ca_id, ca_name, ca_father
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    where ca_id = #{caId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from category
+    where ca_id = #{caId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weitao.bean.Category">
+    insert into category (ca_id, ca_name, ca_father
+      )
+    values (#{caId,jdbcType=INTEGER}, #{caName,jdbcType=VARCHAR}, #{caFather,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weitao.bean.Category">
+    insert into category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="caId != null">
+        ca_id,
+      </if>
+      <if test="caName != null">
+        ca_name,
+      </if>
+      <if test="caFather != null">
+        ca_father,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="caId != null">
+        #{caId,jdbcType=INTEGER},
+      </if>
+      <if test="caName != null">
+        #{caName,jdbcType=VARCHAR},
+      </if>
+      <if test="caFather != null">
+        #{caFather,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Category">
+    update category
+    <set>
+      <if test="caName != null">
+        ca_name = #{caName,jdbcType=VARCHAR},
+      </if>
+      <if test="caFather != null">
+        ca_father = #{caFather,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ca_id = #{caId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weitao.bean.Category">
+    update category
+    set ca_name = #{caName,jdbcType=VARCHAR},
+      ca_father = #{caFather,jdbcType=VARCHAR}
+    where ca_id = #{caId,jdbcType=INTEGER}
+  </update>
+</mapper>
