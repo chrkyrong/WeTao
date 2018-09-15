@@ -100,4 +100,31 @@ public class User {
     public void setuStatus(Byte uStatus) {
         this.uStatus = uStatus;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"uId\":")
+                .append(uId);
+        sb.append(",\"uPassword\":\"")
+                .append(uPassword).append('\"');
+        sb.append(",\"uUserName\":\"")
+                .append(uUserName).append('\"');
+        sb.append(",\"uTel\":\"")
+                .append(uTel).append('\"');
+        sb.append(",\"uAddress1\":\"")
+                .append(uAddress1).append('\"');
+        sb.append(",\"uAddress2\":\"")
+                .append(uAddress2).append('\"');
+        sb.append(",\"uAddress3\":\"")
+                .append(uAddress3).append('\"');
+        sb.append(",\"uIcon\":\"")
+                .append(uIcon).append('\"');
+        sb.append(",\"uSex\":\"")
+                .append(uSex).append('\"');
+        sb.append(",\"uStatus\":")
+                .append(uStatus);
+        sb.append('}');
+        return sb.toString();
+    }
 }
