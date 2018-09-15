@@ -79,4 +79,28 @@
       items_id = #{itemsId,jdbcType=INTEGER}
     where or_de_id = #{orDeId,jdbcType=INTEGER}
   </update>
+
+
+  <resultMap id="detailsAndItems" type="com.weitao.bean.Order_detail" extends="BaseResultMap">
+    <association property="item" javaType="com.weitao.bean.Items">
+      <id column="i_id" jdbcType="INTEGER" property="iId" />
+      <result column="i_name" jdbcType="VARCHAR" property="iName" />
+      <result column="i_photos" jdbcType="VARCHAR" property="iPhotos" />
+      <result column="i_exsit" jdbcType="INTEGER" property="iExsit" />
+      <result column="i_sale" jdbcType="INTEGER" property="iSale" />
+      <result column="i_price" jdbcType="DECIMAL" property="iPrice" />
+      <result column="i_date" jdbcType="TIMESTAMP" property="iDate" />
+      <result column="i_status" jdbcType="TINYINT" property="iStatus" />
+      <result column="store_id" jdbcType="INTEGER" property="storeId" />
+      <result column="catagory_id" jdbcType="INTEGER" property="catagoryId" />
+    </association>
+  </resultMap>
+
+  <!--根据订单id查询订单详情关联查询商品信息-->
+  <select id="selectByOrderId" parameterType="int" resultMap="detailsAndItems">
+  SELECT order_detail.*,items.*
+  FROM  order_detail,items
+  WHERE items.i_id=order_detail.items_id AND order_id=#{arg0}
+  </select>
+
 </mapper>

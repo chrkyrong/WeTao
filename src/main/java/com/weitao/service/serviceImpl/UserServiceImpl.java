@@ -22,16 +22,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean register(User user) {
-        //根据用户名查询用户
-        User user1= userMapper.selectByUserName(user.getuUserName());
-        //查询结果不为空则用户已存在
-        if(user1!=null) {
-            throw new UserException(ResultEnum.USERNAME_EXIST);
-        }
         //密码加密
         String password= MD5.md5(user.getuPassword());
         user.setuPassword(password);
-        user.setuIcon("head.jpg");
+        if(user.getuIcon()==null) {
+            user.setuIcon("head.jpg");
+        }
         user.setuStatus((byte) 0);
         //注册用户
         if(userMapper.insertSelective(user)>0)
@@ -42,21 +38,62 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean login(User user) throws Exception {
-        //根据用户名查询用户
-        User user1= userMapper.selectByUserName(user.getuUserName());
-        //查询结果为空则用户名不存在
+        //根据用户id查询用户
+        User user1=look(user.getuId());
         if(user1==null)
-        {
             throw new UserException(ResultEnum.USER_NOT_EXIST);
-        }
+        //验证账号状态
+        int status=user1.getuStatus();
+        if(status==1)
+            throw new UserException(ResultEnum.USER_LOCK);
         //密码加密
         String password=MD5.md5(user.getuPassword());
-        //验证登陆
-        if(password.equals(user1.getuPassword()))
+        //验证密码
+        if(!password.equals(user1.getuPassword()))
+            throw new UserException(ResultEnum.USER_PASSWROD_FAIL);
+        return true;
+    }
+
+    @Override
+    public User lookByUserName(String userName) {
+        //根据用户名查询用户
+        return userMapper.selectByUserName(userName);
+    }
+
+    @Override
+    public User look(int uId) {
+        //根据用户id查询用户
+        return userMapper.selectByPrimaryKey(uId);
+    }
+
+    @Override
+    public Boolean revise(User user) {
+        //修改用户信息
+        if(userMapper.updateByPrimaryKeySelective(user)>0)
             return true;
         else
             return false;
     }
 
-
+    @Override
+    public Boolean revisePassword(User user) {
+        //根据用户id查询用户电话
+        User user1=look(user.getuId());
+        String phone=user1.getuTel();
+        //验证账号状态
+        int status=user1.getuStatus();
+        if(status==1)
+            throw new UserException(ResultEnum.USER_LOCK);
+        //验证电话
+        if(!phone.equals(user.getuTel()))
+            throw new UserException(ResultEnum.USER_PHONE_FAIL);
+        //密码加密
+        String password=MD5.md5(user.getuPassword());
+        user.setuPassword(password);
+        //修改用户密码
+        if(userMapper.updateByPrimaryKeySelective(user)>0)
+            return true;
+        else
+            return false;
+    }
 }

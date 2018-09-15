@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class DateConverter implements Converter<String,Date> {
 
+    //自定义日期转化
     public Date convert(String source) {
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try

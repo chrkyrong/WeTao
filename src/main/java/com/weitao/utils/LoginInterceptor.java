@@ -15,6 +15,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         //得到url
         String url=httpServletRequest.getRequestURI();
+        System.out.println(url);
 
         //判断是否为公开的url，是则放行
         if(url.indexOf("login")>=0)

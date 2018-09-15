@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>WeTao / Cart</title>
+    <title>WeTao / PersonalInformation</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="telephone=no" name="format-detection">
     <meta name="HandheldFriendly" content="true">
+    <!--路径/////////////////////////////////////////////////////////////////////////-->
     <link rel="stylesheet" href="static/wt/css/master.css">
     <link rel="icon" type="image/x-icon" href="static/wt/images/favicon.ico">
     <!--[if lt IE 9 ]>
@@ -17,24 +17,18 @@
     <meta content="no" http-equiv="imagetoolbar">
     <![endif]-->
 </head>
-
 <body>
 <!-- Loader-->
 <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span>
 </div>
 <!-- Loader end-->
-
-
 <!-- ==========================-->
 <!-- FULL SCREEN MENU-->
 <!-- ==========================-->
 <div class="wrap-fixed-menu" id="fixedMenu">
-
-
     <button type="button" class="fullmenu-close"><i class="fa fa-times"></i></button>
-
     <nav class="fullscreen-center-menu">
-
+        <!--左上角隐藏的导航栏入口/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
         <div id="dl-menu" class="dl-menuwrapper">
             <ul class="dl-menu menu-item list-unstyled">
 
@@ -49,7 +43,7 @@
 
                     </ul>
                 </li>
-                <li><a href="about.html"><span>about</span></a></li>
+                <li><a href="display.html"><span>about</span></a></li>
                 <li><a href="lookbook.html"><span>lookbook</span></a></li>
 
                 <li>
@@ -58,10 +52,10 @@
                     <ul class="dl-submenu">
 
                         <li><a href="shop-1.html"><span>Catalog Grid 1</span></a></li>
-                        <li><a href="shop-2.html"><span>Catalog Grid 2</span></a></li>
+                        <li><a href="shop.html"><span>Catalog Grid 2</span></a></li>
                         <li><a href="shop-2-list.html"><span>Catalog List</span></a></li>
                         <li><a href="shop-single-1.html"><span>Product page 1</span></a></li>
-                        <li><a href="shop-single-2.html"><span>Product page 2</span></a></li>
+                        <li><a href="shop_single.html"><span>Product page 2</span></a></li>
                         <li><a href="shop-single-3.html"><span>Product page 3</span></a></li>
                         <li><a href="cart.html"><span>Cart page</span></a></li>
                         <li><a href="checkout.html"><span>Checkout page </span></a></li>
@@ -157,40 +151,38 @@
                         </button>
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
-                            <!--主页模块///////////////////////////////////////////////////////////////////////////////////////-->
+                            <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
                             <li><a href="shop-1.html"><h5>主 页</h5></a>
                             </li>
-                            <!--售后模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-2.html"><h5>售 后</h5></a>
+                            <li><a href="shop-1.html"><h5>加入我们</h5></a>
                             </li>
-                            <!--收藏夹模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>收 藏</h5></a>
+                            <li><a href="shop-1.html"><h5>商业合作</h5></a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-navibox-2">
+                        <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
                         <ul class="nav navbar-nav clearfix vcenter">
                             <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
                             </li>
-                            <!--用户个人信息模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#"><h5>我 的 微 淘</h5></a>
+                            <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="#"><h5>个人信息</h5></a>
                             </li>
-                            <li><span class="header-cart">
-                            <!--购物车///////////////////////////////////////////////////////////////////////////////////////-->
-                                <a href="#"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
-                                    <span class="header-cart-count bg-primary">3</span></span>
+                            <li><span class="header-cart"><a href="#"><i class="icon fa fa-shopping-cart"
+                                                                         aria-hidden="true"></i></a><span
+                                    class="header-cart-count bg-primary">3</span></span>
                             </li>
                         </ul>
                         <ul class="nav-language list-inline">
-                            <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#">Id：007</a>
+                            <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
+                            <li><a href="#">登陆</a>
                             </li>
-                            <!--退出按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li class="active"><a href="#">quit</a>
+                            <li><a href="#">返回</a>
                             </li>
                         </ul>
-                        <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
+                        <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
                         <a class="navbar-brand scroll" href="home.html">
+                            <!--导航栏最中间的logo/////////////////////////////////////////////////////////////////////////////////-->
                             <img class="normal-logo" src="static/wt/images/logo.png" alt="logo">
                             <img class="scroll-logo hidden-xs" src="static/wt/images/logo.png" alt="logo">
                         </a>
@@ -205,10 +197,16 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="wrap-breadcrumb">
+                        <ol class="breadcrumb">
+                            <!--第一行文字/////////////////////////////////////////////////////////////-->
+                            <li><h4>Hi~用户名</h4>
+                            </li>
+                        </ol>
                     </div>
                     <!-- end .wrap-breadcrumb-->
                     <div class="section-title-page section-title-page_mod-a">
-                        <h1 class="ui-title-page">我的购物车(Shopping Cart)</h1>
+                        <!--第二行文字/////////////////////////////////////////////////////////////-->
+                        <h1 class="ui-title-page">Update Personal Information</h1>
                     </div>
                 </div>
             </div>
@@ -217,133 +215,89 @@
 
 
                     <div class="woocommerce">
-                        <form action="" method="post" class="cart-table ">
-
-                            <!--购物车清单的表格模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <div class="b-table b-cart-table ">
-                                <table class="shop_table shop_table_responsive cart table" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                        <td class="product-thumbnail" width="200" href="200">&nbsp;</td>
-                                        <td class="product-name"><h5>产 品 名</h5></td>
-                                        <td class="product-price"><h5>价 格</h5></td>
-                                        <td class="product-quantity" width="240"><h5>数 量</h5></td>
-                                        <td class="product-subtotal"><h5>总 价</h5></td>
-                                        <td class="product-remove"><h5>操 作</h5></td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    <tr class="cart_item">
-
-
-                                        <td class="product-thumbnail">
-                                            <a href="catalog-product.html">
-                                                <!--添加产品图片模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                <img src="static/wt/images/1.jpg"
-
-                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                            </a></td>
-
-                                        <td data-title="Product">
-                                            <div class="caption">
-                                                <!--产品名称模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                <a class="product-name" href="/">Hyperion</a></div>
-                                        </td>
-
-                                        <td class="product-price" data-title="Price">
-							<span class="product-price total-price">
-                                    <!--产品价格模块///////////////////////////////////////////////////////////////////////////////////////-->
-							<span class="woocommerce-Price-amount amount"><span
-                                    class="woocommerce-Price-currencySymbol">£</span>875.00</span>
-                            </span>
-                                        </td>
-
-                                        <!--产品数量调整模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <td class="product-quantity" data-title="Quantity" >
-                                            <div class="enumerator"><span
-                                                    class="enumerator__btn enumerator__btn_minus js-minus_btn"></span>
-                                                <input class="enumerator__input" type="text" value="1" size="3"><span
-                                                        class="enumerator__btn enumerator__btn_plus js-plus_btn"></span>
-                                            </div>
-                                            <!--<div class="input-group btn-block qty-block" data-trigger="spinner">-->
-
-
-                                            <!--<table class="shop_table shop_table_responsive cart table">-->
-                                            <!--<tbody class="shop_table shop_table_responsive cart table">-->
-                                            <!--<tr>-->
-                                            <!--<td><a class="footer-list__link" href="/"><h2>-</h2></a></td>-->
-                                            <!--<td><input type="text" data-rule="quantity" value="1" title="Qty"-->
-                                            <!--class="input-text qty text"></td>-->
-                                            <!--<td><a class="footer-list__link" href="/"><h3>+</h3></a></td>-->
-                                            <!--</tr>-->
-                                            <!--</tbody>-->
-                                            <!--</table>-->
-                                            <!--</div>-->
-                                        </td>
-                                        <!--产品根据计算数量和单价得出的总价小计///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <td class="product-subtotal" data-title="Total">
-                                            <span class="woocommerce-Price-amount amount"><span
-                                                    class="woocommerce-Price-currencySymbol">£</span>875.00</span></td>
-                                        <td class="product-remove">
-
-                                            <!--删除物品按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                                            <a href="/" class="btn btn-remove" title="Remove this item"><i
-                                                    class="fa fa-trash fa-lg"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6" class="actions">
-
-                                            <!--&lt;!&ndash;更新购物车按钮///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;-->
-                                            <!--<input type="submit" class="button" name="update_cart" value="更 新 购 物 车"-->
-                                            <!--disabled>-->
-
-
-                                            <input type="hidden" value="6bbd62fad3"><input type="hidden"></td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-
-
+                        <form class="checkout_coupon" method="post" style="display:none">
+                            <p class="form-row form-row-first">
+                                <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code"
+                                       id="coupon_code" value="">
+                            </p>
+                            <p class="form-row form-row-last">
+                                <input type="submit" class="button" name="apply_coupon" value="Apply Coupon">
+                            </p>
+                            <div class="clear"></div>
                         </form>
+                        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
+                              enctype="multipart/form-data" _lpchecked="1">
+                            <div class="col2-set" id="customer_details">
+                                <div class="col-1">
+                                    <div class="woocommerce-billing-fields">
+                                        <!--修改个人信息表单/////////////////////////////////////////////////////////////-->
+                                        <!--可以的话，尽量做到个人信息回显/////////////////////////////////////////////////////////////-->
+                                        <h3>请输入需要修改的个人信息</h3>
+                                        <p class="form-row form-row form-row-first ">
+                                            <label>姓 名(Name)</label>
+                                            <!--用户姓名，u_user_name/////////////////////////////////////////////////////////////-->
+                                            <input type="text" class="input-text " name="uUsername">
+                                        </p>
+                                        <p class="form-row form-row form-row-last ">
+                                            <!--用户电话号码，u_tel/////////////////////////////////////////////////////////////-->
+                                            <label>联系电话(Tel)</label>
+                                            <input type="text" class="input-text " name="uTel">
+                                        </p>
+                                        <div class="clear"></div>
+                                        <p class="form-row form-row form-row-wide">
+                                            <!--用户默认地址，地址一，u_address1/////////////////////////////////////////////////////////////-->
+                                            <label>默认地址(必填，Address)</label>
+                                            <input type="text" class="input-text " name="uAddress1">
+                                        </p>
+                                        <p class="form-row form-row form-row-wide">
+                                            <!--用户地址，地址二，u_address2/////////////////////////////////////////////////////////////-->
+                                            <label>地址二(Address)</label>
+                                            <input type="text" class="input-text " name="uAddress2">
+                                        </p>
+                                        <p class="form-row form-row form-row-wide">
+                                            <!--用户地址，地址三，u_address1/////////////////////////////////////////////////////////////-->
+                                            <label>地址三(Address)</label>
+                                            <input type="text" class="input-text " name="uAddress3">
+                                        </p>
 
-                        <div class="cart-collaterals">
-
-                            <div class="cart_totals calculated_shipping">
-
-
-                                <h2>购 物 车 总 计：</h2>
-
-                                <table cellspacing="0" class="shop_table shop_table_responsive">
-
-                                    <tbody>
-
-                                    <tr class="order-total">
-                                        <th>总 计</th>
-                                        <!--购物车所有东西加起来的总价格///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <td data-title="Total"><strong><span
-                                                class="woocommerce-Price-amount amount"><span
-                                                class="woocommerce-Price-currencySymbol">£</span>875.00</span></strong>
-                                        </td>
-                                    </tr>
+                                        <div class="b-filter__group">
+                                            <p class="form-row form-row form-row-first">
+                                                <!--用户性别，u_password/////////////////////////////////////////////////////////////-->
+                                                <label>性 别(Gender)</abbr></label>
+                                            </p>
+                                            <select class="selectpicker" data-width="100%" name="uSex">
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
 
 
-                                    </tbody>
-                                </table>
-
-                                <div class="wc-proceed-to-checkout">
-
-                                    <a href="checkout.html" class="checkout-button button alt wc-forward">
-                                        下 单(Proceed to Checkout)</a>
+                                    </div>
                                 </div>
-
-
+                                <div class="col-2">
+                                    <div class="woocommerce-shipping-fields">
+                                        <h3>更改个人头像</h3>
+                                        <p class="form-row form-row">
+                                            <label class="">上传</label>
+                                            <!--上传头像模块，u_icon/////////////////////////////////////////////////////////////-->
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
+                            <!--<h3 id="order_review_heading">信息确认无误就确认注册吧</h3>/////////////////////////////////////////////////////////-->
+                            <div id="order_review" class="woocommerce-checkout-review-order">
 
-                        </div>
+                                <div id="payment" class="woocommerce-checkout-payment">
 
+                                    <div class="form-row place-order">
+
+                                        <input type="submit" class="button alt" id="place_order" value="确 认 修 改 confirm"
+                                               data-value="Place order"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
 
@@ -354,7 +308,6 @@
         </div>
     </div>
     <footer class="footer">
-        <!--页尾编辑////////////////////////////////////////////////////////////////////////////////-->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
@@ -371,8 +324,7 @@
                     <div class="footer-main">
                         <div class="footer-contacts">
                             <div class="row">
-                                <div class="col-md-5"><span
-                                        class="footer-contacts__item">tel.<a> 186 6666 6666</a></span>
+                                <div class="col-md-5"><span class="footer-contacts__item">tel.<a> 186 6666 6666</a></span>
                                 </div>
                             </div>
                             <span class="btn-up" id="toTop"></span>
@@ -390,12 +342,6 @@
                                         <li class="footer-list__item"><a class="footer-list__link"
                                                                          href="">International</a>
                                         </li>
-                                        <!--<li class="footer-list__item"><a class="footer-list__link"-->
-                                        <!--href="privacy-policy.html">Privacy</a>-->
-                                        <!--</li>-->
-                                        <!--<li class="footer-list__item"><a class="footer-list__link"-->
-                                        <!--href="terms-of-use.html">Terms</a>-->
-                                        <!--</li>-->
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
@@ -407,7 +353,7 @@
                                         <li class="footer-list__item"><a class="footer-list__link" href="">Warranty</a>
                                         </li>
                                         <!--帮助入口//////////////////////////////////////////////////////////////////////////////-->
-                                        <li class="footer-list__item"><a class="footer-list__link" href="about.html">Help</a>
+                                        <li class="footer-list__item"><a class="footer-list__link" href="display.html">Help</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -441,6 +387,7 @@
 <!-- end layout-theme-->
 
 
+<!-- end layout-theme-->
 <!-- ++++++++++++-->
 <!-- MAIN SCRIPTS-->
 <!-- ++++++++++++-->
@@ -471,10 +418,7 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-<!-- Main slider-->
-<script src="static/wt/js/jquery.sliderPro.min.js"></script>
 </body>
-
 </html>
 
 
