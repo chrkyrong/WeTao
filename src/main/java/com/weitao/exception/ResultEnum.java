@@ -9,6 +9,12 @@ public enum ResultEnum {
     USER_LOGIN_FAIL("100","登陆失败"),
     USERNAME_EXIST("101","用户名已存在"),
     USER_NOT_EXIST("102","用户名不存在"),
+
+    USER_NOT_FAIL("103","查询用户失败"),
+
+    ITEMS_EXSIT("201","库存小于0"),
+    ITEMS_INSERT_FAIL("202","商品添加失败"),
+
     USER_GET_FAIL("103","查询用户失败"),
     USER_RSVISE_FAIL("104","用户信息修改失败"),
     USER_PASSWROD_FAIL("105","用户密码错误"),
@@ -22,6 +28,7 @@ public enum ResultEnum {
 
 
     DETAIL_USER_FAIL("401","订单明细查询错误")
+
     ;
     private String code;
     private String msg;
