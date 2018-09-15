@@ -113,4 +113,21 @@ public class Items {
     public void setiIntroduction(String iIntroduction) {
         this.iIntroduction = iIntroduction == null ? null : iIntroduction.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Items{" +
+                "iId=" + iId +
+                ", iName='" + iName + '\'' +
+                ", iPhotos='" + iPhotos + '\'' +
+                ", iExsit=" + iExsit +
+                ", iSale=" + iSale +
+                ", iPrice=" + iPrice +
+                ", iDate=" + iDate +
+                ", iStatus=" + iStatus +
+                ", storeId=" + storeId +
+                ", catagoryId=" + catagoryId +
+                ", iIntroduction='" + iIntroduction + '\'' +
+                '}';
+    }
 }
