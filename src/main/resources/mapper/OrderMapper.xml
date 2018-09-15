@@ -138,4 +138,26 @@
       store_id = #{storeId,jdbcType=INTEGER}
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
+
+  <!--根据用户id查询待发货订单-->
+  <select id="selectByUser1" parameterType="int" resultType="com.weitao.bean.Order">
+    SELECT <include refid="Base_Column_List" />
+    FROM  `order`
+    WHERE user_id=#{value} AND o_status='1'
+  </select>
+
+  <!--根据用户id查询已发货订单-->
+  <select id="selectByUser2" parameterType="int" resultType="com.weitao.bean.Order">
+    SELECT <include refid="Base_Column_List" />
+    FROM  `order`
+    WHERE user_id=#{value} AND o_status='2'
+  </select>
+
+  <!--根据用户id查询已签收订单-->
+  <select id="selectByUser3" parameterType="int" resultType="com.weitao.bean.Order">
+    SELECT <include refid="Base_Column_List" />
+    FROM  `order`
+    WHERE user_id=#{value} AND o_status='3'
+  </select>
+  
 </mapper>
