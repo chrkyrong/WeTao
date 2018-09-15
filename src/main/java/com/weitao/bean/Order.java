@@ -1,5 +1,9 @@
 package com.weitao.bean;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.weitao.utils.CustomDateSerializer;
+import com.weitao.utils.DateConverter;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -10,6 +14,7 @@ public class Order {
 
     private BigDecimal oPrice;
 
+    @JsonSerialize(using=CustomDateSerializer.class)
     private Date oDate;
 
     private Byte oStatus;
@@ -92,5 +97,30 @@ public class Order {
 
     public void setStoreId(Integer storeId) {
         this.storeId = storeId;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"oId\":")
+                .append(oId);
+        sb.append(",\"oPost\":")
+                .append(oPost);
+        sb.append(",\"oPrice\":")
+                .append(oPrice);
+        sb.append(",\"oDate\":\"")
+                .append(oDate).append('\"');
+        sb.append(",\"oStatus\":")
+                .append(oStatus);
+        sb.append(",\"oMessage\":\"")
+                .append(oMessage).append('\"');
+        sb.append(",\"userId\":")
+                .append(userId);
+        sb.append(",\"sellerId\":")
+                .append(sellerId);
+        sb.append(",\"storeId\":")
+                .append(storeId);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -9,6 +9,16 @@ public class Order_detail {
 
     private Integer itemsId;
 
+    private Items item;
+
+    public Items getItem() {
+        return item;
+    }
+
+    public void setItem(Items item) {
+        this.item = item;
+    }
+
     public Integer getOrDeId() {
         return orDeId;
     }
@@ -39,5 +49,22 @@ public class Order_detail {
 
     public void setItemsId(Integer itemsId) {
         this.itemsId = itemsId;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"orDeId\":")
+                .append(orDeId);
+        sb.append(",\"orDeNumber\":")
+                .append(orDeNumber);
+        sb.append(",\"orderId\":")
+                .append(orderId);
+        sb.append(",\"itemsId\":")
+                .append(itemsId);
+        sb.append(",\"item\":")
+                .append(item);
+        sb.append('}');
+        return sb.toString();
     }
 }
