@@ -10,32 +10,32 @@
   <context:property-placeholder location="classpath:db.properties"/>
   <!--配置数据源，c3p0连接池-->
   <bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-    <property name="jdbcUrl" value="${jdbc.url}"></property>
-    <property name="driverClass" value="${jdbc.driver}"></property>
-    <property name="user" value="${jdbc.username}"></property>
-    <property name="password" value="${jdbc.password}"></property>
+    <property name="jdbcUrl" value="${jdbc.url}"/>
+    <property name="driverClass" value="${jdbc.driver}"/>
+    <property name="user" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
   </bean>
 
-  <bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <!--配置mybatis文件地址-->
-    <property name="configLocation" value="classpath:mybatis.xml"></property>
+    <property name="configLocation" value="classpath:mybatis.xml"/>
     <!--加载数据源-->
-    <property name="dataSource" ref="pooledDataSource"></property>
+    <property name="dataSource" ref="pooledDataSource"/>
     <!--配置mapper文件地址-->
-    <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+    <property name="mapperLocations" value="classpath:mapper/*.xml"/>
   </bean>
 
   <!--配置扫描器-->
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     <!--扫描所有mapper接口,加到ioc容器中-->
-    <property name="basePackage" value="com.weitao.dao"></property>
+    <property name="basePackage" value="com.weitao.dao"/>
     <property name="sqlSessionFactoryBeanName" value="SqlSessionFactory" />
   </bean>
 
   <!--事务管理-->
   <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <!--注入数据源，管理数据库-->
-    <property name="dataSource" ref="pooledDataSource"></property>
+    <property name="dataSource" ref="pooledDataSource"/>
   </bean>
   <!--配置事务增强-->
   <tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -50,8 +50,8 @@
   <!--开启aop注解事务-->
   <aop:config>
     <!--配置切入点（被增强）-->
-    <aop:pointcut id="txPoint" expression="execution(* com.weitao.service.serviceImpl.*.*(..))"></aop:pointcut>
+    <aop:pointcut id="txPoint" expression="execution(* com.weitao.service.serviceImpl.*.*(..))"/>
     <!--配置切点-->
-    <aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"></aop:advisor>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>
   </aop:config>
 </beans>

@@ -35,7 +35,7 @@
         <property name="converters">
             <util:list list-class="java.util.ArrayList">
                 <!--日期转换-->
-                <bean class="com.weitao.utils.DateConverter"></bean>
+                <bean class="com.weitao.utils.DateConverter"/>
             </util:list>
         </property>
     </bean>
