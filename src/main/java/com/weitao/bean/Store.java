@@ -50,4 +50,13 @@ public class Store {
                 ", sellerId=" + sellerId +
                 '}';
     }
+
+    public Store() {
+    }
+
+    public Store(String stName, Byte stStatus, Integer sellerId) {
+        this.stName = stName;
+        this.stStatus = stStatus;
+        this.sellerId = sellerId;
+    }
 }
