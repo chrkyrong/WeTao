@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客服</title>
+    <style type="text/css">
+        .area{
+            width: 95%;
+            height: 100px;
+            border: hidden;
+            background-color: inherit;
+            outline-color: white;
+            resize: none
+        }
+        hr{
+            width: 95%;
+        }
+        div{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!--总的框架-->
+    <div id="main" style="width: 100%; height: 100%">
+        <!--菜单栏，用于显示信息-->
+        <div id="menu">
+            <h4>店铺名称</h4>
+        </div>
+        <hr>
+        <!--显示对话的面板-->
+        <div id="show" style="width: 100%; height: 300px;">
+
+        </div>
+        <hr>
+        <!--文本输入框-->
+        <div id="content" style="width: 100%;text-align: center;">
+            <label for="text">
+                <textarea id="text" class="area"></textarea>
+            </label>
+        </div>
+        <!--按钮-->
+        <div>
+            <div style="float: right">
+                <button>发送</button>
+                <button>取消</button>
+            </div>
+        </div>
+    </div>
+<input type="button" id="server" value="test">
+</body>
+<script src="static/jq/jquery-2.1.4.min.js"></script>
+<script src="static/layer/layer.js"></script>
+<script>
+    $('#server').on('click', function(){
+        console.log('test');
+        layer.open({
+            type: 2,
+            title: '在线客服',
+            maxmin: true,
+            shadeClose: false,
+            area : ['40%' , '60%'],
+            content: 'sellerService.html'
+        });
+    });
+</script>
+</html>
