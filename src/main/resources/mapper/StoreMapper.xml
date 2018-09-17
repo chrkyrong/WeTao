@@ -108,4 +108,11 @@
         where st_id = #{stId,jdbcType=INTEGER} and seller_id = s_id
     </select>
 
+    <!--管理员，根据卖家id查询店铺-->
+    <select id="selectStoreBySellerId" parameterType="com.weitao.bean.Seller" resultMap="com.weitao.vo.StoreVo">
+        select <include refid="Base_Column_List"/>,seller.account
+        from store,seller
+        where store.seller_id = seller.s_id and seller.s_id = #{sId}
+    </select>
+
 </mapper>

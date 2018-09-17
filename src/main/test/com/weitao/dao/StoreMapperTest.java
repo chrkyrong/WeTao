@@ -53,8 +53,16 @@ public class StoreMapperTest {
 
     @Test
     public void selectById() throws Exception {
+//        查询id为7000000的店铺
         int stId = 7000000;
         System.out.println(storeMapper.managerSelectById(stId));
     }
 
+    @Test
+    public void selectStoreBySellerId() throws Exception {
+//        查询id为2000000卖家的店铺
+        Seller seller = new Seller();
+        seller.setsId(7000000);
+        System.out.println(storeMapper.selectStoreBySellerId(seller));
+    }
 }

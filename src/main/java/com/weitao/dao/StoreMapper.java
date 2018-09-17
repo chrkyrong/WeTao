@@ -31,4 +31,7 @@ public interface StoreMapper {
     //    管理员，根据店铺id查询店铺
     StoreVo managerSelectById(int stId);
 
+    //    管理员，根据卖家id查询店铺
+    List<StoreVo> selectStoreBySellerId(Seller seller);
+
 }
