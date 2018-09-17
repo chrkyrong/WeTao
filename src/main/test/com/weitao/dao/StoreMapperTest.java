@@ -23,6 +23,7 @@ public class StoreMapperTest {
     @Autowired
     StoreMapper storeMapper;
 
+//    添加店铺
     @Test
     public void insertStoreTset() throws Exception {
         Store store = new Store("大木瓜店", (byte) 0, 2000000);
@@ -30,6 +31,7 @@ public class StoreMapperTest {
         System.out.println(result);
     }
 
+//    修改店铺名字
     @Test
     public void updateNameTest() throws Exception {
         Store store = new Store();
@@ -40,29 +42,44 @@ public class StoreMapperTest {
     }
 
     @Test
-    public void managerSelectStore() throws Exception {
+    public void managerSelectStoreTest() throws Exception {
         int status = 1;
 
-//        根据店铺状态，查询查询店铺
+//    根据店铺状态，查询查询店铺
         System.out.println(storeMapper.managerSelectByStatus(status));
 
-//        查询所有店铺
+//    查询所有店铺
         System.out.println(storeMapper.managerSelectStore());
 
     }
 
+//    查询id为7000000的店铺
     @Test
-    public void selectById() throws Exception {
-//        查询id为7000000的店铺
+    public void selectByIdTest() throws Exception {
         int stId = 7000000;
         System.out.println(storeMapper.managerSelectById(stId));
     }
 
+//    查询id为2000000卖家拥有的店铺
     @Test
-    public void selectStoreBySellerId() throws Exception {
-//        查询id为2000000卖家的店铺
+    public void selectStoreBySellerIdTest() throws Exception {
         Seller seller = new Seller();
-        seller.setsId(7000000);
+        seller.setsId(2000000);
         System.out.println(storeMapper.selectStoreBySellerId(seller));
+    }
+
+//    模糊查询卖家名字所拥有的店铺
+    @Test
+    public void selectStoreBySellerAccountdTest() throws Exception {
+        Seller seller = new Seller();
+        seller.setsAccount("大");
+        System.out.println(storeMapper.selectStoreBySellerAccount(seller));
+    }
+
+//    模糊查询店铺名字
+    @Test
+    public void selectStoreByStoreNameTest() throws Exception {
+        String stName = "瓜";
+        System.out.println(storeMapper.selectStoreByStoreName(stName));
     }
 }

@@ -109,10 +109,24 @@
     </select>
 
     <!--管理员，根据卖家id查询店铺-->
-    <select id="selectStoreBySellerId" parameterType="com.weitao.bean.Seller" resultMap="com.weitao.vo.StoreVo">
-        select <include refid="Base_Column_List"/>,seller.account
+    <select id="selectStoreBySellerId" parameterType="com.weitao.bean.Seller" resultType="com.weitao.vo.StoreVo">
+        select<include refid="Base_Column_List"/>,seller.s_account
         from store,seller
         where store.seller_id = seller.s_id and seller.s_id = #{sId}
+    </select>
+
+    <!--管理员，根据卖家名字模糊查询店铺-->
+    <select id="selectStoreBySellerAccount" parameterType="com.weitao.bean.Seller" resultType="com.weitao.vo.StoreVo">
+        select<include refid="Base_Column_List"/>,seller.s_account
+        from store,seller
+        where store.seller_id = seller.s_id and seller.s_account like '%' #{sAccount} '%'
+    </select>
+
+    <!--管理员，根据店铺名字模糊查询-->
+    <select id="selectStoreByStoreName" parameterType="com.weitao.bean.Seller" resultType="com.weitao.vo.StoreVo">
+        select<include refid="Base_Column_List"/>,seller.s_account
+        from store,seller
+        where store.seller_id = seller.s_id and store.st_name like '%' #{stName} '%'
     </select>
 
 </mapper>

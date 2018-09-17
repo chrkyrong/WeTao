@@ -34,9 +34,16 @@ public class StoreServiceImpl implements StoreService {
         }
     }
 
+    //    管理员，模糊搜索
     @Override
-    public StoreVo managerSelectById(int stId) {
-        return storeMapper.managerSelectById(stId);
+    public StoreVo managerSeach(String select) {
+//        首先传来的是字符串，进行店铺名字的模糊搜索或者是商家名字的模糊搜索
+
+
+        Integer.parseInt(select);
+
+
+        return null;
     }
 
     //    添加店铺

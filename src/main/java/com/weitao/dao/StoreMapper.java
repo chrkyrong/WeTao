@@ -34,4 +34,10 @@ public interface StoreMapper {
     //    管理员，根据卖家id查询店铺
     List<StoreVo> selectStoreBySellerId(Seller seller);
 
+    //    管理员，根据卖家名字模糊查询店铺
+    List<StoreVo> selectStoreBySellerAccount(Seller seller);
+
+    //    管理员，根据店铺名字模糊查询
+    List<StoreVo> selectStoreByStoreName(String stName);
+
 }

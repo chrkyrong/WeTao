@@ -29,7 +29,7 @@
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     <!--扫描所有mapper接口,加到ioc容器中-->
     <property name="basePackage" value="com.weitao.dao"/>
-    <property name="sqlSessionFactoryBeanName" value="SqlSessionFactory" />
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
   </bean>
 
   <!--事务管理-->
