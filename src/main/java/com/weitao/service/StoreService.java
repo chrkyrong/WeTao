@@ -3,6 +3,7 @@ package com.weitao.service;
 import com.weitao.bean.Store;
 import com.weitao.vo.StoreVo;
 
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public interface StoreService {
 //    管理员，搜索所有店铺
     public List<StoreVo> managerSeleteStore(int Status);
 
-//    管理员，根据店铺id搜索商店
-    public StoreVo managerSeach(String select);
+//    管理员，模糊搜索商店
+    public List<StoreVo> managerSeach(String select);
 
 }

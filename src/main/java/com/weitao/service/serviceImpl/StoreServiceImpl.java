@@ -1,5 +1,6 @@
 package com.weitao.service.serviceImpl;
 
+import com.weitao.bean.Seller;
 import com.weitao.bean.Store;
 import com.weitao.dao.StoreMapper;
 import com.weitao.service.StoreService;
@@ -8,7 +9,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by ycp on 2018/9/4.
@@ -27,24 +32,71 @@ public class StoreServiceImpl implements StoreService {
     //    管理员，搜索所有商店
     @Override
     public List<StoreVo> managerSeleteStore(int status) {
-        if (status != 0 && status != 1||status != 1 && status != 0) {
+        if (status != 0 && status != 1 || status != 1 && status != 0) {
             return storeMapper.managerSelectByStatus(status);
         } else {
             return storeMapper.managerSelectStore();
         }
     }
 
+
     //    管理员，模糊搜索
     @Override
-    public StoreVo managerSeach(String select) {
+    public List<StoreVo> managerSeach(String select) {
+//        创建存放数据结果的result(List)
+        List<StoreVo> result = new ArrayList<StoreVo>();
+
 //        首先传来的是字符串，进行店铺名字的模糊搜索或者是商家名字的模糊搜索
+//        查询店铺
+        if (storeMapper.selectStoreByStoreName(select) != null)
+            result.addAll(storeMapper.selectStoreByStoreName(select));
+
+//        查询卖家姓名
+        Seller seller = new Seller();
+        seller.setsAccount(select);
+        if (storeMapper.selectStoreBySellerAccount(seller) != null)
+            result.addAll(storeMapper.selectStoreBySellerAccount(seller));
 
 
-        Integer.parseInt(select);
+//        使用正则表达式判断字符串是否为整型
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(select);
 
+        if (isNum.matches()) {
 
-        return null;
+//            字符串为整型，则转化为id(int)
+            int id = Integer.parseInt(select);
+//            创建一个第三个list存id模糊查询结果
+
+//            判断id是否属于店铺id
+            if (7000000 <= id && 8000000 > id) {
+//                执行查询店铺id
+                if (storeMapper.managerSelectById(id) != null)
+                    result.add(storeMapper.managerSelectById(id));
+            }
+//            判断id是否属于商家id
+            else if (2000000 <= id && 3000000 > id) {
+
+//                执行查询商家id
+                seller.setsId(id);
+                if (storeMapper.selectStoreBySellerId(seller) != null)
+                    result.addAll(storeMapper.selectStoreBySellerId(seller));
+            }
+        }
+
+//        去重算法，需要优化
+
+        for (int i = 0; i < result.size() - 1; i++) {
+            for (int j = result.size() - 1; j > i; j--) {
+                if (result.get(j).getStId().equals(result.get(i).getStId())) {
+                    result.remove(j);
+                }
+            }
+        }
+
+        return result;
     }
+
 
     //    添加店铺
     @Override
