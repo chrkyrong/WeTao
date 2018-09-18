@@ -25,6 +25,11 @@ public class WebSocketServiceImpl implements WebSocketService {
      */
     private Map<String, WebSocketSession> map = SessionMap.sessionMap;
 
+    /**
+     * 上线后将session存入缓存中
+     * @param session
+     * @throws IOException
+     */
     @Override
     public void addSession(WebSocketSession session) throws IOException {
         String userId = (String) session.getAttributes().get("userId");
@@ -37,6 +42,10 @@ public class WebSocketServiceImpl implements WebSocketService {
                 send(user, session);
     }
 
+    /**
+     * 用户下线后移除缓存
+     * @param session
+     */
     @Override
     public void removeSession(WebSocketSession session) {
         String userId = (String) session.getAttributes().get("userId");
@@ -60,7 +69,7 @@ public class WebSocketServiceImpl implements WebSocketService {
 
     /**
      * 发送公告
-     * @param user
+     * @param user 封装了消息的实体
      * @throws IOException
      */
     @Override
