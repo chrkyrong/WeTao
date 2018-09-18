@@ -142,4 +142,10 @@
       items_id = #{itemsId,jdbcType=INTEGER}
     where e_id = #{eId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByItemsId" resultType="com.weitao.vo.EvaluateVo">
+    SELECT evaluate.*,user.u_icon,user.u_user_name
+    FROM evaluate,user
+    WHERE evaluate.user_id = user.u_id AND evaluate.items_id = #{itemsId,jdbcType=INTEGER}
+  </select>
 </mapper>

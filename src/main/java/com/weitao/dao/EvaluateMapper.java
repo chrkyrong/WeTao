@@ -1,6 +1,9 @@
 package com.weitao.dao;
 
 import com.weitao.bean.Evaluate;
+import com.weitao.vo.EvaluateVo;
+
+import java.util.List;
 
 public interface EvaluateMapper {
     int deleteByPrimaryKey(Integer eId);
@@ -16,4 +19,6 @@ public interface EvaluateMapper {
     int updateByPrimaryKeyWithBLOBs(Evaluate record);
 
     int updateByPrimaryKey(Evaluate record);
+
+    List<EvaluateVo> selectByItemsId(int itemsId);
 }

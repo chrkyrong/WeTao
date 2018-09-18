@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="static/jq/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="static/jq/ajaxfileupload.js"></script>
+</head>
+<body>
+<form id="formTest" enctype="multipart/form-data">
+    评价：
+    <table width="100%" border="1">
+        <tr>
+            <td>买家秀图片</td>
+        <tr>
+            <td height="200" align="center">
+                <div id="photo"></div>
+            </td>
+        </tr>
+        <td><input type="file" name="e_Photos" id="upfilePhotoId" onchange="uploadPhoto()" required="required"></td>
+        </tr>
+        <tr>
+            <td>商品简介</td>
+            <td>
+                <textarea rows="3" cols="30" name="eDescription"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>评分</td>
+            <td>
+                <select id="caFather" name="eLevel">
+                    <option value="5">5星，好评！五星好评！令人满意的购物体验！</option>
+                    <option value="4">4星，中评！还不错，宝贝和想象中差不多！</option>
+                    <option value="3">3星，中评！还行吧！有些小瑕疵，凑和着吧！</option>
+                    <option value="2">2星，差评！差强人意，我不满意！</option>
+                    <option value="1">1星，差评！一星差评！令人失望的购物体验！</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" id="submit" value="提交"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<!--插入数据-->
+<script type="text/javascript">
+    $("#submit").click(function () {
+        console.log('submit');
+        var form = new FormData(document.getElementById("formTest"));
+        $.ajax({
+            contentType: 'application/json;charset=UTF-8',   //定义编码
+            url: '/insertEvaluate',
+            type: 'POST',
+            data: form,
+            processData: false,
+            contentType: false, /*使用formdate一定要加上去*/
+            success: function (result) {
+                if (result.code == "0")
+                    window.location.href = 'success';
+                else
+                    alert("错误")
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function uploadPhoto() {
+        $.ajaxFileUpload({
+            url: "upFile1",
+            secureuri: false,//是否启动安全提交，默认为false
+            fileElementId: "upfilePhotoId",//需要上传的文件ID
+            dataType: 'text',
+            success: function (data) {
+                alert(data + "----") //测试接受到什么数据
+                $("#photo").html("<img  width='300px' height='400px'  src='" + data + "'/>");
+            }
+        })
+    }
+</script>

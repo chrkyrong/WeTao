@@ -95,6 +95,7 @@ public class ItemsController {
         /*构建图片url路径，显示图片需要*/
         String url_root=session.getServletContext().getContextPath();
         String file_url = url_root + "/images/" + originalFilename;
+        System.out.println(file_url+"ycp==============");
             /* 将图片写入 */
             try {
                 File file1=new File(path,i_Photos.getOriginalFilename());

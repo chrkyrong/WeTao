@@ -14,6 +14,8 @@
     <link rel="icon" type="image/x-icon" href="static/wt/images/favicon.ico">
     <!--[if lt IE 9 ]>
     <script src="assets/js/separate-js/html5shiv-3.7.2.min.js" type="text/javascript"></script>
+
+
     <meta content="no" http-equiv="imagetoolbar">
     <![endif]-->
 </head>
@@ -232,14 +234,15 @@
                             </p>
                             <div class="clear"></div>
                         </form>
-                        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
-                              enctype="multipart/form-data" _lpchecked="1">
+                        <form id="formTest" class="checkout woocommerce-checkout"
+                              enctype="multipart/form-data">
                             <div class="col2-set" id="customer_details">
                                 <div class="col-1">
                                     <div class="woocommerce-billing-fields">
                                         <!--商品评价表单/////////////////////////////////////////////////////////////-->
                                         <p class="form-row form-row form-row-wide ">
-                                            <label><strong>商品名称(Production Name)：</strong>&nbsp;&nbsp;&nbsp;&nbsp;大西瓜</label>
+                                            <label><strong>商品名称(Production
+                                                Name)：</strong>&nbsp;&nbsp;&nbsp;&nbsp;大西瓜</label>
                                         </p>
                                         <p class="form-row form-row form-row-wide ">
                                             <label><strong>商品描述(Production Introduction)：</strong>&nbsp;&nbsp;&nbsp;&nbsp;我们家的西瓜，甜过初恋！让人十分想念！每年卖出的西瓜可围绕地球3圈。</label>
@@ -251,7 +254,7 @@
                                                 <!--评分模块/////////////////////////////////////////////////////////////-->
                                                 <label><strong>买到的商品还满意嘛？评个分吧~(Evaluate)</strong></abbr></label>
                                             </p>
-                                            <select class="selectpicker" data-width="100%" name="storeId">
+                                            <select class="selectpicker" data-width="100%" name="eLevel">
                                                 <option value="5">5星，好评！五星好评！令人满意的购物体验！</option>
                                                 <option value="4">4星，中评！还不错，宝贝和想象中差不多！</option>
                                                 <option value="3">3星，中评！还行吧！有些小瑕疵，凑和着吧！</option>
@@ -265,11 +268,14 @@
                                     <div class="woocommerce-shipping-fields">
                                         <h3>上传买家秀图片</h3>
                                         <p class="form-row form-row">
-                                            <!--<label class="">。。。上传图片模块。。。</label>-->
-                                            <!--<button class="btn btn-default btn-sm" type="button">send message</button>-->
                                             <br><br>
-                                            <input type="file" name="i_Photos" id="upfilePhotoId" onchange="upfilePhoto()" required="required" >
-                                            <!--上传买家图片/////////////////////////////////////////////////////////////-->
+                                        <td height="80" width="80" align="center">
+                                        <div id="photo"></div></td>
+
+                                        <input type="file" name="e_Photos" id="upfilePhotoId"
+                                               onchange="uploadPhoto()" required="required">
+                                        <!--上传买家图片/////////////////////////////////////////////////////////////-->
+
                                         </p>
                                     </div>
                                     <br>
@@ -278,7 +284,7 @@
                                         <!--文本评价/////////////////////////////////////////////////////////////-->
                                         <h4>写下你的购物体验吧</h4>
                                         <p class="form-row form-row">
-                                            <textarea name="iIntroduction" class="input-text " i    d="order_comments"
+                                            <textarea name="eDescription" class="input-text "
                                                       placeholder="写写你的感受吧，一不小心成为评论高手......"></textarea>
                                         </p>
                                     </div>
@@ -294,8 +300,8 @@
                                     <div class="form-row place-order">
 
                                         <!--确认评价按钮////////////////////////////////////////////////////////////////////-->
-                                        <input type="submit" class="button alt" id="place_order" value="确认评价 Confirm"
-                                               data-value="Place order"/>
+                                        <input id="submit" type="button" class="button alt" value="确认评价 Confirm"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -422,9 +428,44 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
+<script type="text/javascript" src="static/jq/ajaxfileupload.js"></script>
+
 
 </body>
 
 </html>
-
+<script type="text/javascript">
+    $("#submit").click(function () {
+        console.log('submit');
+        var form = new FormData(document.getElementById("formTest"));
+        $.ajax({
+            contentType: 'application/json;charset=UTF-8',   //定义编码
+            url: '/insertEvaluate',
+            type: 'POST',
+            data: form,
+            processData: false,
+            contentType: false, /*使用formdate一定要加上去*/
+            success: function (result) {
+                if (result.code == "0")
+                    window.location.href = 'success';
+                else
+                    alert("错误")
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function uploadPhoto() {
+        $.ajaxFileUpload({
+            url: "upFile1",
+            secureuri: false,//是否启动安全提交，默认为false
+            fileElementId: "upfilePhotoId",//需要上传的文件ID
+            dataType: 'text',
+            success: function (data) {
+                alert(data + "----") //测试接受到什么数据
+                $("#photo").html("<img  width='300px' height='400px'  src='" + data + "'/>");
+            }
+        })
+    }
+</script>
 
