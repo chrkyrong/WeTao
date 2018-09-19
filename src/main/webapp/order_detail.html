@@ -452,6 +452,14 @@
 <script src="static/wt/js/main.js"></script>
 <!-- Main slider-->
 <script src="static/wt//jquery.sliderPro.min.js"></script>
+<script src="static/js/order_detail.js"></script>
+<script src="static/js/get_param.js"></script>
+<script>
+    $(function () {
+        var oId= getUrlParam('oId');
+        order_detail(oId);
+    })
+</script>
 </body>
 
 </html>
