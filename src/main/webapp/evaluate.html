@@ -160,38 +160,40 @@
                         </button>
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
-                            <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>主 页</h5></a>
+                            <!--主页模块///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="home.html"><h5>主 页</h5></a>
                             </li>
-                            <li><a href="shop-1.html"><h5>加入我们</h5></a>
+                            <!--售后模块///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="order_over.html"><h5>售 后</h5></a>
                             </li>
-                            <li><a href="shop-1.html"><h5>商业合作</h5></a>
+                            <!--收藏夹模块///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="collection.html"><h5>收 藏</h5></a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-navibox-2">
-                        <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
                         <ul class="nav navbar-nav clearfix vcenter">
                             <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
                             </li>
-                            <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#"><h5>个人信息</h5></a>
+                            <!--用户个人信息模块///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="order.html"><h5>我 的 订 单</h5></a>
                             </li>
-                            <li><span class="header-cart"><a href="#"><i class="icon fa fa-shopping-cart"
-                                                                         aria-hidden="true"></i></a><span
-                                    class="header-cart-count bg-primary">3</span></span>
+                            <li><span class="header-cart">
+                            <!--购物车///////////////////////////////////////////////////////////////////////////////////////-->
+                                <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
+                                    <span class="header-cart-count bg-primary">3</span></span>
                             </li>
                         </ul>
                         <ul class="nav-language list-inline">
-                            <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
-                            <li><a href="#">买家id</a>
+                            <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="display.html">Id：007</a>
                             </li>
-                            <li><a href="#">退出</a>
+                            <!--退出按钮///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li class="active"><a href="login.html">quit</a>
                             </li>
                         </ul>
-                        <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
+                        <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
                         <a class="navbar-brand scroll" href="home.html">
-                            <!--导航栏最中间的logo/////////////////////////////////////////////////////////////////////////////////-->
                             <img class="normal-logo" src="static/wt/images/logo.png" alt="logo">
                             <img class="scroll-logo hidden-xs" src="static/wt/images/logo.png" alt="logo">
                         </a>
@@ -269,12 +271,13 @@
                                         <h3>上传买家秀图片</h3>
                                         <p class="form-row form-row">
                                             <br><br>
-                                        <td height="80" width="80" align="center">
-                                        <div id="photo"></div></td>
+
 
                                         <input type="file" name="e_Photos" id="upfilePhotoId"
                                                onchange="uploadPhoto()" required="required">
                                         <!--上传买家图片/////////////////////////////////////////////////////////////-->
+                                        <div id="photo">
+                                        </div>
 
                                         </p>
                                     </div>
@@ -347,12 +350,6 @@
                                         <li class="footer-list__item"><a class="footer-list__link"
                                                                          href="">International</a>
                                         </li>
-                                        <!--<li class="footer-list__item"><a class="footer-list__link"-->
-                                        <!--href="privacy-policy.html">Privacy</a>-->
-                                        <!--</li>-->
-                                        <!--<li class="footer-list__item"><a class="footer-list__link"-->
-                                        <!--href="terms-of-use.html">Terms</a>-->
-                                        <!--</li>-->
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
@@ -446,8 +443,10 @@
             processData: false,
             contentType: false, /*使用formdate一定要加上去*/
             success: function (result) {
-                if (result.code == "0")
-                    window.location.href = 'success';
+                if (result.code == "0"){
+                    alert("评论成功！")
+                    window.location.href = 'shop_single.html';
+                }
                 else
                     alert("错误")
             }
@@ -463,7 +462,7 @@
             dataType: 'text',
             success: function (data) {
                 alert(data + "----") //测试接受到什么数据
-                $("#photo").html("<img  width='300px' height='400px'  src='" + data + "'/>");
+                $("#photo").html("<div style='height: 100px;width: 200px'><img height='80px' width='80px' src='" + data + "'/></div>");
             }
         })
     }

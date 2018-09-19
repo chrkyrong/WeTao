@@ -1,6 +1,8 @@
 package com.weitao.vo;
 
 import com.weitao.bean.Evaluate;
+import com.weitao.bean.Items;
+import com.weitao.bean.User;
 
 /**
  * @Author:Cc
@@ -11,10 +13,8 @@ import com.weitao.bean.Evaluate;
  */
 public class EvaluateVo extends Evaluate{
     private Evaluate evaluate;
-    private String uIcon;
-    private String uUserName;
-
-//    会不会还缺了一个商品简介，商品名字
+    private User user;
+    private Items items;
 
     public Evaluate getEvaluate() {
         return evaluate;
@@ -24,28 +24,28 @@ public class EvaluateVo extends Evaluate{
         this.evaluate = evaluate;
     }
 
-    public String getuIcon() {
-        return uIcon;
+    public User getUser() {
+        return user;
     }
 
-    public void setuIcon(String uIcon) {
-        this.uIcon = uIcon;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getuUserName() {
-        return uUserName;
+    public Items getItems() {
+        return items;
     }
 
-    public void setuUserName(String uUserName) {
-        this.uUserName = uUserName;
+    public void setItems(Items items) {
+        this.items = items;
     }
 
     @Override
     public String toString() {
         return "EvaluateVo{" +
-                "evaluate=" + super.toString() +
-                ", uIcon='" + uIcon + '\'' +
-                ", uUserName='" + uUserName + '\'' +
+                "evaluate=" + evaluate +
+                ", user=" + user +
+                ", items=" + items +
                 '}';
     }
 }

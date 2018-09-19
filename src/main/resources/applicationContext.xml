@@ -60,6 +60,6 @@
     </aop:config>
 
     <!--引入mongodb配置-->
-    <import resource="classpath:mongodb.xml"/>
+    <!--<import resource="classpath:mongodb.xml"/>-->
 
 </beans>
