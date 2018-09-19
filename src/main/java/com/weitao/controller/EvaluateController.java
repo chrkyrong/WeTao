@@ -3,21 +3,22 @@ package com.weitao.controller;
 import com.weitao.bean.Evaluate;
 import com.weitao.exception.ResultEnum;
 import com.weitao.service.EvaluateService;
+import com.weitao.service.serviceImpl.EvaluateServiceImpl;
 import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
+import com.weitao.vo.EvaluateVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Author:Cc
@@ -48,6 +49,7 @@ public class EvaluateController {
         }
     }
 
+    //    文件上传
     @RequestMapping(value = "upFile1")
     public String upFile1(MultipartFile e_Photos, HttpSession session) throws IOException {
         System.out.println("==0============0==");
@@ -57,27 +59,37 @@ public class EvaluateController {
 
         String path = "E:\\mavenProject\\WeTao\\src\\main\\webapp\\static\\images\\";
         String root_path = session.getServletContext().getRealPath("images");// 获取自定义缓存文件夹路径
-        File file=new File(root_path);
+        File file = new File(root_path);
         /*如果文件夹不存在，则创建*/
-        if(!file.exists()){
+        if (!file.exists()) {
             file.mkdir();
         }
         /*构建图片url路径，显示图片需要*/
-        String url_root=session.getServletContext().getContextPath();
+        String url_root = session.getServletContext().getContextPath();
 
         String file_url = url_root + "/images/" + originalFilename;
-        System.out.println(file_url+"======");
+        System.out.println(file_url + "======");
             /* 将图片写入 */
         try {
             System.out.println("2322");
-            File file1=new File(path,e_Photos.getOriginalFilename());
+            File file1 = new File(path, e_Photos.getOriginalFilename());
             e_Photos.transferTo(file1);
-        }catch (IllegalStateException e) {
+        } catch (IllegalStateException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(originalFilename+"666");
+        System.out.println(originalFilename + "666");
         return file_url;
+    }
+
+    @GetMapping("/selectEvaluate/{iId}")
+    public Result selectEvaluate(HttpServletRequest request, @PathVariable("iId")Integer iId) throws Exception {
+        System.out.println(iId);
+        List<EvaluateVo> evaluateVoList = evaluateService.selectEvaluate(iId);
+        if (evaluateVoList != null)
+            return ResultUtil.success(evaluateVoList);
+        else
+            return ResultUtil.error(ResultEnum.EVALUATE_SELECT_FAIL);
     }
 }

@@ -158,35 +158,35 @@
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
                             <!--主页模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>主 页</h5></a>
+                            <li><a href="home.html"><h5>主 页</h5></a>
                             </li>
                             <!--售后模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-2.html"><h5>售 后</h5></a>
+                            <li><a href="order_over.html"><h5>售 后</h5></a>
                             </li>
                             <!--收藏夹模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>收 藏</h5></a>
+                            <li><a href="collection.html"><h5>收 藏</h5></a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-navibox-2">
                         <ul class="nav navbar-nav clearfix vcenter">
-                            <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
+                            <li><a class="btn_header_search" href="cart.html"><i class="icon fa fa-search"></i></a>
                             </li>
                             <!--用户个人信息模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#"><h5>我 的 微 淘</h5></a>
+                            <li><a href="order.html"><h5>我 的 订 单</h5></a>
                             </li>
                             <li><span class="header-cart">
                             <!--购物车///////////////////////////////////////////////////////////////////////////////////////-->
-                                <a href="#"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
+                                <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
                                     <span class="header-cart-count bg-primary">3</span></span>
                             </li>
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#">Id：007</a>
+                            <li><a href="display.html">Id：007</a>
                             </li>
                             <!--退出按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li class="active"><a href="#">quit</a>
+                            <li class="active"><a href="login.html">quit</a>
                             </li>
                         </ul>
                         <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
@@ -266,20 +266,92 @@
                                                 <input class="enumerator__input" type="text" value="1" size="3"><span
                                                         class="enumerator__btn enumerator__btn_plus js-plus_btn"></span>
                                             </div>
-                                            <!--<div class="input-group btn-block qty-block" data-trigger="spinner">-->
+                                        </td>
+                                        <!--产品根据计算数量和单价得出的总价小计///////////////////////////////////////////////////////////////////////////////////////-->
+                                        <td class="product-subtotal" data-title="Total">
+                                            <span class="woocommerce-Price-amount amount"><span
+                                                    class="woocommerce-Price-currencySymbol">£</span>875.00</span></td>
+                                        <td class="product-remove">
+
+                                            <!--删除物品按钮///////////////////////////////////////////////////////////////////////////////////////-->
+                                            <a href="/" class="btn btn-remove" title="Remove this item"><i
+                                                    class="fa fa-trash fa-lg"></i></a></td>
+                                    </tr>
+                                    <tr class="cart_item">
 
 
-                                            <!--<table class="shop_table shop_table_responsive cart table">-->
-                                            <!--<tbody class="shop_table shop_table_responsive cart table">-->
-                                            <!--<tr>-->
-                                            <!--<td><a class="footer-list__link" href="/"><h2>-</h2></a></td>-->
-                                            <!--<td><input type="text" data-rule="quantity" value="1" title="Qty"-->
-                                            <!--class="input-text qty text"></td>-->
-                                            <!--<td><a class="footer-list__link" href="/"><h3>+</h3></a></td>-->
-                                            <!--</tr>-->
-                                            <!--</tbody>-->
-                                            <!--</table>-->
-                                            <!--</div>-->
+                                        <td class="product-thumbnail">
+                                            <a href="catalog-product.html">
+                                                <!--添加产品图片模块///////////////////////////////////////////////////////////////////////////////////////-->
+                                                <img src="static/wt/images/1.jpg"
+
+                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                            </a></td>
+
+                                        <td data-title="Product">
+                                            <div class="caption">
+                                                <!--产品名称模块///////////////////////////////////////////////////////////////////////////////////////-->
+                                                <a class="product-name" href="/">Hyperion</a></div>
+                                        </td>
+
+                                        <td class="product-price" data-title="Price">
+							<span class="product-price total-price">
+                                    <!--产品价格模块///////////////////////////////////////////////////////////////////////////////////////-->
+							<span class="woocommerce-Price-amount amount"><span
+                                    class="woocommerce-Price-currencySymbol">£</span>875.00</span>
+                            </span>
+                                        </td>
+
+                                        <!--产品数量调整模块///////////////////////////////////////////////////////////////////////////////////////-->
+                                        <td class="product-quantity" data-title="Quantity" >
+                                            <div class="enumerator"><span
+                                                    class="enumerator__btn enumerator__btn_minus js-minus_btn"></span>
+                                                <input class="enumerator__input" type="text" value="1" size="3"><span
+                                                        class="enumerator__btn enumerator__btn_plus js-plus_btn"></span>
+                                            </div>
+                                        </td>
+                                        <!--产品根据计算数量和单价得出的总价小计///////////////////////////////////////////////////////////////////////////////////////-->
+                                        <td class="product-subtotal" data-title="Total">
+                                            <span class="woocommerce-Price-amount amount"><span
+                                                    class="woocommerce-Price-currencySymbol">£</span>875.00</span></td>
+                                        <td class="product-remove">
+
+                                            <!--删除物品按钮///////////////////////////////////////////////////////////////////////////////////////-->
+                                            <a href="/" class="btn btn-remove" title="Remove this item"><i
+                                                    class="fa fa-trash fa-lg"></i></a></td>
+                                    </tr>
+                                    <tr class="cart_item">
+
+
+                                        <td class="product-thumbnail">
+                                            <a href="catalog-product.html">
+                                                <!--添加产品图片模块///////////////////////////////////////////////////////////////////////////////////////-->
+                                                <img src="static/wt/images/1.jpg"
+
+                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                            </a></td>
+
+                                        <td data-title="Product">
+                                            <div class="caption">
+                                                <!--产品名称模块///////////////////////////////////////////////////////////////////////////////////////-->
+                                                <a class="product-name" href="/">Hyperion</a></div>
+                                        </td>
+
+                                        <td class="product-price" data-title="Price">
+							<span class="product-price total-price">
+                                    <!--产品价格模块///////////////////////////////////////////////////////////////////////////////////////-->
+							<span class="woocommerce-Price-amount amount"><span
+                                    class="woocommerce-Price-currencySymbol">£</span>875.00</span>
+                            </span>
+                                        </td>
+
+                                        <!--产品数量调整模块///////////////////////////////////////////////////////////////////////////////////////-->
+                                        <td class="product-quantity" data-title="Quantity" >
+                                            <div class="enumerator"><span
+                                                    class="enumerator__btn enumerator__btn_minus js-minus_btn"></span>
+                                                <input class="enumerator__input" type="text" value="1" size="3"><span
+                                                        class="enumerator__btn enumerator__btn_plus js-plus_btn"></span>
+                                            </div>
                                         </td>
                                         <!--产品根据计算数量和单价得出的总价小计///////////////////////////////////////////////////////////////////////////////////////-->
                                         <td class="product-subtotal" data-title="Total">

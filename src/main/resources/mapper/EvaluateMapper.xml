@@ -1,151 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weitao.dao.EvaluateMapper">
-  <resultMap id="BaseResultMap" type="com.weitao.bean.Evaluate">
-    <id column="e_id" jdbcType="INTEGER" property="eId" />
-    <result column="e_level" jdbcType="TINYINT" property="eLevel" />
-    <result column="e_photos" jdbcType="VARCHAR" property="ePhotos" />
-    <result column="order_id" jdbcType="INTEGER" property="orderId" />
-    <result column="store_id" jdbcType="INTEGER" property="storeId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="items_id" jdbcType="INTEGER" property="itemsId" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.weitao.bean.Evaluate">
-    <result column="e_description" jdbcType="LONGVARCHAR" property="eDescription" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    e_id, e_level, e_photos, order_id, store_id, user_id, items_id
-  </sql>
-  <sql id="Blob_Column_List">
-    e_description
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from evaluate
-    where e_id = #{eId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from evaluate
-    where e_id = #{eId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.weitao.bean.Evaluate">
-    insert into evaluate (e_id, e_level, e_photos, 
-      order_id, store_id, user_id, 
-      items_id, e_description)
-    values (#{eId,jdbcType=INTEGER}, #{eLevel,jdbcType=TINYINT}, #{ePhotos,jdbcType=VARCHAR}, 
-      #{orderId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{itemsId,jdbcType=INTEGER}, #{eDescription,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.weitao.bean.Evaluate">
-    insert into evaluate
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="eId != null">
-        e_id,
-      </if>
-      <if test="eLevel != null">
-        e_level,
-      </if>
-      <if test="ePhotos != null">
-        e_photos,
-      </if>
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="storeId != null">
-        store_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="itemsId != null">
-        items_id,
-      </if>
-      <if test="eDescription != null">
-        e_description,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="eId != null">
-        #{eId,jdbcType=INTEGER},
-      </if>
-      <if test="eLevel != null">
-        #{eLevel,jdbcType=TINYINT},
-      </if>
-      <if test="ePhotos != null">
-        #{ePhotos,jdbcType=VARCHAR},
-      </if>
-      <if test="orderId != null">
-        #{orderId,jdbcType=INTEGER},
-      </if>
-      <if test="storeId != null">
-        #{storeId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="itemsId != null">
-        #{itemsId,jdbcType=INTEGER},
-      </if>
-      <if test="eDescription != null">
-        #{eDescription,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Evaluate">
-    update evaluate
-    <set>
-      <if test="eLevel != null">
-        e_level = #{eLevel,jdbcType=TINYINT},
-      </if>
-      <if test="ePhotos != null">
-        e_photos = #{ePhotos,jdbcType=VARCHAR},
-      </if>
-      <if test="orderId != null">
-        order_id = #{orderId,jdbcType=INTEGER},
-      </if>
-      <if test="storeId != null">
-        store_id = #{storeId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="itemsId != null">
-        items_id = #{itemsId,jdbcType=INTEGER},
-      </if>
-      <if test="eDescription != null">
-        e_description = #{eDescription,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where e_id = #{eId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weitao.bean.Evaluate">
-    update evaluate
-    set e_level = #{eLevel,jdbcType=TINYINT},
-      e_photos = #{ePhotos,jdbcType=VARCHAR},
-      order_id = #{orderId,jdbcType=INTEGER},
-      store_id = #{storeId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      items_id = #{itemsId,jdbcType=INTEGER},
-      e_description = #{eDescription,jdbcType=LONGVARCHAR}
-    where e_id = #{eId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.weitao.bean.Evaluate">
-    update evaluate
-    set e_level = #{eLevel,jdbcType=TINYINT},
-      e_photos = #{ePhotos,jdbcType=VARCHAR},
-      order_id = #{orderId,jdbcType=INTEGER},
-      store_id = #{storeId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      items_id = #{itemsId,jdbcType=INTEGER}
-    where e_id = #{eId,jdbcType=INTEGER}
-  </update>
+    <resultMap id="BaseResultMap" type="com.weitao.bean.Evaluate">
+        <id column="e_id" jdbcType="INTEGER" property="eId"/>
+        <result column="e_level" jdbcType="TINYINT" property="eLevel"/>
+        <result column="e_photos" jdbcType="VARCHAR" property="ePhotos"/>
+        <result column="order_id" jdbcType="INTEGER" property="orderId"/>
+        <result column="store_id" jdbcType="INTEGER" property="storeId"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="items_id" jdbcType="INTEGER" property="itemsId"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.weitao.bean.Evaluate">
+        <result column="e_description" jdbcType="LONGVARCHAR" property="eDescription"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        e_id, e_level, e_photos, order_id, store_id, user_id, items_id
+    </sql>
+    <sql id="Blob_Column_List">
+        e_description
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from evaluate
+        where e_id = #{eId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM evaluate
+        WHERE e_id = #{eId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.weitao.bean.Evaluate">
+        INSERT INTO evaluate (e_id, e_level, e_photos,
+                              order_id, store_id, user_id,
+                              items_id, e_description)
+        VALUES (#{eId,jdbcType=INTEGER}, #{eLevel,jdbcType=TINYINT}, #{ePhotos,jdbcType=VARCHAR},
+                #{orderId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+                #{itemsId,jdbcType=INTEGER}, #{eDescription,jdbcType=LONGVARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.weitao.bean.Evaluate">
+        insert into evaluate
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="eId != null">
+                e_id,
+            </if>
+            <if test="eLevel != null">
+                e_level,
+            </if>
+            <if test="ePhotos != null">
+                e_photos,
+            </if>
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="storeId != null">
+                store_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="itemsId != null">
+                items_id,
+            </if>
+            <if test="eDescription != null">
+                e_description,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="eId != null">
+                #{eId,jdbcType=INTEGER},
+            </if>
+            <if test="eLevel != null">
+                #{eLevel,jdbcType=TINYINT},
+            </if>
+            <if test="ePhotos != null">
+                #{ePhotos,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=INTEGER},
+            </if>
+            <if test="storeId != null">
+                #{storeId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="itemsId != null">
+                #{itemsId,jdbcType=INTEGER},
+            </if>
+            <if test="eDescription != null">
+                #{eDescription,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Evaluate">
+        update evaluate
+        <set>
+            <if test="eLevel != null">
+                e_level = #{eLevel,jdbcType=TINYINT},
+            </if>
+            <if test="ePhotos != null">
+                e_photos = #{ePhotos,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                order_id = #{orderId,jdbcType=INTEGER},
+            </if>
+            <if test="storeId != null">
+                store_id = #{storeId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="itemsId != null">
+                items_id = #{itemsId,jdbcType=INTEGER},
+            </if>
+            <if test="eDescription != null">
+                e_description = #{eDescription,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where e_id = #{eId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weitao.bean.Evaluate">
+        UPDATE evaluate
+        SET e_level       = #{eLevel,jdbcType=TINYINT},
+            e_photos      = #{ePhotos,jdbcType=VARCHAR},
+            order_id      = #{orderId,jdbcType=INTEGER},
+            store_id      = #{storeId,jdbcType=INTEGER},
+            user_id       = #{userId,jdbcType=INTEGER},
+            items_id      = #{itemsId,jdbcType=INTEGER},
+            e_description = #{eDescription,jdbcType=LONGVARCHAR}
+        WHERE e_id = #{eId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.weitao.bean.Evaluate">
+        UPDATE evaluate
+        SET e_level  = #{eLevel,jdbcType=TINYINT},
+            e_photos = #{ePhotos,jdbcType=VARCHAR},
+            order_id = #{orderId,jdbcType=INTEGER},
+            store_id = #{storeId,jdbcType=INTEGER},
+            user_id  = #{userId,jdbcType=INTEGER},
+            items_id = #{itemsId,jdbcType=INTEGER}
+        WHERE e_id = #{eId,jdbcType=INTEGER}
+    </update>
 
-  <select id="selectByItemsId" resultType="com.weitao.vo.EvaluateVo">
-    SELECT evaluate.*,user.u_icon,user.u_user_name
-    FROM evaluate,user
-    WHERE evaluate.user_id = user.u_id AND evaluate.items_id = #{itemsId,jdbcType=INTEGER}
-  </select>
+    <resultMap id="EvaluateVo" type="com.weitao.vo.EvaluateVo">
+        <association property="items" javaType="com.weitao.bean.Items">
+        <result property="iName" column="i_name"/>
+        <result property="iIntroduction" column="i_introduction"/>
+        </association>
+        <association property="evaluate" javaType="com.weitao.bean.Evaluate">
+            <id property="eId" column="e_id"/>
+            <result property="eLevel" column="e_level"/>
+            <result property="ePhotos" column="e_photos"/>
+            <result property="orderId" column="order_id"/>
+            <result property="storeId" column="store_id"/>
+            <result property="userId" column="user_id"/>
+            <result property="itemsId" column="items_id"/>
+            <result property="eDescription" column="e_description"/>
+        </association>
+        <association property="user" javaType="com.weitao.bean.User">
+            <id property="uId" column="u_id"/>
+            <result property="uUserName" column="u_user_name"/>
+            <result property="uIcon" column="u_icon"/>
+        </association>
+    </resultMap>
+
+    <select id="selectByItemsId" resultMap="EvaluateVo">
+        SELECT
+            evaluate.*,
+            `user`.*,
+            items.i_name,
+            i_introduction
+        FROM evaluate, `user`, items
+        WHERE i_id = items_id AND user_id = u_id AND items_id = #{itemsId,jdbcType=INTEGER}
+    </select>
 </mapper>
