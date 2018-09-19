@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="telephone=no" name="format-detection">
     <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" type="text/css" href="static/wt/css/mis.css" >
     <link rel="stylesheet" href="static/wt/css/master.css">
     <link rel="icon" type="image/x-icon" href="static/wt/images/favicon.ico">
     <!--[if lt IE 9 ]>
@@ -221,55 +222,21 @@
 
                             <!--收藏夹清单的表格模块///////////////////////////////////////////////////////////////////////////////////////-->
                             <div class="b-table b-cart-table ">
-                                <table class="shop_table shop_table_responsive cart table" cellspacing="0">
-                                    <thead>
+                                <table id="coll" class="shop_table shop_table_responsive cart table" cellspacing="0">
                                     <tr>
                                         <td class="product-thumbnail">&nbsp;</td>
                                         <td class="product-name"><h5>产 品 名</h5></td>
                                         <td class="product-price"><h5>价 格</h5></td>
                                         <td class="product-remove"><h5>操 作</h5></td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
 
-                                    <tr class="cart_item">
-
-
-                                        <td class="product-thumbnail" width="300">
-
-                                                <!--宝贝链接///////////////////////////////////////////////////////////////////////////////////////-->
-                                            <a href="catalog-product.html">
-                                                <!--添加产品图片模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                <img width="180" height="180" src="static/wt/images/1.jpg"
-
-                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                            </a></td>
-
-                                        <td data-title="Product" width="500">
-                                            <div class="caption">
-                                                <!--产品名称模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                <a class="product-name" href="/">Hyperion</a></div>
-                                        </td>
-
-                                        <td class="product-price" data-title="Price">
-							<span class="product-price total-price">
-                                    <!--产品价格模块///////////////////////////////////////////////////////////////////////////////////////-->
-							<span class="woocommerce-Price-amount amount"><span
-                                    class="woocommerce-Price-currencySymbol">£</span>875.00</span>						    </span>
-                                        </td>
-
-                                        <td class="product-remove">
-
-                                            <!--删除物品按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                                            <a href="/delete/get?cId=" class="btn btn-remove" title="Remove this item"><i
-                                                    class="fa fa-trash fa-lg"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6" class="actions">
-
-                                            <input type="hidden" value="6bbd62fad3"><input type="hidden"></td>
-                                    </tr>
-                                    </tbody>
+                                    <script src="static/jq/webSocket/jquery-3.3.1.min.js"></script>
+                                    <script src="static/jq/webSocket/mis.js"></script>
+                                    <script>
+                                        $(function () {
+                                            select();
+                                        })
+                                    </script>
                                 </table>
                             </div>
                         </form>
