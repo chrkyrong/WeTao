@@ -223,34 +223,20 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-
-
                     <div class="woocommerce">
-                        <form class="checkout_coupon" method="post" style="display:none">
-                            <p class="form-row form-row-first">
-                                <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code"
-                                       id="coupon_code" value="">
-                            </p>
-                            <p class="form-row form-row-last">
-                                <input type="submit" class="button" name="apply_coupon" value="Apply Coupon">
-                            </p>
-                            <div class="clear"></div>
-                        </form>
-                        <form id="formTest" class="checkout woocommerce-checkout"
-                              enctype="multipart/form-data">
+                        <form id="formTest" class="checkout woocommerce-checkout" enctype="multipart/form-data">
                             <div class="col2-set" id="customer_details">
                                 <div class="col-1">
                                     <div class="woocommerce-billing-fields">
                                         <!--商品评价表单/////////////////////////////////////////////////////////////-->
-                                        <p class="form-row form-row form-row-wide ">
-                                            <label><strong>商品名称(Production
-                                                Name)：</strong>&nbsp;&nbsp;&nbsp;&nbsp;大西瓜</label>
-                                        </p>
-                                        <p class="form-row form-row form-row-wide ">
-                                            <label><strong>商品描述(Production Introduction)：</strong>&nbsp;&nbsp;&nbsp;&nbsp;我们家的西瓜，甜过初恋！让人十分想念！每年卖出的西瓜可围绕地球3圈。</label>
-                                        </p>
-                                        <div class="clear"></div>
-
+                                        <div class="woocommerce-shipping-fields">
+                                            <!--文本评价/////////////////////////////////////////////////////////////-->
+                                            <h4>说说您此次的购物体验吧~</h4>
+                                            <p class="form-row form-row">
+                                            <textarea name="eDescription" class="input-text "
+                                                      placeholder="写写你的感受吧，一不小心成为评论高手......"></textarea>
+                                            </p>
+                                        </div>
                                         <div class="b-filter__group">
                                             <p class="form-row form-row form-row-wide">
                                                 <!--评分模块/////////////////////////////////////////////////////////////-->
@@ -266,30 +252,47 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2" id="pa">
                                     <div class="woocommerce-shipping-fields">
                                         <h3>上传买家秀图片</h3>
                                         <p class="form-row form-row">
                                             <br><br>
 
 
-                                        <input type="file" name="e_Photos" id="upfilePhotoId"
-                                               onchange="uploadPhoto()" required="required">
-                                        <!--上传买家图片/////////////////////////////////////////////////////////////-->
+                                            <input type="file" name="e_Photos" id="upfilePhotoId"
+                                                   onchange="uploadPhoto()" required="required">
+                                            <!--上传买家图片/////////////////////////////////////////////////////////////-->
                                         <div id="photo">
                                         </div>
-
                                         </p>
                                     </div>
                                     <br>
                                     <br>
-                                    <div class="woocommerce-shipping-fields">
-                                        <!--文本评价/////////////////////////////////////////////////////////////-->
-                                        <h4>写下你的购物体验吧</h4>
-                                        <p class="form-row form-row">
-                                            <textarea name="eDescription" class="input-text "
-                                                      placeholder="写写你的感受吧，一不小心成为评论高手......"></textarea>
-                                        </p>
+                                    <!--插入隐藏的OrderId//////////////////////////////////////////////-->
+                                </div>
+                                <div class="typography-section typography-section-border">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <!--添加单号/////////////////////////////////////////////////////////////-->
+                                                <center><div id="orderId" name="orderId"></div></center>
+
+                                                <div class="table-container">
+                                                    <table class="table table-striped table-bordered" id="orderDetail">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style=" width:250px">商品</th>
+                                                            <th style=" width:300px">商品名</th>
+                                                            <th style=" width:150px">单价</th>
+                                                            <th style=" width:150px">购买数量</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -304,7 +307,7 @@
 
                                         <!--确认评价按钮////////////////////////////////////////////////////////////////////-->
                                         <input id="submit" type="button" class="button alt" value="确认评价 Confirm"
-                                        />
+                                               onclick="confirmEvaluate()"/>
                                     </div>
                                 </div>
                             </div>
@@ -426,45 +429,13 @@
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
 <script type="text/javascript" src="static/jq/ajaxfileupload.js"></script>
-
-
+<script type="text/javascript" src="static/jq/evaluate.js"></script>
 </body>
 
 </html>
-<script type="text/javascript">
-    $("#submit").click(function () {
-        console.log('submit');
-        var form = new FormData(document.getElementById("formTest"));
-        $.ajax({
-            contentType: 'application/json;charset=UTF-8',   //定义编码
-            url: '/insertEvaluate',
-            type: 'POST',
-            data: form,
-            processData: false,
-            contentType: false, /*使用formdate一定要加上去*/
-            success: function (result) {
-                if (result.code == "0"){
-                    alert("评论成功！")
-                    window.location.href = 'shop_single.html';
-                }
-                else
-                    alert("错误")
-            }
-        });
-    });
-</script>
-<script type="text/javascript">
-    function uploadPhoto() {
-        $.ajaxFileUpload({
-            url: "upFile1",
-            secureuri: false,//是否启动安全提交，默认为false
-            fileElementId: "upfilePhotoId",//需要上传的文件ID
-            dataType: 'text',
-            success: function (data) {
-                alert(data + "----") //测试接受到什么数据
-                $("#photo").html("<div style='height: 100px;width: 200px'><img height='80px' width='80px' src='" + data + "'/></div>");
-            }
-        })
-    }
-</script>
 
+<script type="text/javascript">
+    $(function () {
+        Onload3();
+    })
+</script>

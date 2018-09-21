@@ -14,9 +14,9 @@ public class Order {
 
     private BigDecimal oPrice;
 
-    @JsonSerialize(using=CustomDateSerializer.class)
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date oDate;
-
+    //    状态（如，待付款0，待发货1，已发货2，已签收3，退款中4，退款完成5，换货中6，换货完成7，待评价8，已评价9等）
     private Byte oStatus;
 
     private String oMessage;

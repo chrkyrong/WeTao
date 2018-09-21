@@ -143,10 +143,11 @@
         WHERE e_id = #{eId,jdbcType=INTEGER}
     </update>
 
+    <!--3表扩展类EvaluateVo的resultMap-->
     <resultMap id="EvaluateVo" type="com.weitao.vo.EvaluateVo">
         <association property="items" javaType="com.weitao.bean.Items">
-        <result property="iName" column="i_name"/>
-        <result property="iIntroduction" column="i_introduction"/>
+            <result property="iName" column="i_name"/>
+            <result property="iIntroduction" column="i_introduction"/>
         </association>
         <association property="evaluate" javaType="com.weitao.bean.Evaluate">
             <id property="eId" column="e_id"/>
@@ -165,6 +166,7 @@
         </association>
     </resultMap>
 
+    <!--根据商品id，查询所有该商品的评价-->
     <select id="selectByItemsId" resultMap="EvaluateVo">
         SELECT
             evaluate.*,
@@ -174,4 +176,91 @@
         FROM evaluate, `user`, items
         WHERE i_id = items_id AND user_id = u_id AND items_id = #{itemsId,jdbcType=INTEGER}
     </select>
+
+    <!--5表扩展类EvaluateVo2的ResultMap-->
+    <resultMap id="allEvaluate" type="com.weitao.vo.EvaluateVo2" >
+        <association property="evaluateVo" javaType="com.weitao.vo.EvaluateVo">
+            <association property="evaluate" javaType="com.weitao.bean.Evaluate" >
+                <id column="e_id" jdbcType="INTEGER" property="eId"/>
+                <result column="e_level" jdbcType="TINYINT" property="eLevel"/>
+                <result column="e_photos" jdbcType="VARCHAR" property="ePhotos"/>
+                <result column="order_id" jdbcType="INTEGER" property="orderId"/>
+                <result column="store_id" jdbcType="INTEGER" property="storeId"/>
+                <result column="user_id" jdbcType="INTEGER" property="userId"/>
+                <result column="items_id" jdbcType="INTEGER" property="itemsId"/>
+                <result column="e_description" jdbcType="LONGVARCHAR" property="eDescription"/>
+            </association>
+            <association property="items" javaType="com.weitao.bean.Items">
+                <result property="iName" column="i_name"/>
+            </association>
+            <association property="user" javaType="com.weitao.bean.User">
+                <result property="uUserName" column="u_user_name"/>
+            </association>
+        </association>
+        <association property="order" javaType="com.weitao.bean.Order">
+            <result property="oPrice" column="o_price"/>
+            <result property="oMessage" column="o_message"/>
+            <result property="oDate" column="o_date"/>
+        </association>
+        <association property="store" javaType="com.weitao.bean.Store">
+            <result property="stName" column="st_name"/>
+        </association>
+    </resultMap>
+    <!--商家所查看的评论-->
+    <sql id="evaluation">
+        SELECT
+            items.i_name,
+            store.st_name,
+            `user`.u_user_name,
+            evaluate.e_description,
+            evaluate.e_level,
+            evaluate.e_photos,
+            `order`.o_date,
+            `order`.o_price,
+            `order`.o_message
+        FROM evaluate
+            LEFT JOIN items ON evaluate.items_id = items.i_id
+            LEFT JOIN `user` ON `user`.u_id = evaluate.user_id
+            LEFT JOIN `order` ON `order`.o_id = evaluate.order_id
+            LEFT JOIN store ON store.st_id = evaluate.store_id
+    </sql>
+
+    <!--根据商家id,查询该商家的收到的所有的评价-->
+    <select id="selectBySeller" resultMap="allEvaluate">
+        <include refid="evaluation"/>
+        WHERE evaluate.store_id
+        IN (SELECT store.st_id
+        FROM store
+        WHERE store.seller_id = #{sellerId} AND store.st_status = 0)
+    </select>
+
+    <!--按条件查找-->
+    <select id="selectByCondition" resultMap="allEvaluate">
+        <include refid="evaluation"/>
+        <where>
+            evaluate.store_id
+            IN (SELECT store.st_id
+            FROM store
+            WHERE store.seller_id = #{sellerId} AND store.st_status = 0)
+            <if test="_parameter!=null">
+                and evaluate.e_description LIKE '%${eDescription}%'
+            </if>
+            <if test="_parameter!=null">
+                and `user`.u_user_name LIKE '%${uUserName}%'
+            </if>
+            <if test="_parameter!=null">
+                and store.st_name LIKE '%${stName}%'
+            </if>
+            <if test="_parameter!=null">
+                and `order`.o_message LIKE '%${oMessage}%'
+            </if>
+            <if test="_parameter!=null">
+                and `order`.o_price LIKE '%${oPrice}%'
+            </if>
+            <!--<if test="_parameter!=null">-->
+            <!--and store.st_name LIKE '%${stName}%'-->
+            <!--</if>-->
+        </where>
+    </select>
+
 </mapper>

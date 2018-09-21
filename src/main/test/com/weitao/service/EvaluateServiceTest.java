@@ -2,6 +2,7 @@ package com.weitao.service;
 
 import com.weitao.bean.Evaluate;
 import com.weitao.service.serviceImpl.EvaluateServiceImpl;
+import com.weitao.vo.EvaluateVo2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,25 @@ public class EvaluateServiceTest {
     @Test
     public void insertEvaluateTest() throws Exception {
         Evaluate evaluate = new Evaluate((byte) 5,"C://asd",3000002,7000001,1000000,8000003,"好好吃");
-        evaluateService.insertEvaluate(evaluate);
+        evaluateService.insertEvaluate(evaluate,3000002);
     }
 
     @Test
     public void selectEvaluateByItemsId() throws Exception {
         System.out.println(evaluateService.selectEvaluate(8000003));
     }
+
+    @Test
+    public void sellerEvaluationTest() throws Exception {
+        for(EvaluateVo2 evaluateVo2 : evaluateService.sellerEvaluation(2000000))
+        {
+        System.out.println(evaluateVo2);
+        }
+    }
+
+    //    查询订单详情
+//    @Test
+//    public void selectOrderDetailTest() throws Exception {
+//        System.out.println(evaluateService.selectOrderDetail(3000002));
+//    }
 }

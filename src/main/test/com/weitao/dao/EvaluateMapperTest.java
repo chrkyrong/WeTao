@@ -1,6 +1,7 @@
 package com.weitao.dao;
 
 import com.weitao.bean.Evaluate;
+import com.weitao.vo.EvaluateVo2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,17 @@ public class EvaluateMapperTest {
     @Test
     public void selectByItemsIdTest() throws Exception {
         System.out.println(evaluateMapper.selectByItemsId(8000003));
+    }
+
+//    查询该商家的收到的所有的评价
+    @Test
+    public void selectBySellerTest() throws Exception {
+        System.out.println(evaluateMapper.selectBySeller(2000000));
+    }
+
+    @Test
+    public void selectByConditionTest() throws Exception {
+        EvaluateVo2 vo = new EvaluateVo2();
+        vo.getEvaluateVo().getEvaluate().seteDescription("");
     }
 }
