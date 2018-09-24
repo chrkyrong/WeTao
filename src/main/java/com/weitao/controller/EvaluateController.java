@@ -39,9 +39,6 @@ public class EvaluateController {
     @Autowired
     EvaluateService evaluateService;
 
-//    @Autowired
-//    OrderMapper orderMapper;
-
     @Autowired
     Order_detailService order_detailService;
 
@@ -52,39 +49,11 @@ public class EvaluateController {
         evaluate.setePhotos(e_Photos.getOriginalFilename());
 //        获得页面中的订单id
         Integer orderId = Integer.parseInt(request.getParameter("order_id"));
-//        evaluate.setOrderId(orderId);
-//        创建Order对象
-//        Order order = orderMapper.selectByPrimaryKey(orderId);
-//        获得userId
-//        evaluate.setUserId(order.getUserId());
-//        获得StoreId
-//        evaluate.setStoreId(order.getStoreId());
-
-//        判断所有评论是否成功的key
-//        boolean result = false;
-        if (evaluateService.insertEvaluate(evaluate,orderId))
+        if (evaluateService.insertEvaluate(evaluate, orderId))
             return ResultUtil.success();
         else
             return ResultUtil.error(ResultEnum.EVALUATE_FAIL);
 
-//        创建Order_detail集合
-//        List<Order_detail> order_details = order_detailService.getOrderDetail(orderId);
-//        for (Order_detail detail : order_details) {
-//            获得itemsId
-//            int id = detail.getItemsId();
-//            evaluate.setItemsId(id);
-
-//            if (!evaluateService.insertEvaluate(evaluate))
-//                break;
-//            else
-//                result = true;
-//        }
-//        if (result) {
-//            改变订单状态步骤
-//            return ResultUtil.success();
-//        } else {
-//            return ResultUtil.error(ResultEnum.EVALUATE_FAIL);
-//        }
     }
 
     //    文件上传
@@ -109,7 +78,7 @@ public class EvaluateController {
         System.out.println(file_url + "======");
             /* 将图片写入 */
         try {
-//            System.out.println("图片已写入");
+            System.out.println("图片已经写入文件夹");
             File file1 = new File(path, e_Photos.getOriginalFilename());
             e_Photos.transferTo(file1);
         } catch (IllegalStateException e) {
@@ -138,10 +107,6 @@ public class EvaluateController {
 //        输出商家id
         System.out.println("sellerId" + sellerId);
         List<EvaluateVo2> evaluateVo2List = evaluateService.sellerEvaluation(sellerId);
-        for(EvaluateVo2 vo2 : evaluateVo2List)
-        {
-            System.out.println(vo2.getEvaluateVo().getEvaluate().geteDescription());
-        }
         if (evaluateVo2List != null)
             return ResultUtil.success(evaluateVo2List);
         else {
@@ -149,14 +114,43 @@ public class EvaluateController {
         }
     }
 
-//    @GetMapping("/selectOrderDetail")
-//    public Result selectOrderDetail(HttpServletRequest request, Integer oId) throws Exception {
-//        System.out.println(oId);
-//        List<Order_detail> list = evaluateService.selectOrderDetail(oId);
-//
-//        if (list != null)
-//            return ResultUtil.success(list);
-//        else
-//            return ResultUtil.error(ResultEnum.DETAIL_USER_FAIL);
-//    }
+
+    @RequestMapping(value = "/searchEvaluation", method = RequestMethod.POST)
+    public Result searchEvaluation(Model model, HttpServletRequest request, String condition, String search, String date, String sellerId) throws Exception {
+//        获得表单中的卖家id
+        sellerId = request.getParameter("sellerId");
+//        获得表单中的搜索框内容
+        search = request.getParameter("search");
+        System.out.println(search);
+//        获得表单中的下拉框中的条件
+        condition = request.getParameter("condition");
+        System.out.println(condition);
+//        获得表单中的时间查询条件
+        date = request.getParameter("date");
+        System.out.println(date);
+//        返回查找的对象
+        List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(Integer.parseInt(sellerId), search, condition, date);
+        for (EvaluateVo2 oo : evaluateVo2List) {
+            System.out.println(oo);
+        }
+
+        if (evaluateVo2List != null)
+            return ResultUtil.success(evaluateVo2List);
+        else
+            return ResultUtil.error(ResultEnum.EVALUATE_NOT_FOUND_EVALUATION);
+    }
+
+    @RequestMapping(value = "/formTest", method = RequestMethod.POST)
+    public Result formTest(Model model, HttpServletRequest request, String search, String condition, String date, String sellerId) throws Exception {
+        sellerId = request.getParameter("sellerId");
+        search = request.getParameter("search");
+        condition = request.getParameter("condition");
+        date = request.getParameter("date");
+        System.out.println(sellerId + "-" + search + "-" + condition + "-" + date);
+        List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(Integer.parseInt(sellerId), condition, search, date);
+        if (evaluateVo2List != null)
+            return ResultUtil.success(evaluateVo2List);
+        else
+            return ResultUtil.error(ResultEnum.EVALUATE_NOT_FOUND_EVALUATION);
+    }
 }

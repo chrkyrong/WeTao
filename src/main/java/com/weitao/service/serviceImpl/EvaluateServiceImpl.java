@@ -35,7 +35,7 @@ public class EvaluateServiceImpl implements EvaluateService {
 
     //    用户，添加评价
     @Override
-    public boolean insertEvaluate(Evaluate evaluate,Integer orderId) throws Exception {
+    public boolean insertEvaluate(Evaluate evaluate, Integer orderId) throws Exception {
         evaluate.setOrderId(orderId);
         Order order = orderMapper.selectByPrimaryKey(orderId);
         evaluate.setUserId(order.getUserId());
@@ -56,7 +56,7 @@ public class EvaluateServiceImpl implements EvaluateService {
 //            执行添加操作
             int insert = evaluateMapper.insertSelective(evaluate);
             if (insert == 1) {
-                result =  true;
+                result = true;
             } else {
                 break;
             }
@@ -71,6 +71,36 @@ public class EvaluateServiceImpl implements EvaluateService {
         return result;
     }
 
+    //    根据条件及搜索框模糊搜索，查询该商家想搜索的相关内容评价
+    @Override
+    public List<EvaluateVo2> searchEvaluation(Integer sellerId, String condition, String search, String oDate) throws Exception {
+        String stName = "";
+        String iName = "";
+        Byte eLevel = null;
+        String eDescription = "";
+
+        switch (condition) {
+            case "店铺":
+                stName = search;
+                break;
+            case "商品":
+                iName = search;
+                break;
+            case "评级":
+                eLevel = Byte.parseByte(search);
+                break;
+            case "评论":
+                eDescription = search;
+                break;
+        }
+        List<EvaluateVo2> evaluateVo2List = evaluateMapper.searchEvaluation(sellerId, stName, iName, eLevel, eDescription, oDate);
+        System.out.println(stName +"-"+ iName +"-"+ eLevel +"-"+ eDescription);
+        if (evaluateVo2List == null)
+            return null;
+        else
+            return evaluateVo2List;
+    }
+
     //    查询该商家的收到的所有的评价
     @Override
     public List<EvaluateVo2> sellerEvaluation(Integer sellerId) throws Exception {
@@ -81,11 +111,4 @@ public class EvaluateServiceImpl implements EvaluateService {
             return evaluateVo2List;
     }
 
-    //    根据订单id，查询所有订单详情
-//    @Override
-//    public List<Order_detail> selectOrderDetail(Integer oId) throws Exception {
-//        Order_detailService order_detailService = new Order_detailServiceImpl();
-//        List<Order_detail> list = order_detailService.getOrderDetail(oId);
-//        return list;
-//    }
 }

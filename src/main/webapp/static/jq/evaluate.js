@@ -113,7 +113,7 @@ function Onload3(orderId) {
         success: function (result) {
             var s1 = "";
             var s2 = "<h2 class='typography-title' id='ORDERID'>" + orderId + "号订单 </h2>";
-            var s3 = "<input type='hidden' name='order_id' id='order_id' value='"+orderId+"'/>";
+            var s3 = "<input type='hidden' name='order_id' id='order_id' value='" + orderId + "'/>";
             $("#orderId").first("h2").append(s2);
             $("#pa").first("input").append(s3);
             // alert(s2);
@@ -134,4 +134,46 @@ function Onload3(orderId) {
 
 }
 
+
+function Onload4(sellerId) {
+    sellerId = getQueryString('sellerId');
+
+    alert(sellerId);
+    $.ajax({
+        type: 'get',
+        url: '/evaluate/sellerEvaluation?sellerId=' + sellerId,
+        dataType: 'json',
+        data: null,
+        success: function (result) {
+            var s3 = "<input type='hidden' name='sellerId' id='sellerId' value='" + sellerId + "'/>";
+            $("#formTest").first("input").append(s3);
+            // $("#formTest").html(s3);
+            var s = "<tr >\n" +
+                "        <td>商品</td>\n" +
+                "        <td>商店</td>\n" +
+                "        <td>买家</td>\n" +
+                "        <td>评论</td>\n" +
+                "        <td>评级</td>\n" +
+                "        <td>图片</td>\n" +
+                "        <td>时间</td>\n" +
+                "        <td>详情(价格)</td>\n" +
+                "        <td>详情(买家留言)</td>\n" +
+                "    </tr>";
+            $.each(result.data, function (i, v) {
+                s += '<tr><td>' + v.evaluateVo.items.iName;
+                s += '</td><td>' + v.store.stName + '</td><td>' + v.evaluateVo.user.uUserName;
+                s += '</td><td>' + v.evaluateVo.evaluate.eDescription + '</td><td>' + v.evaluateVo.evaluate.eLevel;
+                s += '</td><td>' + v.evaluateVo.evaluate.ePhotos + '</td><td>' + v.order.oDate;
+                s += '</td><td>' + v.order.oPrice + '</td><td>' + v.order.oMessage + '</td></tr>';
+            })
+            // alert(s1);
+            $("#show").first("tr").append(s);
+        },
+        error: function () {
+            var s = "评论加载失败";
+            alert(s);
+        }
+    })
+
+}
 

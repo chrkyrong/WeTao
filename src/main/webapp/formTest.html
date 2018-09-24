@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <title>表单测试</title>
+    <script type="text/javascript" src="static/jq/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="static/jq/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="static/jq/evaluate.js"></script>
+</head>
+<body>
+<form id="formTest" name="formTest">
+    <input type="text" id="search"/>
+    <select id="condition">
+        <option value="商店">商店</option>
+        <option value="商品">商品</option>
+        <option value="评级">评级</option>
+        <option value="评论">评论</option>
+    </select><br>
+    <input type="date" id="date" name="date" value=""><br>
+    <!--<input type="hidden" value="2000000" id="sellerId">-->
+    <input type="button" value="搜索" onclick="onSearch()"/>
+</form>
+<table>
+    <tbody id="show">
+    </tbody>
+</table>
+</body>
+</html>
+<script type="text/javascript" charset="UTF-8" src="static/jq/evaluate.js"></script>
+<script type="text/javascript">
+    $(function () {
+        Onload4();
+    })
+</script>
+<script type="text/javascript">
+    function onSearch() {
+        var search = $('#search').val();
+        var condition = $('#condition').val();
+        var date = $('#date').val();
+        var sellerId = $('#sellerId').val();
+        $.ajax({
+            url: '/evaluate/formTest',
+            type: 'post',
+            data: {search: search, condition: condition, date: date, sellerId: sellerId},
+            success: function (result) {
+                alert("成功");
+                var s = "<tr >\n" +
+                    "        <td>商品</td>\n" +
+                    "        <td>商店</td>\n" +
+                    "        <td>买家</td>\n" +
+                    "        <td>评论</td>\n" +
+                    "        <td>评级</td>\n" +
+                    "        <td>图片</td>\n" +
+                    "        <td>时间</td>\n" +
+                    "        <td>详情(价格)</td>\n" +
+                    "        <td>详情(买家留言)</td>\n" +
+                    "    </tr>";
+                $.each(result.data, function (i, v) {
+                    s += '<tr><td>' + v.evaluateVo.items.iName;
+                    s += '</td><td>' + v.store.stName + '</td><td>' + v.evaluateVo.user.uUserName;
+                    s += '</td><td>' + v.evaluateVo.evaluate.eDescription + '</td><td>' + v.evaluateVo.evaluate.eLevel;
+                    s += '</td><td>' + v.evaluateVo.evaluate.ePhotos + '</td><td>' + v.order.oDate;
+                    s += '</td><td>' + v.order.oPrice + '</td><td>' + v.order.oMessage + '</td></tr>';
+                })
+                alert(s);
+                $("#show").html(s);
+
+//                $("#show").first("tr").append(s);
+            },
+            error: function (result) {
+                alert("失败了")
+            }
+        })
+    }
+</script>

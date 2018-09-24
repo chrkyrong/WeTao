@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 /**
  * @Author:Cc
  * @Date:2018/9/17
@@ -23,7 +25,7 @@ public class EvaluateMapperTest {
     @Autowired
     EvaluateMapper evaluateMapper;
 
-//    用户，添加评论
+    //    用户，添加评论
     @Test
     public void insertEvaluateTest() throws Exception {
         Evaluate evaluate = new Evaluate();
@@ -38,21 +40,32 @@ public class EvaluateMapperTest {
 
     }
 
-//    查询该商品所有评价
+    //    查询该商品所有评价
     @Test
     public void selectByItemsIdTest() throws Exception {
         System.out.println(evaluateMapper.selectByItemsId(8000003));
     }
 
-//    查询该商家的收到的所有的评价
+    //    商家，查询该商家的收到的所有的评价
     @Test
     public void selectBySellerTest() throws Exception {
         System.out.println(evaluateMapper.selectBySeller(2000000));
     }
 
+    //    商家，模糊查询所收到的评论
     @Test
     public void selectByConditionTest() throws Exception {
-        EvaluateVo2 vo = new EvaluateVo2();
-        vo.getEvaluateVo().getEvaluate().seteDescription("");
+        List<EvaluateVo2> aa = evaluateMapper.selectByCondition(2000000, "8");
+        for (EvaluateVo2 evaluateVo2 : aa) {
+            System.out.println(evaluateVo2);
+        }
+    }
+
+    @Test
+    public void searchEvaluationTest() throws Exception {
+        List<EvaluateVo2> aa = evaluateMapper.searchEvaluation(2000000, "", "", null, "瓜", "");
+        for (EvaluateVo2 evaluateVo2 : aa) {
+            System.out.println(evaluateVo2);
+        }
     }
 }

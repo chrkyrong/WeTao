@@ -31,7 +31,7 @@ public enum ResultEnum {
 
     EVALUATE_FAIL("601","评论失败"),
     EVALUATE_SELECT_FAIL("602","查询商品评论失败"),
-    EVALUATE_NOT_FOUND_EVALUATION("603","该商家没有任何评论")
+    EVALUATE_NOT_FOUND_EVALUATION("603","没有相关任何评论")
 
     ;
     private String code;

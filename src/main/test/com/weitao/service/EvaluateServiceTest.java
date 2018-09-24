@@ -43,9 +43,12 @@ public class EvaluateServiceTest {
         }
     }
 
-    //    查询订单详情
-//    @Test
-//    public void selectOrderDetailTest() throws Exception {
-//        System.out.println(evaluateService.selectOrderDetail(3000002));
-//    }
+
+    @Test
+    public void searchEvaluationTest() throws Exception {
+        for(EvaluateVo2 evaluateVo2 :evaluateService.searchEvaluation(2000000,"评论","可",""))
+        {
+            System.out.println(evaluateVo2);
+        }
+    }
 }

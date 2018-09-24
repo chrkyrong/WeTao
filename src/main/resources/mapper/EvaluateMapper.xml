@@ -178,9 +178,9 @@
     </select>
 
     <!--5表扩展类EvaluateVo2的ResultMap-->
-    <resultMap id="allEvaluate" type="com.weitao.vo.EvaluateVo2" >
+    <resultMap id="allEvaluate" type="com.weitao.vo.EvaluateVo2">
         <association property="evaluateVo" javaType="com.weitao.vo.EvaluateVo">
-            <association property="evaluate" javaType="com.weitao.bean.Evaluate" >
+            <association property="evaluate" javaType="com.weitao.bean.Evaluate">
                 <id column="e_id" jdbcType="INTEGER" property="eId"/>
                 <result column="e_level" jdbcType="TINYINT" property="eLevel"/>
                 <result column="e_photos" jdbcType="VARCHAR" property="ePhotos"/>
@@ -234,33 +234,44 @@
         WHERE store.seller_id = #{sellerId} AND store.st_status = 0)
     </select>
 
-    <!--按条件查找-->
+    <!--商家，搜索框的模糊查找-->
     <select id="selectByCondition" resultMap="allEvaluate">
+        <include refid="evaluation"/>
+        where
+        evaluate.store_id
+        IN (SELECT store.st_id
+        FROM store
+        WHERE store.seller_id = #{sellerId} AND store.st_status = 0)
+        and evaluate.e_description LIKE '%' #{condition} '%'
+        or `user`.u_user_name LIKE '%' #{condition} '%'
+        or store.st_name LIKE '%' #{condition} '%'
+        or `order`.o_message LIKE '%' #{condition} '%'
+        or `order`.o_price LIKE '%' #{condition} '%'
+    </select>
+
+    <select id="searchEvaluation" resultMap="allEvaluate">
         <include refid="evaluation"/>
         <where>
             evaluate.store_id
             IN (SELECT store.st_id
             FROM store
             WHERE store.seller_id = #{sellerId} AND store.st_status = 0)
-            <if test="_parameter!=null">
-                and evaluate.e_description LIKE '%${eDescription}%'
-            </if>
-            <if test="_parameter!=null">
-                and `user`.u_user_name LIKE '%${uUserName}%'
-            </if>
-            <if test="_parameter!=null">
-                and store.st_name LIKE '%${stName}%'
-            </if>
-            <if test="_parameter!=null">
-                and `order`.o_message LIKE '%${oMessage}%'
-            </if>
-            <if test="_parameter!=null">
-                and `order`.o_price LIKE '%${oPrice}%'
-            </if>
-            <!--<if test="_parameter!=null">-->
-            <!--and store.st_name LIKE '%${stName}%'-->
-            <!--</if>-->
         </where>
+        <if test="oDate!=null and oDate!=''">
+            and order.o_date LIKE '%' #{oDate} '%'
+        </if>
+        <if test="eLevel!=null and eLevel!=''">
+            and evaluate.e_level = #{eLevel}
+        </if>
+        <if test="eDescription!=null and eDescription!=''">
+            and evaluate.e_description LIKE '%' #{eDescription} '%'
+        </if>
+        <if test="stName!=null and stName!=''">
+            and store.st_name LIKE '%' #{stName} '%'
+        </if>
+        <if test="iName!=null and iName!=''">
+            and items.i_name LIKE '%' #{iName} '%'
+        </if>
     </select>
 
 </mapper>

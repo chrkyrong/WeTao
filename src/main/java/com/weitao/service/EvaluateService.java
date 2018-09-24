@@ -22,8 +22,8 @@ public interface EvaluateService {
 //    根据商品id，查询所有该商品的评价
     public List<EvaluateVo> selectEvaluate(Integer itemsId) throws Exception;
 
-//    根据订单id，查询所有订单详情
-//    public List<Order_detail> selectOrderDetail(Integer oId) throws Exception;
+//    根据搜索条件进行模糊搜索，查询所有评价
+    public List<EvaluateVo2> searchEvaluation(Integer sellerId,String condition,String search,String date) throws Exception;
 
 //    查询该商家的收到的所有的评价
     public List<EvaluateVo2> sellerEvaluation(Integer sellerId) throws Exception;

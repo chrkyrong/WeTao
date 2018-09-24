@@ -30,4 +30,9 @@ public interface ItemsMapper {
                               @Param("caName") String caName ,@Param("type") String type);
     /*为搜索框进行多字段的查询，包含父类，子类，商品名*/
     List<ItemsVo> selectItemsAll(@Param("search") String search);
+
+//    By CC
+//    商家店铺被封或解封，商品状态更变
+    void changeStatus(@Param("sellerId")Integer sellerId,@Param("iStatus")Byte iStatus);
+
 }
