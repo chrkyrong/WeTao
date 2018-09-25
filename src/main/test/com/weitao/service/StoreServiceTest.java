@@ -1,10 +1,14 @@
 package com.weitao.service;
 
+import com.weitao.bean.Store;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -26,5 +30,21 @@ public class StoreServiceTest {
     @Test
     public void managerSeachTset() throws Exception {
         System.out.println(storeService.managerSeach("大"));
+    }
+    @Test
+    public void changeStoreStatusTest() throws Exception {
+        List<Integer> stId = new ArrayList<>();
+        stId.add(7000000);
+        stId.add(7000001);
+        stId.add(7000002);
+        System.out.println(storeService.changeStoreStatus(stId, (byte) 1));
+    }
+
+    @Test
+    public void updateStoreTest() throws Exception {
+        Store store = new Store();
+        store.setStId(7000001);
+        store.setStName("冬瓜店");
+        System.out.println(storeService.updateStore(store));
     }
 }

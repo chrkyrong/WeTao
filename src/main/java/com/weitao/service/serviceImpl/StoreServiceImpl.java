@@ -2,6 +2,7 @@ package com.weitao.service.serviceImpl;
 
 import com.weitao.bean.Seller;
 import com.weitao.bean.Store;
+import com.weitao.dao.ItemsMapper;
 import com.weitao.dao.StoreMapper;
 import com.weitao.service.StoreService;
 import com.weitao.vo.StoreVo;
@@ -22,6 +23,9 @@ import java.util.regex.Pattern;
 public class StoreServiceImpl implements StoreService {
     @Autowired
     private StoreMapper storeMapper;
+
+    @Autowired
+    private ItemsMapper itemsMapper;
 
     //    商家，搜索自己拥有的所有商店
     @Override
@@ -97,9 +101,25 @@ public class StoreServiceImpl implements StoreService {
         return result;
     }
 
+    //    管理员，封店或者是解封
+    @Override
+    public boolean changeStoreStatus(List<Integer> stId, byte stStatus) {
+//        result为操作结果
+        boolean result = false;
+//        判断是否改变了店铺状态
+        if (storeMapper.changeStoreStatus(stId, stStatus) != 0) {
+//            改变商品状态
+            int count = itemsMapper.changeItemsStatus(stId, stStatus);
+            System.out.println(count);
+            result = true;
+        }
+        return result;
+    }
+
 
     //    添加店铺
     @Override
+
     public boolean insertStore(Store store) throws Exception {
 //        将店铺状态默认为1
         store.setStStatus((byte) 0);
@@ -116,15 +136,11 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public boolean updateStore(Store store) throws Exception {
         boolean result = false;
-        if (store.getStStatus() != 0) {
             int update = storeMapper.updateByPrimaryKeySelective(store);
             if (update == 1) {
 //            更新店铺名成功返回的是1
                 result = true;
             }
-        } else {
-            //还没开始写
-        }
         return result;
     }
 }

@@ -129,4 +129,15 @@
         where store.seller_id = seller.s_id and store.st_name like '%' #{stName} '%'
     </select>
 
+    <update id="changeStoreStatus">
+        update store
+        set st_status = #{param2}
+        where st_id
+        <if test="param1.size() &gt; 0">
+            IN
+            <foreach collection="param1" item="Id" open="(" close=")" separator=",">
+                #{Id}
+            </foreach>
+        </if>
+    </update>
 </mapper>

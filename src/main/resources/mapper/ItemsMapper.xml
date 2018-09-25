@@ -245,14 +245,15 @@
     </resultMap>
 
     <!--By CC-->
-    <update id="changeStatus">
+    <!--传入List商店id集合和状态值，改变多个商品的状态-->
+    <update id="changeItemsStatus">
         UPDATE items
-        SET i_status = #{iStatus}
-        WHERE items.store_id
-        <if test="array.length &gt; 0">
+        SET i_status = #{param2}
+        WHERE store_id
+        <if test="param1.size() &gt; 0">
             IN
-            <foreach collection="array" item="sellerId" open="(" close=")" separator=",">
-                #{sellerId}
+            <foreach collection="param1" item="Id" open="(" close=")" separator=",">
+                #{Id}
             </foreach>
         </if>
     </update>

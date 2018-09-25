@@ -3,6 +3,7 @@ package com.weitao.dao;
 import com.weitao.bean.Seller;
 import com.weitao.bean.Store;
 import com.weitao.vo.StoreVo;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -40,4 +41,6 @@ public interface StoreMapper {
     //    管理员，根据店铺名字模糊查询
     List<StoreVo> selectStoreByStoreName(String stName);
 
+    //    管理员，根据店铺id多选查封和解封
+    int changeStoreStatus(@Param("stId") List<Integer> stId,@Param("stStatus") Byte stStatus);
 }

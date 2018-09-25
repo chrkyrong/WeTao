@@ -33,6 +33,6 @@ public interface ItemsMapper {
 
 //    By CC
 //    商家店铺被封或解封，商品状态更变
-    void changeStatus(@Param("sellerId")Integer sellerId,@Param("iStatus")Byte iStatus);
+    int changeItemsStatus(@Param("storeId")List<Integer> storeId,@Param("iStatus")Byte iStatus);
 
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class StoreMapperTest {
     @Autowired
     StoreMapper storeMapper;
 
-//    添加店铺
+    //    添加店铺
     @Test
     public void insertStoreTset() throws Exception {
         Store store = new Store("大木瓜店", (byte) 0, 2000000);
@@ -31,7 +32,7 @@ public class StoreMapperTest {
         System.out.println(result);
     }
 
-//    修改店铺名字
+    //    修改店铺名字
     @Test
     public void updateNameTest() throws Exception {
         Store store = new Store();
@@ -53,14 +54,14 @@ public class StoreMapperTest {
 
     }
 
-//    查询id为7000000的店铺
+    //    查询id为7000000的店铺
     @Test
     public void selectByIdTest() throws Exception {
         int stId = 7000000;
         System.out.println(storeMapper.managerSelectById(stId));
     }
 
-//    查询id为2000000卖家拥有的店铺
+    //    查询id为2000000卖家拥有的店铺
     @Test
     public void selectStoreBySellerIdTest() throws Exception {
         Seller seller = new Seller();
@@ -68,7 +69,7 @@ public class StoreMapperTest {
         System.out.println(storeMapper.selectStoreBySellerId(seller));
     }
 
-//    模糊查询卖家名字所拥有的店铺
+    //    模糊查询卖家名字所拥有的店铺
     @Test
     public void selectStoreBySellerAccountdTest() throws Exception {
         Seller seller = new Seller();
@@ -76,10 +77,20 @@ public class StoreMapperTest {
         System.out.println(storeMapper.selectStoreBySellerAccount(seller));
     }
 
-//    模糊查询店铺名字
+    //    模糊查询店铺名字
     @Test
     public void selectStoreByStoreNameTest() throws Exception {
         String stName = "瓜";
         System.out.println(storeMapper.selectStoreByStoreName(stName));
+    }
+
+    @Test
+    public void changeStoreStatusTest() throws Exception {
+        List<Integer> stId = new ArrayList<>();
+        stId.add(7000000);
+        stId.add(7000001);
+        stId.add(7000002);
+        int result = storeMapper.changeStoreStatus(stId, (byte) 0);
+        System.out.println(result);
     }
 }
