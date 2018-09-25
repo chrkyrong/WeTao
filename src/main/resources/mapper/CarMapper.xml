@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weitao.dao.CarMapper">
-  <resultMap id="BaseResultMap" type="com.weitao.bean.Car">
-    <result column="items_id" jdbcType="INTEGER" property="itemsId" />
-    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-  </resultMap>
-  <insert id="insert" parameterType="com.weitao.bean.Car">
-    insert into car (items_id, seller_id, user_id, 
-      number)
-    values (#{itemsId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{number,jdbcType=INTEGER})
+
+  <!--查找用户uId的所有加购且商品状态为正常的商品-->
+  <select id="selectAllItemsOfCarByUid" resultType="com.weitao.bean.ItemsCar">
+    select items_id,i_name,i_price,i_photos,number
+    from car,items
+    where i_id=items_id and i_status=0 and user_id=#{uId}
+  </select>
+
+  <!--根据商品的iId删除购物车商品-->
+  <delete id="deleteCarByIid">
+    delete from car
+    where items_id=#{iId} and user_id=#{uId}
+  </delete>
+
+  <!--根据商品的iId增加购物车商品数量-->
+  <update id="updateAddCarItemsNumberByIid">
+    update car
+    set number = number+1
+    where items_id = #{iId} and user_id=#{uId}
+  </update>
+
+  <!--根据商品的iId减少购物车商品数量-->
+  <update id="updateCutCarItemsNumberByIid">
+    update car
+    set number = number-1
+    where items_id = #{iId} and user_id=#{uId}
+  </update>
+  
+  <!--增加购物-->
+  <insert id="insertCarByIidAndUid">
+    insert into car values (#{iId},#{sId},#{uId},#{number})
   </insert>
-  <insert id="insertSelective" parameterType="com.weitao.bean.Car">
-    insert into car
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="itemsId != null">
-        items_id,
-      </if>
-      <if test="sellerId != null">
-        seller_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="number != null">
-        number,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="itemsId != null">
-        #{itemsId,jdbcType=INTEGER},
-      </if>
-      <if test="sellerId != null">
-        #{sellerId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="number != null">
-        #{number,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
+
+  <!--查找商品的商家id-->
+  <select id="selectSellerIdByItemsId" resultType="Integer">
+    select seller_id
+    from items,store
+    where store_id=st_id and i_id=#{iId}
+  </select>
+
+  <!--清空购物车中下单的商品-->
+  <delete id="deleteCarByUid">
+    delete from car
+    where items_id in(select i_id from (select i_id from items,car where i_id=items_id and i_status=0) As temp) and user_id=#{uId}
+  </delete>
 </mapper>
