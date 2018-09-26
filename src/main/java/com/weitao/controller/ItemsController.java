@@ -101,7 +101,6 @@ public class ItemsController {
         System.out.println(file_url+"aaaaaaa");
 
         System.out.println(file_url+"ycp==============");
-
             /* 将图片写入 */
             try {
                 File file1=new File(path,i_Photos.getOriginalFilename());
