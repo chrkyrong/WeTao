@@ -25,7 +25,9 @@ public enum ResultEnum {
 
 
     ORDER_USER_FAIL("301","订单查询错误"),
-
+    ORDER_CONFIRM_FAIL("302","订单确认错误"),
+    ORDER_REFUND_FAIL("303","订单退款错误"),
+    ORDER_CANCEL_FAIL("304","订单取消错误"),
 
     DETAIL_USER_FAIL("401","订单明细查询错误"),
 
