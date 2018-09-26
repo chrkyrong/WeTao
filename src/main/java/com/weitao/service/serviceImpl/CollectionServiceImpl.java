@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class CollectionServiceImpl implements CollectionService {
     @Autowired
-    private CollectionMapper mapper;
+    private CollectionMapper collectionMapper;
 
     /**
      * 查找用户uId的所有收藏且商品状态为正常的商品
@@ -28,7 +28,7 @@ public class CollectionServiceImpl implements CollectionService {
      */
     @Override
     public List<ItemsCollection> findCollection(Integer uId) {
-        List<ItemsCollection> list = mapper.selectAllItemsOfCollectionByUid(uId);
+        List<ItemsCollection> list = collectionMapper.selectAllItemsOfCollectionByUid(uId);
         return list;
     }
 
@@ -39,7 +39,7 @@ public class CollectionServiceImpl implements CollectionService {
      */
     @Override
     public int removeCollection(int cId) {
-        return mapper.deleteCollectionByCid(cId);
+        return collectionMapper.deleteCollectionByCid(cId);
     }
 
     /**
@@ -49,7 +49,7 @@ public class CollectionServiceImpl implements CollectionService {
      */
     @Override
     public int addCollection(int iId,int uId) {
-        return mapper.insertCollection(iId,uId);
+        return collectionMapper.insertCollection(iId,uId);
     }
 }
 

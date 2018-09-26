@@ -16,21 +16,20 @@ import java.util.List;
  * @Time: 21:19
  **/
 @RestController
-@RequestMapping("/car")
 public class CarController {
     //测试数据
     private static final Integer uId=101;
 
     @Autowired
-    private CarService service;
+    private CarService carService;
 
     /**
      * 根据用户uId查找购物车
      * @return
      */
-    @GetMapping("/find")
+    @GetMapping("/car/find")
     public Result find(){
-        List<ItemsCar> list = service.findCar(uId);
+        List<ItemsCar> list = carService.findCar(uId);
         for(ItemsCar car:list){
             car.setTotalPrice(car.getiPrice().multiply(new BigDecimal(car.getNumber())));
         }
@@ -42,9 +41,9 @@ public class CarController {
      * @param iId
      * @return
      */
-    @GetMapping("/delete/{iId}")
+    @GetMapping("/car/delete/{iId}")
     public Result delete(@PathVariable("iId") Integer iId){
-        int count = service.removeCar(iId,uId);
+        int count = carService.removeCar(iId,uId);
         if (count!=0)
             return ResultUtil.success();
         else
@@ -56,9 +55,9 @@ public class CarController {
      * @param iId
      * @return
      */
-    @GetMapping("/addNum/{iId}")
+    @GetMapping("/car/addNum/{iId}")
     public Result addNum(@PathVariable("iId") Integer iId){
-        int count = service.updateAddCar(iId,uId);
+        int count = carService.updateAddCar(iId,uId);
         if (count!=0)
             return ResultUtil.success();
         else
@@ -70,9 +69,9 @@ public class CarController {
      * @param iId
      * @return
      */
-    @GetMapping("/cutNum/{iId}")
+    @GetMapping("/car/cutNum/{iId}")
     public Result cutNum(@PathVariable("iId") Integer iId){
-        int count = service.updateCutCar(iId,uId);
+        int count = carService.updateCutCar(iId,uId);
         if (count!=0)
             return ResultUtil.success();
         else
@@ -85,10 +84,10 @@ public class CarController {
      * @param number
      * @return
      */
-    @GetMapping("/add/{iId}/{number}")
+    @GetMapping("/car/add/{iId}/{number}")
     public Result add(@PathVariable("iId") Integer iId,@PathVariable("number") Integer number){
-        Integer sId = service.findSellerId(iId);
-        int count = service.addCar(iId,uId,number,sId);
+        Integer sId = carService.findSellerId(iId);
+        int count = carService.addCar(iId,uId,number,sId);
         if (count!=0)
             return ResultUtil.success();
         else
