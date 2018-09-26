@@ -134,14 +134,14 @@
                 </button>
                 <!-- Desctop Trigger End-->
                 <ul class="main-menu yamm nav navbar-nav">
-                    <!--主页入口///////////////////////////////////////////////////////////////////////////////////////-->
-                    <li><a href="shop-1.html"><h5>主 页</h5></a>
+                    <!--主页模块///////////////////////////////////////////////////////////////////////////////////////-->
+                    <li><a href="home.html"><h5>主 页</h5></a>
                     </li>
-                    <!--售后入口///////////////////////////////////////////////////////////////////////////////////////-->
-                    <li><a href="shop.html"><h5>售 后</h5></a>
+                    <!--售后模块///////////////////////////////////////////////////////////////////////////////////////-->
+                    <li><a href="order_over.html"><h5>售 后</h5></a>
                     </li>
-                    <!--收藏夹入口///////////////////////////////////////////////////////////////////////////////////////-->
-                    <li><a href="shop-1.html"><h5>收 藏</h5></a>
+                    <!--收藏夹模块///////////////////////////////////////////////////////////////////////////////////////-->
+                    <li><a href="collection.html"><h5>收 藏</h5></a>
                     </li>
                 </ul>
             </div>
@@ -149,27 +149,24 @@
                 <ul class="nav navbar-nav clearfix vcenter">
                     <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
                     </li>
-                    <!--用户个人信息入口///////////////////////////////////////////////////////////////////////////////////////-->
-                    <li><a href="#"><h5>我 的 微 淘</h5></a>
+                    <!--用户个人信息模块///////////////////////////////////////////////////////////////////////////////////////-->
+                    <li><a href="order.html"><h5>我 的 订 单</h5></a>
                     </li>
                     <li><span class="header-cart">
-
-                            <!--购物车模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                <a href="#"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
+                            <!--购物车///////////////////////////////////////////////////////////////////////////////////////-->
+                                <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
                                     <span class="header-cart-count bg-primary">3</span></span>
                     </li>
                 </ul>
                 <ul class="nav-language list-inline">
                     <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
-                    <!--点击，进入个人信息展示display页面/////////////////////////////////////////////////////////////-->
-                    <li><a href="#">Id：007</a>
+                    <li><a href="display.html">Id：007</a>
                     </li>
-                    <!--退出登陆按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                    <li class="active"><a href="#">quit</a>
+                    <!--退出按钮///////////////////////////////////////////////////////////////////////////////////////-->
+                    <li class="active"><a href="login.html">quit</a>
                     </li>
                 </ul>
                 <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
-                <!--点击，重新进入主页/////////////////////////////////////////////////////////////-->
                 <a class="navbar-brand scroll" href="home.html">
                     <img class="normal-logo" src="static/wt/images/logo.png" alt="logo">
                     <img class="scroll-logo hidden-xs" src="static/wt/images/logo.png" alt="logo">
@@ -279,7 +276,7 @@
             <!--活页卡模块////////////////////////////////////////////////////////////-->
             <li class="active"><a href="#detail" data-toggle="tab">商 品 详 情(Goods Details)</a>
             </li>
-            <li><a href="#evaluation" data-toggle="tab">商 品 评 价(Evaluation)</a>
+            <li><a href="#evaluation" data-toggle="tab">购 买 心 得(Buying Tips)</a>
             </li>
         </ul>
 
@@ -308,12 +305,12 @@
                         <!--商品图片展示模块，开始////////////////////////////////////////////////////////////-->
                         <div class="col-md-9 col-md-offset-1">
                             <center>
-                            <div class="entry-media">
-                                <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
-                                    <img class="img-responsive" src="static/wt/images/680x500_1.jpg" alt="Foto">
-                                </a>
-                        <br><br><br><br>
-                            </div>
+                                <div class="entry-media">
+                                    <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
+                                        <img class="img-responsive" src="static/wt/images/680x500_1.jpg" alt="Foto">
+                                    </a>
+                                    <br><br><br><br>
+                                </div>
                             </center>
                             <div class="entry-media">
                                 <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
@@ -483,42 +480,18 @@
                             <h3 class="typography-title">&nbsp;&nbsp;&nbsp;&nbsp;看看大家购买宝贝后的买家秀吧</h3>
                             <br><br>
                             <div class="table-container">
-                                <table class="table table_primary">
+                                <table class="table table_primary" id="evaluated">
                                     <thead>
                                     <tr>
                                         <th>&nbsp;</th>
                                         <th>买 家 昵 称</th>
                                         <th>宝 贝 评 分</th>
                                         <th>买 家 秀</th>
-                                        <th width="300">评 价</th>
+                                        <th>评 价</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <!--评论内容模块////////////////////////////////////////////////////////////-->
-                                    <tr>
-                                        <td>头像路径</td>
-                                        <td>Mark</td>
-                                        <td>5星，好评！五星好评！令人满意的购物体验！</td>
-                                        <!--点击买家秀可以全屏大图////////////////////////////////////////////////////////////-->
-                                        <td>买家秀图片路径</td>
-                                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel
-                                            ultrices velit. Etiam pellentesque nibh at quam facilisis, eu maximus dolor
-                                            tincidunt. Cras
-                                            porta luctus pretium.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>头像路径</td>
-                                        <td>Jacob</td>
-                                        <td>4星，中评！还不错，宝贝和想象中差不多！</td>
-                                        <td>买家秀图片路径</td>
-                                        <td>Nam posuere libero a neque rhoncus, eu
-                                            viverra mauris volutpat. Integer at venenatis mi. Sed sagittis lobortis
-                                            gravida. Phasellus
-                                            ac finibus sem, et mattis dolor. Vestibulum vitae hendrerit urna, id
-                                            volutpat magna.
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -645,6 +618,7 @@
 <script src="static/wt/js/main.js"></script>
 <!-- Main slider-->
 <script src="static/wt/js/jquery.sliderPro.min.js"></script>
+<<<<<<< HEAD
 <script src="static/jq/tool.js"></script>
 </body>
 
@@ -679,3 +653,14 @@
 </script>
 
 
+=======
+<script src="static/jq/evaluate.js"></script>
+</body>
+
+</html>
+<script>
+    $(function () {
+        Onload1();
+    })
+</script>
+>>>>>>> 2981b4295ca342c8b714af0e6059069ce05661c7

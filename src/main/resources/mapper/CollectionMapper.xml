@@ -1,71 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weitao.dao.CollectionMapper">
-  <resultMap id="BaseResultMap" type="com.weitao.bean.Collection">
-    <id column="c_id" jdbcType="INTEGER" property="cId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="items_id" jdbcType="INTEGER" property="itemsId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    c_id, user_id, items_id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from collection
-    where c_id = #{cId,jdbcType=INTEGER}
+
+  <!--查找用户uId的所有收藏且商品状态为正常的商品-->
+  <select id="selectAllItemsOfCollectionByUid" resultType="com.weitao.bean.ItemsCollection">
+    select i_photos,i_name,i_price,c_id,items_id
+    from collection,items
+    where user_id=#{uId} and i_status=0 and items_id=i_id
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from collection
-    where c_id = #{cId,jdbcType=INTEGER}
+
+  <!--根据收藏夹的主键cId删除收藏商品-->
+  <delete id="deleteCollectionByCid">
+    delete from collection where c_id=#{cId}
   </delete>
-  <insert id="insert" parameterType="com.weitao.bean.Collection">
-    insert into collection (c_id, user_id, items_id
-      )
-    values (#{cId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{itemsId,jdbcType=INTEGER}
-      )
+
+  <!--商品在商品页面将商品加入收藏夹-->
+  <insert id="insertCollection">
+    insert into collection (user_id, items_id) values (#{uId},#{iId})
   </insert>
-  <insert id="insertSelective" parameterType="com.weitao.bean.Collection">
-    insert into collection
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cId != null">
-        c_id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="itemsId != null">
-        items_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cId != null">
-        #{cId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="itemsId != null">
-        #{itemsId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Collection">
-    update collection
-    <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="itemsId != null">
-        items_id = #{itemsId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where c_id = #{cId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.weitao.bean.Collection">
-    update collection
-    set user_id = #{userId,jdbcType=INTEGER},
-      items_id = #{itemsId,jdbcType=INTEGER}
-    where c_id = #{cId,jdbcType=INTEGER}
-  </update>
 </mapper>

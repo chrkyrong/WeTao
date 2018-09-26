@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -67,5 +68,14 @@ public class ItemsMapperTest {
         System.out.println(itemVos);
      /*   for(int i=0;i<itemVos.size();i++)
         System.out.println(itemsVo.getiIntroduction());*/
+    }
+
+    @Test
+    public void changeStatusTest() throws Exception {
+        List<Integer> storeId = new ArrayList<>();
+        storeId.add(7000000);
+        storeId.add(7000001);
+        storeId.add(7000002);
+        System.out.println( itemsMapper.changeItemsStatus(storeId, (byte) 0));
     }
 }

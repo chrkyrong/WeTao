@@ -80,4 +80,31 @@ public class Evaluate {
     public void seteDescription(String eDescription) {
         this.eDescription = eDescription == null ? null : eDescription.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Evaluate{" +
+                "eId=" + eId +
+                ", eLevel=" + eLevel +
+                ", ePhotos='" + ePhotos + '\'' +
+                ", orderId=" + orderId +
+                ", storeId=" + storeId +
+                ", userId=" + userId +
+                ", itemsId=" + itemsId +
+                ", eDescription='" + eDescription + '\'' +
+                '}';
+    }
+
+    public Evaluate() {
+    }
+
+    public Evaluate(Byte eLevel, String ePhotos, Integer orderId, Integer storeId, Integer userId, Integer itemsId, String eDescription) {
+        this.eLevel = eLevel;
+        this.ePhotos = ePhotos;
+        this.orderId = orderId;
+        this.storeId = storeId;
+        this.userId = userId;
+        this.itemsId = itemsId;
+        this.eDescription = eDescription;
+    }
 }

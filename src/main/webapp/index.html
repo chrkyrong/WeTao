@@ -67,23 +67,23 @@
     </html>
     <!--插入数据-->
     <script type="text/javascript">
-            $("#submit").click(function () {
-                console.log('submit');
-                var form = new FormData(document.getElementById("formTest"));
-                $.ajax({
-                    url:'/insertItems',
-                    type:'POST',
-                    data:form,
-                    processData:false,
-                    contentType:false,/*使用formdate一定要加上去*/
-                    success:function (result) {
-                        if(result.code=="0")
-                      window.location.href='success';
+        $("#submit").click(function () {
+            console.log('submit');
+            var form = new FormData(document.getElementById("formTest"));
+            $.ajax({
+                url:'/insertItems',
+                type:'POST',
+                data:form,
+                processData:false,
+                contentType:false,/*使用formdate一定要加上去*/
+                success:function (result) {
+                    if(result.code=="0")
+                        window.location.href='success';
                     else
                         alert("错误")
-                    }
-                });
+                }
             });
+        });
     </script>
     <script type="text/javascript">
         window.onload=function(){
@@ -93,9 +93,9 @@
                 url:'/findStore',
                 type:'post',
                 success:function (data) {
-                   for(var i=0;i<data.length;i++){
+                    for(var i=0;i<data.length;i++){
                         var stId=data[i].stId;
-                       str+="<option value='"+stId+"'>" +data[i].stName +" </option>";
+                        str+="<option value='"+stId+"'>" +data[i].stName +" </option>";
                     }
                     store.html(str);
                 }
@@ -104,19 +104,19 @@
     </script>
     <script type="text/javascript">
         $(function () {
-           $("#second").hide();//初始化第二个下拉框隐藏
+            $("#second").hide();//初始化第二个下拉框隐藏
         });
         var second1=$("#second");
         function sonSel(){//第一个下拉框调用此方法
-        var cafather=$("#caFather").val();//获得第一个下拉框的值
-          /*  alert(cafather);//测试是否获得*/
+            var cafather=$("#caFather").val();//获得第一个下拉框的值
+            /*  alert(cafather);//测试是否获得*/
             if(cafather!=null&&cafather!=""&&cafather!=-1){
-            //通过ajax将cafather传入后台处理
+                //通过ajax将cafather传入后台处理
                 $.post("findCafather",{cafather:cafather},function (data) {
                     var option;
                     for(var i=0;i<data.length;i++){
                         var catagoryId=data[i].caId;//获取它的id值
-                       /* alert(data.length);//测试*/
+                        /* alert(data.length);//测试*/
                         option+="<option value='"+catagoryId+"'>" +data[i].caName +" </option>";
                     }
                     second1.html(option);
@@ -132,7 +132,7 @@
     <script type="text/javascript">
         function  upfilePhoto() {
             $.ajaxFileUpload({
-                url:"upFile",
+                url:"upFile1",
                 secureuri:false,//是否启动安全提交，默认为false
                 fileElementId:"upfilePhotoId",//需要上传的文件ID
                 dataType:'text',

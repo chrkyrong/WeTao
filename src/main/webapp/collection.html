@@ -158,13 +158,13 @@
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
                             <!--主页模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>主 页</h5></a>
+                            <li><a href="home.html"><h5>主 页</h5></a>
                             </li>
                             <!--售后模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-2.html"><h5>售 后</h5></a>
+                            <li><a href="order_over.html"><h5>售 后</h5></a>
                             </li>
                             <!--收藏夹模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>收 藏</h5></a>
+                            <li><a href="collection.html"><h5>收 藏</h5></a>
                             </li>
                         </ul>
                     </div>
@@ -173,20 +173,20 @@
                             <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
                             </li>
                             <!--用户个人信息模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#"><h5>我 的 微 淘</h5></a>
+                            <li><a href="order.html"><h5>我 的 订 单</h5></a>
                             </li>
                             <li><span class="header-cart">
                             <!--购物车///////////////////////////////////////////////////////////////////////////////////////-->
-                                <a href="#"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
+                                <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
                                     <span class="header-cart-count bg-primary">3</span></span>
                             </li>
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#">Id：007</a>
+                            <li><a href="display.html">Id：007</a>
                             </li>
                             <!--退出按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li class="active"><a href="#">quit</a>
+                            <li class="active"><a href="login.html">quit</a>
                             </li>
                         </ul>
                         <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
@@ -221,55 +221,21 @@
 
                             <!--收藏夹清单的表格模块///////////////////////////////////////////////////////////////////////////////////////-->
                             <div class="b-table b-cart-table ">
-                                <table class="shop_table shop_table_responsive cart table" cellspacing="0">
-                                    <thead>
+                                <table id="coll" class="shop_table shop_table_responsive cart table" cellspacing="0">
                                     <tr>
                                         <td class="product-thumbnail">&nbsp;</td>
                                         <td class="product-name"><h5>产 品 名</h5></td>
                                         <td class="product-price"><h5>价 格</h5></td>
                                         <td class="product-remove"><h5>操 作</h5></td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
 
-                                    <tr class="cart_item">
-
-
-                                        <td class="product-thumbnail" width="300">
-
-                                                <!--宝贝链接///////////////////////////////////////////////////////////////////////////////////////-->
-                                            <a href="catalog-product.html">
-                                                <!--添加产品图片模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                <img width="180" height="180" src="static/wt/images/1.jpg"
-
-                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                            </a></td>
-
-                                        <td data-title="Product" width="500">
-                                            <div class="caption">
-                                                <!--产品名称模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                <a class="product-name" href="/">Hyperion</a></div>
-                                        </td>
-
-                                        <td class="product-price" data-title="Price">
-							<span class="product-price total-price">
-                                    <!--产品价格模块///////////////////////////////////////////////////////////////////////////////////////-->
-							<span class="woocommerce-Price-amount amount"><span
-                                    class="woocommerce-Price-currencySymbol">£</span>875.00</span>						    </span>
-                                        </td>
-
-                                        <td class="product-remove">
-
-                                            <!--删除物品按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                                            <a href="/delete/get?cId=" class="btn btn-remove" title="Remove this item"><i
-                                                    class="fa fa-trash fa-lg"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6" class="actions">
-
-                                            <input type="hidden" value="6bbd62fad3"><input type="hidden"></td>
-                                    </tr>
-                                    </tbody>
+                                    <script src="static/jq/webSocket/jquery-3.3.1.min.js"></script>
+                                    <script src="static/jq/webSocket/mis.js"></script>
+                                    <script>
+                                        $(function () {
+                                            select();
+                                        })
+                                    </script>
                                 </table>
                             </div>
                         </form>

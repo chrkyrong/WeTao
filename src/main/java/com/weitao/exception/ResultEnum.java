@@ -27,7 +27,11 @@ public enum ResultEnum {
     ORDER_USER_FAIL("301","订单查询错误"),
 
 
-    DETAIL_USER_FAIL("401","订单明细查询错误")
+    DETAIL_USER_FAIL("401","订单明细查询错误"),
+
+    EVALUATE_FAIL("601","评论失败"),
+    EVALUATE_SELECT_FAIL("602","查询商品评论失败"),
+    EVALUATE_NOT_FOUND_EVALUATION("603","没有相关任何评论")
 
     ;
     private String code;
