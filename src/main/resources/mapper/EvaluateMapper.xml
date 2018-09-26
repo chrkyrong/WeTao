@@ -234,21 +234,8 @@
         WHERE store.seller_id = #{sellerId} AND store.st_status = 0)
     </select>
 
-    <!--商家，搜索框的模糊查找-->
-    <select id="selectByCondition" resultMap="allEvaluate">
-        <include refid="evaluation"/>
-        where
-        evaluate.store_id
-        IN (SELECT store.st_id
-        FROM store
-        WHERE store.seller_id = #{sellerId} AND store.st_status = 0)
-        and evaluate.e_description LIKE '%' #{condition} '%'
-        or `user`.u_user_name LIKE '%' #{condition} '%'
-        or store.st_name LIKE '%' #{condition} '%'
-        or `order`.o_message LIKE '%' #{condition} '%'
-        or `order`.o_price LIKE '%' #{condition} '%'
-    </select>
 
+    <!--评论全模糊查询-->
     <select id="searchEvaluation" resultMap="allEvaluate">
         <include refid="evaluation"/>
         <where>

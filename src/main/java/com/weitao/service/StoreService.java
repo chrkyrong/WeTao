@@ -23,7 +23,7 @@ public interface StoreService {
     public List<StoreVo> managerSeleteStore(int Status);
 
     //    管理员，模糊搜索店铺
-    public List<StoreVo> managerSeach(String select);
+    public List<StoreVo> managerSeach(StoreVo select);
 
     //    管理员，封店或者是解封
     public boolean changeStoreStatus(List<Integer> stId, byte stStatus);

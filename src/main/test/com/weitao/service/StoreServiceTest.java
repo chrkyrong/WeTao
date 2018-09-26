@@ -1,6 +1,7 @@
 package com.weitao.service;
 
 import com.weitao.bean.Store;
+import com.weitao.vo.StoreVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +27,13 @@ public class StoreServiceTest {
     @Autowired
     private StoreService storeService;
 
-//    管理员，模糊搜索商店，可输入商家id，店铺id（精确搜索），输入商家名字，店铺名字（模糊搜索）
-    @Test
-    public void managerSeachTset() throws Exception {
-        System.out.println(storeService.managerSeach("大"));
-    }
     @Test
     public void changeStoreStatusTest() throws Exception {
         List<Integer> stId = new ArrayList<>();
         stId.add(7000000);
         stId.add(7000001);
         stId.add(7000002);
-        System.out.println(storeService.changeStoreStatus(stId, (byte) 1));
+        System.out.println(storeService.changeStoreStatus(stId, (byte) 0));
     }
 
     @Test
@@ -46,5 +42,18 @@ public class StoreServiceTest {
         store.setStId(7000001);
         store.setStName("冬瓜店");
         System.out.println(storeService.updateStore(store));
+    }
+
+    @Test
+    public void managerSeachTest() throws Exception {
+        Store store = new Store();
+//        设置查询店铺id
+//        store.setStId(01);
+//        设置查询店铺名字
+//        store.setStName("");
+//        设置查询店铺状态
+        store.setStStatus((byte) 0);
+//        设置查询卖家名字，卖家id
+
     }
 }

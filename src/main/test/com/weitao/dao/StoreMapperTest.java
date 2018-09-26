@@ -2,6 +2,7 @@ package com.weitao.dao;
 
 import com.weitao.bean.Seller;
 import com.weitao.bean.Store;
+import com.weitao.vo.StoreVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +93,19 @@ public class StoreMapperTest {
         stId.add(7000002);
         int result = storeMapper.changeStoreStatus(stId, (byte) 0);
         System.out.println(result);
+    }
+
+    @Test
+    public void managerSelectByConditionTest() throws Exception {
+        String stId = "";
+        Byte stStatus = 0;
+        String stName = "";
+        String sId = "";
+        String sAccount = "";
+        for(StoreVo storeVo : storeMapper.managerSelectByCondition(stId,stStatus,stName,sId,sAccount))
+        {
+            System.out.println(storeVo);
+        }
+
     }
 }

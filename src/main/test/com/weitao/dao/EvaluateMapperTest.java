@@ -31,7 +31,7 @@ public class EvaluateMapperTest {
         Evaluate evaluate = new Evaluate();
         evaluate.seteLevel((byte) 5);
         evaluate.seteDescription("非常好！");
-        evaluate.setePhotos("C://ccop");
+        evaluate.setePhotos("bg-1.jpg");
         evaluate.setOrderId(3000002);
         evaluate.setStoreId(7000001);
         evaluate.setUserId(1000000);
@@ -49,21 +49,24 @@ public class EvaluateMapperTest {
     //    商家，查询该商家的收到的所有的评价
     @Test
     public void selectBySellerTest() throws Exception {
-        System.out.println(evaluateMapper.selectBySeller(2000000));
-    }
-
-    //    商家，模糊查询所收到的评论
-    @Test
-    public void selectByConditionTest() throws Exception {
-        List<EvaluateVo2> aa = evaluateMapper.selectByCondition(2000000, "8");
-        for (EvaluateVo2 evaluateVo2 : aa) {
-            System.out.println(evaluateVo2);
+        for (EvaluateVo2 aa : evaluateMapper.selectBySeller(2000000)) {
+            System.out.println(aa);
         }
     }
 
+    //    商家，根据条件模糊搜索
+    /*@Test
+    public void selectByConditionTest() throws Exception {
+        List<EvaluateVo2> aa = evaluateMapper.selectByCondition(2000000, "");
+        for (EvaluateVo2 evaluateVo2 : aa) {
+            System.out.println(evaluateVo2);
+        }
+    }*/
+
+    //    商家，模糊查询所收到的评论
     @Test
     public void searchEvaluationTest() throws Exception {
-        List<EvaluateVo2> aa = evaluateMapper.searchEvaluation(2000000, "", "", null, "瓜", "");
+        List<EvaluateVo2> aa = evaluateMapper.searchEvaluation(2000001, "", "", null, "瓜", "");
         for (EvaluateVo2 evaluateVo2 : aa) {
             System.out.println(evaluateVo2);
         }

@@ -142,11 +142,11 @@ public class EvaluateController {
 
     @RequestMapping(value = "/formTest", method = RequestMethod.POST)
     public Result formTest(Model model, HttpServletRequest request, String search, String condition, String date, String sellerId) throws Exception {
+        System.out.println(sellerId);
         sellerId = request.getParameter("sellerId");
         search = request.getParameter("search");
         condition = request.getParameter("condition");
         date = request.getParameter("date");
-        System.out.println(sellerId + "-" + search + "-" + condition + "-" + date);
         List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(Integer.parseInt(sellerId), condition, search, date);
         if (evaluateVo2List != null)
             return ResultUtil.success(evaluateVo2List);

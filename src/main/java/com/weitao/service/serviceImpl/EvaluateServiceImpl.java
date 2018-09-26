@@ -42,7 +42,7 @@ public class EvaluateServiceImpl implements EvaluateService {
 //        获得StoreId
         evaluate.setStoreId(order.getStoreId());
 //        判断评论是否为空,为空：系统默认添加评论
-        if (evaluate.geteDescription() == null)
+        if (evaluate.geteDescription() == null||evaluate.geteDescription().equals(""))
             evaluate.seteDescription("用户默认好评。");
 
         boolean result = false;
