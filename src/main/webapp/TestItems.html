@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="static/jq/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="static/jq/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="static/jq/items.js"></script>
+    <style type="text/css">
+
+        .p1{
+            font-size: 14px;
+            color: #000;
+        }
+        .p2{
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+        .p3{
+            font-size: 14px;
+            color: #ff5f19;
+        }
+        .product{
+            width:100%;
+            position: relative;
+            margin: 20px 0 5px 0;
+            height: 100px;
+            background: #fafafa;
+        }
+
+        .img{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 20px;
+        }
+        .p{
+            display:inline-block;
+            float:left;
+            width:50%;
+            margin-top:6px;
+            font-family: Microsoft YaHei;
+        }
+        .p1{
+            margin-top:16px;
+        }
+    </style>
+</head>
+<body>
+<!-- 构建装一个容器 -->
+    <input type="text" id="search" ><input type="button" onclick="findItems()" value="查询">
+    <div id="box1">
+    </div>
+</body>
+</html>
+<script>
+    //页面加载   获取全部信息
+    $(function() {
+            $.ajax({
+                type: "POST",//请求方式
+                url: "queryItemsAll",//地址，就是json文件的请求路径
+                dataType: "json",//数据类型可以为 text xml json  script  jsonp
+                success: function (result) {
+                    var str;
+
+                        $.each(result.data, function (index, items) {
+
+                            $("#box1").append( "<div class='product'>" +//获得图片地址
+                                "<div><img class='img' src=" + 'images/' + items['iPhotos'] + "></div>" +
+                                //获得名字
+                                "<div class='p1 p'>" + items['iName'] + "</div>" +
+                                //获得性别
+                                "<div class='p2 p'>" + items['iPrice'] + "</div>" +
+                                //获得邮箱地址
+                                "<div class='p3 p'>" + items['iIntroduction'] + "</div>" +
+                                "</div>");
+                        });
+                   /* $("#box1").html(str);
+                    $("#box1").show();*/
+                }
+            });
+            });
+</script>
+<script type="text/javascript" >
+    function findItems() {
+        alert("sssss")
+        var search =document.getElementById("search").value;
+        alert(search);
+        $.ajax({
+           type:"post",
+            url:"queryItemsSearch?search="+search,
+            dataType:"json",
+            success:function (result){
+                $.each(result.data,function(index,items){
+                    var str;
+                   str+= "<div class='product'>"+//获得图片地址
+                        "<div><img class='img' src="+'images/'+items['iPhotos']+"></div>"+
+                        //获得名字
+                        "<div class='p1 p'>"+items['iName']+"</div>"+
+                        //获得性别
+                        "<div class='p2 p'>"+items['iPrice']+"</div>"+
+                        //获得邮箱地址
+                        "<div class='p3 p'>"+items['iIntroduction']+"</div>"+
+                        "</div>";
+                });
+                $("#box1").html(str);
+                $("#box1").show();
+            }
+        });
+    }
+</script>

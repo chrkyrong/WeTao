@@ -16,12 +16,21 @@ public interface ItemsService {
     public boolean insertItems(Items items) throws  Exception;
 
     /*根据各种条件来查询，父类，商品名，子类，升序排序条件*/
-    public List<ItemsVo> selectItems(String caFather, String iName, String caName ,String type)
+    public List<ItemsVo> selectItemsUp(String caFather, String iName, String caId ,String type)
                                         throws  Exception;
 
     /*根据各种条件来查询，父类，商品名，子类，降序排序条件*/
-    public List<ItemsVo> selectItemsDown(String caFather, String iName, String caName, String type)throws  Exception;
+    public List<ItemsVo> selectItemsDown(String caFather, String iName, String caId, String type)throws  Exception;
 
     /*为搜索框进行多字段的查询，包含父类，子类，商品名*/
     public List<ItemsVo> selectItemsAll(String search);
+
+    /*显示所有商品,显示销售量最高的九件商品*/
+    public List<Items> selectItems();
+
+    /*显示所有商品，显示最新上架的九件商品*/
+    public List<Items> selectItems1();
+
+    /*查詢當個商品*/
+    public List<Items> selectOneItems(Integer iId);
 }

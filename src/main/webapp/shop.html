@@ -81,14 +81,10 @@
                         <li><a href="blog-main-2.html"><span>Blog main 2</span></a></li>
                         <li><a href="blog-main-3.html"><span>Blog main 3</span></a></li>
                         <li><a href="blog-post.html"><span>Blog post </span></a></li>
-
                     </ul>
                 </li>
             </ul>
-
         </div>
-
-
     </nav>
 
 </div>
@@ -105,8 +101,8 @@
                     <div class="navbar-search">
                         <form class="search-global">
                             <input class="search-global__input" type="text" placeholder="Type to search"
-                                   autocomplete="off" name="s" value="">
-                            <button class="search-global__btn"><i class="icon stroke icon-Search"></i>
+                                   autocomplete="off" name="s" value="" id="search">
+                            <button class="search-global__btn" onclick="search1()"><i class="icon stroke icon-Search"></i>
                             </button>
                             <div class="search-global__note">Begin typing your search above and press return to
                                 search.
@@ -198,10 +194,11 @@
                                 class="icon"></i></span>
                         </div>
                         <!--右上角排序模块///////////////////////////////////////////////////////////////////////////////////////-->
-                        <select class="selectpicker" data-width="280">
-                            <option>按字母排序</option>
-                            <option>A-Z</option>
-                            <option>Z-A</option>
+                        <select class="selectpicker" data-width="280" id="type" onchange="updown()">
+                            <option value="i_id"  >类型排序</option>
+                            <option value="i_price">价格升序</option>
+                            <option value="i_date" >上架时间</option>
+                            <option value="i_price1">价格降序</option>
                         </select>
                     </div>
                 </div>
@@ -216,35 +213,22 @@
                         <form class="b-filter">
                             <div class="b-filter__group">
                                 <!--第一个商品类别下拉框///////////////////////////////////////////////////////////////////////////////////////-->
-                                <div class="b-filter__title"> &nbsp;商 品 类 别 (Categories)</div> <select class="selectpicker" data-width="100%">
-                                    <option value="">男鞋</option>
-                                    <option value="">Acronym</option>
-                                    <option value="">Adidas</option>
-                                    <option value="">Adidas by Kolor</option>
-                                    <option value="">Arc'Teryx Veilance</option>
-                                    <option value="">Bedwin</option>
-                                    <option value="">Blackmeans</option>
-                                    <option value="">Burton AK457</option>
-                                    <option value="">Burton Thirteen</option>
-                                    <option value="">CAV EMPT</option>
-                                    <option value="">Chup</option>
+                                <div class="b-filter__title"> &nbsp;商 品 类 别 (Categories)</div>
+                                <select class="selectpicker" data-width="100%" id="caFather"  name="caFather"   onchange="sonSel()">
+                                    <option value="">请选择商品类型</option>
+                                    <option value="男鞋">男鞋</option>
+                                    <option value="男装">男装</option>
+                                    <option value="女鞋">女鞋</option>
+                                    <option value="女装">女装</option>
+                                    <option value="手机数码">手机数码</option>
+                                    <option value="电器">电器</option>
                                 </select>
                             </div>
                             <div class="b-filter__group">
                                 <!--第二个商品类别下拉框///////////////////////////////////////////////////////////////////////////////////////-->
-                                <div class="b-filter__title">&nbsp;具 体 类 别(Categories)</div>
-                                <select class="selectpicker" data-width="100%">
-                                    <option value="">运动鞋</option>
-                                    <option value="">Purpple</option>
-                                    <option value="">Black</option>
-                                    <option value="">Blue</option>
-                                    <option value="">Green</option>
-                                    <option value="">Orange</option>
-                                    <option value="">Olive</option>
-                                    <option value="">White</option>
-                                    <option value="">Gray</option>
-                                    <option value="">Yellow</option>
-                                    <option value="">Pink</option>
+                                <div class="b-filter__title" >&nbsp;具 体 类 别(Categories)</div>
+                                <select class="selectpicker" data-width="100%" name="catagoryId"
+                                        id="second" onchange="caSon()">
                                 </select>
                             </div>
                         </form>
@@ -254,36 +238,7 @@
                     <!--商品陈列表////////////////////////////////////////////////////////////-->
                     <div class="list-goods">
                         <div class="row">
-                            <div class="col-xs-12">
-                                <!--第一个商品////////////////////////////////////////////////////////////-->
-                                <div class="b-goods b-goods-4 b-goods_5-col">
-                                    <a class="b-goods__media js-zoom-images"
-                                       href="assets/media/content/goods/group-4/2.jpg">
-                                        <img class="img-responsive" src="static/wt/images/2.jpg" alt="img">
-                                    </a><span class="b-goods__main"><span class="b-goods__inner"><span
-                                        class="b-goods__categorie">Undercover</span><a class="b-goods__title"
-                                                                                       href="shop-single-1.html">UCS3819 T-Shirt</a><span
-                                        class="b-goods__desc">Pellentesque diam ex, scelerisque mattis ex id, rutrum rutrum nibh. Aliquam auctor tristique consequat. Duis in justo non diam ultricies efficitur id at eros. Pellentesque fringilla laoreet rhoncus. </span></span>
-                                            <span class="b-goods__wrap"><span class="b-goods__price">$75.00</span><a
-                                                    class="b-goods__cart" href="shop-single-1.html">add to cart</a>
-                                                </span>
-                                                </span>
-                                </div>
-                                <!--第二个商品////////////////////////////////////////////////////////////-->
-                                <div class="b-goods b-goods-4 b-goods_5-col">
-                                    <a class="b-goods__media js-zoom-images"
-                                       href="assets/media/content/goods/group-4/1.jpg">
-                                        <img class="img-responsive" src="static/wt/images/1.jpg" alt="img">
-                                    </a><span class="b-goods__main"><span class="b-goods__inner"><span
-                                        class="b-goods__categorie">Converse</span><a class="b-goods__title"
-                                                                                     href="shop-single-1.html">Chuck Taylor All Star x Nike Flyknit...</a><span
-                                        class="b-goods__desc">Pellentesque diam ex, scelerisque mattis ex id, rutrum rutrum nibh. Aliquam auctor tristique consequat. Duis in justo non diam ultricies efficitur id at eros. Pellentesque fringilla laoreet rhoncus. </span></span>
-                                            <span class="b-goods__wrap"><span class="b-goods__price">$875.00</span><a
-                                                    class="b-goods__cart" href="shop-single-1.html">add to cart</a>
-                                                </span>
-                                                </span>
-                                </div>
-                                <!-- end .b-goods-->
+                            <div class="col-xs-12" id="show"><!--商品搜索展示-->
                             </div>
                         </div>
                     </div>
@@ -422,6 +377,161 @@
 <script src="static/wt/js/main.js"></script>
 <!-- Main slider-->
 <script src="static/wt/js/jquery.sliderPro.min.js"></script>
+<script src="static/jq/tool.js"></script>
+<script src="static/jq/showitems.js"></script>
 </body>
-
 </html>
+<script type="text/javascript">
+    $(function () {
+        var search=decodeURI(getQueryString("search"));
+        $.ajax({
+            type:"post",
+            url:"queryItemsSearch?search="+search,
+            dataType:"json",
+            success:function (result){
+                $.each(result.data,function(index,items){
+                    $("#show").append( "<div class='b-goods b-goods-4 b-goods_5-col '>" +
+                        "<a class='b-goods__media js-zoom-images' id='img' href=" + 'static/images/' +
+                        items['iPhotos'] +
+                        ">" +
+                        "<img class='img-responsive' alt='img'  src=" + 'images/' +
+                        items['iPhotos'] +
+                        ">" + "</a>" + "<span class='b-goods__main'><span class='b-goods__inner'><span  class='b-goods__categorie'>" +
+                        items['iName'] +
+                        "</span>" +
+                        "<a class='b-goods__title' href=" +
+                        'shop_single.html?iId=' + items['iId'] +
+                        ">" +
+                        items['iIntroduction'] +
+                        "</a></span><span class='b-goods__wrap'>" +
+                        "<span class='b-goods__price'>" +
+                        items['iPrice'] +
+                        "</span>" +
+                        "<a class='b-goods__cart' href=" +
+                        'cart.html?iId=' + items['iId'] +
+                        ">" +
+                            /*    加入购物车连接 + */
+                        ">add to cart</a></span></span></div></div>");
+                });
+                loadpicture();
+            }
+        });
+    })
+</script><!--加载搜索显示的数据-->
+<!--<script src="static/jq/items.js"></script>-->
+<script type="text/javascript">
+    $(function () {
+        $("#second").hide();//初始化第二个下拉框隐藏
+    });
+</script><!--隐藏下拉框-->
+
+<script type="text/javascript">
+    function a() {
+        $("#show").html("");
+        var search=decodeURI(getQueryString("search"));
+        var caFather = $("#caFather").val();
+        var type = $("#type").val();
+        var caId = $("#second").val();
+        if (type == "i_price1")/*如果点了价格降序，则要将下拉框的值改为i_price，否则他将以i_price1值去找*/
+        {
+            type = "i_price";
+        }
+        if (caFather == "") {/*如果将父类的下拉框标为不选择，则子类也要赋值为空*/
+            caId = ""
+        }
+
+        $.post("queryItemsUp", {caFather: caFather, type: type, caId: caId,iName:search}, function (result) {
+            var str;
+            $.each(result.data,function(index,items){
+                $("#show").append( "<div class='b-goods b-goods-4 b-goods_5-col '>" +
+                    "<a class='b-goods__media js-zoom-images' id='img' href=" + 'static/images/' +
+                    items['iPhotos'] +
+                    ">" +
+                    "<img class='img-responsive' alt='img'  src=" + 'images/' +
+                    items['iPhotos'] +
+                    ">" + "</a>" + "<span class='b-goods__main'><span class='b-goods__inner'><span  class='b-goods__categorie'>" +
+                    items['iName'] +
+                    "</span>" +
+                    "<a class='b-goods__title' href=" +
+                    'shop_single.html?iId=' + items['iId'] +
+                    ">" +
+                    items['iIntroduction'] +
+                    "</a></span><span class='b-goods__wrap'>" +
+                    "<span class='b-goods__price'>" +
+                    items['iPrice'] +
+                    "</span>" +
+                    "<a class='b-goods__cart' href=" +
+                    'cart.html?iId=' + items['iId'] +
+                    ">" +
+                        /*    加入购物车连接 + */
+                    ">add to cart</a></span></span></div></div>");
+            });
+            loadpicture();
+            $("#show").html(str);
+            $("#show").show();
+        })
+    }
+</script><!--升降序判断-->
+<script type="text/javascript">
+    function caSon() {
+        a();
+    }
+</script><!--子类点击事件-->
+<script type="text/javascript">
+    function caFather1() {
+      alert("cnm")
+    }
+</script>
+<script type="text/javascript">
+    function updown() {
+        $("#show").html("");
+        var search=decodeURI(getQueryString("search"));
+        var caFather = $("#caFather").val();
+        var type = $("#type").val();
+        var caId = $("#second").val();
+        if (type == "i_price1") {
+            var h = "i_price";
+            $.post("queryItemsDown", {caFather: caFather, type: h, caId: caId ,iName:search}, function (result) {
+                var str;
+                $.each(result.data,function(index,items){
+                    $("#show").append( "<div class='b-goods b-goods-4 b-goods_5-col '>" +
+                        "<a class='b-goods__media js-zoom-images' id='img' href=" + 'static/images/' +
+                        items['iPhotos'] +
+                        ">" +
+                        "<img class='img-responsive' alt='img'  src=" + 'images/' +
+                        items['iPhotos'] +
+                        ">" + "</a>" + "<span class='b-goods__main'><span class='b-goods__inner'><span  class='b-goods__categorie'>" +
+                        items['iName'] +
+                        "</span>" +
+                        "<a class='b-goods__title' href=" +
+                        'shop_single.html?iId=' + items['iId'] +
+                        ">" +
+                        items['iIntroduction'] +
+                        "</a></span><span class='b-goods__wrap'>" +
+                        "<span class='b-goods__price'>" +
+                        items['iPrice'] +
+                        "</span>" +
+                        "<a class='b-goods__cart' href=" +
+                        'cart.html?iId=' + items['iId'] +
+                        ">" +
+                            /*    加入购物车连接 + */
+                        ">add to cart</a></span></span></div></div>");
+                });
+                loadpicture();
+                $("#show").html(str);
+                $("#show").show();
+            })
+        }
+        else {
+            a();
+        }
+    }
+</script><!--升降序-->
+<script type="text/javascript">
+    function  search1() {
+        var search=$("#search").val();
+        window.location.href=encodeURI(encodeURI('shop.html?search='+search));
+        /*        open("shop.html?search="+search);*/
+
+    }
+</script>

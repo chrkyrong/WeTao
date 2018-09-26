@@ -80,8 +80,10 @@ public class ItemsController {
 
     /*加载图片*/
     @RequestMapping(value = "upFile")
-    public String upFile(MultipartFile i_Photos, HttpSession session) throws IOException {
+    public String upFile(MultipartFile i_Photos, HttpSession session,HttpServletRequest request) throws IOException {
         System.out.println("==6==============6");
+        /*如果上传的文件为文字名*/
+        request.setCharacterEncoding("UTF-8");
         //获取上传的文件名
         String originalFilename = i_Photos.getOriginalFilename();
         /* 存储文件路径*/
@@ -95,6 +97,7 @@ public class ItemsController {
         /*构建图片url路径，显示图片需要*/
         String url_root=session.getServletContext().getContextPath();
         String file_url = url_root + "/images/" + originalFilename;
+        System.out.println(file_url+"aaaaaaa");
             /* 将图片写入 */
             try {
                 File file1=new File(path,i_Photos.getOriginalFilename());
@@ -111,16 +114,69 @@ public class ItemsController {
 * caFather:根据父类查询，caName:根据子类查询
 * iName:根据商品名字查询：type:默认为以i_id升序
 * */
-@RequestMapping(value = "queryItems")
-    public Result queryItems(HttpServletRequest request,@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Date iDate,
+    @RequestMapping(value = "queryItemsUp")
+    public Result queryItemsUp(HttpServletRequest request,@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Date iDate,
                                     @RequestParam(value = "caFather", defaultValue = "") String caFather,
                                     @RequestParam(value = "iName", defaultValue = "")   String iName,
-                                    @RequestParam(value = "caName", defaultValue = "")  String caName ,
+                                    @RequestParam(value = "caId", defaultValue = "")  String caId ,
                                     @RequestParam(value = "type", defaultValue = "i_id")  String type) throws Exception{
-    System.out.println(type);
-    List<ItemsVo> itemsVos=itemsService.selectItems(caFather,iName,caName,type);
-
+   System.out.println(iName+"sssssss");/*查询输入商品类型*/
+    System.out.println(type);/*查詢判斷的類型*/
+    System.out.println(caId+"aaaaaa");
+    List<ItemsVo> itemsVos=itemsService.selectItemsUp(caFather,iName,caId,type);
+  //  System.out.println(itemsVos+"/////");
     return ResultUtil.success(itemsVos);
     }
 
+    /*根据各种条件查询商品（条件默认为空，即查询所有商品）
+    * caFather:根据父类查询，caName:根据子类查询
+    * iName:根据商品名字查询：type:默认为以i_id升序
+    * */
+    @RequestMapping(value = "queryItemsDown")
+    public Result queryItemsDown(HttpServletRequest request,
+                             @RequestParam(value = "caFather", defaultValue = "") String caFather,
+                             @RequestParam(value = "iName", defaultValue = "")   String iName,
+                             @RequestParam(value = "caId", defaultValue = "")  String caId ,
+                             @RequestParam(value = "type", defaultValue = "i_id")  String type) throws Exception{
+        System.out.println(iName+"sssssss");
+        System.out.println(type);
+        List<ItemsVo> itemsVos=itemsService.selectItemsDown(caFather,iName,caId,type);
+        return ResultUtil.success(itemsVos);
+    }
+
+    /*
+    * 主页面搜索框，输入值，可根据父类，子类，商品名模糊查询
+    * */
+    @RequestMapping(value = "queryItemsSearch")
+    public Result queryItemsSearch(HttpServletRequest request,
+                                @RequestParam(value = "search",defaultValue = "") String search){
+        search=request.getParameter("search");
+        System.out.println(search+"-------");
+        List<ItemsVo> itemsVos=itemsService.selectItemsAll(search);
+        System.out.println(itemsVos);
+        return ResultUtil.success(itemsVos);
+    }
+
+    /*查找商品，即商品主页显示销售量最高的9件*/
+    @RequestMapping(value = "queryItemsAll")
+    public Result queryItemsAll(HttpServletRequest request){
+        List<Items> items=itemsService.selectItems();
+        return ResultUtil.success(items);
+    }
+
+    /*查找商品，即商品主页显示最新上架最高的9件*/
+    @RequestMapping(value = "queryItemsAllDate")
+    public Result queryItemsAllDate(HttpServletRequest request){
+        List<Items> items=itemsService.selectItems1();
+        return ResultUtil.success(items);
+    }
+    /*
+    * 查詢單個商品的数据，用于单个商品显示
+    * */
+    @RequestMapping(value = "queryOneItems")
+    public Result queryOneItems(HttpServletRequest request, @RequestParam(value = "iId") Integer iId){
+        System.out.println(iId+"hhhhh");
+        System.out.println(itemsService.selectOneItems(iId));
+        return  ResultUtil.success(itemsService.selectOneItems(iId));
+    }
 }

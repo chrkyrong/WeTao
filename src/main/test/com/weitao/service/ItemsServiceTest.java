@@ -18,6 +18,11 @@ import java.util.List;
 @ContextConfiguration({"classpath:applicationContext.xml"})
 public class ItemsServiceTest {
     @Test
+    public void selectItems1() throws Exception {
+        System.out.println(itemsService.selectItems());
+    }
+
+    @Test
     public void selectItemsAll() throws Exception {
         System.out.println(itemsService.selectItemsAll("机"));
     }
@@ -33,7 +38,7 @@ public class ItemsServiceTest {
         System.out.println(caFather+"sssss");
    /*     List<Items> list=itemsMapper.selectItems(caFather);*/
         String type="i_price";
-        System.out.println(itemsService.selectItems(caFather,"","",type));
+        System.out.println(itemsService.selectItemsUp(caFather,"","",type));
     }
 
     @Test
@@ -72,6 +77,7 @@ public class ItemsServiceTest {
     }
     @Test
     public void seleteStore() throws Exception{
+        int a[][]=new int[10][10];
         Store store =new Store();
         store.setSellerId(1);
         store.setStStatus((byte) 0);

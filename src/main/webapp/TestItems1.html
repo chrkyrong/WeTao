@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="static/jq/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="static/jq/ajaxfileupload.js"></script>
+    <title>Title</title>
+    <style type="text/css">
+
+        .p1{
+            font-size: 14px;
+            color: #000;
+        }
+        .p2{
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+        .p3{
+            font-size: 14px;
+            color: #ff5f19;
+        }
+        .product{
+            width:100%;
+            position: relative;
+            margin: 20px 0 5px 0;
+            height: 100px;
+            background: #fafafa;
+        }
+
+        .img{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 20px;
+        }
+        .p{
+            display:inline-block;
+            float:left;
+            width:50%;
+            margin-top:6px;
+            font-family: Microsoft YaHei;
+        }
+        .p1{
+            margin-top:16px;
+        }
+    </style>
+</head>
+<body>
+
+    商品类别
+        <select id="caFather"  name="caFather" onchange="sonSel()" onclick="cafather()">
+            <option value="">请选择商品类型</option>
+            <option value="男鞋">男鞋</option>
+            <option value="男装">男装</option>
+            <option value="女鞋">女鞋</option>
+            <option value="女装">女装</option>
+            <option value="手机数码">手机数码</option>
+            <option value="电器">电器</option>
+        </select>
+        <select id="second" name="catagoryId" onclick="caSon()"></select>
+
+    <select id="type" onclick="updowm()">
+        <option value="i_id"  >请选择</option>
+        <option value="i_price">价格升序</option>
+        <option value="i_date" >上架时间</option>
+        <option value="i_price1">价格降序</option>
+    </select>
+<div id="box1"></div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    $(function () {
+        $("#second").hide();//初始化第二个下拉框隐藏
+    });
+</script>
+<script  type="text/javascript" src="static/jq/items.js"></script>

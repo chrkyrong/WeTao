@@ -12,8 +12,8 @@ public interface ItemsMapper {
     int insert(Items record);
 
     int insertSelective(Items record);
-
-    Items selectByPrimaryKey(Integer iId);
+    /*根據id查詢單個商品*/
+    List<Items> selectByPrimaryKey(Integer iId);
 
     int updateByPrimaryKeySelective(Items record);
 
@@ -21,13 +21,19 @@ public interface ItemsMapper {
 
     int updateByPrimaryKey(Items record);
     /*根据各种条件来查询，父类，商品名，子类，升序排序条件*/
-    List<ItemsVo> selectItems(@Param("caFather") String caFather,
+    List<ItemsVo> selectItemsUp(@Param("caFather") String caFather,
                               @Param("iName") String iName,
-                              @Param("caName") String caName ,@Param("type") String type);
+                              @Param("caId") String caId ,@Param("type") String type);
     /*根据各种条件来查询，父类，商品名，子类，降序排序条件*/
     List<ItemsVo> selectItemsDown(@Param("caFather") String caFather,
                               @Param("iName") String iName,
-                              @Param("caName") String caName ,@Param("type") String type);
+                              @Param("caId") String caId ,@Param("type") String type);
     /*为搜索框进行多字段的查询，包含父类，子类，商品名*/
     List<ItemsVo> selectItemsAll(@Param("search") String search);
+
+    /*查询所有商品，显示销售量最高的九件商品*/
+    List<Items> selectItems();
+
+    /*查询所有商品，显示最新上架的九件商品*/
+    List<Items> selectItems1();
 }

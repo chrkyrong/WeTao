@@ -1,5 +1,8 @@
 package com.weitao.bean;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.weitao.utils.CustomDateSerializer;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -16,6 +19,7 @@ public class Items {
 
     private BigDecimal iPrice;
 
+    @JsonSerialize(using=CustomDateSerializer.class)
     private Date iDate;
 
     private Byte iStatus;
