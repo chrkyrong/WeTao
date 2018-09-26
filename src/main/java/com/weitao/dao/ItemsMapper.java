@@ -31,16 +31,12 @@ public interface ItemsMapper {
     /*为搜索框进行多字段的查询，包含父类，子类，商品名*/
     List<ItemsVo> selectItemsAll(@Param("search") String search);
 
-<<<<<<< HEAD
     /*查询所有商品，显示销售量最高的九件商品*/
     List<Items> selectItems();
 
     /*查询所有商品，显示最新上架的九件商品*/
     List<Items> selectItems1();
-=======
 //    By CC
 //    商家店铺被封或解封，商品状态更变
     int changeItemsStatus(@Param("storeId")List<Integer> storeId,@Param("iStatus")Byte iStatus);
-
->>>>>>> 2981b4295ca342c8b714af0e6059069ce05661c7
 }
