@@ -225,7 +225,7 @@
     </where>
     ORDER BY items.${type} DESC
   </select>
-=======
+
     <resultMap id="BaseResultMap" type="com.weitao.bean.Items">
         <id column="i_id" jdbcType="INTEGER" property="iId"/>
         <result column="i_name" jdbcType="VARCHAR" property="iName"/>
@@ -454,7 +454,7 @@
         </where>
         ORDER BY items.${type} DESC
     </select>
->>>>>>> 2981b4295ca342c8b714af0e6059069ce05661c7
+
 
     <!--信息-->
     <resultMap id="selectItemsMap" type="com.weitao.vo.ItemsVo" extends="ResultMapWithBLOBs">
@@ -470,7 +470,7 @@
     <resultMap id="selectItemsDownMap" type="com.weitao.vo.ItemsVo" extends="selectItemsMap">
     </resultMap>
 
-<<<<<<< HEAD
+
   <!--查询显示主页面，显示销售量最高的9件商品-->
   <select id="selectItems" parameterType="com.weitao.bean.Items" resultType="com.weitao.bean.Items">
      SELECT *
@@ -483,7 +483,7 @@
     from items where  i_status=0
     ORDER BY i_date DESC LIMIT 9
   </select>
-=======
+
     <!--By CC-->
     <!--传入List商店id集合和状态值，改变多个商品的状态-->
     <update id="changeItemsStatus">
@@ -497,5 +497,13 @@
             </foreach>
         </if>
     </update>
->>>>>>> 2981b4295ca342c8b714af0e6059069ce05661c7
+    <!--查询单个商品-->
+    <select id="selectByPrimaryKey1" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
+        from items
+        where i_id = #{iId,jdbcType=INTEGER}
+    </select>
 </mapper>

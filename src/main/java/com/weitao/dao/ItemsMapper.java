@@ -12,8 +12,9 @@ public interface ItemsMapper {
     int insert(Items record);
 
     int insertSelective(Items record);
-    /*根據id查詢單個商品*/
-    List<Items> selectByPrimaryKey(Integer iId);
+
+    Items selectByPrimaryKey(Integer iId);
+
 
     int updateByPrimaryKeySelective(Items record);
 
@@ -39,4 +40,7 @@ public interface ItemsMapper {
 //    By CC
 //    商家店铺被封或解封，商品状态更变
     int changeItemsStatus(@Param("storeId")List<Integer> storeId,@Param("iStatus")Byte iStatus);
+
+    /*根據id查詢單個商品*/
+    List<Items> selectByPrimaryKey1(Integer iId);
 }

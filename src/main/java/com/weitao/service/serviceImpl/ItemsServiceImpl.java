@@ -91,7 +91,7 @@ public class ItemsServiceImpl implements ItemsService {
     /*显示商品信息*/
     @Override
     public List<Items> selectOneItems(Integer iId) {
-        return itemsMapper.selectByPrimaryKey(iId);
+        return itemsMapper.selectByPrimaryKey1(iId);
     }
 
 }
