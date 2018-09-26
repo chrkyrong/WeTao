@@ -22,15 +22,17 @@ public interface EvaluateMapper {
 
     int updateByPrimaryKey(Evaluate record);
 
-//    根据商品id，查询所有该商品的评价
+    //    根据商品id，查询所有该商品的评价
     List<EvaluateVo> selectByItemsId(Integer itemsId);
 
-//    根据商家id，查询该商家的收到的所有的评价
+    //    根据商家id，查询该商家的收到的所有的评价
     List<EvaluateVo2> selectBySeller(Integer sellerId);
 
-//    根据搜索框的字符串，模糊搜索（评价文本、买家名字、店铺名、买家订单留言、订单总价格）
-    List<EvaluateVo2> selectByCondition(@Param("sellerId")Integer sellerId,@Param("condition")String condition);
-
-    List<EvaluateVo2> searchEvaluation (@Param("sellerId")Integer sellerId, @Param("stName")String stName, @Param("iName")String iName,@Param("eLevel")Byte eLevel,@Param("eDescription")String eDescription,@Param("oDate")String oDate);
-
+    //    商家，模糊搜索
+    List<EvaluateVo2> searchEvaluation(@Param("sellerId") Integer sellerId,
+                                       @Param("stName") String stName,
+                                       @Param("iName") String iName,
+                                       @Param("eLevel") Byte eLevel,
+                                       @Param("eDescription") String eDescription,
+                                       @Param("oDate") String oDate);
 }

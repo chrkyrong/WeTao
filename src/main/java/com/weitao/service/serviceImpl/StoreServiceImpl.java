@@ -46,60 +46,69 @@ public class StoreServiceImpl implements StoreService {
 
     //    管理员，模糊搜索
     @Override
-    public List<StoreVo> managerSeach(String select) {
+    public List<StoreVo> managerSeach(StoreVo select) {
 //        创建存放数据结果的result(List)
         List<StoreVo> result = new ArrayList<StoreVo>();
 
+        String stId = select.getStore().getStId()+"".trim();
+        Byte stStatus = select.getStStatus();
+        String stName = select.getStName();
+        String sId = select.getStore().getSellerId()+"";
+        String sAccount = select.getsAccount();
+        storeMapper.managerSelectByCondition(stId,stStatus,stName,sId,sAccount);
+        return result;
+    }
+
 //        首先传来的是字符串，进行店铺名字的模糊搜索或者是商家名字的模糊搜索
 //        查询店铺
-        if (storeMapper.selectStoreByStoreName(select) != null)
-            result.addAll(storeMapper.selectStoreByStoreName(select));
+//        if (storeMapper.selectStoreByStoreName(select) != null)
+//            result.addAll(storeMapper.selectStoreByStoreName(select));
 
 //        查询卖家姓名
-        Seller seller = new Seller();
-        seller.setsAccount(select);
-        if (storeMapper.selectStoreBySellerAccount(seller) != null)
-            result.addAll(storeMapper.selectStoreBySellerAccount(seller));
+//        Seller seller = new Seller();
+//        seller.setsAccount(select);
+//        if (storeMapper.selectStoreBySellerAccount(seller) != null)
+//            result.addAll(storeMapper.selectStoreBySellerAccount(seller));
 
 
 //        使用正则表达式判断字符串是否为整型
-        Pattern pattern = Pattern.compile("[0-9]*");
-        Matcher isNum = pattern.matcher(select);
+//        Pattern pattern = Pattern.compile("[0-9]*");
+//        Matcher isNum = pattern.matcher(select);
 
-        if (isNum.matches()) {
+//        if (isNum.matches()) {
 
 //            字符串为整型，则转化为id(int)
-            int id = Integer.parseInt(select);
+//            int id = Integer.parseInt(select);
 //            创建一个第三个list存id模糊查询结果
 
 //            判断id是否属于店铺id
-            if (7000000 <= id && 8000000 > id) {
+//            if (7000000 <= id && 8000000 > id) {
 //                执行查询店铺id
-                if (storeMapper.managerSelectById(id) != null)
-                    result.add(storeMapper.managerSelectById(id));
-            }
+//                if (storeMapper.managerSelectById(id) != null)
+//                    result.add(storeMapper.managerSelectById(id));
+//            }
 //            判断id是否属于商家id
-            else if (2000000 <= id && 3000000 > id) {
+//            else if (2000000 <= id && 3000000 > id) {
 
 //                执行查询商家id
-                seller.setsId(id);
-                if (storeMapper.selectStoreBySellerId(seller) != null)
-                    result.addAll(storeMapper.selectStoreBySellerId(seller));
-            }
-        }
+//                seller.setsId(id);
+//                if (storeMapper.selectStoreBySellerId(seller) != null)
+//                    result.addAll(storeMapper.selectStoreBySellerId(seller));
+//            }
+//        }
 
 //        去重算法，需要优化
 
-        for (int i = 0; i < result.size() - 1; i++) {
-            for (int j = result.size() - 1; j > i; j--) {
-                if (result.get(j).getStId().equals(result.get(i).getStId())) {
-                    result.remove(j);
-                }
-            }
-        }
+//        for (int i = 0; i < result.size() - 1; i++) {
+//            for (int j = result.size() - 1; j > i; j--) {
+//                if (result.get(j).getStId().equals(result.get(i).getStId())) {
+//                    result.remove(j);
+//                }
+//            }
+//        }
 
-        return result;
-    }
+//        return result;
+//    }
 
     //    管理员，封店或者是解封
     @Override
@@ -136,11 +145,11 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public boolean updateStore(Store store) throws Exception {
         boolean result = false;
-            int update = storeMapper.updateByPrimaryKeySelective(store);
-            if (update == 1) {
+        int update = storeMapper.updateByPrimaryKeySelective(store);
+        if (update == 1) {
 //            更新店铺名成功返回的是1
-                result = true;
-            }
+            result = true;
+        }
         return result;
     }
 }

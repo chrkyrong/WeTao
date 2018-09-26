@@ -23,10 +23,11 @@ import static org.junit.Assert.*;
 public class ItemsMapperTest {
     @Test
     public void selectItemsAll() throws Exception {
-        String search="鞋";
-        List<ItemsVo> list=itemsMapper.selectItemsAll(search);
+        /*String search="鞋";*/
+        List<Items> list=itemsMapper.selectByPrimaryKey1(1);
         System.out.println(list);
     }
+
 
     @Test
     public void selectByPrimaryKey() throws Exception {

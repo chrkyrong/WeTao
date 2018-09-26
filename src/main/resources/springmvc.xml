@@ -13,6 +13,10 @@
     <mvc:annotation-driven conversion-service="conversionService"/>
 
     <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".html"></property>
+    </bean>
 <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"></property>
         <property name="suffix" value=".html"></property>
@@ -35,15 +39,15 @@
         <property name="converters">
             <util:list list-class="java.util.ArrayList">
                 <!--日期转换-->
-                <bean class="com.weitao.utils.DateConverter"/>
+                <bean class="com.weitao.utils.DateConverter"></bean>
             </util:list>
         </property>
     </bean>
     <!--拦截器-->
-   <!-- <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.weitao.utils.LoginInterceptor"></bean>
-        </mvc:interceptor>
-    </mvc:interceptors>-->
+    <!-- <mvc:interceptors>
+         <mvc:interceptor>
+             <mvc:mapping path="/**"/>
+             <bean class="com.weitao.utils.LoginInterceptor"></bean>
+         </mvc:interceptor>
+     </mvc:interceptors>-->
 </beans>

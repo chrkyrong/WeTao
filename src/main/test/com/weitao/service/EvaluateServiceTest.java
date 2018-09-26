@@ -24,17 +24,20 @@ public class EvaluateServiceTest {
     @Autowired
     private EvaluateService evaluateService;
 
+    //添加评论
     @Test
     public void insertEvaluateTest() throws Exception {
-        Evaluate evaluate = new Evaluate((byte) 5,"C://asd",3000002,7000001,1000000,8000003,"好好吃");
+        Evaluate evaluate = new Evaluate((byte) 5,"bg-1.jpg",3000002,7000001,1000000,8000003,"好好吃");
         evaluateService.insertEvaluate(evaluate,3000002);
     }
 
+    //根据商品id查评论
     @Test
     public void selectEvaluateByItemsId() throws Exception {
         System.out.println(evaluateService.selectEvaluate(8000003));
     }
 
+    //根据商家id查询他拥有的产品的评论
     @Test
     public void sellerEvaluationTest() throws Exception {
         for(EvaluateVo2 evaluateVo2 : evaluateService.sellerEvaluation(2000000))
@@ -43,10 +46,10 @@ public class EvaluateServiceTest {
         }
     }
 
-
+    //根据商家选择的条件，进行评论的模糊查询
     @Test
     public void searchEvaluationTest() throws Exception {
-        for(EvaluateVo2 evaluateVo2 :evaluateService.searchEvaluation(2000000,"评论","可",""))
+        for(EvaluateVo2 evaluateVo2 :evaluateService.searchEvaluation(2000001,"评论","娃",""))
         {
             System.out.println(evaluateVo2);
         }

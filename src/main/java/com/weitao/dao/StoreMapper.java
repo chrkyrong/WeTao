@@ -42,5 +42,12 @@ public interface StoreMapper {
     List<StoreVo> selectStoreByStoreName(String stName);
 
     //    管理员，根据店铺id多选查封和解封
-    int changeStoreStatus(@Param("stId") List<Integer> stId,@Param("stStatus") Byte stStatus);
+    int changeStoreStatus(@Param("stId") List<Integer> stId, @Param("stStatus") Byte stStatus);
+
+    //    管理员根据条件查询店铺
+    List<StoreVo> managerSelectByCondition(@Param("stId") String stId,
+                                           @Param("stStatus") Byte stStatus,
+                                           @Param("stName") String stName,
+                                           @Param("sId") String sId,
+                                           @Param("sAccount") String sAccount);
 }

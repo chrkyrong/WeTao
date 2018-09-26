@@ -19,8 +19,18 @@ function Onload1(iId) {
         success: function (result) {
             var s = "";
             $.each(result.data, function (i, v) {
-                s += '<tr><td><img width="50px" height="50px" src="static/images/' + v.user.uIcon + '"/>';
-                s += '</td><td>' + v.user.uUserName + '</td><td>' + v.evaluate.eLevel + '</td><td><img width="50px" height="50px" src="static/images/' + v.evaluate.ePhotos + '"/></td><td>' + v.evaluate.eDescription + '</td>';
+                s += '<tr><td><img width="60px" height="60px" src="static/images/' + v.user.uIcon + '"/>';
+                s += '</td><td>' + v.user.uUserName;
+                s += '</td><td>' + v.evaluate.eLevel;
+                // s += '</td><td><img width="50px" height="50px" src="static/images/' + v.evaluate.ePhotos + '"/>';
+                if (v.evaluate.ePhotos == null || v.evaluate.ePhotos == "") {
+                    s += "</td><td>无买家秀";
+                }
+                else {
+                    s += '</td><td><center><a class = "b-goods__media js-zoom-images" href = "static/images/' + v.evaluate.ePhotos + '">';
+                    s += '<img alt = "img" width="100px" height="100px" src = "static/images/' + v.evaluate.ePhotos + '" class ="img-responsive"></a><center>';
+                }
+                s += '</td><td>' + v.evaluate.eDescription + '</td>';
                 s += '</tr>';
             })
             $("#evaluated").first("tr").append(s);
@@ -101,7 +111,7 @@ function uploadPhoto() {
 }
 
 //查询订单详情
-function Onload3(orderId) {
+/*function Onload3(orderId) {
     orderId = getQueryString('orderId');
     alert(orderId);
     $.ajax({
@@ -132,41 +142,40 @@ function Onload3(orderId) {
         }
     })
 
-}
+}*/
 
 
 function Onload4(sellerId) {
     sellerId = getQueryString('sellerId');
 
-    alert(sellerId);
+    // alert(sellerId);
     $.ajax({
         type: 'get',
         url: '/evaluate/sellerEvaluation?sellerId=' + sellerId,
         dataType: 'json',
         data: null,
         success: function (result) {
-            var s3 = "<input type='hidden' name='sellerId' id='sellerId' value='" + sellerId + "'/>";
-            $("#formTest").first("input").append(s3);
-            // $("#formTest").html(s3);
-            var s = "<tr >\n" +
-                "        <td>商品</td>\n" +
-                "        <td>商店</td>\n" +
-                "        <td>买家</td>\n" +
-                "        <td>评论</td>\n" +
-                "        <td>评级</td>\n" +
-                "        <td>图片</td>\n" +
-                "        <td>时间</td>\n" +
-                "        <td>详情(价格)</td>\n" +
-                "        <td>详情(买家留言)</td>\n" +
-                "    </tr>";
+            var s = "";
             $.each(result.data, function (i, v) {
-                s += '<tr><td>' + v.evaluateVo.items.iName;
-                s += '</td><td>' + v.store.stName + '</td><td>' + v.evaluateVo.user.uUserName;
-                s += '</td><td>' + v.evaluateVo.evaluate.eDescription + '</td><td>' + v.evaluateVo.evaluate.eLevel;
-                s += '</td><td>' + v.evaluateVo.evaluate.ePhotos + '</td><td>' + v.order.oDate;
-                s += '</td><td>' + v.order.oPrice + '</td><td>' + v.order.oMessage + '</td></tr>';
+                s += "<tr><td>" + v.evaluateVo.items.iName;
+                s += "</td><td>" + v.store.stName;
+                s += "</td><td>" + v.evaluateVo.user.uUserName;
+                s += "</td><td>" + v.evaluateVo.evaluate.eDescription;
+                s += "</td><td>" + v.evaluateVo.evaluate.eLevel;
+                if (v.evaluateVo.evaluate.ePhotos == null || v.evaluateVo.evaluate.ePhotos == "") {
+                    s += "</td><td>无买家秀";
+                }
+                else {
+                    s += "</td><td><a class = 'b-goods__media js-zoom-images' href = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'>";
+                    s += "<img alt = 'img' src = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'class ='img-responsive'></a>";
+                }
+                s += "</td><td>" + v.order.oDate;
+                s += "</td><td><div class = 'dropdown'><span style ='color:#FFC125'>详情</span><div class = 'dropdown-content'><p>总价：" + v.order.oPrice + "</p>";
+                s += "<p>留言：" + v.order.oMessage + "</p></div></div></td></tr>";
+
             })
-            // alert(s1);
+            // bigger();
+            // alert(s);
             $("#show").first("tr").append(s);
         },
         error: function () {
@@ -176,4 +185,58 @@ function Onload4(sellerId) {
     })
 
 }
+
+/*function onSearch() {
+    var search = $('#search').val();
+    var condition = $('#condition').val();
+    var date = $('#date').val();
+    var sellerId = $('#sellerId').val();
+    $.ajax({
+        url: '/evaluate/formTest',
+        type: 'post',
+        data: {search: search, condition: condition, date: date, sellerId: sellerId},
+        success: function (result) {
+            alert("成功");
+
+            $.each(result.data, function (i, v) {
+                s += '<tr><td>' + v.evaluateVo.items.iName;
+                s += '</td><td>' + v.store.stName + '</td><td>' + v.evaluateVo.user.uUserName;
+                s += '</td><td>' + v.evaluateVo.evaluate.eDescription + '</td><td>' + v.evaluateVo.evaluate.eLevel;
+                s += '</td><td><a class="b-goods__media js-zoom-images" href="static/wt/images/' + v.evaluateVo.evaluate.ePhotos + '">' +
+                    '<img alt="img" src="static/wt/images/' + v.evaluateVo.evaluate.ePhotos + '">';
+                s += '</td><td>' + v.order.oDate;
+                s += '</td><td>' + v.order.oPrice + '</td><td>' + v.order.oMessage + '</td></tr>';
+            })
+            alert(s);
+            $("#show").html(s);
+
+//                $("#show").first("tr").append(s);
+        },
+        error: function (result) {
+            alert("失败了")
+        }
+    })
+}*/
+/*function bigger() {
+    $('.js-zoom-images').magnificPopup({
+        type: 'image',
+        mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+
+        zoom: {
+            enabled: true, // By default it's false, so don't forget to enable it
+
+            duration: 300, // duration of the effect, in milliseconds
+            easing: 'ease-in-out', // CSS transition easing function
+
+            // The "opener" function should return the element from which popup will be zoomed in
+            // and to which popup will be scaled down
+            // By defailt it looks for an image tag:
+            opener: function(openerElement) {
+                // openerElement is the element on which popup was initialized, in this case its <a> tag
+                // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+                return openerElement.is('img') ? openerElement : openerElement.find('img');
+            }
+        }
+    });
+}*/
 

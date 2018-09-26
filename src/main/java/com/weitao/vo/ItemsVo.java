@@ -2,12 +2,22 @@ package com.weitao.vo;
 
 import com.weitao.bean.Category;
 import com.weitao.bean.Items;
+import com.weitao.bean.Store;
 
 /**
  *
  */
 
 public class ItemsVo extends Items{
+    private Store store;
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 
     private Items items;
 
