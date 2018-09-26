@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weitao.dao.ItemsMapper">
-<<<<<<< HEAD
   <resultMap id="BaseResultMap" type="com.weitao.bean.Items">
     <id column="i_id" jdbcType="INTEGER" property="iId" />
     <result column="i_name" jdbcType="VARCHAR" property="iName" />
@@ -181,7 +180,9 @@
       catagory_id = #{catagoryId,jdbcType=INTEGER}
     where i_id = #{iId,jdbcType=INTEGER}
   </update>
-<!--按条件的查的sql片段-->
+
+
+  <!--按条件的查的sql片段-->
   <sql id="query_items">
     <if test="_parameter!=null">
       and category.ca_father LIKE '%${caFather}%'
@@ -195,23 +196,23 @@
   </sql>
   <!--给一个条件查询-->
   <select id="selectItemsAll" parameterType="com.weitao.vo.ItemsVo" resultMap="selectItemsMap">
-              SELECT items.* from items
-              where  i_status=0 and (
-               items.catagory_id IN
-              (SELECT ca_id FROM category WHERE ca_father like '%${search}%')
-              or items.i_name like '%${search}%')
+    SELECT items.* from items
+    where  i_status=0 and (
+    items.catagory_id IN
+    (SELECT ca_id FROM category WHERE ca_father like '%${search}%')
+    or items.i_name like '%${search}%')
   </select>
 
   <!--根据不同的条件查询类别中的各种商品s升序-->
   <select id="selectItemsUp" parameterType="com.weitao.vo.ItemsVo" resultMap="selectItemsMap">
-    		select items.*,category.ca_father
-					from items,category
-            <where>
-                    i_status=0
-                    and items.catagory_id=category.ca_id
-                <include refid="query_items"></include>
-             </where>
-             ORDER BY items.${type}
+    select items.*,category.ca_father
+    from items,category
+    <where>
+      i_status=0
+      and items.catagory_id=category.ca_id
+      <include refid="query_items"></include>
+    </where>
+    ORDER BY items.${type}
   </select>
 
   <!--根据不同的条件查询类别中的各种商品s降序-->
@@ -226,250 +227,19 @@
     ORDER BY items.${type} DESC
   </select>
 
-    <resultMap id="BaseResultMap" type="com.weitao.bean.Items">
-        <id column="i_id" jdbcType="INTEGER" property="iId"/>
-        <result column="i_name" jdbcType="VARCHAR" property="iName"/>
-        <result column="i_photos" jdbcType="VARCHAR" property="iPhotos"/>
-        <result column="i_exsit" jdbcType="INTEGER" property="iExsit"/>
-        <result column="i_sale" jdbcType="INTEGER" property="iSale"/>
-        <result column="i_price" jdbcType="DECIMAL" property="iPrice"/>
-        <result column="i_date" jdbcType="TIMESTAMP" property="iDate"/>
-        <result column="i_status" jdbcType="TINYINT" property="iStatus"/>
-        <result column="store_id" jdbcType="INTEGER" property="storeId"/>
-        <result column="catagory_id" jdbcType="INTEGER" property="catagoryId"/>
-    </resultMap>
-    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.weitao.bean.Items">
-        <result column="i_introduction" jdbcType="LONGVARCHAR" property="iIntroduction"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        i_id, i_name, i_photos, i_exsit, i_sale, i_price, i_date, i_status, store_id, catagory_id
-    </sql>
-    <sql id="Blob_Column_List">
-        i_introduction
-    </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-        select
-        <include refid="Base_Column_List"/>
-        ,
-        <include refid="Blob_Column_List"/>
-        from items
-        where i_id = #{iId,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        DELETE FROM items
-        WHERE i_id = #{iId,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" parameterType="com.weitao.bean.Items">
-        INSERT INTO items (i_id, i_name, i_photos,
-                           i_exsit, i_sale, i_price,
-                           i_date, i_status, store_id,
-                           catagory_id, i_introduction)
-        VALUES (#{iId,jdbcType=INTEGER}, #{iName,jdbcType=VARCHAR}, #{iPhotos,jdbcType=VARCHAR},
-                                         #{iExsit,jdbcType=INTEGER}, #{iSale,jdbcType=INTEGER},
-                                         #{iPrice,jdbcType=DECIMAL},
-                                         #{iDate,jdbcType=TIMESTAMP}, #{iStatus,jdbcType=TINYINT},
-                                         #{storeId,jdbcType=INTEGER},
-                                         #{catagoryId,jdbcType=INTEGER}, #{iIntroduction,jdbcType=LONGVARCHAR})
-    </insert>
-    <insert id="insertSelective" parameterType="com.weitao.bean.Items">
-        insert into items
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="iId != null">
-                i_id,
-            </if>
-            <if test="iName != null">
-                i_name,
-            </if>
-            <if test="iPhotos != null">
-                i_photos,
-            </if>
-            <if test="iExsit != null">
-                i_exsit,
-            </if>
-            <if test="iSale != null">
-                i_sale,
-            </if>
-            <if test="iPrice != null">
-                i_price,
-            </if>
-            <if test="iDate != null">
-                i_date,
-            </if>
-            <if test="iStatus != null">
-                i_status,
-            </if>
-            <if test="storeId != null">
-                store_id,
-            </if>
-            <if test="catagoryId != null">
-                catagory_id,
-            </if>
-            <if test="iIntroduction != null">
-                i_introduction,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="iId != null">
-                #{iId,jdbcType=INTEGER},
-            </if>
-            <if test="iName != null">
-                #{iName,jdbcType=VARCHAR},
-            </if>
-            <if test="iPhotos != null">
-                #{iPhotos,jdbcType=VARCHAR},
-            </if>
-            <if test="iExsit != null">
-                #{iExsit,jdbcType=INTEGER},
-            </if>
-            <if test="iSale != null">
-                #{iSale,jdbcType=INTEGER},
-            </if>
-            <if test="iPrice != null">
-                #{iPrice,jdbcType=DECIMAL},
-            </if>
-            <if test="iDate != null">
-                #{iDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="iStatus != null">
-                #{iStatus,jdbcType=TINYINT},
-            </if>
-            <if test="storeId != null">
-                #{storeId,jdbcType=INTEGER},
-            </if>
-            <if test="catagoryId != null">
-                #{catagoryId,jdbcType=INTEGER},
-            </if>
-            <if test="iIntroduction != null">
-                #{iIntroduction,jdbcType=LONGVARCHAR},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Items">
-        update items
-        <set>
-            <if test="iName != null">
-                i_name = #{iName,jdbcType=VARCHAR},
-            </if>
-            <if test="iPhotos != null">
-                i_photos = #{iPhotos,jdbcType=VARCHAR},
-            </if>
-            <if test="iExsit != null">
-                i_exsit = #{iExsit,jdbcType=INTEGER},
-            </if>
-            <if test="iSale != null">
-                i_sale = #{iSale,jdbcType=INTEGER},
-            </if>
-            <if test="iPrice != null">
-                i_price = #{iPrice,jdbcType=DECIMAL},
-            </if>
-            <if test="iDate != null">
-                i_date = #{iDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="iStatus != null">
-                i_status = #{iStatus,jdbcType=TINYINT},
-            </if>
-            <if test="storeId != null">
-                store_id = #{storeId,jdbcType=INTEGER},
-            </if>
-            <if test="catagoryId != null">
-                catagory_id = #{catagoryId,jdbcType=INTEGER},
-            </if>
-            <if test="iIntroduction != null">
-                i_introduction = #{iIntroduction,jdbcType=LONGVARCHAR},
-            </if>
-        </set>
-        where i_id = #{iId,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weitao.bean.Items">
-        UPDATE items
-        SET i_name         = #{iName,jdbcType=VARCHAR},
-            i_photos       = #{iPhotos,jdbcType=VARCHAR},
-            i_exsit        = #{iExsit,jdbcType=INTEGER},
-            i_sale         = #{iSale,jdbcType=INTEGER},
-            i_price        = #{iPrice,jdbcType=DECIMAL},
-            i_date         = #{iDate,jdbcType=TIMESTAMP},
-            i_status       = #{iStatus,jdbcType=TINYINT},
-            store_id       = #{storeId,jdbcType=INTEGER},
-            catagory_id    = #{catagoryId,jdbcType=INTEGER},
-            i_introduction = #{iIntroduction,jdbcType=LONGVARCHAR}
-        WHERE i_id = #{iId,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.weitao.bean.Items">
-        UPDATE items
-        SET i_name      = #{iName,jdbcType=VARCHAR},
-            i_photos    = #{iPhotos,jdbcType=VARCHAR},
-            i_exsit     = #{iExsit,jdbcType=INTEGER},
-            i_sale      = #{iSale,jdbcType=INTEGER},
-            i_price     = #{iPrice,jdbcType=DECIMAL},
-            i_date      = #{iDate,jdbcType=TIMESTAMP},
-            i_status    = #{iStatus,jdbcType=TINYINT},
-            store_id    = #{storeId,jdbcType=INTEGER},
-            catagory_id = #{catagoryId,jdbcType=INTEGER}
-        WHERE i_id = #{iId,jdbcType=INTEGER}
-    </update>
-    <!--按条件的查的sql片段-->
-    <sql id="query_items">
-        <if test="_parameter!=null">
-            and category.ca_father LIKE '%${caFather}%'
-        </if>
-        <if test="_parameter!=null">
-            and items.i_name LIKE '%${iName}%'
-        </if>
-        <if test="_parameter!=null">
-            and category.ca_name LIKE '%${caName}%'
-        </if>
-    </sql>
-    <!--给一个条件查询-->
-    <select id="selectItemsAll" parameterType="com.weitao.vo.ItemsVo" resultMap="selectItemsMap">
-        SELECT items.*
-        FROM items
-        WHERE items.i_status = 0
-              AND items.catagory_id IN
-                  (SELECT ca_id
-                   FROM category
-                   WHERE ca_father LIKE '%${search}%' OR ca_name LIKE '%${search}%')
-              OR items.i_name LIKE '%${search}%'
-    </select>
+  <!--信息-->
+  <resultMap id="selectItemsMap" type="com.weitao.vo.ItemsVo" extends="ResultMapWithBLOBs">
+    <!--商品信息-->
+    <!--一个商品对应一个类别-->
+    <association property="category" javaType="com.weitao.bean.Category">
+      <id column="ca_id" jdbcType="INTEGER" property="caId" />
+      <result column="ca_name" jdbcType="VARCHAR" property="caName" />
+      <result column="ca_father" jdbcType="VARCHAR" property="caFather" />
+    </association>
+  </resultMap>
 
-    <!--根据不同的条件查询类别中的各种商品s升序-->
-    <select id="selectItems" parameterType="com.weitao.vo.ItemsVo" resultMap="selectItemsMap">
-        select items.*,category.ca_father
-        from items,category
-        <where>
-            i_status=0
-            and items.catagory_id=category.ca_id
-            <include refid="query_items"></include>
-        </where>
-        ORDER BY items.${type}
-    </select>
-
-    <!--根据不同的条件查询类别中的各种商品s升序-->
-    <select id="selectItemsDown" parameterType="com.weitao.vo.ItemsVo" resultMap="selectItemsDownMap">
-        select items.*,category.ca_father
-        from items,category
-        <where>
-            i_status=0
-            and items.catagory_id=category.ca_id
-            <include refid="query_items"></include>
-        </where>
-        ORDER BY items.${type} DESC
-    </select>
-
-
-    <!--信息-->
-    <resultMap id="selectItemsMap" type="com.weitao.vo.ItemsVo" extends="ResultMapWithBLOBs">
-        <!--商品信息-->
-        <!--一个商品对应一个类别-->
-        <association property="category" javaType="com.weitao.bean.Category">
-            <id column="ca_id" jdbcType="INTEGER" property="caId"/>
-            <result column="ca_name" jdbcType="VARCHAR" property="caName"/>
-            <result column="ca_father" jdbcType="VARCHAR" property="caFather"/>
-        </association>
-    </resultMap>
-
-    <resultMap id="selectItemsDownMap" type="com.weitao.vo.ItemsVo" extends="selectItemsMap">
-    </resultMap>
-
+  <resultMap id="selectItemsDownMap" type="com.weitao.vo.ItemsVo" extends="selectItemsMap">
+  </resultMap>
 
   <!--查询显示主页面，显示销售量最高的9件商品-->
   <select id="selectItems" parameterType="com.weitao.bean.Items" resultType="com.weitao.bean.Items">
@@ -477,7 +247,7 @@
      from items where  i_status=0
      ORDER BY i_sale DESC LIMIT 9
   </select>
-<!--查询显示主页面，显示最新上架的9件商品-->
+  <!--查询显示主页面，显示最新上架的9件商品-->
   <select id="selectItems1" parameterType="com.weitao.bean.Items" resultType="com.weitao.bean.Items">
     SELECT *
     from items where  i_status=0
@@ -498,12 +268,9 @@
         </if>
     </update>
     <!--查询单个商品-->
-    <select id="selectByPrimaryKey1" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-        select
-        <include refid="Base_Column_List" />
-        ,
-        <include refid="Blob_Column_List" />
+    <select id="selectByPrimaryKey1" parameterType="java.lang.Integer" resultType="com.weitao.bean.Items">
+        select *
         from items
-        where i_id = #{iId,jdbcType=INTEGER}
+        where i_id = #{VALUE }
     </select>
 </mapper>
