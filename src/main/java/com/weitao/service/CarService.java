@@ -1,6 +1,7 @@
 package com.weitao.service;
 
 import com.weitao.bean.ItemsCar;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

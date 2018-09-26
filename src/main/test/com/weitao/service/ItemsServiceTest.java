@@ -19,7 +19,7 @@ import java.util.List;
 public class ItemsServiceTest {
     @Test
     public void selectItems1() throws Exception {
-        System.out.println(itemsService.selectItems());
+        System.out.println(itemsService.selectItems1());
     }
 
     @Test
