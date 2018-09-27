@@ -1,5 +1,6 @@
 package com.weitao.service;
 
+import com.weitao.bean.Car;
 import com.weitao.bean.Order;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface OrderService {
 
     List<Order> getByUser3(int userId);//根据用户id查询已签收订单
 
+//    edited by CC
+    void insertOrders(List<Car> carList);
 }

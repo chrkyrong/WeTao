@@ -23,4 +23,6 @@ public interface OrderMapper {
 
     List<Order> selectByUser3(int userId);//根据用户id查询已签收订单
 
+//    edited by CC
+    void insertAndGetId(Order order);//添加订单到数据库并获得新增的主键
 }

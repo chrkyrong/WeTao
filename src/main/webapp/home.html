@@ -337,29 +337,29 @@
                      data-min1200="2" data-margin="80" data-pagination="false" data-navigation="true"
                      data-auto-play="4000" data-center="true" data-stop-on-hover="true">
                     <!--滑动展示模块1，开始///////////////////////////////////////////////////////////////////////////////////////-->
-                    <div class="b-goods b-goods-3">
-                        <div class="b-goods__inner">
-                            <div class="b-goods__categorie">TAKAHIROMIYASHITA</div>
-                            <div class="b-goods__title">Aliquam consequat at lorem ut luctus</div>
-                            <span class="b-goods__number">01</span>
-                        </div>
-                        <div class="b-goods__img">
-                            <img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">
-                            <div class="b-goods__label">sale 50%</div>
-                        </div>
+                    <div class="b-goods b-goods-3" id="yy">
+                        <!--<div class="b-goods__inner">-->
+                            <!--<div class="b-goods__categorie">TAKAHIROMIYASHITA</div>-->
+                            <!--<div class="b-goods__title">Aliquam consequat at lorem ut luctus</div>-->
+                            <!--<span class="b-goods__number">01</span>-->
+                        <!--</div>-->
+                        <!--<div class="b-goods__img">-->
+                            <!--<img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">-->
+                            <!--<div class="b-goods__label">sale 50%</div>-->
+                        <!--</div>-->
                     </div>
                     <!--滑动展示模块1，结束///////////////////////////////////////////////////////////////////////////////////////-->
 
                     <!--滑动展示模块2，开始///////////////////////////////////////////////////////////////////////////////////////-->
-                    <div class="b-goods b-goods-3">
-                        <div class="b-goods__inner">
-                            <div class="b-goods__categorie">TAKAHIROMIYASHITA</div>
-                            <div class="b-goods__title">Sale of autumn collection Adidas and Nike</div>
-                            <span class="b-goods__number">02</span>
-                        </div>
-                        <div class="b-goods__img">
-                            <img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">
-                        </div>
+                    <div class="b-goods b-goods-3" id="ww">
+                        <!--<div class="b-goods__inner">-->
+                            <!--<div class="b-goods__categorie">TAKAHIROMIYASHITA</div>-->
+                            <!--<div class="b-goods__title">Sale of autumn collection Adidas and Nike</div>-->
+                            <!--<span class="b-goods__number">02</span>-->
+                        <!--</div>-->
+                        <!--<div class="b-goods__img">-->
+                            <!--<img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">-->
+                        <!--</div>-->
                     </div>
                     <!--滑动展示模块2，结束///////////////////////////////////////////////////////////////////////////////////////-->
 
@@ -1014,5 +1014,19 @@ $(function () {
             }
         })
     });
+</script>
+<script type="text/javascript">
+   $(function () {
+       alert("sss")
+       $("#yy").append("<div class=\"b-goods__inner\">\n" +
+           "                            <div class=\"b-goods__categorie\">啊啊啊</div>\n" +
+           "                            <div class=\"b-goods__title\">Aliquam consequat at lorem ut luctus</div>\n" +
+           "                            <span class=\"b-goods__number\">01</span>\n" +
+           "                        </div>\n" +
+           "                        <div class=\"b-goods__img\">\n" +
+           "                            <img class=\"img-responsive\" src=\"static/wt/images/1_3.jpg\" alt=\"img\">\n" +
+           "                            <div class=\"b-goods__label\">sale 588%</div>\n" +
+           "                        </div>");
+   })
 </script>
 

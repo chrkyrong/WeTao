@@ -5,6 +5,8 @@ import com.weitao.service.CarService;
 import com.weitao.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -29,8 +31,10 @@ public class CarController {
      * @return
      */
     @GetMapping("/find")
-    public Result find(){
-        List<ItemsCar> list = service.findCar(uId);
+    public Result find(int userId){
+//        edited by CC
+        List<ItemsCar> list = service.findCar(userId);
+//        end
         for(ItemsCar car:list){
             car.setTotalPrice(car.getiPrice().multiply(new BigDecimal(car.getNumber())));
         }

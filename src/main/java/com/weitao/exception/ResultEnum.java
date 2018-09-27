@@ -29,10 +29,11 @@ public enum ResultEnum {
 
     DETAIL_USER_FAIL("401","订单明细查询错误"),
 
-    EVALUATE_FAIL("601","评论失败"),
-    EVALUATE_SELECT_FAIL("602","查询商品评论失败"),
-    EVALUATE_NOT_FOUND_EVALUATION("603","没有相关任何评论")
+    EVALUATE_FAIL("501","评论失败"),
+    EVALUATE_SELECT_FAIL("502","查询商品评论失败"),
+    EVALUATE_NOT_FOUND_EVALUATION("503","没有相关任何评论"),
 
+    STORE_NOT_FOUND("701","没有符合该查询条件的店铺")
     ;
     private String code;
     private String msg;
