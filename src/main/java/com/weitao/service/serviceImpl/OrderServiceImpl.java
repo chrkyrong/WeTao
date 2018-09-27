@@ -1,16 +1,12 @@
 package com.weitao.service.serviceImpl;
 
-import com.weitao.bean.Car;
-import com.weitao.bean.Order;
-import com.weitao.bean.Order_detail;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Car;
-import com.weitao.bean.Items;
 import com.weitao.bean.Order;
 import com.weitao.dao.ItemsMapper;
 import com.weitao.dao.OrderMapper;
 import com.weitao.service.OrderService;
-import org.apache.commons.collections.IterableMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,9 +22,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
-
-    @Autowired
-    private ItemsMapper itemsMapper;
 
     @Autowired
     private ItemsMapper itemsMapper;
@@ -191,11 +184,11 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public List<Order> get1(Map<String, Object> map, int pageNum, int pageSize) {
+    public PageInfo get1(Map<String, Object> map, int pageNum, int pageSize) {
         //分页信息
         PageHelper.startPage(pageNum, pageSize);
         //分页查询
-        List<Order> orderList = orderMapper.selectConditions(map);
+        PageInfo orderList = (PageInfo) orderMapper.selectConditions(map);
         return orderList;
     }
 }

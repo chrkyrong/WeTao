@@ -1,5 +1,6 @@
 package com.weitao.service;
 
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Car;
 import com.weitao.bean.Order;
 
@@ -28,6 +29,6 @@ public interface OrderService {
 
     List<Order> order(List<Car> car);
 
-    List<Order> get1(Map<String,Object> map,int pageNum,int pageSize);//分页查询订单信息
+    PageInfo get1(Map<String,Object> map, int pageNum, int pageSize);//分页查询订单信息
 
 }

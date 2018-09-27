@@ -1,5 +1,6 @@
 package com.weitao.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Order;
 import com.weitao.exception.ResultEnum;
 import com.weitao.service.OrderService;
@@ -139,12 +140,13 @@ public class OrderController {
             return ResultUtil.error(ResultEnum.ORDER_CANCEL_FAIL);
     }
 
+
     @GetMapping("/order/get1")
-    public Result get1(@RequestParam Map<String,Object> map, @RequestParam int pageNum, @RequestParam(defaultValue="5")int pageSize)
+    public Result get1(@RequestParam Map<String,Object> map, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="2")int pageSize)
     {
-        List<Order> list=orderService.get1(map,pageNum,pageSize);
-        if(list!=null)
-            return ResultUtil.success(list);
+        PageInfo page=orderService.get1(map,pageNum,pageSize);
+        if(page!=null)
+            return ResultUtil.success(page);
         else
             return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
     }
