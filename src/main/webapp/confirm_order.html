@@ -326,12 +326,12 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <select class="selectpicker" data-width="100%" name="categoryFather">
-                                                <!--动态获取商店名称，storeId/////////////////////////////////////////////////////////////-->
+                                            <select class="selectpicker" data-width="100%" name="categoryFather" id="address">
+<!--                                                &lt;!&ndash;动态获取商店名称，storeId/////////////////////////////////////////////////////////////&ndash;&gt;
                                                 <option value="-1">请选择收货地址</option>
                                                 <option value="默认地址">（地址一）</option>
                                                 <option value="地址二">（地址二）</option>
-                                                <option value="地址三">（地址三）</option>
+                                                <option value="地址三">（地址三）</option>-->
                                             </select>
                                         </td>
                                         <td>
@@ -468,8 +468,45 @@
 <script src="static/wt/js/main.js"></script>
 <!-- Main slider-->
 <script src="static/wt/js/jquery.sliderPro.min.js"></script>
-</body>
+<script src="static/js/user.js"></script>
+<script src="static/js/session.js"></script>
+<!--根据用户id动态查询地址-->
+<script type="text/javascript">
+    $(function(){
+        var userId =getId();
+        var address=$("#address");
+        $.ajax({
+            url: '/weitao/user?uId='+userId,
+            type: 'get',
+            success: function (result) {
+                    var str = "<option value='" +  result.data.uAddress1 + "'>" + result.data.uAddress1 + " </option>";
+                    if(result.data.uAddress2!=null) {
+                        str += "<option value='" + result.data.uAddress2 + "'>" + result.data.uAddress2 + " </option>";
+                    }
+                    if(result.data.uAddress3!=null) {
+                        str+="<option value='" +  result.data.uAddress3 + "'>" + result.data.uAddress3 + " </option>";
+                    }
+                address.append(str);
+                address.selectpicker('refresh');
+                address.selectpicker('render');
 
+                function onOrder() {
+                var orderAddress = $("#address").val();
+                $.ajax({
+                    url:'',
+                    type:'post',
+                    data:{orderAddress:orderAddress},
+                    success:function (result) {
+                        
+                    }
+                })
+                }
+
+            }
+        });
+    })
+</script>
+</body>
 </html>
 
 

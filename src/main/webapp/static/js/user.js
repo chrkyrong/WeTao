@@ -10,7 +10,7 @@ function login() {
         dataType: 'json',
         data: $('#checkout').serialize(),
         success: function (result) {
-            window.location.href="display.html";
+            window.location.href="home.html";
             console.log(result);
         }
     });
