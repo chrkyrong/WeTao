@@ -94,13 +94,19 @@
       <result column="store_id" jdbcType="INTEGER" property="storeId" />
       <result column="catagory_id" jdbcType="INTEGER" property="catagoryId" />
     </association>
+    <association property="store" javaType="com.weitao.bean.Store">
+      <id column="st_id" jdbcType="INTEGER" property="stId"/>
+      <result column="st_name" jdbcType="VARCHAR" property="stName"/>
+      <result column="st_status" jdbcType="TINYINT" property="stStatus"/>
+      <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
+    </association>
   </resultMap>
 
-  <!--根据订单id查询订单详情关联查询商品信息-->
+  <!--根据订单id查询订单详情关联查询商品和店铺名信息-->
   <select id="selectByOrderId" parameterType="int" resultMap="detailsAndItems">
-  SELECT order_detail.*,items.*
-  FROM  order_detail,items
-  WHERE items.i_id=order_detail.items_id AND order_id=#{arg0}
+  SELECT order_detail.*,items.*,store.st_name
+  FROM  order_detail,items,store
+  WHERE items.i_id=order_detail.items_id AND store.st_id=items.store_id AND order_id=#{arg0}
   </select>
 
 </mapper>

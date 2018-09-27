@@ -11,6 +11,8 @@ public class Order_detail {
 
     private Items item;
 
+    private Store store;
+
     public Items getItem() {
         return item;
     }
@@ -51,6 +53,14 @@ public class Order_detail {
         this.itemsId = itemsId;
     }
 
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("{");
@@ -64,6 +74,8 @@ public class Order_detail {
                 .append(itemsId);
         sb.append(",\"item\":")
                 .append(item);
+        sb.append(",\"store\":")
+                .append(store);
         sb.append('}');
         return sb.toString();
     }
