@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>WeTao / ItemsManagement</title>
+    <title>WeTao / SellerLogin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,9 +44,9 @@
                     <a href="#"><span>订单管理 <i class="arrow_carrot-right"></i> </span></a>
                     <ul class="dl-submenu">
 
-                        <li><a href="Unfilled-Order.html"><span>待发货</span></a></li>
-                        <li><a href="Sent-Order.html"><span>已发货</span></a></li>
-                        <li><a href="Achieve-Order.html"><span>已完成</span></a></li>
+                        <li><a href="#"><span>待发货</span></a></li>
+                        <li><a href="#"><span>已发货</span></a></li>
+                        <li><a href="#"><span>已完成</span></a></li>
 
 
                     </ul>
@@ -55,14 +55,14 @@
                 <li class="has-children ">
                     <a href="shop-1.html"><span>售后 <i class="arrow_carrot-right"></i>  </span></a>
                     <ul class="dl-submenu">
-                        <li><a href="Notrefund-Order.html"><span>待退款</span></a></li>
-                        <li><a href="Refund-Order.html"><span>已退款</span></a></li>
+                        <li><a href="#"><span>待退款</span></a></li>
+                        <li><a href="#"><span>已退款</span></a></li>
                     </ul>
                 </li>
                 
-				<li><a href="about.html"><span>客服</span></a></li>
-                <li><a href="lookbook.html"><span>数据统计</span></a></li>
-            </ul>
+				<li><a href="#"><span>客服</span></a></li>
+                <li><a href="#"><span>数据统计</span></a></li>
+                </ul>
         </div>
 
 
@@ -132,11 +132,11 @@
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
                             <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="items-Homepage.html"><h5>主 页</h5></a>
+                            <li><a href="#"><h5>主 页</h5></a>
                             </li>
-                            <li><a href="Store.html"><h5>店铺管理</h5></a>
+                            <li><a href="#"><h5>店铺信息</h5></a>
                             </li>
-                            <li><a href="Evaluate.html"><h5>评论管理</h5></a>
+                            <li><a href="#"><h5>评论管理</h5></a>
                             </li>
                         </ul>
                     </div>
@@ -145,14 +145,18 @@
                         <ul class="nav navbar-nav clearfix vcenter">
                             
                             <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="SellerMessage.html"><h5>个人信息</h5></a>
+                            <li><a href="#"><h5>个人信息</h5></a>
                             </li>
+                            <!-- <li><span class="header-cart"><a href="#"><i class="icon fa fa-shopping-cart"
+                                                                         aria-hidden="true"></i></a><span
+                                    class="header-cart-count bg-primary">0</span></span>
+                            </li> -->
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
                             <li><a href="SellerLogin.html">登 陆</a>
                             </li>
-                            <li><a href="#">退 出</a>
+                            <li><a href="#">退出</a>
                             </li>
                         </ul>
                         <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
@@ -174,146 +178,148 @@
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
                             <!--第一行文字/////////////////////////////////////////////////////////////-->
-                            <li><a href=""><h4>添加商品</h4></a>
+                            <li><a href=""><h4>登陆微淘商家后台</h4></a>
                             </li>
                         </ol>
                     </div>
-                    <!-- end .wrap-breadcrumb-->
                     <div class="section-title-page section-title-page_mod-a">
                         <!--第二行文字/////////////////////////////////////////////////////////////-->
-                        <h1 class="ui-title-page">Items &nbsp; management</h1>
+                        <h1 class="ui-title-page">S e l l e r   L o g i n</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-
-
-                    <div class="woocommerce">
-                        <form class="checkout_coupon" method="post" style="display:none">
-                            <p class="form-row form-row-first">
-                                <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code"
-                                       id="coupon_code" value="">
-                            </p>
-                            <p class="form-row form-row-last">
-                                <input type="submit" class="button" name="apply_coupon" value="Apply Coupon">
-                            </p>
-                            <div class="clear"></div>
-                        </form>
-                        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
-                              enctype="multipart/form-data" _lpchecked="1">
-                            <div class="col2-set" id="customer_details">
-                                <div class="col-1">
-                                    <div class="woocommerce-billing-fields">
-                                        <!--注册表单/////////////////////////////////////////////////////////////-->
-                                        <h3>请输入商品信息</h3>
-                                        <p class="form-row form-row form-row-first ">
-                                            <label>商品名称(Name)</label>
-                                            <!--商品名称，i_name/////////////////////////////////////////////////////////////-->
-                                            <input type="text" class="input-text " name="iName" placeholder="Name">
-                                        </p>
-                                        <p class="form-row form-row form-row-last ">
-                                            <!--商品库存,数据库拼写是i_exsit/////////////////////////////////////////////////////////////-->
-                                            <label>商品库存(exist)</label>
-                                            <input type="text" class="input-text " name="iExsit" placeholder="Number">
-                                        </p>
-                                        <div class="clear"></div>
-
-                                        <div class="b-filter__group">
-                                            <p class="form-row form-row form-row-first">
-                                                <!--商家选择将商品放在那个商店，u_password/////////////////////////////////////////////////////////////-->
-                                                <label>店铺名(Store)</abbr></label>
-                                            </p>
-                                            <select class="selectpicker" data-width="100%" name="storeId">
-                                                <!--动态获取商店名称，storeId/////////////////////////////////////////////////////////////-->
-                                                <option value="大西瓜店">大西瓜店</option>
-                                                <option value="大冬瓜店">大冬瓜店</option>
-                                                <option value="大南瓜店">大南瓜店</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="b-filter__group">
-                                            <p class="form-row form-row form-row-first">
-                                                <!--商家选择商品分类，categoryFather/////////////////////////////////////////////////////////////-->
-                                                <label>商品类型(Category)</abbr></label>
-                                            </p>
-                                            <select class="selectpicker" data-width="100%" name="categoryFather">
-                                                <!--动态获取商店名称，storeId/////////////////////////////////////////////////////////////-->
-                                                <option value="-1">请选择商品类型</option>
-                                                <option value="男鞋">男鞋</option>
-                                                <option value="男装">男装</option>
-                                                <option value="女鞋">女鞋</option>
-                                                <option value="女装">女装</option>
-                                                <option value="手机">手机</option>
-                                                <option value="电器">电器</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="b-filter__group">
-                                            <p class="form-row form-row form-row-first">
-                                                <!--商家选择商品子类别，categoryName/////////////////////////////////////////////////////////////-->
-                                                <label>商品子类型(Category)</abbr></label>
-                                            </p>
-                                            <select class="selectpicker" data-width="100%" name="categoryName">
-                                                <!--动态获取商店名称，storeId/////////////////////////////////////////////////////////////-->
-                                                <option value="-1">请选择商品子类型</option>
-                                                <option value="男鞋">男鞋</option>
-                                                <option value="男装">男装</option>
-                                                <option value="女鞋">女鞋</option>
-                                                <option value="女装">女装</option>
-                                                <option value="手机">手机</option>
-                                                <option value="电器">电器</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="woocommerce-shipping-fields">
-                                        <h3>添加关于产品详情吧</h3>
-                                        <p class="form-row form-row">
-                                        	<lable>添加关于商品的图片(picture)</lable>
-                                            <input type="file" name="file" class="webuploader-element-invisible" multiple accept="image/*">
-                                            
-                                        </p>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="woocommerce-shipping-fields">
-                                            <!--商品介绍，i_introduction/////////////////////////////////////////////////////////////-->
-                                        <h4>添加一段关于商品的介绍吧</h4>
-                                        <p class="form-row form-row">
-                                            <label for="order_comments" class="">(Items Introduction)</label>
-                                            <textarea name="iIntroduction" class="input-text " i    d="order_comments"
-                                                      placeholder="写下产品的优点、特色、使用方法等......"></textarea>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-
-                            <!--<h3 id="order_review_heading">信息确认无误就确认登记吧</h3>-->
-                            <div id="order_review" class="woocommerce-checkout-review-order">
-
-                                <div id="payment" class="woocommerce-checkout-payment">
-
-                                    <div class="form-row place-order">
-
-                                        <input type="submit" class="button alt" id="place_order" value="登 记 商 品  Confirm"
-                                               data-value="Place order"/>
-                                    </div>
-                                    <div class="form-row place-order">
-                                        <input type="button" class="button alt" id="place_order" value="返 回 Return"
-                                               data-value="Place order" style="line-height:1.3;border:0" onclick="window.history.back(-1)"/>                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            	<div class="woocommerce">                      
+                	<div class="col-md-5 col-md-offset-1">
+                		<div class="tabs-type-2"  style="width:1000px;">
+                    		<ul class="nav">
+                        		<li class="active"><a href="#description" data-toggle="tab" style="font-size:20px">登 陆 (Login)</a>
+                            	</li>
+                            	<li><a href="#sizing" data-toggle="tab" style="font-size:20px">注 册 (Register)</a>
+                            	</li>
+                     		</ul>
+                        	<div class="tab-content">
+                        		<!-- 登陆界面描绘###################################### -->
+                            	<div class="tab-pane fade in active" id="description" >                             		                
+                        			<form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
+                              					enctype="multipart/form-data" _lpchecked="1">
+                            			<div class="col2-set" id="customer_details">
+                                			<div class="col-1">
+                                    			<div class="woocommerce-billing-fields">
+                                       				<!--  登陆表单///////////////////////////////////////////////////////////// -->
+                                        			<h3>请输入您的账号和密码</h3>
+                                        			<p class="form-row form-row form-row-wide">
+                                            			<label>账 号(Account)</label>
+                                            			<!-- 商家账号s_account///////////////////////////////////////////////////////////// -->
+                                            			<input type="text" class="input-text " name="saccount" placeholder="Account">
+                                        			</p>
+                                        			<p class="form-row form-row form-row-wide ">
+                                            			<!-- 商家密码，s_password///////////////////////////////////////////////////////////// -->
+                                            			<label>密 码(Password)</label>
+                                            			<input type="password" class="input-text " name="spassword" placeholder="Password">
+                                        			</p>
+                                        			<div class="clear"></div>
+                                    			</div>
+                                			</div>
+                                		</div>
+                                		<!-- 登陆按钮位置########################## -->
+                            			<div id="order_review" class="woocommerce-checkout-review-order">
+											<div id="payment" class="woocommerce-checkout-payment">
+												<div class="form-row place-order">
+													<!-- 登陆按钮事件############################ -->
+													<input type="submit" class="button alt" id="place_order" value="登 陆 login"
+                                               					data-value="Place order"/>
+                                    			</div>
+                                			</div>
+                            			</div>
+                        			</form>
+                				</div>
+                				<!-- 注册界面描绘################################################ -->
+								<div class="tab-pane fade" id="sizing">
+                        			<form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
+                              				enctype="multipart/form-data" _lpchecked="1">
+                            			<div class="col2-set" id="customer_details">
+                                			<div class="col-1">
+                                    			<div class="woocommerce-billing-fields">
+                                        			<!--注册商家信息表单/////////////////////////////////////////////////////////////-->                   
+                                        			<h3>请输入个人信息</h3>
+                                        			<p class="form-row form-row form-row-wide ">                                     	
+                                            			<!--商家账号，s_account/////////////////////////////////////////////////////////////-->
+                                            			<label>账 号 (Account)</label>
+                                            			<input type="text" class="input-text " name="saccount" placeholder="Account">
+                                        			</p>
+                                        			<p class="form-row form-row form-row-wide ">                                     	
+                                            			<!--商家密码，s_password/////////////////////////////////////////////////////////////-->
+                                            			<label>密 码 (Password)</label>
+                                            			<input type="text" class="input-text " name="password" placeholder="Password" >
+                                        			</p>
+                                        			<p class="form-row form-row form-row-wide ">
+                                            			<!--确认密码，）/////////////////////////////////////////////////////////////-->
+                                            			<label>确 认 密 码 (True Password）</label>
+                                            			<input type="text" class="input-text " name="spassword" placeholder="Confirm Password">
+                                        			</p>
+                                        			<div class="b-filter__group">
+                                            			<p class="form-row form-row form-row-first">
+                                                			<!--用户性别，s_sex/////////////////////////////////////////////////////////////-->
+                                                			<label>性 别(Gender)</label>
+                                            			</p>
+                                            			<select class="selectpicker" data-width="100%" name="sSex">
+                                                			<option value="男">男</option>
+                                                			<option value="女">女</option>
+                                            			</select>
+                                        			</div>
+                                        			<p class="form-row form-row form-row-wide ">
+                                           				<!--用户电话号码，s_tel/////////////////////////////////////////////////////////////-->
+                                            			<label>联系电话(Tel)</label>
+                                            			<input type="text" class="input-text " name="stel" placeholder="Tellphone">
+                                        			</p>
+                                        			<p class="form-row form-row form-row-wide">
+                                            			<!--商家个人地址s_address/////////////////////////////////////////////////////////////-->
+                                            			<label>地址(Address)</label>
+                                            			<input type="text" class="input-text " name="saddress" placeholder="Address">
+                                        			</p>                                       
+                                    			</div>
+                                			</div>
+                                			<div class="col-2">
+                                    			<div class="woocommerce-shipping-fields">
+                                        			<h3>添加个人头像</h3>
+                                        			<p class="form-row form-row">
+                                           				<input type="file" name="s_icon" class="webuploader-element-invisible" multiple accept="image/*">
+                                            			<!--上传头像模块，s_icon/////////////////////////////////////////////////////////////-->
+                                        			</p>
+                                    			</div>
+                                			</div>
+                            			</div>
+                            			<!--信息确认无误就确认注册吧/////////////////////////////////////////////////////////-->
+                            			<div id="order_review" class="woocommerce-checkout-review-order">
+											<div id="payment" class="woocommerce-checkout-payment">
+                                    			<div class="form-row place-order">
+                                    				<!-- 注册按钮事件##################################### -->
+                                        			<input type="submit" class="button alt" id="place_order" value="注 册 商 家 register"
+                                               				data-value="Place order"/>
+                                    			</div>                                   
+                                			</div>
+                            			</div>
+                        			</form>
+                            	</div>
+                        	</div>
+                     	</div>
+                     	<!-- 返回按钮位置 ##################################################-->
+                     	<div id="order_review" class="woocommerce-checkout-review-order">               	   			
+                			<div id="payment" class="woocommerce-checkout-payment">                			
+                	   			<div class="form-row place-order">                	   			
+                       				<input type="button" class="button alt" id="place_order" value="返 回 Return"
+                                    	data-value="Place order" style="line-height:1.3;border:0;width:1010px" onclick="window.history.back(-1)"/>                                        
+                       			</div>
+                     		</div>
+                		</div>
+                	</div>                	
+            	</div>
             </div>
         </div>
     </div>
+
+
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -367,7 +373,7 @@
                                         <li class="footer-list__item"><a class="footer-list__link" href="">Warranty</a>
                                         </li>
                                         <!--帮助入口//////////////////////////////////////////////////////////////////////////////-->
-                                        <li class="footer-list__item"><a class="footer-list__link" href="display.html">Help</a>
+                                        <li class="footer-list__item"><a class="footer-list__link" href="about.html">Help</a>
                                         </li>
                                     </ul>
                                 </div>
