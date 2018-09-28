@@ -182,10 +182,10 @@
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="display.html">Id：007</a>
+                            <li id="uId">
                             </li>
                             <!--退出按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li class="active"><a href="login.html">quit</a>
+                            <li class="active"><a href="login.html">退出</a>
                             </li>
                         </ul>
                         <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
@@ -587,11 +587,13 @@
 <!-- Main slider-->
 <script src="static/wt/js/jquery.sliderPro.min.js"></script>
 <script src="static/js/session.js"></script>
+<script src="static/js/user.js"></script>
 <script src="static/js/order.js"></script>
 <script>
     $(function () {
         var id=getId();
         order1(id);
+        display2(id);
     })
 </script>
 </body>

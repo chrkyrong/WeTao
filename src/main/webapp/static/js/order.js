@@ -123,7 +123,7 @@ function order4(id) {
                 s +=v.oAddress;
                 s += '<td data-title="Product"><div class="caption">';
                 if(v.oStatus==4)
-                    v.oStatus="退款中";
+                    v.oStatus="申请退款中";
                 else
                     v.oStatus="退款完成";
                 s +=v.oStatus+'</div></td>';
@@ -144,7 +144,8 @@ function orderconfirm(oId) {
         dataType: "json",
         data: null,
         success: function (result) {
-            alert("确认到货成功")
+            alert("确认到货成功");
+            window.location.reload();
             console.log(result);
         }
     });
@@ -158,7 +159,8 @@ function ordercancel(oId) {
         dataType: "json",
         data: null,
         success: function (result) {
-            alert("取消订单成功")
+            alert("取消订单成功");
+            window.location.reload();
             console.log(result);
         }
     });
@@ -172,7 +174,8 @@ function orderrefund(oId) {
         dataType: "json",
         data: null,
         success: function (result) {
-            alert("申请退款成功")
+            alert("申请退款成功");
+            window.location.reload();
             console.log(result);
         }
     });

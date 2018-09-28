@@ -53,23 +53,23 @@ function display1(uId) {
         data: null,
         success: function (result) {
             var s = "";
-            s += '<li><h3>姓名(Name):';
-            s += result.data.uUserName + '</h3><br></li>';
-            s += '<li><h3>性别(Gender):';
-            s += result.data.uSex + '</h3><br></li>';
-            s += '<li><h3>联系电话(Tel):';
-            s += result.data.uTel + '</h3><br></li>';
-            s += '<li><h3>默认地址(Address1):';
-            s += result.data.uAddress1 + '</h3><br></li>';
-            s += '<li><h3>第二地址(Address2):';
+            s += '<li><h4>姓名(Name):';
+            s += result.data.uUserName + '</h4><br></li>';
+            s += '<li><h4>性别(Gender):';
+            s += result.data.uSex + '</h4><br></li>';
+            s += '<li><h4>联系电话(Tel):';
+            s += result.data.uTel + '</h4><br></li>';
+            s += '<li><h4>默认地址(Address1):';
+            s += result.data.uAddress1 + '</h4><br></li>';
+            s += '<li><h4>第二地址(Address2):';
             if (result.data.uAddress2 != null) {
-                s += result.data.uAddress2 + '</h3><br></li>';
+                s += result.data.uAddress2 + '</h4><br></li>';
             }
             else
-                s += '</h3><br></li>';
-            s += '<li><h3>第三地址(Address3):';
+                s += '</h4><br></li>';
+            s += '<li><h4>第三地址(Address3):';
             if (result.data.uAddress3 != null)
-                s += result.data.uAddress3 + '</h3><br></li>';
+                s += result.data.uAddress3 + '</h4><br></li>';
             $("#stu").first("li").append(s);
 
             var img = "";
@@ -83,17 +83,15 @@ function display1(uId) {
     });
 }
 //用户id显示（个人信息页面）
-function display2() {
+function display2(uId) {
     $.ajax({
         type: "get",
-        url: "/weitao/user?uId=1000000",
+        url: "/weitao/user?uId="+uId,
         dataType: "json",
         data: null,
         success: function (result) {
             var id = "";
-            id += '<a href="disply.html">';
             id += result.data.uId;
-            id += '</a>';
             $("#uId").first("a").append(id);
         }
     });
