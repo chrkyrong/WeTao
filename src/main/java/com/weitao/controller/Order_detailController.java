@@ -20,10 +20,15 @@ public class Order_detailController {
     @Autowired
     private Order_detailService order_detailService;
 
+    /**
+     * 根据订单id查询订单详情关联查询商品信息
+     * @param oId
+     * @return
+     */
     @GetMapping("/detail/orderId")
-    public Result getByOrderId(int orderId)
+    public Result getByOrderId(int oId)
     {
-        List<Order_detail> order_detail=order_detailService.getOrderDetail(orderId);
+        List<Order_detail> order_detail=order_detailService.getOrderDetail(oId);
         if(order_detail!=null)
             return ResultUtil.success(order_detail);
         else

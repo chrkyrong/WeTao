@@ -18,40 +18,40 @@ import java.util.List;
 @Service
 public class CarServiceImpl implements CarService {
     @Autowired
-    private CarMapper mapper;
+    private CarMapper carMapper;
 
     @Override
     public List<ItemsCar> findCar(Integer uId) {
-        return mapper.selectAllItemsOfCarByUid(uId);
+        return carMapper.selectAllItemsOfCarByUid(uId);
     }
 
     @Override
     public int removeCar(Integer iId,Integer uId) {
-        return mapper.deleteCarByIid(iId,uId);
+        return carMapper.deleteCarByIid(iId,uId);
     }
 
     @Override
     public int updateAddCar(Integer iId,Integer uId) {
-        return mapper.updateAddCarItemsNumberByIid(iId,uId);
+        return carMapper.updateAddCarItemsNumberByIid(iId,uId);
     }
 
     @Override
     public int updateCutCar(Integer iId, Integer uId) {
-        return mapper.updateCutCarItemsNumberByIid(iId, uId);
+        return carMapper.updateCutCarItemsNumberByIid(iId, uId);
     }
 
     @Override
     public int removeCar(Integer uId) {
-        return mapper.deleteCarByUid(uId);
+        return carMapper.deleteCarByUid(uId);
     }
 
     @Override
     public int addCar(Integer iId, Integer uId, Integer number, Integer sId) {
-        return mapper.insertCarByIidAndUid(iId, uId, number, sId);
+        return carMapper.insertCarByIidAndUid(iId, uId, number, sId);
     }
 
     @Override
     public Integer findSellerId(Integer iId) {
-        return mapper.selectSellerIdByItemsId(iId);
+        return carMapper.selectSellerIdByItemsId(iId);
     }
 }

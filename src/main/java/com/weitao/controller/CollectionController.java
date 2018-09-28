@@ -18,22 +18,21 @@ import java.util.List;
  * @Time: 14:51
  **/
 @RestController
-@RequestMapping("/coll")
 public class CollectionController {
     //测试数据
     private static final Integer uId=101;
 
     @Autowired
-    private CollectionService service;
+    private CollectionService collectionService;
 
     /**
      * 【收藏夹】
      * 查找用户uId的所有收藏且商品状态为正常的商品
      * @return
      */
-    @GetMapping("/find")
+    @GetMapping("/coll/find")
     public Result find(){
-        List<ItemsCollection> list = service.findCollection(uId);
+        List<ItemsCollection> list = collectionService.findCollection(uId);
         return ResultUtil.success(list);
     }
 
@@ -43,9 +42,9 @@ public class CollectionController {
      * @param cId
      * @return
      */
-    @GetMapping("/delete/{cId}")
+    @GetMapping("/coll/delete/{cId}")
     public Result delete(@PathVariable("cId") int cId){
-        int count = service.removeCollection(cId);
+        int count = collectionService.removeCollection(cId);
         if(count!=0){
             return ResultUtil.success();
         } else {
@@ -59,9 +58,9 @@ public class CollectionController {
      * @param
      * @return
      */
-    @GetMapping("/add/{iId}")
+    @GetMapping("/coll/add/{iId}")
     public Result add(@PathVariable("iId") int iId){
-        int count = service.addCollection(iId,uId);
+        int count = collectionService.addCollection(iId,uId);
         if(count!=0){
             return ResultUtil.success();
         } else {

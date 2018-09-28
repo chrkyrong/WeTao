@@ -46,14 +46,23 @@ public class StoreServiceTest {
 
     @Test
     public void managerSeachTest() throws Exception {
-        Store store = new Store();
-//        设置查询店铺id
-//        store.setStId(01);
-//        设置查询店铺名字
-//        store.setStName("");
-//        设置查询店铺状态
-        store.setStStatus((byte) 0);
-//        设置查询卖家名字，卖家id
+//        设置查询条件
+//        String condition = "商家";
+//        String condition = "商家id";
+        String condition = "店铺";
+//        String condition = "店铺id";
 
+//        设置搜索框内容
+        String research = "瓜";
+//        String research = "弟";
+
+//        设置查询店铺状态
+        Byte stStatus = 0;
+//        Byte stStatus = "1";
+
+        for(StoreVo vo : storeService.managerSeach(research,condition,stStatus))
+        {
+        System.out.println(vo);
+        }
     }
 }
