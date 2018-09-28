@@ -9,19 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="telephone=no" name="format-detection">
     <meta name="HandheldFriendly" content="true">
-    <script type="text/javascript">
-        function login() {
-            $.ajax({
-                type: "post",
-                url: "/weitao/user/login",
-                dataType: "json",
-                data: $('#checkout').serialize(),
-                success: function (result) {
-                    console.log(result);
-                }
-            });
-        }
-    </script>
     <link rel="stylesheet" href="static/wt/css/master.css">
     <link rel="icon" type="image/x-icon" href="static/wt/images/favicon.ico">
     <!--[if lt IE 9 ]>
@@ -224,7 +211,7 @@
                                         <p class="form-row form-row form-row-wide">
                                             <label>账 号(Account)</label>
                                             <!--用户姓名，u_user_name/////////////////////////////////////////////////////////////-->
-                                            <input type="text" class="input-text " name="uUserName">
+                                            <input type="text" class="input-text " name="uId">
                                         </p>
                                         <p class="form-row form-row form-row-wide ">
                                             <!--用户密码，u_password/////////////////////////////////////////////////////////////-->
@@ -264,8 +251,6 @@
             </div>
         </div>
     </div>
-
-
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -381,6 +366,7 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
+<script src="static/js/user.js"></script>
 </body>
 </html>
 
