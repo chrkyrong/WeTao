@@ -31,6 +31,9 @@ public interface ItemsService {
     /*显示所有商品，显示最新上架的九件商品*/
     public List<Items> selectItems1();
 
+    /*显示所有商品，显示库存最多的五件商品*/
+    public List<Items> selectItemsExsit();
+
     /*查詢當個商品*/
     public List<Items> selectOneItems(Integer iId);
 }

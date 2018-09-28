@@ -380,7 +380,7 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-
+<script src="static/jq/showitems.js"></script>
 </body>
 
 </html>
@@ -420,8 +420,8 @@
                     s += "</td><td><div class = 'dropdown'><span style ='color:#FFC125'>详情</span><div class = 'dropdown-content'><p>总价：" + v.order.oPrice + "</p>";
                     s += "<p>留言：" + v.order.oMessage + "</p></div></div></td></tr>";
                 })
+                loadpicture();
                 $("#show").html(s);
-                bigger();
             },
             error: function (result) {
                 alert("失败了")
@@ -429,20 +429,5 @@
         })
     }
 </script>
-<script type="text/javascript">
-    function bigger() {
-        $('.js-zoom-images').magnificPopup({
-            type: 'image',
-            mainClass: 'mfp-with-zoom',
-            zoom: {
-                enabled: true,
-                duration: 300,
-                easing: 'ease-in-out',
-                opener: function (openerElement) {
-                    return openerElement.is('img') ? openerElement : openerElement.find('img');
-                }
-            }
-        });
-    }
-</script>
+
 

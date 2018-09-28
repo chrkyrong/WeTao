@@ -56,7 +56,7 @@ public class ItemsController {
     /*下拉框显示卖家有多少店铺*/
     @RequestMapping(value = "/findStore")
     public List<Store> findStore(HttpServletRequest request,
-                                         @RequestParam(value = "sellerId", defaultValue = "1") int sellerId,
+                                         @RequestParam(value = "sellerId", defaultValue = "2000000") int sellerId,
                                          @RequestParam(value = "stStatus", defaultValue = "0") int stStatus) {
         Store store=new Store();
         store.setSellerId(sellerId);
@@ -171,6 +171,13 @@ public class ItemsController {
     @RequestMapping(value = "queryItemsAllDate")
     public Result queryItemsAllDate(HttpServletRequest request){
         List<Items> items=itemsService.selectItems1();
+        return ResultUtil.success(items);
+    }
+
+    /*查找商品，即商品主页显示库存最多的五件商品*/
+    @RequestMapping(value = "queryItemsAllExsit")
+    public Result queryItemsAllExsit(HttpServletRequest request){
+        List<Items> items=itemsService.selectItemsExsit();
         return ResultUtil.success(items);
     }
     /*

@@ -10,7 +10,6 @@ function getQueryString(name) {
 //商品详情评论的展示
 function Onload1(iId) {
     iId = getQueryString('iId');
-    alert(iId);
     $.ajax({
         type: 'get',
         url: '/evaluate/selectEvaluate?iId=' + iId,
@@ -34,6 +33,7 @@ function Onload1(iId) {
                 s += '</tr>';
             })
             $("#evaluated").first("tr").append(s);
+            loadpicture();
         },
         error: function () {
             var s = "评论加载失败";

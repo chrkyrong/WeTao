@@ -32,10 +32,10 @@ public class EvaluateMapperTest {
         evaluate.seteLevel((byte) 5);
         evaluate.seteDescription("非常好！");
         evaluate.setePhotos("bg-1.jpg");
-        evaluate.setOrderId(3000002);
-        evaluate.setStoreId(7000001);
+        evaluate.setOrderId(3000000);
+        evaluate.setStoreId(7000000);
         evaluate.setUserId(1000000);
-        evaluate.setItemsId(8000003);
+        evaluate.setItemsId(8000000);
         evaluateMapper.insertSelective(evaluate);
 
     }
