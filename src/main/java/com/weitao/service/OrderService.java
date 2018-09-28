@@ -27,7 +27,9 @@ public interface OrderService {
 
     Boolean cancelOrder(int oId);//根据订单id取消订单
 
-    List<Order> order(List<Car> car);
+//    edited by CC
+//    生成订单(用户id、邮寄方式、收货地址、留言)
+    List<Order> addOrder(Integer userId,Byte oPost,String oAddress,String oMessage);
 
     PageInfo get1(Map<String,Object> map, int pageNum, int pageSize);//分页查询订单信息
 

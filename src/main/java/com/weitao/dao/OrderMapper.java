@@ -36,5 +36,5 @@ public interface OrderMapper {
     List<Order> selectConditions(Map<String,Object> map);//商家多条件查询
 
 //    edited by CC
-    void insertAndGetId(Order order);//添加订单到数据库并获得新增的主键
+    int insertAndGetId(Order order);//添加订单到数据库并获得新增的主键
 }

@@ -42,7 +42,7 @@ public class OrderServiceTest {
         car.setNumber(2);
         car.setUserId(1000000);
         carList.add(car);
-        orderService.order(carList);
+//        orderService.order(carList);
     }
 
     @Autowired

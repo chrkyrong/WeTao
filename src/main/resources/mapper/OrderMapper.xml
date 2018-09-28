@@ -29,7 +29,7 @@
   </delete>
 
   <insert id="insertSelective" parameterType="com.weitao.bean.Order">
-    insert into order
+    insert into `order`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
         o_id,
@@ -256,6 +256,12 @@
             <if test="storeId != null">
                 store_id,
             </if>
+            <if test="oAddress != null">
+                o_address,
+            </if>
+            <if test="oExpress != null">
+                o_express,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="oId != null">
@@ -284,6 +290,12 @@
             </if>
             <if test="storeId != null">
                 #{storeId,jdbcType=INTEGER},
+            </if>
+            <if test="oAddress != null">
+                #{oAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="oExpress != null">
+                #{oExpress,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>

@@ -2,15 +2,15 @@ package com.weitao.service.serviceImpl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.weitao.bean.Car;
-import com.weitao.bean.Order;
-import com.weitao.dao.ItemsMapper;
-import com.weitao.dao.OrderMapper;
+import com.weitao.bean.*;
+import com.weitao.dao.*;
 import com.weitao.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +25,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private ItemsMapper itemsMapper;
+
+    @Autowired
+    private CarMapper carMapper;
+
+    @Autowired
+    private StoreMapper storeMapper;
+
+    @Autowired
+    private Order_detailMapper order_detailMapper;
 
     @Override
     public List<Order> getByUser1(int userId) {
@@ -84,103 +93,162 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> order(List<Car> car) {
-        //for(int i=0;i<car.size();i++)
-        //遍历购物车的商品car[i].getId
-        //mapper得到商品详情item
-        //if(car[i].num>item.exist)
-        //抛出异常商品数量不足
-
-        String[] storeArr = new String[car.size()];
-        String[] itemsArr = new String[car.size()];
-
-
-        int x = 0;
-        for (Car cc : car) {
-            Integer storeId = itemsMapper.selectByPrimaryKey(cc.getItemsId()).getStoreId();
-            storeArr[x] = storeId + "";
-            itemsArr[x] = cc.getItemsId() + "";
-            x++;
+    public List<Order> addOrder(Integer userId, Byte oPost, String oAddress, String oMessage) {
+//        购物车对象集合
+        List<ItemsCar> carList = carMapper.selectAllItemsOfCarByUid(userId);
+//        生成的List<Order>对象集合
+        List<Order> orderList = new ArrayList<>();
+//        用于判断库存是否足够的key
+        boolean key = false;
+        for (ItemsCar itemsCar : carList) {
+//            找出商品对象
+            Items items = itemsMapper.selectByPrimaryKey(itemsCar.getItemsId());
+            /*判断库存*/
+            if (itemsCar.getNumber() <= items.getiExsit()) {
+//                库存大于购买数，key=true
+                key = true;
+            }
         }
+
+        if (key) {
+//        店铺id数组集合
+            String[] storeArr = new String[carList.size()];
+//        商品id数组集合
+            String[] itemsArr = new String[carList.size()];
+//        订单添加进数据库的数量
+            int addCount = 0;
+
+//                用于计数
+            int x = 0;
+            for (ItemsCar car : carList) {
+//        总店铺id集合
+                storeArr[x] = itemsMapper.selectByPrimaryKey(car.getItemsId()).getStoreId() + "";
+//        总商品id集合
+                itemsArr[x] = car.getItemsId() + "";
+                x++;
+            }
 
 //        新建一个List
-        List<String> list = new ArrayList<String>();
-        for (int i = 0; i < storeArr.length; i++) {
-            list.add(storeArr[i]);
-        }
+            List<String> list = new ArrayList<String>();
+            for (int i = 0; i < storeArr.length; i++) {
+                list.add(storeArr[i]);
+            }
 
-//        去重算法
-        for (int i = 0; i < list.size() - 1; i++) {
-            for (int j = list.size() - 1; j > i; j--) {
-                if (list.get(j).equals(list.get(i))) {
-                    list.remove(j);
+        /*去重算法*/
+            for (int i = 0; i < list.size() - 1; i++) {
+                for (int j = list.size() - 1; j > i; j--) {
+                    if (list.get(j).equals(list.get(i))) {
+                        list.remove(j);
+                    }
                 }
             }
-        }
-//        用于记录的数组
-        String[][] result = new String[list.size()][storeArr.length];
-        x = 0;
-        for (String str : list) {
-            result[x][0] = "" + str;
-            x++;
-        }
 
 //        输出去重的list
-        System.out.println(list);
+//                System.out.println(list);
 
 
-//        key
-        int[] aa = new int[list.size()];
-        for (int i = 0; i < aa.length; i++) {
-            aa[i] = 1;
-        }
+        /*创建订单*/
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println("创建订单");
+                Order order = new Order();
+//            自动生成的订单状态,默认为0
+                order.setoStatus((byte) 0);
+//            留言
+                order.setoMessage(oMessage);
+//            收货地址
+                order.setoAddress(oAddress);
+//            邮寄方式
+                order.setoPost(oPost);
+//            下单时间
+                order.setoDate(new Date());
+//            商店id
+                order.setStoreId(Integer.parseInt(list.get(i)));
+//            用户id
+                order.setUserId(userId);
 
-//        标记函数
-        for (int i = 0; i < storeArr.length; i++) {
-            for (int j = 0; j < list.size(); j++) {
-                if (storeArr[i].equals(list.get(j))) {
-                    result[j][aa[j]] = "" + itemsArr[i];
-                    aa[j]++;
+                for (int j = 0; j < carList.size(); j++) {
+//                比较店铺id，卖家id
+                    if (itemsMapper.selectByPrimaryKey(carList.get(j).getItemsId()).getStoreId() == Integer.parseInt(list.get(i))) {
+                        Integer abcId = storeMapper.selectByPrimaryKey(Integer.parseInt(list.get(i))).getSellerId();
+                        order.setSellerId(abcId);
+//                    总价格
+                        BigDecimal total = carList.get(j).getiPrice().multiply(new BigDecimal(carList.get(j).getNumber()));
+                        order.setoPrice(total);
+                    }
+                }
+
+//                    System.out.println("*" + order);
+
+            /*添加进数据库*/
+                addCount = orderMapper.insertAndGetId(order);
+//                    System.out.println("生成的主键" + order.getoId());
+                orderList.add(order);
+
+
+            /*生成订单详情*/
+                for (int j = 0; j < carList.size(); j++) {
+                    if (itemsMapper.selectByPrimaryKey(carList.get(j).getItemsId()).getStoreId() == Integer.parseInt(list.get(i))) {
+                        Order_detail order_detail = new Order_detail();
+//                    订单详情表
+                        order_detail.setOrderId(order.getoId());
+//                    商品id
+                        order_detail.setItemsId(carList.get(j).getItemsId());
+//                    商品数量
+                        order_detail.setOrDeNumber(carList.get(j).getNumber());
+                        System.out.println("***订单详情***" + order_detail);
+//                    添加进数据库
+                        order_detailMapper.insertSelective(order_detail);
+                    }
+                }
+
+            }
+//        判断订单是否生成
+            if (addCount > 0) {
+        /*清空购物车*/
+                int clear = carMapper.deleteCarByUid(userId);
+                if (clear > 0) System.out.println("购物车已清空");
+                else System.out.println("购物车清空失败");
+
+            /*商品库存减少、销量增加*/
+                for (int i = 0; i < carList.size(); i++) {
+                    int itemsId = carList.get(i).getItemsId();
+                    Items itemsChange = itemsMapper.selectByPrimaryKey(itemsId);
+//                库存减少
+                    itemsChange.setiExsit(itemsChange.getiExsit() - carList.get(i).getNumber());
+//                销量增加
+                    itemsChange.setiSale(itemsChange.getiSale() + carList.get(i).getNumber());
+//                更新库存、销量
+                    itemsMapper.updateByPrimaryKeySelective(itemsChange);
+                }
+            } else {
+                System.out.println("订单创建失败");
+            }
+//            }
+        } else {
+            for (ItemsCar itemsCar : carList) {
+                Items items = itemsMapper.selectByPrimaryKey(itemsCar.getItemsId());
+            /*判断库存*/
+                if (itemsCar.getNumber() > items.getiExsit()) {
+                    System.out.println(itemsCar.getNumber() + "less than " + items.getiExsit());
+                    /*返回库存不足错误*/
+//            创建假的order对象，用于报错
+                    Order mistake = new Order();
+//            设置错误信息
+//                获得商品名
+                    String errorMessage = "您所购买的商品“";
+                    errorMessage += items.getiName();
+                    errorMessage += " ”库存仅剩：";
+                    errorMessage += "" + items.getiExsit();
+                    errorMessage += "请重新选择商品数量";
+                    mistake.setoMessage(errorMessage);
+//                前端判断List<Order>第一个对象的oId是否为空，为空时：输出oMessage信息
+                    orderList.add(mistake);
                 }
             }
         }
-
-//        遍历输出二维数组
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println();
-            for (int j = 0; j < storeArr.length; j++) {
-                System.out.print(result[i][j] + "-");
-
-            }
-        }
-        System.out.println();
-
-        for (int i = 0; i < list.size(); i++) {
-//            创建订单
-            Order order = new Order();
-//            订单状态
-            order.setoStatus((byte) 0);
-
-        }
-        return null;
+//        返回orderList
+        return orderList;
     }
-//        生成订单
-//        System.out.println("插入前主键为："+order.getoId());
-//        orderMapper.insertAndGetId(order);
-//        返回添加订单后的主键
-//        System.out.println("插入后主键为："+order.getoId());
-
-
-//        生成订单详情循环
-//        Order_detail order_detail = new Order_detail();
-//        数量
-//        order_detail.setOrDeNumber(2);
-//        订单号
-//        order_detail.setOrderId(3000006);
-//        商品号
-//        order_detail.setItemsId(8000000);
-//        添加订单详情
-//        System.out.println(order_detailMapper.insertSelective(order_detail));
 
 
     @Override

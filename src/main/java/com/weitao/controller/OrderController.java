@@ -8,6 +8,7 @@ import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -149,5 +150,11 @@ public class OrderController {
             return ResultUtil.success(page);
         else
             return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    @RequestMapping("order/addOrders")
+    public Result addOrders(Integer userId,Byte oPost,String oAddress,String oMessage){
+        List<Order> orderList = orderService.addOrder(userId, oPost,oAddress,oMessage);
+        return ResultUtil.success(orderList);
     }
 }
