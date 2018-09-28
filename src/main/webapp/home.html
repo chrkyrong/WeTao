@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,8 +106,9 @@
                         <!--搜索表单/////////////////////////////////////////////////////////////-->
                         <form class="search-global">
                             <input class="search-global__input" type="text" placeholder="Type to search"
-                                   autocomplete="off" name="s"  id="search"><!--搜索框的值-->
-                            <button class="search-global__btn"  onclick="search2()"><i class="icon stroke icon-Search"></i>
+                                   autocomplete="off" name="s" id="search"><!--搜索框的值-->
+                            <button class="search-global__btn" onclick="search2()"><i
+                                    class="icon stroke icon-Search"></i>
                             </button>
                             <div class="search-global__note">Begin typing your search above and press return to
                                 search.
@@ -164,7 +164,7 @@
                     <ul class="nav-language list-inline">
                         <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
                         <!--点击，进入个人信息展示display页面/////////////////////////////////////////////////////////////-->
-                        <li><a href="display.html">Id：007</a>
+                        <li><a href="display.html">个人信息</a>
                         </li>
                         <!--退出登陆按钮///////////////////////////////////////////////////////////////////////////////////////-->
                         <li class="active"><a href="login.html">quit</a>
@@ -236,11 +236,11 @@
 
                 <!--春夏季新恤衫模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
                 <div class="col-sm-6">
-                    <div class="b-goods b-goods-1">
-                        <div class="b-goods__inner">
-                            <div class="b-goods__categorie">spring/summer 2018</div>
-                            <div class="b-goods__title">春夏季新恤衫<br>New Collection of Shoes</div>
-                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">boy&man</a>
+                    <div class="b-goods b-goods-1" >
+                        <div class="b-goods__inner" id="boy">
+                    <!--        <div class="b-goods__categorie">spring/summer 2018</div>
+                            <div class="b-goods__title">男装<br>New Collection of Shoes</div>
+                            <a class="b-goods__btn btn btn-default" href="shop-single.html">boy&man</a>-->
                         </div>
                         <div class="b-goods__img">
                             <img class="img-responsive" src="static/wt/images/1.jpg" alt="img">
@@ -253,10 +253,10 @@
                 <div class="col-sm-6">
                     <!--春夏季新外套模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
                     <div class="b-goods b-goods-1 b-goods-1_right">
-                        <div class="b-goods__inner">
-                            <div class="b-goods__categorie">spring/summer 2018</div>
+                        <div class="b-goods__inner" id="girl">
+                          <!--  <div class="b-goods__categorie">spring/summer 2018</div>
                             <div class="b-goods__title">春夏季新外套<br>New Collection of Clothes</div>
-                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">girl&women</a>
+                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">girl&women</a>-->
                         </div>
                         <div class="b-goods__img">
                             <img class="img-responsive" src="static/wt/images/2.jpg" alt="img">
@@ -278,14 +278,14 @@
 
                     <!--时尚手表模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
                     <div class="b-goods b-goods-2">
-                        <div class="b-goods__inner">
-                            <div class="b-goods__categorie">Modern Watches</div>
+                        <div class="b-goods__inner" id="phone">
+                            <!--<div class="b-goods__categorie">Modern Watches</div>
                             <div class="b-goods__title">时尚手表<br>Watches</div>
-                            <!--<a class="b-goods__btn btn btn-default" href="shop-single-1.html">pick one</a>-->
-                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">show now</a>
+                            &lt;!&ndash;<a class="b-goods__btn btn btn-default" href="shop-single-1.html">pick one</a>&ndash;&gt;
+                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">show now</a>-->
                         </div>
                         <div class="b-goods__img">
-                            <img class="img-responsive" src="static/wt/images/1_1.jpg" alt="img">
+                            <img class="img-responsive" src="static/images/iphone.jpg" alt="img">
                         </div>
                     </div>
                     <!--时尚手表模块，结束///////////////////////////////////////////////////////////////////////////////////////-->
@@ -294,10 +294,10 @@
                 <div class="col-sm-4">
                     <!--滑板鞋模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
                     <div class="b-goods b-goods-2">
-                        <div class="b-goods__inner">
-                            <div class="b-goods__categorie">Best offers</div>
+                        <div class="b-goods__inner" id="shore">
+                      <!--      <div class="b-goods__categorie">Best offers</div>
                             <div class="b-goods__title">滑板鞋<br>Sneakers</div>
-                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">shop now</a>
+                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">shop now</a>-->
                         </div>
                         <div class="b-goods__img">
                             <img class="img-responsive" src="static/wt/images/2_2.jpg" alt="img">
@@ -309,13 +309,13 @@
                 <div class="col-sm-4">
                     <!--时尚箱包模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
                     <div class="b-goods b-goods-2">
-                        <div class="b-goods__inner">
-                            <div class="b-goods__categorie">Most popular brands</div>
+                        <div class="b-goods__inner" id="electric">
+                      <!--      <div class="b-goods__categorie">Most popular brands</div>
                             <div class="b-goods__title">时尚箱包<br>Accessories</div>
-                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">shop now</a>
+                            <a class="b-goods__btn btn btn-default" href="shop-single-1.html">shop now</a>-->
                         </div>
                         <div class="b-goods__img">
-                            <img class="img-responsive" src="static/wt/images/3.jpg" alt="img">
+                            <img class="img-responsive" src="static/images/chouyan.jpg" alt="img">
                         </div>
                     </div>
                     <!--时尚箱包模块，结束///////////////////////////////////////////////////////////////////////////////////////-->
@@ -327,81 +327,46 @@
 
 
     <!--滑动展示模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
+    <!--滑动展示模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
+    <!--滑动展示模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
     <div class="container-fluid">
 
         <!--滑动页面的时候特效背景图///////////////////////////////////////////////////////////////////////////////////////-->
         <div class="section-carousel-1 parallax" style="background-image: url(static/wt/images/bg-1.jpg)">
 
-            <div class="section-carousel-1__inner">
-                <div class="goods-carousel-1 owl-carousel owl-theme enable-owl-carousel" data-min768="1" data-min992="2"
+            <div class="section-carousel-1__inner" >
+                <div class="goods-carousel-1 owl-carousel owl-theme enable-owl-carousel"  data-min768="1" data-min992="2"
                      data-min1200="2" data-margin="80" data-pagination="false" data-navigation="true"
-                     data-auto-play="4000" data-center="true" data-stop-on-hover="true">
-                    <!--滑动展示模块1，开始///////////////////////////////////////////////////////////////////////////////////////-->
-                    <div class="b-goods b-goods-3" id="yy">
-                        <!--<div class="b-goods__inner">-->
-                            <!--<div class="b-goods__categorie">TAKAHIROMIYASHITA</div>-->
-                            <!--<div class="b-goods__title">Aliquam consequat at lorem ut luctus</div>-->
-                            <!--<span class="b-goods__number">01</span>-->
-                        <!--</div>-->
-                        <!--<div class="b-goods__img">-->
-                            <!--<img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">-->
-                            <!--<div class="b-goods__label">sale 50%</div>-->
-                        <!--</div>-->
-                    </div>
-                    <!--滑动展示模块1，结束///////////////////////////////////////////////////////////////////////////////////////-->
-
-                    <!--滑动展示模块2，开始///////////////////////////////////////////////////////////////////////////////////////-->
-                    <div class="b-goods b-goods-3" id="ww">
-                        <!--<div class="b-goods__inner">-->
-                            <!--<div class="b-goods__categorie">TAKAHIROMIYASHITA</div>-->
-                            <!--<div class="b-goods__title">Sale of autumn collection Adidas and Nike</div>-->
-                            <!--<span class="b-goods__number">02</span>-->
-                        <!--</div>-->
-                        <!--<div class="b-goods__img">-->
-                            <!--<img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">-->
-                        <!--</div>-->
-                    </div>
-                    <!--滑动展示模块2，结束///////////////////////////////////////////////////////////////////////////////////////-->
-
-                    <!--滑动展示模块3，开始///////////////////////////////////////////////////////////////////////////////////////-->
+                     data-auto-play="4000" data-center="true" data-stop-on-hover="true" >
                     <div class="b-goods b-goods-3">
                         <div class="b-goods__inner">
-                            <div class="b-goods__categorie">TAKAHIROMIYASHITA</div>
-                            <div class="b-goods__title">Aliquam consequat at lorem ut luctus</div>
-                            <span class="b-goods__number">03</span>
+                            <div class="b-goods__categorie" >huawei</div>
+                            <div class="b-goods__title" >huawei</div>
+                            <span class="b-goods__number">4</span>
                         </div>
-                        <div class="b-goods__img">
-                            <img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">
+                        <div class="b-goods__img" >
+                            <img class="img-responsive" src="static/images/huawei.jpg" alt="img">
                         </div>
                     </div>
-                    <!--滑动展示模块3，结束///////////////////////////////////////////////////////////////////////////////////////-->
-
-                    <!--滑动展示模块4，开始///////////////////////////////////////////////////////////////////////////////////////-->
                     <div class="b-goods b-goods-3">
                         <div class="b-goods__inner">
-                            <div class="b-goods__categorie">TAKAHIROMIYASHITA</div>
-                            <div class="b-goods__title">Aliquam consequat at lorem ut luctus</div>
-                            <span class="b-goods__number">04</span>
+                            <div class="b-goods__categorie" >huawei</div>
+                            <div class="b-goods__title" >huawei</div>
+                            <span class="b-goods__number">4</span>
                         </div>
-                        <div class="b-goods__img">
-                            <img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">
-                            <div class="b-goods__label">sale 50%</div>
+                        <div class="b-goods__img" >
+                            <img class="img-responsive" src="static/images/big_photo.jpg" alt="img">
                         </div>
                     </div>
-                    <!--滑动展示模块4，结束///////////////////////////////////////////////////////////////////////////////////////-->
-
-                    <!--滑动展示模块5，开始///////////////////////////////////////////////////////////////////////////////////////-->
                     <div class="b-goods b-goods-3">
                         <div class="b-goods__inner">
-                            <div class="b-goods__categorie">TAKAHIROMIYASHITA</div>
-                            <div class="b-goods__title">Sale of autumn collection Adidas and Nike</div>
-                            <span class="b-goods__number">05</span>
+                            <div class="b-goods__categorie">Best offers</div>
+                            <div class="b-goods__title">滑板鞋<br>Sneakers</div>
                         </div>
                         <div class="b-goods__img">
-                            <img class="img-responsive" src="static/wt/images/1_3.jpg" alt="img">
+                            <img class="img-responsive" src="static/wt/images/2_2.jpg" alt="img">
                         </div>
                     </div>
-                    <!--滑动展示模块5，结束///////////////////////////////////////////////////////////////////////////////////////-->
                 </div>
             </div>
         </div>
@@ -435,57 +400,57 @@
                                         <!--最左边滑动展示模块，开始///////////////////////////////////////////////////////////////////////////////////////-->
                                         <div class="sp-slides">
                                             <div class="sp-slide" id="picture1">
-                                               <!-- <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
+                                                <!-- <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
                                             </div>
                                             <div class="sp-slide" id="picture2">
                                                 <!--<img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
                                             </div>
                                             <div class="sp-slide" id="picture3">
-                                             <!--   <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
+                                                <!--   <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
                                             </div>
                                             <div class="sp-slide" id="picture4">
-                                              <!--  <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
+                                                <!--  <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
                                             </div>
                                         </div>
                                         <!--略缩图模块///////////////////////////////////////////////////////////////////////////////////////-->
 
                                         <div class="sp-thumbnails">
-                                            <div class="sp-thumbnail" id="image1" >
+                                            <div class="sp-thumbnail" id="image1">
 
                                                 <!--  <img class="sp-image" src="static/wt/images/01-2.jpg" alt="img">-->
                                             </div>
                                             <div class="sp-thumbnail" id="image2">
-                                               <!-- <img class="sp-image" src="static/wt/images/01-2.jpg" alt="img">-->
+                                                <!-- <img class="sp-image" src="static/wt/images/01-2.jpg" alt="img">-->
                                             </div>
                                             <div class="sp-thumbnail" id="image3">
-                                              <!--  <img class="sp-image" src="static/wt/images/01-3.jpg" alt="img">-->
+                                                <!--  <img class="sp-image" src="static/wt/images/01-3.jpg" alt="img">-->
                                             </div>
                                             <div class="sp-thumbnail" id="image4">
-                                               <!-- <img class="sp-image" src="static/wt/images/01-4.jpg" alt="img">-->
+                                                <!-- <img class="sp-image" src="static/wt/images/01-4.jpg" alt="img">-->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="showPrice">
-                                <!--加入购物车以及价格显示///////////////////////////////////////////////////////////////////////////////////////                                <span class="b-goods__main"><span class="b-goods__inner"><span-->
-                            <!--    <span class="b-goods__categorie">TAKAHIROMIYASHITA The SoloIst.</span><a
-                                    class="b-goods__title"
-                                    href="shop-single-1.html">Tech Knit Jacket Carbon Heather</a>
-                                &lt;!&ndash;价格///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;
-                                </span><span class="b-goods__wrap"><span class="b-goods__price">$620.00</span><a
-                                    class="b-goods__cart" href="shop-single-1.html">add to cart</a>
-                                &lt;!&ndash;加入购物车///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;
-                                    </span>
-                                </span>-->
+                                    <!--加入购物车以及价格显示///////////////////////////////////////////////////////////////////////////////////////                                <span class="b-goods__main"><span class="b-goods__inner"><span-->
+                                    <!--    <span class="b-goods__categorie">TAKAHIROMIYASHITA The SoloIst.</span><a
+                                            class="b-goods__title"
+                                            href="shop-single-1.html">Tech Knit Jacket Carbon Heather</a>
+                                        &lt;!&ndash;价格///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;
+                                        </span><span class="b-goods__wrap"><span class="b-goods__price">$620.00</span><a
+                                            class="b-goods__cart" href="shop-single-1.html">add to cart</a>
+                                        &lt;!&ndash;加入购物车///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;
+                                            </span>
+                                        </span>-->
                                 </div>
                             </div>
                         </div>
                         <!--最左边滑动展示模块，结束///////////////////////////////////////////////////////////////////////////////////////-->
 
 
-                        <div class="col-md-8 " >
+                        <div class="col-md-8 ">
                             <!--第一行商品展示///////////////////////////////////////////////////////////////////////////////////////-->
-                            <div class="row " id="show" ><!--items.js展示的展示id-->
+                            <div class="row " id="show"><!--items.js展示的展示id-->
                                 <!--第一个商品展示，宽3，高4///////////////////////////////////////////////////////////////////////////////////////-->
                                 <!--第一个商品展示完毕///////////////////////////////////////////////////////////////////////////////////////-->
                                 <!--随后可以添加3个同样图片大小商品展示完毕
@@ -494,30 +459,30 @@
                             </div>
 
                             <!--第二行商品展示///////////////////////////////////////////////////////////////////////////////////////-->
-                        <!--    <div class="row">
-                                <div class="col-md-3 col-sm-6">
-                                    &lt;!&ndash;第一个商品展示，宽3，高4///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;
-                                    <div class="b-goods b-goods-4">
-<<<<<<< HEAD
-                                        <a class="b-goods__media js-zoom-images" href="static/wt/images/4.jpg">
-                                            <img class="img-responsive"  id="img" src="static/wt/images/4.jpg">
-=======
-                                        <a href="shop_single.html" >
-                                            <img class="img-responsive" src="static/wt/images/4.jpg" alt="img">
->>>>>>> 2981b4295ca342c8b714af0e6059069ce05661c7
-                                        </a><span class="b-goods__main"><span class="b-goods__inner"><span
-                                            class="b-goods__categorie">Undercover</span><a class="b-goods__title"
-                                                                                           href="shop-single-1.html">UCS3819 T-Shirt</a>
-                                            </span><span class="b-goods__wrap"><span
-                                            class="b-goods__price">$75.00</span><a class="b-goods__cart"
-                                                                                   href="shop-single-1.html">add to cart</a>
-                                            </span>
-                                            </span>
-                                    </div>
-                                </div>
-                                &lt;!&ndash;还可以展示多3个///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;
+                            <!--    <div class="row">
+                                    <div class="col-md-3 col-sm-6">
+                                        &lt;!&ndash;第一个商品展示，宽3，高4///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;
+                                        <div class="b-goods b-goods-4">
 
-                            </div>-->
+                                            <a class="b-goods__media js-zoom-images" href="static/wt/images/4.jpg">
+                                                <img class="img-responsive"  id="img" src="static/wt/images/4.jpg">
+
+                                            <a href="shop_single.html" >
+                                                <img class="img-responsive" src="static/wt/images/4.jpg" alt="img">
+
+                                            </a><span class="b-goods__main"><span class="b-goods__inner"><span
+                                                class="b-goods__categorie">Undercover</span><a class="b-goods__title"
+                                                                                               href="shop-single-1.html">UCS3819 T-Shirt</a>
+                                                </span><span class="b-goods__wrap"><span
+                                                class="b-goods__price">$75.00</span><a class="b-goods__cart"
+                                                                                       href="shop-single-1.html">add to cart</a>
+                                                </span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                    &lt;!&ndash;还可以展示多3个///////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;
+
+                                </div>-->
 
                         </div>
                     </div>
@@ -544,10 +509,10 @@
                                                 <!--<img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
                                             </div>
                                             <div class="sp-slide" id="picture7">
-                                               <!-- <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
+                                                <!-- <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
                                             </div>
                                             <div class="sp-slide" id="picture8">
-                                               <!-- <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
+                                                <!-- <img class="sp-image" src="static/wt/images/01.jpg" alt="img">-->
                                             </div>
                                         </div>
                                         <!--略缩图模块///////////////////////////////////////////////////////////////////////////////////////-->
@@ -556,20 +521,20 @@
                                             <div class="sp-thumbnail" id="image5">
                                                 <!--<img class="sp-image" src="static/wt/images/01-2.jpg" alt="img">-->
                                             </div>
-                                            <div class="sp-thumbnail" id="image6" >
-                                               <!-- <img class="sp-image" src="static/wt/images/01-2.jpg" alt="img">-->
+                                            <div class="sp-thumbnail" id="image6">
+                                                <!-- <img class="sp-image" src="static/wt/images/01-2.jpg" alt="img">-->
                                             </div>
-                                            <div class="sp-thumbnail" id="image7" >
-                                             <!--   <img class="sp-image" src="static/wt/images/01-3.jpg" alt="img">-->
+                                            <div class="sp-thumbnail" id="image7">
+                                                <!--   <img class="sp-image" src="static/wt/images/01-3.jpg" alt="img">-->
                                             </div>
-                                            <div class="sp-thumbnail" id="image8" >
-                                              <!--  <img class="sp-image" src="static/wt/images/01-4.jpg" alt="img">-->
+                                            <div class="sp-thumbnail" id="image8">
+                                                <!--  <img class="sp-image" src="static/wt/images/01-4.jpg" alt="img">-->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="showPrice1">
-                                <!--加入购物车以及价格显示///////////////////////////////////////////////////////////////////////////////////////                                <span class="b-goods__main"><span class="b-goods__inner"><span-->
+                                    <!--加入购物车以及价格显示///////////////////////////////////////////////////////////////////////////////////////                                <span class="b-goods__main"><span class="b-goods__inner"><span-->
                                 </div>
                             </div>
                         </div>
@@ -580,21 +545,21 @@
                             <!--第一行商品展示///////////////////////////////////////////////////////////////////////////////////////-->
                             <div class="row" id="show1">
                                 <!--第一个商品展示，宽3，高4///////////////////////////////////////////////////////////////////////////////////////-->
-                              <!--  <div class="col-md-3 col-sm-4">
-                                    <div class="b-goods b-goods-4">
-                                        <a class="b-goods__media js-zoom-images"
-                                           href="assets/media/content/goods/group-4/1.jpg">
-                                            <img class="img-responsive" src="static/wt/images/1_2.jpg" alt="img">
-                                        </a><span class="b-goods__main"><span class="b-goods__inner"><span
-                                            class="b-goods__categorie">Junya Watanabe MAN</span><a
-                                            class="b-goods__title" href="shop-single-1.html">eYe x Levi’s Cotton Border loopback</a>
-                                            </span><span class="b-goods__wrap"><span
-                                            class="b-goods__price">$1175.00</span><a class="b-goods__cart"
-                                                                                     href="shop-single-1.html">add to cart</a>
-                                            </span>
-                                            </span>
-                                    </div>
-                                </div>-->
+                                <!--  <div class="col-md-3 col-sm-4">
+                                      <div class="b-goods b-goods-4">
+                                          <a class="b-goods__media js-zoom-images"
+                                             href="assets/media/content/goods/group-4/1.jpg">
+                                              <img class="img-responsive" src="static/wt/images/1_2.jpg" alt="img">
+                                          </a><span class="b-goods__main"><span class="b-goods__inner"><span
+                                              class="b-goods__categorie">Junya Watanabe MAN</span><a
+                                              class="b-goods__title" href="shop-single-1.html">eYe x Levi’s Cotton Border loopback</a>
+                                              </span><span class="b-goods__wrap"><span
+                                              class="b-goods__price">$1175.00</span><a class="b-goods__cart"
+                                                                                       href="shop-single-1.html">add to cart</a>
+                                              </span>
+                                              </span>
+                                      </div>
+                                  </div>-->
                                 <!--第一个商品展示完毕///////////////////////////////////////////////////////////////////////////////////////-->
                                 <!--随后可以添加3个同样图片大小商品展示完毕
                                 写js的时候限制循环为4///////////////////////////////////////////////////////////////////////////////////////-->
@@ -878,19 +843,19 @@
 </html>
 <script src="static/jq/showitems.js"></script>
 <script type="text/javascript">
-$(function () {
+    $(function () {
         $.ajax({
             type: "POST",//请求方式
             url: "queryItemsAll",//地址，就是json文件的请求路径
             dataType: "json",//数据类型可以为 text xml json  script  jsonp
             success: function (result) {
                 $.each(result.data, function (index, items) {
-                    if(index>0) {
+                    if (index > 0) {
                         $("#show").append("<div class='col-md-3 col-sm-4'> " + "<div class='b-goods b-goods-4 '>" +
                             "<a class='b-goods__media js-zoom-images' id='img' href=" + 'static/images/' +
                             items['iPhotos'] +
                             ">" +
-                            "<img class='img-responsive' alt='img'  src=" + 'images/' +
+                            "<img class='img-responsive' alt='img'  src=" + 'static/images/' +
                             items['iPhotos'] +
                             ">" + "</a>" + "<span class='b-goods__main'><span class='b-goods__inner'><span  class='b-goods__categorie'>" +
                             items['iName'] +
@@ -909,32 +874,32 @@ $(function () {
                                 /*    加入购物车连接 + */
                             ">add to cart</a></span></span></div></div>");
                     }
-                    if(index==0){
-                        $("#picture1" ).append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#picture2" ).append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#picture3" ).append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#picture4" ).append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
+                    if (index == 0) {
+                        $("#picture1").append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#picture2").append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#picture3").append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#picture4").append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
 
-                        $("#image1" ).append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#image2" ).append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#image3" ).append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#image4" ).append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
+                        $("#image1").append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#image2").append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#image3").append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#image4").append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
 
                         $("#showPrice").append("<span  class='b-goods__categorie'>" +
-                        items['iName'] +
-                        "</span>" +
-                        "<a class='b-goods__title' href=" +
-                        'shop_single.html?iId=' + items['iId'] +
-                        ">" +
-                        items['iIntroduction'] +
-                        "</a></span><span class='b-goods__wrap'>" +
-                        "<span class='b-goods__price'>" +
-                        items['iPrice'] +
-                        "</span>" +
-                        "<a class='b-goods__cart' href=" +
-                        'cart.html?iId=' + items['iId'] +
-                        ">" +
-                        ">add to cart</a></span></span>");
+                            items['iName'] +
+                            "</span>" +
+                            "<a class='b-goods__title' href=" +
+                            'shop_single.html?iId=' + items['iId'] +
+                            ">" +
+                            items['iIntroduction'] +
+                            "</a></span><span class='b-goods__wrap'>" +
+                            "<span class='b-goods__price'>" +
+                            items['iPrice'] +
+                            "</span>" +
+                            "<a class='b-goods__cart' href=" +
+                            'cart.html?iId=' + items['iId'] +
+                            ">" +
+                            ">add to cart</a></span></span>");
                     }
                 });
                 loadpicture();
@@ -943,10 +908,10 @@ $(function () {
     });
 </script><!--显示销售量前九-->
 <script type="text/javascript">
-    function  search2() {
-        var search=$("#search").val();
-        window.location.href=encodeURI(encodeURI('shop.html?search='+search));
-/*        open("shop.html?search="+search);*/
+    function search2() {
+        var search = $("#search").val();
+        window.location.href = encodeURI(encodeURI('shop.html?search=' + search));
+        /*        open("shop.html?search="+search);*/
     }
 </script><!--跳转查询-->
 <script type="text/javascript">
@@ -958,12 +923,12 @@ $(function () {
             success: function (result) {
 
                 $.each(result.data, function (index, items) {
-                    if(index>0) {
+                    if (index > 0) {
                         $("#show1").append("<div class='col-md-3 col-sm-4'> " + "<div class='b-goods b-goods-4 '>" +
                             "<a class='b-goods__media js-zoom-images' id='img' href=" + 'static/images/' +
                             items['iPhotos'] +
                             ">" +
-                            "<img class='img-responsive' alt='img'  src=" + 'images/' +
+                            "<img class='img-responsive' alt='img'  src=" + 'static/images/' +
                             items['iPhotos'] +
                             ">" + "</a>" + "<span class='b-goods__main'><span class='b-goods__inner'><span  class='b-goods__categorie'>" +
                             items['iName'] +
@@ -982,16 +947,16 @@ $(function () {
                                 /*    加入购物车连接 + */
                             ">add to cart</a></span></span></div></div>");
                     }
-                    if(index==0){
-                        $("#picture5" ).append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#picture6" ).append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#picture7" ).append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#picture8" ).append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
+                    if (index == 0) {
+                        $("#picture5").append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#picture6").append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#picture7").append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#picture8").append("<img class='sp-image' height='500px' width='500px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
 
-                        $("#image5" ).append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#image6" ).append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#image7" ).append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
-                        $("#image8" ).append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'images/' + items['iPhotos'] + ">");
+                        $("#image5").append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#image6").append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#image7").append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
+                        $("#image8").append("<img class='sp-image'  height='80px' width='80px' alt='img' src=" + 'static/images/' + items['iPhotos'] + ">");
 
                         $("#showPrice1").append("<span  class='b-goods__categorie'>" +
                             items['iName'] +
@@ -1014,19 +979,79 @@ $(function () {
             }
         })
     });
-</script>
+</script><!--显示最新上架前九-->
 <script type="text/javascript">
-   $(function () {
-       alert("sss")
-       $("#yy").append("<div class=\"b-goods__inner\">\n" +
-           "                            <div class=\"b-goods__categorie\">啊啊啊</div>\n" +
-           "                            <div class=\"b-goods__title\">Aliquam consequat at lorem ut luctus</div>\n" +
-           "                            <span class=\"b-goods__number\">01</span>\n" +
-           "                        </div>\n" +
-           "                        <div class=\"b-goods__img\">\n" +
-           "                            <img class=\"img-responsive\" src=\"static/wt/images/1_3.jpg\" alt=\"img\">\n" +
-           "                            <div class=\"b-goods__label\">sale 588%</div>\n" +
-           "                        </div>");
-   })
+    $(function () {
+           /* var str="<div class='goods-carousel-1 owl-carousel owl-theme enable-owl-carousel' " +
+            "data-min768='1' data-min992='2'data-min1200='2' data-margin='80' data-pagination='false' " +
+            "data-navigation='true'data-auto-play='4000' data-center='true' data-stop-on-hover='true'>";*/
+//        var str = $("<div>");
+//        str.addClass("goods-carousel-1 owl-carousel owl-theme enable-owl-carousel");
+//        str.attr("data-min768", "1");
+//        str.attr("data-min992", "2");
+//        str.attr("data-min1200", "2");
+//        str.attr("data-margin", "80");
+//        str.attr("data-pagination", "false");
+//        str.attr("data-navigation", "true");
+//        str.attr("data-auto-play", "4000");
+//        str.attr("data-center", "true");
+//        str.attr("data-stop-on-hover", "true");
+//        $("#yyy").append(str);
+       var str = '';
+        $.ajax({
+            type: 'post',
+            url: 'queryItemsAllExsit',
+            dataType: 'json',
+            success: function (result) {
+                $.each(result.data, function (index, items) {
+                    console.log(index);
+                    var b_goods = $("<div>"); b_goods.attr("class", "b-goods b-goods-3");
+                    var b_goods_inner = $("<div>"); b_goods_inner.attr("class","b-goods__inner");
+                    var b_goods__categorie = $("<div>"); b_goods__categorie.attr("class", "b-goods__categorie"); b_goods__categorie.html(2);
+                    var b_goods__title = $("<div>"); b_goods__title.attr("class", "b-goods__title");
+                    var b_goods__number = $("<span>"); b_goods__number.attr("class", "b-goods__number");
+                    var b_goods__img = $("<div>"); b_goods__img.attr("class", "b-goods__img");
+                    var img_responsive = $("<img>"); img_responsive.attr("class", "img-responsive"); img_responsive.attr("src", "static/images/big_photo.jpg"); img_responsive.attr("alt", "img");
+                    var b_goods__label = $("<div>"); b_goods__label.attr("class", "b-goods__label");
+                    b_goods_inner.append(b_goods__categorie); b_goods_inner.append(b_goods__title); b_goods_inner.append(b_goods__number);
+                    b_goods__img.append(img_responsive); b_goods__img.append(b_goods__label);
+                    b_goods.append(b_goods_inner); b_goods.append(b_goods__img);
+                    $('#yyy').append(b_goods);
+                    });
+                console.log(str.innerText)
+                $('#yyy').owlCarousel();
+        }
+        })
+    })
+    //1
+</script><!--显示库存最多的前5-->
+<script type="text/javascript">
+    $(function () {
+        var search="男装";
+        var search1="女装";
+        var search2="鞋";
+        var search3="手机";
+        var search4="电器";
+       $("#boy").append("<div class='b-goods__categorie'>spring/summer 2018</div>"+
+        "<div class='b-goods__title'>男装<br>New Collection of clothes</div>"+
+        "<a class='b-goods__btn btn btn-default' href=" +
+           'shop.html?search=' + search +
+           ">boy&man</a>");
+       $("#girl").append("<div class='b-goods__categorie'>spring/summer 2018</div>"+
+           "<div class='b-goods__title'>女装<br>New Collection of clothes</div>"+
+           "<a class='b-goods__btn btn btn-default' href=" +
+           'shop.html?search=' + search1 +">girl&woman</a>");
+       $("#shore").append("<div class='b-goods__categorie'>spring/summer 2018</div>"+
+        "<div class='b-goods__title'>鞋类<br>New Collection of Shoes</div>"+
+        "<a class='b-goods__btn btn btn-default' href=" +
+        'shop.html?search=' + search2 +">shore&people</a>")
+        $("#phone").append("<div class='b-goods__categorie'>spring/summer 2018</div>"+
+            "<div class='b-goods__title'>手机<br>New Collection of cellphone</div>"+
+            "<a class='b-goods__btn btn btn-default' href=" +
+            'shop.html?search=' + search3 +">shop now</a>")
+        $("#electric").append("<div class='b-goods__categorie'>spring/summer 2018</div>"+
+            "<div class='b-goods__title'>电器<br>electric apploance</div>"+
+            "<a class='b-goods__btn btn btn-default' href=" +
+            'shop.html?search=' + search4 +">shop now</a>")
+    })
 </script>
-

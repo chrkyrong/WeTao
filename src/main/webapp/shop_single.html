@@ -197,9 +197,19 @@
                         </div>
                         <form class="b-goods-det__form">
                             <div class="row" >
-                                <div class="col-md-6" id="priceShow"><!--价格展示-->
-                                    <!--商品价格模块////////////////////////////////////////////////////////////-->
-                                  <!--  <div class="b-goods-det__price">$ 1880.00</div>-->
+                                <div class="col-md-6" ><!--价格展示-->
+
+                                    <div id="priceShow">
+                                        <!--商品价格模块////////////////////////////////////////////////////////////-->
+                                        <!--  <div class="b-goods-det__price">$ 1880.00</div>-->
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <p>&nbsp;</p>
+                                    <div>
+                                        <h5>服务承诺</h5>
+                                        <p>全国联保&nbsp;&nbsp;&nbsp;&nbsp;正品保证&nbsp;&nbsp;&nbsp;&nbsp;极速退款
+                                            &nbsp;&nbsp;&nbsp;&nbsp;赠运费险&nbsp;&nbsp;&nbsp;&nbsp;七天无理由退款</p>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <!--商品数量控制模块////////////////////////////////////////////////////////////-->
@@ -619,6 +629,7 @@
 <!-- Main slider-->
 <script src="static/wt/js/jquery.sliderPro.min.js"></script>
 <script src="static/jq/tool.js"></script>
+<script src="static/jq/showitems.js"></script>
 </body>
 
 </html>
@@ -635,11 +646,11 @@
                     $("#priceShow").append( "<div class='b-goods-det__price'>"+'￥'+ items['iPrice']+"</div>");
                     $("#iNameShow").append("<h1 class='b-goods-det__title'>"+ items['iName']+"</h1>");
                     $("#iPhoneShow").append(
-                    "<img class='img-responsive' height='500px' width='500px' alt='foto' src="+'images/' +
+                    "<img class='img-responsive' height='500px' width='500px' alt='foto' src="+'static/images/' +
                     items['iPhotos'] +
                     ">");
                     $("#iPhoneShow1").append(
-                        "<img class='img-responsive' height='500px' width='500px' alt='foto' src="+'images/' +
+                        "<img class='img-responsive' height='500px' width='500px' alt='foto' src="+'static/images/' +
                         items['iPhotos'] +
                         ">");
                     $("#introductionShow").append("<h4 class='b-blockquote__author color-primary'>"+

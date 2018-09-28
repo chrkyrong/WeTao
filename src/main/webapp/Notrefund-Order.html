@@ -4,37 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>WeTao / SellerEvaluate</title>
+    <title>WeTao / NotRefund-Orders</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="telephone=no" name="format-detection">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="static/wt/css/master.css">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="static/wt/images/favicon.ico">
     <!--[if lt IE 9 ]>
     <script src="assets/js/separate-js/html5shiv-3.7.2.min.js" type="text/javascript"></script>
     <meta content="no" http-equiv="imagetoolbar">
     <![endif]-->
-    <style>
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #FFC125;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            padding: 12px 16px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -70,18 +52,16 @@
 
                     </ul>
                 </li>
-
+                
                 <li class="has-children ">
                     <a href="shop-1.html"><span>售后 <i class="arrow_carrot-right"></i>  </span></a>
                     <ul class="dl-submenu">
-                        <li><a href="Unexchange-Order.html"><span>待换货</span></a></li>
-                        <li><a href="Exchange-Order.html"><span>已换货</span></a></li>
                         <li><a href="Notrefund-Order.html"><span>待退款</span></a></li>
                         <li><a href="Refund-Order.html"><span>已退款</span></a></li>
                     </ul>
                 </li>
-
-                <li><a href="about.html"><span>客服</span></a></li>
+                
+				<li><a href="about.html"><span>客服</span></a></li>
                 <li><a href="lookbook.html"><span>数据统计</span></a></li>
             </ul>
         </div>
@@ -153,7 +133,7 @@
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
                             <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>主 页</h5></a>
+                            <li><a href="items-Homepage.html"><h5>主 页</h5></a>
                             </li>
                             <li><a href="Store.html"><h5>店铺信息</h5></a>
                             </li>
@@ -164,8 +144,7 @@
                     <div class="header-navibox-2">
                         <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
                         <ul class="nav navbar-nav clearfix vcenter">
-                            <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
-                            </li>
+                            
                             <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
                             <li><a href="SellerMessage.html"><h5>个人信息</h5></a>
                             </li>
@@ -176,9 +155,9 @@
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
-                            <li><a href="#">登 陆</a>
+                            <li><a href="SellerLogin.html">登 陆</a>
                             </li>
-                            <li><a href="#">返 回</a>
+                            <li><a href="#">退 出</a>
                             </li>
                         </ul>
                         <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
@@ -200,67 +179,92 @@
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
                             <!--第一行文字/////////////////////////////////////////////////////////////-->
-                            <li><a href=""><h4>评论查看</h4></a>
+                            <li><a href=""><h4>待退款订单</h4></a>
                             </li>
                         </ol>
                     </div>
                     <div class="section-title-page section-title-page_mod-a">
                         <!--第二行文字/////////////////////////////////////////////////////////////-->
-                        <h1 class="ui-title-page">C o m m e n t M a n a g e</h1>
+                        <h1 class="ui-title-page">W a i t i n g R e f u n d O r d e r s</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="woocommerce">
-                        <!-- 搜索框from -->
-                        <form action="Select">
-                            <div class="row">
-                                <p style="font-size:18px">&nbsp;&nbsp;搜索评论</p>
-                                <div class="col-md-6">
-                                    <input name="searchgo" id="searchgo" class="form-control" type="text"
-                                           placeholder="Your Select">
-                                    <input name="date" id="date" class="form-control" type="date"
-                                           style="font-size:20px"/>
-                                </div>
-                                <div class="col-md-6">
-                                    <select id="condition" name="condition" class="selectpicker" style="height:40px">
-                                        <option value="店铺">店铺</option>
-                                        <option value="商品">商品</option>
-                                        <option value="评级">评级</option>
-                                        <option value="评论">评论</option>
-                                    </select>
-                                    &nbsp;&nbsp;
-                                    <input type="button" value="查询" class="ui-form__btn btn btn-dark"
-                                           style="min-width:80px;font-size:14px;line-height:40px" onclick="onSearch()"/>
-                                </div>
+                    <!-- 搜索框from -->
+                    	<form action="Select">
+                    		<div class="row">
+                            	<p style="font-size:18px">订单列表</p>
+                            	<div class="col-md-6">
+                            		<input name="select" class="form-control" type="text" placeholder="Your Select" >                           		
+                            		<input name="time" class="form-control" type="date" style="font-size:20px"/>
+                            	</div>
+                            	<div class="col-md-6">
+									<select class="selectpicker" style="height:40px">
+										<option value="oid">订单号</option>
+										<option value="buyer">买家</option>
+										<option value="address">地址</option>
+									</select>
+									&nbsp;&nbsp;
+									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>
+								</div>
                             </div>
                         </form>
-                        <!-- 表格form -->
+                         <!-- 表格form -->              
                         <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               enctype="multipart/form-data" _lpchecked="1">
                             <div class="col2-set" id="customer_details">
-
-                                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            	
+                            	<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>                                
                                 <div class="table-container" style="width:1500px">
-                                    <table class="table table_primary" style="width:80%">
-                                        <thead>
-                                        <tr>
-                                            <th style="width:150px">商品</th>
-                                            <th style="width:150px">商店</th>
-                                            <th style="width:120px">买家</th>
-                                            <th style="width:300px">评论</th>
-                                            <th style="width:100px">评级</th>
-                                            <th style="width:150px">图片</th>
-                                            <th style="width:130px">时间</th>
-                                            <th style="width:90px">详情</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="show">
-                                        </tbody>
-                                    </table>
-                                </div>
+                                	<table class="table table_primary" style="width:80%">
+                                    	<thead>
+                                        	<tr>
+                                                <th style="width:150px">订单号</th>
+                                                <th style="width:130px">买家</th>
+                                                <th style="width:180px">时间</th>
+                                                <th style="width:100px">总价</th>
+                                                <th style="width:150px">邮寄方式</th>
+                                                <th style="width:300px">地址</th>
+                                                <th style="width:300px">买家留言</th>
+                                                <th style="width:180px">操作</th>                                          
+                                             </tr>
+                                         </thead>
+                                       	 <tbody>
+                                        	<tr>
+                                                <td>001</td>
+                                                <td>陈会长</td>
+                                                <td>2018-09-21 17:49:30</td>
+                                                <td>3200</td>
+                                                <td>快递</td>
+                                                <td>广东省肇庆市肇庆学院厚德书院D1-741</td>
+                                                <td>一个白色爆炸头，一个女装黑色长发，一个粉色非主流发型，一个绿色鸡冠头</td>                                               
+                                                <td><a href="Detail-Order.html">详情</a>
+                                                	&nbsp;/&nbsp;
+                                                	<a href="#">退款</a>
+                                                </td>
+                                           	</tr>
+                                           	<tr>
+                                                <td>002</td>
+                                                <td>陈会长</td>
+                                                <td>2018-09-19 17:49:30</td>
+                                                <td>800</td>
+                                                <td>快递</td>
+                                                <td>广东省肇庆市肇庆学院厚德书院D1-741</td> 
+                                                <td>一个绿色爆炸头</td>                                              
+                                                <td><a href="Detail-Order.html">详情</a>
+                                                	&nbsp;/&nbsp;
+                                                	<a href="#">退款</a>
+                                                </td>
+                                           	</tr>                                             
+                                       	 </tbody>
+                               		</table>	
+                             	</div>
+                             	
                             </div>
+                            
+                            
                         </form>
                     </div>
                 </div>
@@ -305,6 +309,12 @@
                                         <li class="footer-list__item"><a class="footer-list__link"
                                                                          href="">International</a>
                                         </li>
+                                        <!--<li class="footer-list__item"><a class="footer-list__link"-->
+                                        <!--href="privacy-policy.html">Privacy</a>-->
+                                        <!--</li>-->
+                                        <!--<li class="footer-list__item"><a class="footer-list__link"-->
+                                        <!--href="terms-of-use.html">Terms</a>-->
+                                        <!--</li>-->
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
@@ -380,54 +390,9 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-<script src="static/jq/showitems.js"></script>
+
 </body>
 
 </html>
-<script type="text/javascript" charset="UTF-8" src="static/jq/evaluate.js"></script>
-<script type="text/javascript">
-    $(function () {
-        Onload4();
-    })
-</script>
-<script type="text/javascript">
-    function onSearch(sellerId) {
-        sellerId = getQueryString("sellerId");
-        var search = $('#searchgo').val();
-        var condition = $('#condition').val();
-        var date = $('#date').val();
-//        alert(sellerId);
-        $.ajax({
-            url: '/evaluate/formTest',
-            type: 'post',
-            data: {search: search, condition: condition, date: date, sellerId: sellerId},
-            success: function (result) {
-                var s = "";
-                $.each(result.data, function (i, v) {
-                    s += "<tr><td>" + v.evaluateVo.items.iName;
-                    s += "</td><td>" + v.store.stName;
-                    s += "</td><td>" + v.evaluateVo.user.uUserName;
-                    s += "</td><td>" + v.evaluateVo.evaluate.eDescription;
-                    s += "</td><td>" + v.evaluateVo.evaluate.eLevel;
-                    if (v.evaluateVo.evaluate.ePhotos != null || v.evaluateVo.evaluate.ePhotos != "") {
-                        s += "</td><td><a class = 'b-goods__media js-zoom-images' href = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'>";
-                        s += "<img alt = 'img' src = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'class ='img-responsive'></a>";
-                    }
-                    else {
-                        s += "</td><td>无买家秀";
-                    }
-                    s += "</td><td>" + v.order.oDate;
-                    s += "</td><td><div class = 'dropdown'><span style ='color:#FFC125'>详情</span><div class = 'dropdown-content'><p>总价：" + v.order.oPrice + "</p>";
-                    s += "<p>留言：" + v.order.oMessage + "</p></div></div></td></tr>";
-                })
-                loadpicture();
-                $("#show").html(s);
-            },
-            error: function (result) {
-                alert("失败了")
-            }
-        })
-    }
-</script>
 
 
