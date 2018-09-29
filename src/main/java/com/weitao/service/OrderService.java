@@ -1,7 +1,6 @@
 package com.weitao.service;
 
 import com.github.pagehelper.PageInfo;
-import com.weitao.bean.Car;
 import com.weitao.bean.Order;
 
 import java.util.List;
@@ -31,6 +30,25 @@ public interface OrderService {
 //    生成订单(用户id、邮寄方式、收货地址、留言)
     List<Order> addOrder(Integer userId,Byte oPost,String oAddress,String oMessage);
 
-    PageInfo get1(Map<String,Object> map, int pageNum, int pageSize);//分页查询订单信息
+    PageInfo getCondition1(Map<String,Object> map, int pageNum, int pageSize);//分页查询待发货订单信息
 
+    List<Order> get1(int sellerId);//根据卖家id查询待发货订单
+
+    PageInfo getCondition2(Map<String,Object> map, int pageNum, int pageSize);//分页查询待发货订单信息
+
+    List<Order> get2(int sellerId);//根据卖家id查询待发货订单
+
+    PageInfo getCondition3(Map<String,Object> map, int pageNum, int pageSize);//分页查询待发货订单信息
+
+    List<Order> get3(int sellerId);//根据卖家id查询待发货订单
+
+    PageInfo getCondition4(Map<String,Object> map, int pageNum, int pageSize);//分页查询退款中订单信息
+
+    List<Order> get4(int sellerId);//根据卖家id查询退款中订单
+
+    PageInfo getCondition5(Map<String,Object> map, int pageNum, int pageSize);//分页查询退款完成订单信息
+
+    List<Order> get5(int sellerId);//根据卖家id查询退款完成订单
+
+    Boolean sendOrder (int oId);//根据订单id发货
 }

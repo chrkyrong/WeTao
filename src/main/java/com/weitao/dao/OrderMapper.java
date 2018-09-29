@@ -33,8 +33,26 @@ public interface OrderMapper {
 
     List<Order> select1 (int sellerId);//根据卖家id查询待发货订单
 
-    List<Order> selectConditions(Map<String,Object> map);//商家多条件查询
+    List<Order> selectCondition1(Map<String,Object> map);//商家多条件查询待发货订单
+
+    List<Order> select2 (int sellerId);//根据卖家id查询已发货订单
+
+    List<Order> selectCondition2(Map<String,Object> map);//商家多条件查询已发货订单
+
+    List<Order> select3 (int sellerId);//根据卖家id查询已到货订单
+
+    List<Order> selectCondition3(Map<String,Object> map);//商家多条件查询已到货订单
+
+    List<Order> select4 (int sellerId);//根据卖家id查询退款中订单
+
+    List<Order> selectCondition4(Map<String,Object> map);//商家多条件查询退款中订单
+
+    List<Order> select5 (int sellerId);//根据卖家id查询退款中订单
+
+    List<Order> selectCondition5(Map<String,Object> map);//商家多条件查询退款中订单
 
 //    edited by CC
     int insertAndGetId(Order order);//添加订单到数据库并获得新增的主键
+
+    int sendOrder (int oId);//根据订单id发货
 }

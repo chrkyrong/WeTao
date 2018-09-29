@@ -7,11 +7,9 @@ import com.weitao.service.OrderService;
 import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -142,10 +140,25 @@ public class OrderController {
     }
 
 
-    @GetMapping("/order/get1")
-    public Result get1(@RequestParam Map<String,Object> map, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="2")int pageSize)
+    /**
+     * 多条件查询待发货订单
+     * @param oId
+     * @param userId
+     * @param oAddress
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/order/get/condition/1")
+    public Result getCondition1(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
     {
-        PageInfo page=orderService.get1(map,pageNum,pageSize);
+        int sellerId=2;
+        Map<String,Object> map=new HashMap<>();
+        map.put("oId",oId);
+        map.put("userId",userId);
+        map.put("oAddress",oAddress);
+        map.put("sellerId",sellerId);
+        PageInfo page=orderService.getCondition1(map,pageNum,pageSize);
         if(page!=null)
             return ResultUtil.success(page);
         else
@@ -156,5 +169,194 @@ public class OrderController {
     public Result addOrders(Integer userId,Byte oPost,String oAddress,String oMessage){
         List<Order> orderList = orderService.addOrder(userId, oPost,oAddress,oMessage);
         return ResultUtil.success(orderList);
+    }
+
+    /**
+     * 根据卖家id查询订单
+     * @param sellerId
+     * @return
+     */
+    @GetMapping("/order/get/1")
+    public Result getOrder1(int sellerId)
+    {
+        List<Order> orderList=orderService.get1(sellerId);
+        if(orderList!=null)
+            return ResultUtil.success(orderList);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 根据订单id发货
+     * @param oId
+     * @return
+     */
+    @GetMapping("/order/send")
+    public Result sendOrder(int oId)
+    {
+        if(orderService.sendOrder(oId))
+            return ResultUtil.success();
+        else
+            return ResultUtil.error(ResultEnum.ORDER_SEND_FAIL);
+    }
+
+    /**
+     * 多条件查询已发货订单
+     * @param oId
+     * @param userId
+     * @param oAddress
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/order/get/condition/2")
+    public Result getCondition2(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    {
+        int sellerId=2;
+        Map<String,Object> map=new HashMap<>();
+        map.put("oId",oId);
+        map.put("userId",userId);
+        map.put("oAddress",oAddress);
+        map.put("sellerId",sellerId);
+        PageInfo page=orderService.getCondition2(map,pageNum,pageSize);
+        if(page!=null)
+            return ResultUtil.success(page);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 根据商户id查询已发货订单
+     * @param sellerId
+     * @return
+     */
+    @GetMapping("/order/get/2")
+    public Result getOrder2(int sellerId)
+    {
+        List<Order> orderList=orderService.get2(sellerId);
+        if(orderList!=null)
+            return ResultUtil.success(orderList);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 多条件查询已到货订单
+     * @param oId
+     * @param userId
+     * @param oAddress
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/order/get/condition/3")
+    public Result getCondition3(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    {
+        int sellerId=2;
+        Map<String,Object> map=new HashMap<>();
+        map.put("oId",oId);
+        map.put("userId",userId);
+        map.put("oAddress",oAddress);
+        map.put("sellerId",sellerId);
+        PageInfo page=orderService.getCondition3(map,pageNum,pageSize);
+        if(page!=null)
+            return ResultUtil.success(page);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 根据商户id查询已发货订单
+     * @param sellerId
+     * @return
+     */
+    @GetMapping("/order/get/3")
+    public Result getOrder3(int sellerId)
+    {
+        List<Order> orderList=orderService.get3(sellerId);
+        if(orderList!=null)
+            return ResultUtil.success(orderList);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 多条件查询退款中订单
+     * @param oId
+     * @param userId
+     * @param oAddress
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/order/get/condition/4")
+    public Result getCondition4(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    {
+        int sellerId=2;
+        Map<String,Object> map=new HashMap<>();
+        map.put("oId",oId);
+        map.put("userId",userId);
+        map.put("oAddress",oAddress);
+        map.put("sellerId",sellerId);
+        PageInfo page=orderService.getCondition4(map,pageNum,pageSize);
+        if(page!=null)
+            return ResultUtil.success(page);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 根据商户id查询退款中订单
+     * @param sellerId
+     * @return
+     */
+    @GetMapping("/order/get/4")
+    public Result getOrder4(int sellerId)
+    {
+        List<Order> orderList=orderService.get4(sellerId);
+        if(orderList!=null)
+            return ResultUtil.success(orderList);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 多条件查询退款中订单
+     * @param oId
+     * @param userId
+     * @param oAddress
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/order/get/condition/5")
+    public Result getCondition5(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    {
+        int sellerId=2;
+        Map<String,Object> map=new HashMap<>();
+        map.put("oId",oId);
+        map.put("userId",userId);
+        map.put("oAddress",oAddress);
+        map.put("sellerId",sellerId);
+        PageInfo page=orderService.getCondition5(map,pageNum,pageSize);
+        if(page!=null)
+            return ResultUtil.success(page);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 根据商户id查询退款中订单
+     * @param sellerId
+     * @return
+     */
+    @GetMapping("/order/get/5")
+    public Result getOrder5(int sellerId)
+    {
+        List<Order> orderList=orderService.get5(sellerId);
+        if(orderList!=null)
+            return ResultUtil.success(orderList);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
     }
 }

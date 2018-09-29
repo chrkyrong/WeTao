@@ -212,49 +212,7 @@
                                                 <th style="width:130px">数量</th>                                             
                                              </tr>
                                          </thead>
-                                       	 <tbody>
-                                        	<tr>
-                                                <td>001</td>
-                                                <td>爆炸头</td>
-                                                <td>程序员的假发小店</td>
-                                                <td><a class="b-goods__media js-zoom-images"
-                                               href="static/wt/images/2_1.jpg"><img alt="img" src="static/wt/images/2_1.jpg" class="img-responsive"></a></td>
-                                                <td>800</td>
-                                                <td>1</td>                                               
-                                           	</tr>
-                                           	<tr>
-                                                <td>001</td>
-                                                <td>女装长发</td>
-                                                <td>程序员的假发小店</td>
-                                                <td><a class="b-goods__media js-zoom-images"
-                                               href="static/wt/images/2_2.jpg"><img alt="img" src="static/wt/images/2_2.jpg" class="img-responsive"></a></td>
-                                                <td>800</td>
-                                                <td>1</td>                                               
-                                           	</tr>
-                                           	<tr>
-                                                <td>001</td>
-                                                <td>非主流发型</td>
-                                                <td>程序员的假发小店</td>
-                                                <td>
-                                                	<a class="b-goods__media js-zoom-images"
-                                                		href="static/wt/images/1_1.jpg">
-                                                	<img alt="img" src="static/wt/images/1_1.jpg" class="img-responsive"></a>
-                                                </td>
-                                                <td>800</td>
-                                                <td>1</td>                                               
-                                           	</tr>
-                                           	<tr>
-                                                <td>001</td>
-                                                <td>鸡冠头</td>
-                                                <td>程序员的假发小店</td>
-                                                <td>
-                                                	<a class="b-goods__media js-zoom-images"
-                                              		 	href="static/wt/images/3_1.jpg">
-                                              		<img alt="img" src="static/wt/images/3_1.jpg" class="img-responsive"></a>
-                                              	</td>
-                                                <td>800</td>
-                                                <td>1</td>                                               
-                                           	</tr>                                            
+                                       	 <tbody id="order_details">
                                        	 </tbody>
                                		</table>	
                              	</div>
@@ -395,9 +353,15 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-
+<script src="static/js/order_detail.js"></script>
+<script src="static/js/get_param.js"></script>
+<script>
+    $(function () {
+        var oId= getUrlParam('oId');
+        order_detail(oId);
+    })
+</script>
 </body>
-
 </html>
 
 

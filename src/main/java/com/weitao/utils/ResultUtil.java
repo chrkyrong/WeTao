@@ -7,6 +7,7 @@ import com.weitao.exception.ResultEnum;
  */
 public class ResultUtil {
 
+    //成功列表
     public static Result success(Object object)
     {
         Result result=new Result();
@@ -16,6 +17,18 @@ public class ResultUtil {
         return result;
     }
 
+    /*//成功列表的分页
+    public static Result success(Object object,int pages)
+    {
+        Result result=new Result();
+        result.setCode(ResultEnum.SUCCESS.getCode());
+        result.setMsg(ResultEnum.SUCCESS.getMsg());
+        result.setData(object);
+        result.setPages(pages);
+        return result;
+    }*/
+
+    //成功
     public static Result success()
     {
         Result result=new Result();
@@ -24,6 +37,7 @@ public class ResultUtil {
         return result;
     }
 
+    //失败
     public static Result error(String msg,String code)
     {
         Result result=new Result();
@@ -32,6 +46,7 @@ public class ResultUtil {
         return result;
     }
 
+    //失败
     public static Result error(ResultEnum resultEnum)
     {
         Result result=new Result();

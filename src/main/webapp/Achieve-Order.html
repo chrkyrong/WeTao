@@ -196,13 +196,20 @@
                     <!-- 搜索框from -->
                     	<form action="Select">
                     		<div class="row">
-                            	<p style="font-size:18px">订单列表</p>
+                            	<!--<p style="font-size:18px">订单列表</p>-->
+                                <div class="col-md-12">
+                                    <label>订单号：</label>
+                                    <input name="oId"  type="text" placeholder="输入订单" id="oId">
+                                    <label>买家：</label>
+                                    <input name="userId"  type="text" placeholder="输入买家" id="userId">
+                                    <label>买家地址：</label>
+                                    <input name="oAddress"  type="text" placeholder="输入买家地址" style="width:400px" id="oAddress">
+                                    <!--<input name="time" class="form-control" type="date" style="font-size:20px"/>-->
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px" onclick="getcondition2()"/>
+                                </div>
                             	<div class="col-md-6">
-                            		<input name="select" class="form-control" type="text" placeholder="Your Select" >                           		
-                            		<input name="time" class="form-control" type="date" style="font-size:20px"/>
-                            	</div>
-                            	<div class="col-md-6">
-									<select class="selectpicker" style="height:40px">
+								<!--	<select class="selectpicker" style="height:40px">
 										<option value="oid">订单号</option>
 										<option value="buyer">买家</option>
 										<option value="address">地址</option>
@@ -210,7 +217,7 @@
 										<option value="uncomment">未评论</option>
 									</select>
 									&nbsp;&nbsp;
-									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>
+									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>-->
 								</div>
                             </div>
                         </form>
@@ -231,33 +238,10 @@
                                                 <th style="width:150px">邮寄方式</th>
                                                 <th style="width:300px">地址</th>
                                                 <th style="width:300px">买家留言</th>
-                                                <th style="width:120px">状态</th>
                                                 <th style="width:100px">操作</th>                                               
                                              </tr>
                                          </thead>
-                                       	 <tbody>
-                                        	<tr>
-                                                <td>001</td>
-                                                <td>陈会长</td>
-                                                <td>2018-09-21 17:49:30</td>
-                                                <td>3200</td>
-                                                <td>快递</td>
-                                                <td>广东省肇庆市肇庆学院厚德书院D1-741</td>
-                                                <td>一个白色爆炸头，一个女装黑色长发，一个粉色非主流发型，一个绿色鸡冠头</td>                                               
-                                                <td>已评论</td>
-                                                <td><a href="Detail-Order.html">详情</a></td>
-                                           	</tr>
-                                           	<tr>
-                                                <td>002</td>
-                                                <td>陈会长</td>
-                                                <td>2018-09-19 17:49:30</td>
-                                                <td>800</td>
-                                                <td>快递</td>
-                                                <td>广东省肇庆市肇庆学院厚德书院D1-741</td> 
-                                                <td>一个绿色爆炸头</td>                                              
-                                                <td>未评论</td>
-                                                <td><a href="Detail-Order.html">详情</a></td>
-                                           	</tr>                                             
+                                       	 <tbody id="order3">
                                        	 </tbody>
                                		</table>	
                              	</div>
@@ -390,7 +374,13 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-
+<script src="static/js/order.js"></script>
+<script src="static/js/order_detail.js"></script>
+<script>
+    $(function () {
+        getorder3();
+    })
+</script>
 </body>
 
 </html>
