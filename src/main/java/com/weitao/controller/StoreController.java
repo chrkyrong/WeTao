@@ -30,7 +30,7 @@ public class StoreController {
     //    商家添加一个新的店铺
     @RequestMapping(value = "/addNewStore", method = RequestMethod.POST)
     public Result addNewStore(@RequestParam("stName") String stName,
-                              @RequestParam(value = "sellerId", defaultValue = "2000000") Integer sellerId) throws Exception {
+                              @SessionAttribute(value = "sellerId",required = false) Integer sellerId) throws Exception {
 //        后台session获取卖家id
         if (storeService.insertStore(stName, sellerId))
 //            添加店铺成功后带上sellerId返回
@@ -51,7 +51,7 @@ public class StoreController {
 
     //    商家查找出所有状态为属于他的店铺
     @RequestMapping(value = "/sellerSearchStore", method = RequestMethod.POST)
-    public Result sellerSearchStore(@RequestParam(value = "sellerId", defaultValue = "2000000") Integer sellerId,
+    public Result sellerSearchStore(@SessionAttribute(value = "sellerId",required = false) Integer sellerId,
                                     @RequestParam(value = "stStatus", defaultValue = "0") int stStatus) throws Exception {
 //        后台session获取卖家id
         Store store=new Store();
