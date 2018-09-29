@@ -262,9 +262,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> get1(int sellerId) {
+    public PageInfo get1(int sellerId,int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<Order> list=orderMapper.select1(sellerId);
-        return list;
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
     }
 
     @Override
@@ -278,9 +280,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> get2(int sellerId) {
+    public PageInfo get2(int sellerId, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<Order> list=orderMapper.select2(sellerId);
-        return list;
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
     }
 
     @Override
@@ -294,9 +298,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> get3(int sellerId) {
+    public PageInfo get3(int sellerId,int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<Order> list=orderMapper.select3(sellerId);
-        return list;
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
     }
 
     @Override
@@ -310,9 +316,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> get4(int sellerId) {
+    public PageInfo get4(int sellerId, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<Order> list=orderMapper.select4(sellerId);
-        return list;
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
     }
 
     @Override
@@ -326,9 +334,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> get5(int sellerId) {
+    public PageInfo get5(int sellerId, int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum, pageSize);
         List<Order> list=orderMapper.select5(sellerId);
-        return list;
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
     }
 
     @Override

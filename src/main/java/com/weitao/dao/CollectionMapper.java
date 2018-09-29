@@ -15,4 +15,7 @@ public interface CollectionMapper {
 
     //商品在商品页面将商品加入收藏夹
     int insertCollection(@Param("iId") int iId ,@Param("uId") int uId);
+
+    //判断商品是否已经收藏
+    Integer isExistCollection(@Param("iId") Integer iId, @Param("uId") Integer uId);
 }
