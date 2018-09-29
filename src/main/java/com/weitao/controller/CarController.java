@@ -91,7 +91,7 @@ public class CarController {
         } else {
             count = carService.updateCar(uId, iId, number);
         }
-        if (count!=0)
+        if (count==1)
             return ResultUtil.success();
         else
             return ResultUtil.error("加入购物车失败","1");
