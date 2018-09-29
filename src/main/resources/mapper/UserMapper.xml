@@ -30,7 +30,11 @@
     where u_id = #{uId,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insertSelective" parameterType="com.weitao.bean.User">
+  <insert id="insertSelective" parameterType="com.weitao.bean.User" >
+    <!--返回自增主键-->
+    <selectKey keyProperty="uId" resultType="java.lang.Integer" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="uId != null">

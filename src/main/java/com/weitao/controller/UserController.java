@@ -30,8 +30,9 @@ public class UserController {
      */
     @PostMapping("/user")
     public Result add (User user) throws Exception {
-        if(userService.register(user))
-            return ResultUtil.success();
+        User user1=userService.register(user);
+        if(user!=null)
+            return ResultUtil.success(user);
         else
             return ResultUtil.error(ResultEnum.USER_REGISTER_FAIL);
     }
