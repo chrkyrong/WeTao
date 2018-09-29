@@ -38,7 +38,7 @@ function select() {
             s2+= '<table cellspacing="0" class="shop_table shop_table_responsive"><tr class="order-total"><th>总 计</th><td data-title="Total"><strong>';
             s2+='<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">£</span>'+money.toFixed(3)+'</span></strong>';
             s2+='</td></tr></table>';
-            s2+='<div class="wc-proceed-to-checkout"><a href="checkout.html" class="checkout-button button alt wc-forward">下 单(Proceed to Checkout)</a>';
+            s2+='<div class="wc-proceed-to-checkout"><a href="order_confirm.html" class="checkout-button button alt wc-forward">下 单(Proceed to Checkout)</a>';
             s2+='</div></div></div>'
             $("#from").append(s2);
         },
