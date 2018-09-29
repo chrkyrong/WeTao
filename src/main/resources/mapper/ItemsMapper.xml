@@ -194,6 +194,7 @@
       and category.ca_id LIKE '%${caId}%'
     </if>
   </sql>
+  
   <!--给一个条件查询-->
   <select id="selectItemsAll" parameterType="com.weitao.vo.ItemsVo" resultMap="selectItemsMap">
     SELECT items.* from items
@@ -253,7 +254,12 @@
     from items where  i_status=0
     ORDER BY i_date DESC LIMIT 9
   </select>
-
+  <!--查询显示主界面，显示库存最多的5件商品-->
+  <select id="selectItemsExsit" parameterType="com.weitao.bean.Items" resultType="com.weitao.bean.Items">
+    SELECT *
+    from items where  i_status=0
+    ORDER BY i_exsit DESC LIMIT 3
+  </select>
     <!--By CC-->
     <!--传入List商店id集合和状态值，改变多个商品的状态-->
     <update id="changeItemsStatus">

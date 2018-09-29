@@ -27,6 +27,26 @@ public class Order {
 
     private Integer storeId;
 
+    private String oAddress;
+
+    private String oExpress;
+
+    public String getoAddress() {
+        return oAddress;
+    }
+
+    public void setoAddress(String oAddress) {
+        this.oAddress = oAddress;
+    }
+
+    public String getoExpress() {
+        return oExpress;
+    }
+
+    public void setoExpress(String oExpress) {
+        this.oExpress = oExpress;
+    }
+
     public Integer getoId() {
         return oId;
     }
@@ -99,6 +119,7 @@ public class Order {
         this.storeId = storeId;
     }
 
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("{");
@@ -120,6 +141,10 @@ public class Order {
                 .append(sellerId);
         sb.append(",\"storeId\":")
                 .append(storeId);
+        sb.append(",\"oAddress\":\"")
+                .append(oAddress).append('\"');
+        sb.append(",\"oExpress\":\"")
+                .append(oExpress).append('\"');
         sb.append('}');
         return sb.toString();
     }

@@ -25,14 +25,17 @@ public enum ResultEnum {
 
 
     ORDER_USER_FAIL("301","订单查询错误"),
-
+    ORDER_CONFIRM_FAIL("302","订单确认错误"),
+    ORDER_REFUND_FAIL("303","订单退款错误"),
+    ORDER_CANCEL_FAIL("304","订单取消错误"),
 
     DETAIL_USER_FAIL("401","订单明细查询错误"),
 
-    EVALUATE_FAIL("601","评论失败"),
-    EVALUATE_SELECT_FAIL("602","查询商品评论失败"),
-    EVALUATE_NOT_FOUND_EVALUATION("603","没有相关任何评论")
+    EVALUATE_FAIL("501","评论失败"),
+    EVALUATE_SELECT_FAIL("502","查询商品评论失败"),
+    EVALUATE_NOT_FOUND_EVALUATION("503","没有相关任何评论"),
 
+    STORE_NOT_FOUND("701","没有符合该查询条件的店铺")
     ;
     private String code;
     private String msg;

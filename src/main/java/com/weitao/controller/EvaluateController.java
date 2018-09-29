@@ -94,7 +94,9 @@ public class EvaluateController {
     @GetMapping("/selectEvaluate")
     public Result selectEvaluate(HttpServletRequest request, Integer iId) throws Exception {
         System.out.println(iId);
+
         List<EvaluateVo> evaluateVoList = evaluateService.selectEvaluate(iId);
+        System.out.println("========"+evaluateVoList);
         if (evaluateVoList != null)
             return ResultUtil.success(evaluateVoList);
         else

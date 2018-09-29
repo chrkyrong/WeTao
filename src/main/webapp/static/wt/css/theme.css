@@ -1314,7 +1314,7 @@ background-color: #f2be35;
           animation: blink .7s infinite;
   opacity: 1;
 }
-
+/*
 @-keyframes blink {
   0% {
     opacity: 1;
@@ -1325,7 +1325,7 @@ background-color: #f2be35;
   100% {
     opacity: 1;
   }
-}
+}*/
 
 /* ======= COMPONENTS ======= */
 .section-about {

@@ -11,7 +11,7 @@
     <meta content="telephone=no" name="format-detection">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="static/wt/css/master.css">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="static/wt/images/favicon.ico">
     <!--[if lt IE 9 ]>
     <script src="assets/js/separate-js/html5shiv-3.7.2.min.js" type="text/javascript"></script>
     <meta content="no" http-equiv="imagetoolbar">
@@ -74,13 +74,11 @@
                 <li class="has-children ">
                     <a href="shop-1.html"><span>售后 <i class="arrow_carrot-right"></i>  </span></a>
                     <ul class="dl-submenu">
-                        <li><a href="Unexchange-Order.html"><span>待换货</span></a></li>
-                        <li><a href="Exchange-Order.html"><span>已换货</span></a></li>
                         <li><a href="Notrefund-Order.html"><span>待退款</span></a></li>
                         <li><a href="Refund-Order.html"><span>已退款</span></a></li>
                     </ul>
-                </li>
 
+                </li>
                 <li><a href="about.html"><span>客服</span></a></li>
                 <li><a href="lookbook.html"><span>数据统计</span></a></li>
             </ul>
@@ -153,7 +151,7 @@
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
                             <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>主 页</h5></a>
+                            <li><a href="items-Homepage.html"><h5>主 页</h5></a>
                             </li>
                             <li><a href="Store.html"><h5>店铺信息</h5></a>
                             </li>
@@ -176,7 +174,7 @@
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
-                            <li><a href="#">登 陆</a>
+                            <li><a href="SellerLogin.html">登 陆</a>
                             </li>
                             <li><a href="#">返 回</a>
                             </li>
@@ -380,7 +378,7 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-
+<script src="static/jq/showitems.js"></script>
 </body>
 
 </html>
@@ -420,8 +418,8 @@
                     s += "</td><td><div class = 'dropdown'><span style ='color:#FFC125'>详情</span><div class = 'dropdown-content'><p>总价：" + v.order.oPrice + "</p>";
                     s += "<p>留言：" + v.order.oMessage + "</p></div></div></td></tr>";
                 })
+                loadpicture();
                 $("#show").html(s);
-                bigger();
             },
             error: function (result) {
                 alert("失败了")
@@ -429,20 +427,5 @@
         })
     }
 </script>
-<script type="text/javascript">
-    function bigger() {
-        $('.js-zoom-images').magnificPopup({
-            type: 'image',
-            mainClass: 'mfp-with-zoom',
-            zoom: {
-                enabled: true,
-                duration: 300,
-                easing: 'ease-in-out',
-                opener: function (openerElement) {
-                    return openerElement.is('img') ? openerElement : openerElement.find('img');
-                }
-            }
-        });
-    }
-</script>
+
 

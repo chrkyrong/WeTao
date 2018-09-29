@@ -143,9 +143,9 @@
     </update>
 
     <select id="managerSelectByCondition" resultType="com.weitao.vo.StoreVo">
-        select
+        SELECT
         <include refid="Base_Column_List"/>,seller.s_account
-        from store,seller
+        FROM store,seller
         <where>
             store.seller_id = seller.s_id
             <if test="param1!=null and param1!=''">

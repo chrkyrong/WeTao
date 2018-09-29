@@ -88,6 +88,12 @@ public class ItemsServiceImpl implements ItemsService {
         return itemsMapper.selectItems1();
     }
 
+    /*商品页面展示，只显示库存最多的五件商品 */
+    @Override
+    public List<Items> selectItemsExsit() {
+        return itemsMapper.selectItemsExsit();
+    }
+
     /*显示商品信息*/
     @Override
     public List<Items> selectOneItems(Integer iId) {

@@ -47,7 +47,7 @@ public class UserController {
     public Result result(HttpSession httpSession,User user) throws Exception{
         if(userService.login(user)) {
             //保存用户信息
-            httpSession.setAttribute("userId",user.getuId());
+            httpSession.setAttribute("uId",user.getuId());
             return ResultUtil.success();
             //重定向到主页界面
         }
@@ -55,6 +55,10 @@ public class UserController {
             return ResultUtil.error(ResultEnum.USER_LOGIN_FAIL);
     }
 
+    /**
+     * 用户退出
+     * @param httpSession
+     */
     @GetMapping("/user/logout")
     public void logout(HttpSession httpSession)
     {
