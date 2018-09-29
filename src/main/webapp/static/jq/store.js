@@ -55,7 +55,7 @@ function storeOnload2() {
             $("#tableOne").html(s);
         },
         error: function (result) {
-            alert(result.message())
+            alert(result.message)
         }
     })
 }
@@ -99,9 +99,9 @@ function onSearch1() {
 
 // 卖家修改店铺名字
 function onChange1() {
+//        从url后面获取stId
+    var stId = getQueryString("stId");
     var stName = $("#stName").val();
-//        怎么获得stId(找老姚沟通)
-    var stId = 7000000;
 
     var stStatus = 0;
     // alert(stName);
@@ -158,12 +158,11 @@ function onChange3(stId, stStatus) {
 // 卖家添加店铺
 function onAdd1() {
     var stName = $("#stName").val();
-    var sellerId = "";
     $.ajax({
         url: '/store/addNewStore',
         type: 'POST',
         dataType: 'json',
-        data: {stName: stName, sellerId: sellerId},
+        data: {stName: stName},
         success: function (result) {
             alert("添加店铺成功");
             // result.data.sellerId

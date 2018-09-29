@@ -19,4 +19,7 @@ public interface CollectionService {
 
     //增加收藏
     int addCollection(int iId,int uId);
+
+    //判断商品是否已经收藏
+    int isExistCollection(int iId,int uId);
 }

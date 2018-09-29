@@ -50,5 +50,16 @@ public class CollectionServiceImpl implements CollectionService {
     public int addCollection(int iId,int uId) {
         return collectionMapper.insertCollection(iId,uId);
     }
+
+    /**
+     * 判断商品是否已经收藏
+     * @param iId
+     * @param uId
+     * @return
+     */
+    @Override
+    public int isExistCollection(int iId, int uId) {
+        return collectionMapper.isExistCollection(iId,uId);
+    }
 }
 
