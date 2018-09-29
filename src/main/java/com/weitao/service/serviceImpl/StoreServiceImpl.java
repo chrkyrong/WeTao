@@ -1,21 +1,15 @@
 package com.weitao.service.serviceImpl;
 
-import com.weitao.bean.Seller;
 import com.weitao.bean.Store;
 import com.weitao.dao.ItemsMapper;
 import com.weitao.dao.StoreMapper;
 import com.weitao.service.StoreService;
 import com.weitao.vo.StoreVo;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by ycp on 2018/9/4.
@@ -125,6 +119,7 @@ public class StoreServiceImpl implements StoreService {
         if (store.getStName().equals(null) || store.getStName().equals("")) {
 //                防止同时修改了名字
             System.out.println(storeMapper.selectByPrimaryKey(store.getStId()).getStName());
+            store.setStName(storeMapper.selectByPrimaryKey(store.getStId()).getStName());
 //            关闭店铺
             if (storeMapper.updateByPrimaryKeySelective(store) != 0) {
 //                将其店铺下的所有商品状态都修改为1
