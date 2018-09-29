@@ -5,6 +5,7 @@ public class Store {
 
     private String stName;
 
+//    店铺状态（如：正常0，已关闭1）
     private Byte stStatus;
 
     private Integer sellerId;

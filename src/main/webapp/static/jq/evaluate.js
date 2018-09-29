@@ -48,7 +48,6 @@ function Onload1(iId) {
 // 评论页面加载订单详情
 function Onload2(iId) {
     iId = getQueryString('iId');
-    alert(iId);
     $.ajax({
         type: 'get',
         url: '/evaluate/selectEvaluate?iId=' + iId,
@@ -69,8 +68,8 @@ function Onload2(iId) {
 
         }
     })
-
 }
+
 
 //提交评论
 function confirmEvaluate() {
@@ -94,6 +93,7 @@ function confirmEvaluate() {
     });
 }
 
+
 //文件上传
 function uploadPhoto() {
     $.ajaxFileUpload({
@@ -103,52 +103,15 @@ function uploadPhoto() {
         fileElementId: "upfilePhotoId",//需要上传的文件ID
         dataType: 'text',
         success: function (data) {
-            //测试什么数据
-            // alert(data + "----")
             $("#photo").html("<div style='height: 100px;width: 200px'><img height='80px' width='80px' src='" + data + "'/></div>");
         }
     })
 }
 
-//查询订单详情
-/*function Onload3(orderId) {
-    orderId = getQueryString('orderId');
-    alert(orderId);
-    $.ajax({
-        contentType: 'application/json;charset=UTF-8',
-        type: 'get',
-        url: '/detail/orderId?orderId=' + orderId,
-        dataType: 'json',
-        data: null,
-        success: function (result) {
-            var s1 = "";
-            var s2 = "<h2 class='typography-title' id='ORDERID'>" + orderId + "号订单 </h2>";
-            var s3 = "<input type='hidden' name='order_id' id='order_id' value='" + orderId + "'/>";
-            $("#orderId").first("h2").append(s2);
-            $("#pa").first("input").append(s3);
-            // alert(s2);
-            $.each(result.data, function (i, v) {
-                s1 += '<tr><td>' + v.item.iPhotos;
-                s1 += '</td><td>' + v.item.iName + '</td><td>' + v.item.iPrice + '</td><td>' + v.orDeNumber + '</td>';
-                s1 += '</tr>';
-            })
-            // alert(s1);
-            $("#orderDetail").first("tr").append(s1);
-        },
-        error: function () {
-            var s = "订单详情加载失败";
-            alert(s);
-
-        }
-    })
-
-}*/
-
-
+// 买家查看评论页面预加载
 function Onload4(sellerId) {
     sellerId = getQueryString('sellerId');
 
-    // alert(sellerId);
     $.ajax({
         type: 'get',
         url: '/evaluate/sellerEvaluation?sellerId=' + sellerId,
@@ -174,8 +137,6 @@ function Onload4(sellerId) {
                 s += "<p>留言：" + v.order.oMessage + "</p></div></div></td></tr>";
 
             })
-            // bigger();
-            // alert(s);
             $("#show").first("tr").append(s);
         },
         error: function () {
@@ -183,60 +144,4 @@ function Onload4(sellerId) {
             alert(s);
         }
     })
-
 }
-
-/*function onSearch() {
-    var search = $('#search').val();
-    var condition = $('#condition').val();
-    var date = $('#date').val();
-    var sellerId = $('#sellerId').val();
-    $.ajax({
-        url: '/evaluate/formTest',
-        type: 'post',
-        data: {search: search, condition: condition, date: date, sellerId: sellerId},
-        success: function (result) {
-            alert("成功");
-
-            $.each(result.data, function (i, v) {
-                s += '<tr><td>' + v.evaluateVo.items.iName;
-                s += '</td><td>' + v.store.stName + '</td><td>' + v.evaluateVo.user.uUserName;
-                s += '</td><td>' + v.evaluateVo.evaluate.eDescription + '</td><td>' + v.evaluateVo.evaluate.eLevel;
-                s += '</td><td><a class="b-goods__media js-zoom-images" href="static/wt/images/' + v.evaluateVo.evaluate.ePhotos + '">' +
-                    '<img alt="img" src="static/wt/images/' + v.evaluateVo.evaluate.ePhotos + '">';
-                s += '</td><td>' + v.order.oDate;
-                s += '</td><td>' + v.order.oPrice + '</td><td>' + v.order.oMessage + '</td></tr>';
-            })
-            alert(s);
-            $("#show").html(s);
-
-//                $("#show").first("tr").append(s);
-        },
-        error: function (result) {
-            alert("失败了")
-        }
-    })
-}*/
-/*function bigger() {
-    $('.js-zoom-images').magnificPopup({
-        type: 'image',
-        mainClass: 'mfp-with-zoom', // this class is for CSS animation below
-
-        zoom: {
-            enabled: true, // By default it's false, so don't forget to enable it
-
-            duration: 300, // duration of the effect, in milliseconds
-            easing: 'ease-in-out', // CSS transition easing function
-
-            // The "opener" function should return the element from which popup will be zoomed in
-            // and to which popup will be scaled down
-            // By defailt it looks for an image tag:
-            opener: function(openerElement) {
-                // openerElement is the element on which popup was initialized, in this case its <a> tag
-                // you don't need to add "opener" option if this code matches your needs, it's defailt one.
-                return openerElement.is('img') ? openerElement : openerElement.find('img');
-            }
-        }
-    });
-}*/
-

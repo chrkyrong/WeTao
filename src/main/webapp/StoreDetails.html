@@ -51,7 +51,7 @@
 
                     </ul>
                 </li>
-                
+
                 <li class="has-children ">
                     <a href="shop-1.html"><span>售后 <i class="arrow_carrot-right"></i>  </span></a>
                     <ul class="dl-submenu">
@@ -59,10 +59,10 @@
                         <li><a href="Refund-Order.html"><span>已退款</span></a></li>
                     </ul>
                 </li>
-                
-				<li><a href="about.html"><span>客服</span></a></li>
+
+                <li><a href="about.html"><span>客服</span></a></li>
                 <li><a href="lookbook.html"><span>数据统计</span></a></li>
-                </ul>
+            </ul>
         </div>
 
 
@@ -143,7 +143,7 @@
                     <div class="header-navibox-2">
                         <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
                         <ul class="nav navbar-nav clearfix vcenter">
-                            
+
                             <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
                             <li><a href="SellerMessage.html"><h5>个人信息</h5></a>
                             </li>
@@ -184,85 +184,92 @@
                     </div>
                     <div class="section-title-page section-title-page_mod-a">
                         <!--第二行文字/////////////////////////////////////////////////////////////-->
-                        <h1 class="ui-title-page">A l l  S t o r e</h1>
+                        <h1 class="ui-title-page">A l l S t o r e</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="woocommerce">
-             			<div class="row" style="width:400px">
-             				<p style="font-size:18px">店铺名</p>
-             				<div class="col-md-6">
-             					<input class="form-control" type="text" value="程序员的假发小店">            			
-             				</div>
-							<div class="col-md-6">           		
-             					<input type="button" value="修改" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>
-             				</div>
-             			</div>
-             			<!-- 修改店名、查询、添加商品 -->
-             			<form>
-             				<div class="row">
-                            	<p style="font-size:18px">商品列表</p>
-                            	<div class="col-md-6">
-                            		<input class="form-control" type="text" placeholder="Your Select" >
-                            		<!-- <input type="text" class="input-text "> -->
-                            	</div>
-                            	<div class="col-md-6">
-									<select class="selectpicker" style="height:40px">
-										<option value="stId">商品ID</option>
-										<option value="stName">商品名</option>
-										<option value="stName">商品简介</option>
-									</select>
-									&nbsp;&nbsp;
-									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="button" value="添加商品" class="ui-form__btn btn btn-dark" onclick="window.location='items_manage.html'" style="min-width:80px;font-size:14px;line-height:40px"/>
-                            	</div>
+                        <div class="row" style="width:400px">
+                            <p style="font-size:18px">店铺名</p>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" value="程序员的假发小店" id="stName" name="stName"
+                                      >
                             </div>
-             			</form>  
-             			<!-- 店铺信息表单 -->                
+                            <div class="col-md-6">
+                                <input type="button" value="修改" class="ui-form__btn btn btn-dark"
+                                       style="min-width:80px;font-size:14px;line-height:40px"  onclick="onChange1()"/>
+                            </div>
+                        </div>
+                        <!-- 修改店名、查询、添加商品 -->
+                        <form>
+                            <div class="row">
+                                <p style="font-size:18px">商品列表</p>
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" placeholder="Your Select">
+                                    <!-- <input type="text" class="input-text "> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker" style="height:40px">
+                                        <option value="stId">商品ID</option>
+                                        <option value="stName">商品名</option>
+                                        <option value="stName">商品简介</option>
+                                    </select>
+                                    &nbsp;&nbsp;
+                                    <input type="button" value="查询" class="ui-form__btn btn btn-dark"
+                                           style="min-width:80px;font-size:14px;line-height:40px"/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="button" value="添加商品" class="ui-form__btn btn btn-dark"
+                                           onclick="window.location='items_manage.html'"
+                                           style="min-width:80px;font-size:14px;line-height:40px"/>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- 店铺信息表单 -->
                         <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               enctype="multipart/form-data" _lpchecked="1">
-                            <div class="col2-set" id="customer_details">                          	
-                            	<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>                                
+                            <div class="col2-set" id="customer_details">
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                 <div class="table-container">
-                                	<table class="table table_primary">
-                                    	<thead>
-                                        	<tr>
-                                                <th style="width:150px">商品ID</th>
-                                                <th style="width:200px">商品名</th>
-                                                <th style="width:200px">商品图片</th>
-                                                <th style="width:300px">商品简介</th>
-                                                <th style="width:100px">库存</th>
-                                                <th style="width:130px">销售量</th>
-                                                <th style="width:150px">商品单价</th>
-                                                <th style="width:130px">状态</th>
-                                                <th style="width:200px">操作</th>
-                                             </tr>
-                                         </thead>
-                                       	 <tbody>
-                                        	<tr>
-                                                <td>7000000</td>
-                                                <td>程序员专用假发</td>
-                                                <td><a class="b-goods__media js-zoom-images"
-                                               href="static/wt/images/2_1.jpg"><img alt="img" src="static/wt/images/2_1.jpg" class="img-responsive"></a></td>
-                                                <td>专业假发，程序员们的贴心小棉袄；头套牢固，戴上后“山竹”都吹不掉；款式多样：寸头、女装长发、爆炸头等等。</td>
-                                                <td>100</td>
-                                                <td>90</td>
-                                                <td>800</td>
-                                                <td>正常</td>
-                                                <!-- 修改是进入商品修改页面 -->
-                                                <td><a href="items-amend.html">修改 </a>/<a href="#"> 删 除 </a></td>
-                                           	</tr>                                             
-                                       	 </tbody>
-                               		</table>	
-                             	</div>
-                             	
+                                    <table class="table table_primary">
+                                        <thead>
+                                        <tr>
+                                            <th style="width:150px">商品ID</th>
+                                            <th style="width:200px">商品名</th>
+                                            <th style="width:200px">商品图片</th>
+                                            <th style="width:300px">商品简介</th>
+                                            <th style="width:100px">库存</th>
+                                            <th style="width:130px">销售量</th>
+                                            <th style="width:150px">商品单价</th>
+                                            <th style="width:130px">状态</th>
+                                            <th style="width:200px">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>7000000</td>
+                                            <td>程序员专用假发</td>
+                                            <td><a class="b-goods__media js-zoom-images"
+                                                   href="static/wt/images/2_1.jpg"><img alt="img"
+                                                                                        src="static/wt/images/2_1.jpg"
+                                                                                        class="img-responsive"></a></td>
+                                            <td>专业假发，程序员们的贴心小棉袄；头套牢固，戴上后“山竹”都吹不掉；款式多样：寸头、女装长发、爆炸头等等。</td>
+                                            <td>100</td>
+                                            <td>90</td>
+                                            <td>800</td>
+                                            <td>正常</td>
+                                            <!-- 修改是进入商品修改页面 -->
+                                            <td><a href="items-amend.html">修改 </a>/<a href="#"> 删 除 </a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
-                            
-                            
+
+
                         </form>
                     </div>
                 </div>
@@ -392,5 +399,9 @@
 </body>
 
 </html>
+
+<script type="text/javascript" src="static/jq/store.js">
+
+</script>
 
 

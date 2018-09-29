@@ -7,10 +7,7 @@ import com.weitao.service.OrderService;
 import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -153,7 +150,7 @@ public class OrderController {
     }
 
     @RequestMapping("order/addOrders")
-    public Result addOrders(Integer userId,Byte oPost,String oAddress,String oMessage){
+    public Result addOrders(@SessionAttribute(value = "uId",required = false) Integer userId, Byte oPost, String oAddress, String oMessage){
         List<Order> orderList = orderService.addOrder(userId, oPost,oAddress,oMessage);
         return ResultUtil.success(orderList);
     }

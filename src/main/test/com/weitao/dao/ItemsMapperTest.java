@@ -71,12 +71,12 @@ public class ItemsMapperTest {
         System.out.println(itemsVo.getiIntroduction());*/
     }
 
+//    修改商品状态测试
     @Test
     public void changeStatusTest() throws Exception {
-        List<Integer> storeId = new ArrayList<>();
-        storeId.add(7000000);
-        storeId.add(7000001);
-        storeId.add(7000002);
-        System.out.println( itemsMapper.changeItemsStatus(storeId, (byte) 0));
+        List<Integer> list = new ArrayList<>();
+        Integer storeId =7000000;
+        list.add(storeId);
+        System.out.println( itemsMapper.changeItemsStatus(list, (byte) 0));
     }
 }
