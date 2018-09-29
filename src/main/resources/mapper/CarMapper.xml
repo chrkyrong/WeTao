@@ -56,8 +56,8 @@
     )as total
   </select>
 
-  <update id="insertCarByIidAndUid">
-    update car set number+=#{number}
+  <update id="updateCarByIidAndUid">
+    update car set number=number+#{number}
     where items_id=#{iId} and user_id=#{uId}
   </update>
 </mapper>
