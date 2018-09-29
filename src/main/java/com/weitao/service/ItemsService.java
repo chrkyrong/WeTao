@@ -36,4 +36,10 @@ public interface ItemsService {
 
     /*查詢當個商品*/
     public List<Items> selectOneItems(Integer iId);
+
+    /*查询所有商品*/
+    public List<Items> selectAll(Integer storeId);
+
+    /*卖家根据条件查询各店铺下的商品*/
+    public List<Items> sellerItems(Integer storeId,String search,Integer iStatus);
 }

@@ -100,4 +100,14 @@ public class ItemsServiceImpl implements ItemsService {
         return itemsMapper.selectByPrimaryKey1(iId);
     }
 
+    /*根据店铺查询所有商品*/
+    @Override
+    public List<Items> selectAll(Integer storeId) { return itemsMapper.selectAll(storeId);}
+
+    /*卖家根据条件查询各店铺下的商品*/
+    @Override
+    public List<Items> sellerItems(Integer storeId, String search, Integer iStatus) {
+        return itemsMapper.sellerItems(storeId,search,iStatus);
+    }
+
 }

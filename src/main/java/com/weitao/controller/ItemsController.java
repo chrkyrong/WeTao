@@ -1,5 +1,7 @@
 package com.weitao.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Category;
 import com.weitao.bean.Items;
 import com.weitao.bean.Store;
@@ -71,7 +73,7 @@ public class ItemsController {
     /*下拉框显示父类下有多少子类*/
     @RequestMapping(value = "findCafather")
     public List<Category> findCafather(HttpServletRequest request, String cafather){
-        cafather=request.getParameter("cafather");
+        /*cafather=request.getParameter("cafather");*/
         System.out.println(cafather);
         List<Category> categories=categoryService.selectCafather(cafather);
      /*   System.out.println(categories);*/
@@ -96,7 +98,7 @@ public class ItemsController {
         }
         /*构建图片url路径，显示图片需要*/
         String url_root=session.getServletContext().getContextPath();
-        String file_url = url_root + "/images/" + originalFilename;
+        String file_url = url_root + "/static/images/" + originalFilename;
 
         System.out.println(file_url+"aaaaaaa");
 
@@ -188,5 +190,30 @@ public class ItemsController {
         System.out.println(iId+"hhhhh");
         System.out.println(itemsService.selectOneItems(iId));
         return  ResultUtil.success(itemsService.selectOneItems(iId));
+    }
+
+    /*根据店铺id查询商品*/
+    @GetMapping(value = "selectAll")
+    public Result selectAll(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                            @RequestParam(value="storeId",defaultValue = "1") Integer storeId){
+       /*一页显示多少条数据*/
+        Integer pageSize=7;
+        PageHelper.startPage(pageNum,pageSize);
+        PageInfo<Items> pageInfo=new PageInfo<>(itemsService.selectAll(storeId));
+        return ResultUtil.success(pageInfo);
+    }
+    /*卖家根据条件查询各店铺下的商品*/
+    @RequestMapping(value = "sellerItems")
+    public Result sellerItems(HttpServletRequest request,@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                              @RequestParam(value = "storeId",defaultValue = "1") Integer storeId,
+                              @RequestParam(value="search") String search,@RequestParam(value = "iStatus",defaultValue = "0") Integer iStatus){
+        search=request.getParameter("search");
+        iStatus= Integer.valueOf(request.getParameter("iStatus"));
+     /*   System.out.println(search+iStatus+"Sssss");*/
+        Integer pageSize=7;
+     /*   System.out.println(iStatus+"asdhaijskdhakd");*/
+        PageHelper.startPage(pageNum,pageSize);
+        PageInfo<Items> pageInfo=new PageInfo<>(itemsService.sellerItems(storeId,search,iStatus));
+        return  ResultUtil.success(pageInfo);
     }
 }
