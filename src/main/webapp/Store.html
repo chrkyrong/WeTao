@@ -51,7 +51,7 @@
 
                     </ul>
                 </li>
-                
+
                 <li class="has-children ">
                     <a href="shop-1.html"><span>售后 <i class="arrow_carrot-right"></i>  </span></a>
                     <ul class="dl-submenu">
@@ -59,10 +59,10 @@
                         <li><a href="Refund-Order.html"><span>已退款</span></a></li>
                     </ul>
                 </li>
-                
-				<li><a href="about.html"><span>客服</span></a></li>
+
+                <li><a href="about.html"><span>客服</span></a></li>
                 <li><a href="lookbook.html"><span>数据统计</span></a></li>
-                </ul>
+            </ul>
         </div>
 
 
@@ -143,7 +143,7 @@
                     <div class="header-navibox-2">
                         <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
                         <ul class="nav navbar-nav clearfix vcenter">
-                            
+
                             <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
                             <li><a href="SellerMessage.html"><h5>个人信息</h5></a>
                             </li>
@@ -184,62 +184,59 @@
                     </div>
                     <div class="section-title-page section-title-page_mod-a">
                         <!--第二行文字/////////////////////////////////////////////////////////////-->
-                        <h1 class="ui-title-page">A l l  S t o r e</h1>
+                        <h1 class="ui-title-page">A l l S t o r e</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="woocommerce">
-                    	<!-- 查询 -->
-                    	<form action="">
-                    		<div class="row">
-                            	<div class="col-md-6">
-                            		<input class="form-control" type="text" placeholder="Your Select" >
-                            		<!-- <input type="text" class="input-text "> -->
-                            	</div>
-                            	<div class="col-md-6">
-									<select class="selectpicker" style="height:40px">
-										<option value="stId">店铺ID</option>
-										<option value="stName">店铺名</option>
-									</select>
-									&nbsp;&nbsp;
-									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="button" value="添加店铺" class="ui-form__btn btn btn-dark" onclick="window.location='store_add.html'" style="min-width:80px;font-size:14px;line-height:40px"/>
-                            	</div>
+                        <!-- 查询 -->
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" placeholder="Your Select">
+                                    <!-- <input type="text" class="input-text "> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker" style="height:40px">
+                                        <option value="stId">店铺ID</option>
+                                        <option value="stName">店铺名</option>
+                                    </select>
+                                    &nbsp;&nbsp;
+                                    <input type="button" value="查询" class="ui-form__btn btn btn-dark"
+                                           style="min-width:80px;font-size:14px;line-height:40px"/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="button" value="添加店铺" class="ui-form__btn btn btn-dark"
+                                           onclick="window.location='store_add.html'"
+                                           style="min-width:80px;font-size:14px;line-height:40px"/>
+                                </div>
                             </div>
-                    	</form>
+                        </form>
                         <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               enctype="multipart/form-data" _lpchecked="1">
                             <div class="col2-set" id="customer_details">
-                            	
-                            	<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>                                
+
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                 <div class="table-container">
-                                	<table class="table table_primary">
-                                    	<thead>
-                                        	<tr>
-                                                <th style="width:200px">店铺ID</th>
-                                                <th style="width:200px">店铺名</th>
-                                                <th style="width:200px">状态</th>
-                                                <th style="width:200px">操作</th>
-                                             </tr>
-                                         </thead>
-                                       	 <tbody>
-                                        	<tr>
-                                                <td>7000000</td>
-                                                <td>程序员的假发小店</td>
-                                                <td>正常</td>
-                                                <td><a href="StoreDetails.html">进 入 </a>/<a href="#"> 删 除 </a></td>
-                                           	</tr>                                             
-                                       	 </tbody>
-                               		</table>	
-                             	</div>
-                             	
+                                    <table class="table table_primary">
+                                        <thead>
+                                        <tr>
+                                            <th style="width:200px">店铺ID</th>
+                                            <th style="width:200px">店铺名</th>
+                                            <th style="width:200px">状态</th>
+                                            <th style="width:200px">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tableOne">
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
-                            
-                            
+
+
                         </form>
                     </div>
                 </div>
@@ -365,12 +362,14 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
+<script src="static/jq/store.js"></script>
 
 </body>
 
 </html>
 
-<script type="text/javascript" >
-    function storeOnload2() {
-    }
+<script type="text/javascript">
+    $(function () {
+        storeOnload2();
+    })
 </script>

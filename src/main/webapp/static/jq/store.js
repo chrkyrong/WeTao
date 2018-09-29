@@ -35,6 +35,30 @@ function storeOnload1() {
     })
 }
 
+// 商家店铺管理主页预加载
+function storeOnload2() {
+    var stStatus = 0;
+    $.ajax({
+        url: '/store/sellerSearchStore',
+        type: 'post',
+        dataType: 'json',
+        data: {stStatus: stStatus},
+        success: function (result) {
+            var s = '';
+            $.each(result.data, function (i, v) {
+                s += "<tr><td>" + v.stId;
+                s += "</td><td>" + v.stName;
+                s += "</td><td>正常";
+                s += "</td><td><a href='StoreDetails.html?stId=" + v.stId + "'>进 入 店 铺</a>/";
+                s += "<a href='' onclick='return false,onChange2(" + v.stId + ")'> 关 闭 店 铺</a></td></tr>";
+            })
+            $("#tableOne").html(s);
+        },
+        error: function (result) {
+            alert(result.message())
+        }
+    })
+}
 
 // 管理员店铺按条件搜索
 function onSearch1() {
@@ -96,13 +120,11 @@ function onChange1() {
 
 
 //卖家关闭该店铺
-function onChange2() {
-//        从url中获得stId(找老姚沟通)
-    var stId = getQueryString('stId');
+function onChange2(stId) {
     // 店铺状态为1
     var stStatus = 1;
     // 默认店铺名字为空
-    var stName;
+    var stName = null;
     $.ajax({
         url: '/store/sellerChangeStore',
         type: 'POST',
@@ -110,7 +132,6 @@ function onChange2() {
         data: {stName: stName, stId: stId, stStatus: stStatus},
         success: function (result) {
             alert("关闭店铺成功！");
-            // 刷新当前页面
         }, error: function (result) {
             alert(result.message());
         }
@@ -125,7 +146,7 @@ function onChange3(stId, stStatus) {
         dataType: 'json',
         data: {stId: stId, stStatus: stStatus},
         success: function (result) {
-            alert("关闭店铺成功！");
+            alert("店铺状态更改成功！");
             // 刷新当前页面
         }, error: function (result) {
             alert(result.message());
