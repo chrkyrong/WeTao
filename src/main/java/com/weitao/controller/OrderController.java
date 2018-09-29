@@ -166,7 +166,7 @@ public class OrderController {
     }
 
     @RequestMapping("order/addOrders")
-    public Result addOrders(Integer userId,Byte oPost,String oAddress,String oMessage){
+    public Result addOrders(@SessionAttribute(value = "uId",required = false) Integer userId, Byte oPost, String oAddress, String oMessage){
         List<Order> orderList = orderService.addOrder(userId, oPost,oAddress,oMessage);
         return ResultUtil.success(orderList);
     }

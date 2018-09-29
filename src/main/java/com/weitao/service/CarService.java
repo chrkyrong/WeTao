@@ -1,5 +1,6 @@
 package com.weitao.service;
 
+import com.weitao.bean.Car;
 import com.weitao.bean.ItemsCar;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +29,15 @@ public interface CarService {
     //用户下单时，根据用户uId删除所有加购且商品状态为正常的商品
     int removeCar(Integer uId);
 
-    //增加购物
+    //增加购物（购物车中不存在该用户加购的商品）
     int addCar(Integer iId,Integer uId,Integer number,Integer sId);
 
     //查找商品的商家id
     Integer findSellerId(Integer iId);
+
+    //查找加入购物车的商品是否已经存在在购物车中
+    Integer isExistCar(Integer iId,Integer uId);
+
+    //增加购物（购物车中存在该用户加购的商品）
+    int updateCar(Integer iId,Integer uId,Integer number);
 }

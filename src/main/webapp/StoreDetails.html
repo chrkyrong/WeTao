@@ -194,10 +194,11 @@
              			<div class="row" style="width:400px">
              				<p style="font-size:18px">店铺名</p>
              				<div class="col-md-6">
-             					<input class="form-control" type="text" value="程序员的假发小店">            			
+                                <input class="form-control" type="text"  id="stName" name="stName">
              				</div>
-							<div class="col-md-6">           		
-             					<input type="button" value="修改" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>
+							<div class="col-md-6">
+                                <input type="button" value="修改" class="ui-form__btn btn btn-dark"
+                                       style="min-width:80px;font-size:14px;line-height:40px"  onclick="onChange1()"/>
              				</div>
              			</div>
              			<!-- 修改店名、查询、添加商品 -->
@@ -393,6 +394,7 @@
 <script src="static/wt/js/main.js"></script>
 <script src="static/jq/manageItems.js"></script>
 <script src="static/jq/showitems.js"></script>
+<script src="static/jq/store.js"></script>
 </body>
 
 </html>

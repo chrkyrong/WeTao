@@ -164,13 +164,13 @@
                 <div class="col-md-12">
                     <div class="woocommerce">
                         <!-- 查询 -->
-                        <form action="">
+                        <form id = "checkStore">
                             <div class="row">
                                 <p style="font-size:18px">店铺检索</p>
                                 <div class="col-md-6">
                                     <!--输入框--searchgo////////////////////////////////////////-->
-                                    <input class="form-control" type="text" placeholder="Your Select" id="searchgo"
-                                           name="searchgo">
+                                    <input class="form-control" type="text" placeholder="Your Select" id="research"
+                                           name="research">
                                     <!-- <input type="text" class="input-text "> -->
                                 </div>
                                 <div class="col-md-6">
@@ -179,14 +179,14 @@
 
                                     <input type="button" value="查询" class="ui-form__btn btn btn-dark"
                                            style="min-width:80px;font-size:14px;line-height:40px"
-                                           onclick="onSearch2()"/>
+                                           onclick="onSearch1()"/>
                                 </div>
                             </div>
                             <div>
                                 <!--状态下拉框--condition////////////////////////////////////////-->
                                 <select class="selectpicker" style="height:40px" id="stStatus" name="stStatus">
-                                    <option value="0">正常</option>
-                                    <option value="1">违规</option>
+                                    <option value=0>正常</option>
+                                    <option value=1>违规</option>
                                 </select>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <!--条件下拉框--condition////////////////////////////////////////-->
@@ -347,47 +347,12 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-
 </body>
-
 </html>
-<!--<script type="text/javascript" src="static/jq/store.js"></script>-->
-<!--<script type="text/javascript">-->
-//    storeOnload1();
-<!--</script>-->
-<script type="text/javascript">
-    function onSearch2() {
-        var search = $('#searchgo').val();
-        var condition = $('#condition').val();
-        var stStatus = $('#stStatus').val();
-        alert(search + "-" + condition + "-" + stStatus);
-        $.ajax({
-            contentType: 'application/json;charset=UTF-8',
-            url: '/store/researchStoreByCondition',
-            type: 'post',
-            data: {search: search, condition: condition, stStatus: stStatus},
-            success: function (result) {
-                var s = '';
-                $.each(result.data, function (i, v) {
-                    s += '<tr><td>' + v.stId;
-                    s += '</td><td>' + v.stName;
-                    s += '</td><td>' + v.sAccount;
-                    if (v.stStatus == 0) {
-                        s += '</td><td>正常';
-                    } else {
-                        s += '</td><td>违规';
-                    }
-                    s += '</td><td>';
-                    s += '<a href = "seller_message.html?sellerId='+v.sellerId+'">查看商家</a>&nbsp;&nbsp;OR&nbsp;&nbsp;';
-                    s += '<a href = "seller_message.html?sellerId='+v.sellerId+'">拉黑</a></td></tr>';
-                })
-//                alert(s);
-                $("#storeList").html(s)
-            },
-            error: function (result) {
-                alert(result.message())
-            }
-        })
-    }
-</script>
 
+<script type="text/javascript" src="static/jq/store.js"></script>
+<script type="text/javascript">
+    $(function () {
+        storeOnload1();
+    })
+</script>

@@ -14,9 +14,9 @@ public interface StoreService {
     public List<Store> seleteStore(Store store);
 
     //    商家，添加店铺
-    public boolean insertStore(Store store) throws Exception;
+    public boolean insertStore(String stName,Integer sellerId) throws Exception;
 
-    //    修改店铺名
+    //    修改店铺信息
     public boolean updateStore(Store store) throws Exception;
 
     //    管理员，搜索所有店铺
@@ -26,6 +26,6 @@ public interface StoreService {
     public List<StoreVo> managerSeach(String research, String condition, Byte stStatus);
 
     //    管理员，封店或者是解封
-    public boolean changeStoreStatus(List<Integer> stId, byte stStatus);
+    public boolean changeStoreStatus(Store store);
 
 }

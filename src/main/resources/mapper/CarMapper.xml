@@ -46,4 +46,18 @@
     delete from car
     where items_id in(select i_id from (select i_id from items,car where i_id=items_id and i_status=0) As temp) and user_id=#{uId}
   </delete>
+
+  <!--查找加入购物车的商品是否已经存在在购物车中-->
+  <select id="isExistCar" resultType="Integer">
+    select count(*) from(
+    select *
+    from car
+    where items_id=#{iId} and user_id=#{uId}
+    )as total
+  </select>
+
+  <update id="updateCarByIidAndUid">
+    update car set number=number+#{number}
+    where items_id=#{iId} and user_id=#{uId}
+  </update>
 </mapper>

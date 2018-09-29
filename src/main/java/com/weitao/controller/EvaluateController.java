@@ -96,7 +96,7 @@ public class EvaluateController {
         System.out.println(iId);
 
         List<EvaluateVo> evaluateVoList = evaluateService.selectEvaluate(iId);
-        System.out.println("========"+evaluateVoList);
+        System.out.println("========" + evaluateVoList);
         if (evaluateVoList != null)
             return ResultUtil.success(evaluateVoList);
         else
@@ -118,7 +118,7 @@ public class EvaluateController {
 
 
     @RequestMapping(value = "/searchEvaluation", method = RequestMethod.POST)
-    public Result searchEvaluation(Model model, HttpServletRequest request, String condition, String search, String date, String sellerId) throws Exception {
+    public Result searchEvaluation(HttpServletRequest request, String condition, String search, String date, String sellerId) throws Exception {
 //        获得表单中的卖家id
         sellerId = request.getParameter("sellerId");
 //        获得表单中的搜索框内容

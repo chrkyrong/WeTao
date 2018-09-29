@@ -235,7 +235,7 @@
     </select>
 
 
-    <!--评论全模糊查询-->
+    <!--评论模糊查询-->
     <select id="searchEvaluation" resultMap="allEvaluate">
         <include refid="evaluation"/>
         <where>
