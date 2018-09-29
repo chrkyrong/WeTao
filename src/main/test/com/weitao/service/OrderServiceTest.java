@@ -30,7 +30,7 @@ public class OrderServiceTest {
         map.put("sellerId",2);
         int num=1;
         int size=2;
-        System.out.println(orderService.get1(map,num,size));
+//        System.out.println(orderService.get1(map,num,size));
     }
 
     @Test

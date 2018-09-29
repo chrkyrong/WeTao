@@ -102,10 +102,10 @@ public class StoreMapperTest {
         String stName = "";
         String sId = "";
         String sAccount = "哥";
-        for(StoreVo storeVo : storeMapper.managerSelectByCondition(stId,stStatus,stName,sId,sAccount))
-        {
-            System.out.println(storeVo);
-        }
+//        for(StoreVo storeVo : storeMapper.managerSelectByCondition(stId,stStatus,stName,sId,sAccount))
+//        {
+//            System.out.println(storeVo);
+//        }
 
     }
 }

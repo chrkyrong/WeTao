@@ -3,7 +3,8 @@ package com.weitao.dao;
 import com.weitao.bean.Seller;
 import com.weitao.bean.Store;
 import com.weitao.vo.StoreVo;
-import org.springframework.data.repository.query.Param;
+import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 

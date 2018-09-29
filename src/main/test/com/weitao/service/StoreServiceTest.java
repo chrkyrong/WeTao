@@ -33,15 +33,7 @@ public class StoreServiceTest {
         stId.add(7000000);
         stId.add(7000001);
         stId.add(7000002);
-        System.out.println(storeService.changeStoreStatus(stId, (byte) 0));
-    }
-
-    @Test
-    public void updateStoreTest() throws Exception {
-        Store store = new Store();
-        store.setStId(7000001);
-        store.setStName("冬瓜店");
-        System.out.println(storeService.updateStore(store));
+//        System.out.println(storeService.changeStoreStatus(stId, (byte) 0));
     }
 
     @Test
@@ -53,7 +45,7 @@ public class StoreServiceTest {
 //        String condition = "店铺id";
 
 //        设置搜索框内容
-        String research = "瓜";
+        String research = "";
 //        String research = "弟";
 
 //        设置查询店铺状态
@@ -64,5 +56,15 @@ public class StoreServiceTest {
         {
         System.out.println(vo);
         }
+    }
+
+    @Test
+    public void updateStoreTest() throws Exception {
+        Store store = new Store();
+//        store.setStName("斐济店铺");
+        store.setStStatus((byte) 0);
+        store.setStId(7000001);
+        boolean result = storeService.updateStore(store);
+        System.out.println(result);
     }
 }
