@@ -2,6 +2,7 @@
  * Created by Administrator on 2018/9/18.
  */
 
+//用户查看待发货订单
 function order1(id) {
     $.ajax({
         type: "get",
@@ -35,6 +36,7 @@ function order1(id) {
     });
 }
 
+//用户查看已发货订单
 function order2(id) {
     $.ajax({
         type: "get",
@@ -68,6 +70,7 @@ function order2(id) {
     });
 }
 
+//用户查看已发货订单
 function order3(id) {
     $.ajax({
         type: "get",
@@ -101,6 +104,7 @@ function order3(id) {
     });
 }
 
+//用户查看退款中订单
 function order4(id) {
     $.ajax({
         type: "get",
@@ -137,6 +141,7 @@ function order4(id) {
         }
     });
 }
+
 //确定到货
 function orderconfirm(oId) {
     $.ajax({
@@ -458,7 +463,7 @@ function getcondition4() {
     });
 }
 
-//退款成功
+//确认退款
 function orderbacck(oId) {
     $.ajax({
         type: "get",

@@ -439,9 +439,11 @@
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
 <script src="static/js/user.js"></script>
+<script src="static/js/session.js"></script>
 <script type="text/javascript">
     $(function () {
-        personal();
+        var uId=getId();
+        personal(uId);
     })
 </script>
 </body>

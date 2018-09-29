@@ -111,10 +111,10 @@ function personal_update() {
     });
 }
 
-function personal() {
+function personal(uId) {
     $.ajax({
         type: "get",
-        url: "/weitao/user?uId=1000000",
+        url: "/weitao/user?uId="+uId,
         dataType: "json",
         data: null,
         success: function (result) {
