@@ -10,8 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="telephone=no" name="format-detection">
     <meta name="HandheldFriendly" content="true">
-
-
     <link rel="stylesheet" href="static/wt/css/master.css">
     <link rel="icon" type="image/x-icon" href="static/wt/images/favicon.ico">
     <!--[if lt IE 9 ]>
@@ -107,8 +105,8 @@
                         <form class="search-global">
                             <input class="search-global__input" type="text" placeholder="Type to search"
                                    autocomplete="off" name="s" id="search"><!--搜索框的值-->
-                            <button class="search-global__btn" onclick="search2()"><i
-                                    class="icon stroke icon-Search"></i>
+                            <button class="search-global__btn" onclick="search2()">
+                                <i class="icon stroke icon-Search"></i>
                             </button>
                             <div class="search-global__note">Begin typing your search above and press return to
                                 search.
@@ -121,7 +119,9 @@
         <!--搜索的关闭按钮/////////////////////////////////////////////////////////////-->
         <button type="button" class="fullmenu-close"><i class="fa fa-times"></i></button>
     </div>
-
+    <button class="search-close close" type="button"><i class="fa fa-times"></i>
+    </button>
+</div>
 
     <header class="header-1 header header-color-black header-topbar-hidden header-boxed-width navbar-fixed-top header-background-trans header-navibox-1-left header-navibox-2-right">
         <!--<div class="container con-->
@@ -868,9 +868,7 @@
                             "<span class='b-goods__price'>" +
                             items['iPrice'] +
                             "</span>" +
-                            "<a class='b-goods__cart' href=" +
-                            'cart.html?iId=' + items['iId'] +
-                            ">" +
+                            "<a class='b-goods__cart'  onclick='cart("+items['iId']+") '>" +
                                 /*    加入购物车连接 + */
                             ">add to cart</a></span></span></div></div>");
                     }
@@ -896,9 +894,7 @@
                             "<span class='b-goods__price'>" +
                             items['iPrice'] +
                             "</span>" +
-                            "<a class='b-goods__cart' href=" +
-                            'cart.html?iId=' + items['iId'] +
-                            ">" +
+                            "<a class='b-goods__cart' onclick='cart("+items['iId']+") '>" +
                             ">add to cart</a></span></span>");
                     }
                 });
@@ -941,10 +937,7 @@
                             "<span class='b-goods__price'>" +
                             items['iPrice'] +
                             "</span>" +
-                            "<a class='b-goods__cart' href=" +
-                            'cart.html?iId=' + items['iId'] +
-                            ">" +
-                                /*    加入购物车连接 + */
+                            "<a class='b-goods__cart'  onclick='cart("+items['iId']+") '>" +
                             ">add to cart</a></span></span></div></div>");
                     }
                     if (index == 0) {
@@ -969,9 +962,7 @@
                             "<span class='b-goods__price'>" +
                             items['iPrice'] +
                             "</span>" +
-                            "<a class='b-goods__cart' href=" +
-                            'cart.html?iId=' + items['iId'] +
-                            ">" +
+                            "<a class='b-goods__cart'  onclick='cart("+items['iId']+") '>" +
                             ">add to cart</a></span></span>");
                     }
                 });
@@ -1054,4 +1045,25 @@
             "<a class='b-goods__btn btn btn-default' href=" +
             'shop.html?search=' + search4 +">shop now</a>")
     })
+</script>
+
+<script type="text/javascript">
+
+    function cart(iId) {
+        var id=iId
+        var number=1;
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            url: "/car/add/"+id+"/"+number,
+            data:null,
+            success: function (r) {
+                if (r.code==0){
+                    alert("加入成功")
+                }
+            },
+            error: function () {
+            }
+        })
+    }
 </script>

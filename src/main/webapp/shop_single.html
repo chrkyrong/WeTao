@@ -118,8 +118,7 @@
         <!--搜索的关闭按钮/////////////////////////////////////////////////////////////-->
         <button type="button" class="fullmenu-close"><i class="fa fa-times"></i></button>
     </div>
-    <button class="search-close close" type="button"><i class="fa fa-times"></i>
-    </button>
+    <button class="search-close close" type="button"><i class="fa fa-times"></i></button>
 </div>
 <header class="header-1 header header-color-black header-topbar-hidden header-boxed-width navbar-fixed-top header-background-trans header-navibox-1-left header-navibox-2-right">
     <!--<div class="container con-->
@@ -147,8 +146,8 @@
             </div>
             <div class="header-navibox-2">
                 <ul class="nav navbar-nav clearfix vcenter">
-                    <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
-                    </li>
+                   <!-- <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
+                    </li>-->
                     <!--用户个人信息模块///////////////////////////////////////////////////////////////////////////////////////-->
                     <li><a href="order.html"><h5>我 的 订 单</h5></a>
                     </li>
@@ -215,11 +214,11 @@
                                     <!--商品数量控制模块////////////////////////////////////////////////////////////-->
                                     <div class="enumerator"><span
                                             class="enumerator__btn enumerator__btn_minus js-minus_btn"></span>
-                                        <input class="enumerator__input" type="text" value="1" size="3"><span
+                                        <input class="enumerator__input" type="text" value="1" size="3" id="number"><span
                                                 class="enumerator__btn enumerator__btn_plus js-plus_btn"></span>
                                     </div>
                                     <!--加入购物车模块////////////////////////////////////////////////////////////-->
-                                    <button class="b-goods-det__btn btn  btn-default btn-lg" type="button"><h5>
+                                    <button class="b-goods-det__btn btn  btn-default btn-lg" type="button" onclick="cart()"><h5>
                                         加入购物车</h5></button>
                                 </div>
                             </div>
@@ -670,4 +669,24 @@
     $(function () {
         Onload1();
     })
+</script>
+<script type="text/javascript">
+    var iId=getQueryString("iId");
+    function cart() {
+        var number=$("#number").val();
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            url: "/car/add/"+iId+"/"+number,
+            data:null,
+            success: function (r) {
+                alert("加入成功！");
+
+            },
+            error: function () {
+                alert("加入失败！");
+             /*   location.reload();*/
+            }
+        })
+    }
 </script>
