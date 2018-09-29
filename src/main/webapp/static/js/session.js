@@ -4,7 +4,7 @@
 function getId() {
     var uId;
     $.ajax({
-        url:"/weitao/session/user",
+        url:"/session/user",
         type: "get",
         data: null,
         async: false,

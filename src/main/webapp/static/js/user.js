@@ -6,12 +6,27 @@
 function login() {
     $.ajax({
         type: 'post',
-        url: '/weitao/user/login',
+        url: '/user/login',
         dataType: 'json',
         data: $('#checkout').serialize(),
         success: function (result) {
             if(result.code==0) {
                 window.location.href = "home.html";
+            }
+            else if(result.code==109) {
+                alert("用户被锁定");
+            }
+            else if(result.code==102)
+            {
+                alert("用户名不存在");
+            }
+            else if(result.code==105)
+            {
+                alert("用户密码错误,请重试");
+            }
+            else
+            {
+                alert("未知错误");
             }
             console.log(result);
         }
@@ -22,7 +37,7 @@ function login() {
 function exit() {
     $.ajax({
         type: 'get',
-        url: '/weitao/user/logout',
+        url: '/user/logout',
         dataType: 'json',
         data: null,
         success: function () {
@@ -36,7 +51,7 @@ function exit() {
 function register() {
     $.ajax({
         type: 'post',
-        url: '/weitao/user',
+        url: '/user',
         dataType: 'json',
         data: $('#checkout').serialize(),
         success: function (result) {
@@ -50,7 +65,7 @@ function register() {
 function display1(uId) {
     $.ajax({
         type: 'get',
-        url: '/weitao/user?uId='+uId,
+        url: '/user?uId='+uId,
         dataType: "json",
         data: null,
         success: function (result) {
@@ -102,7 +117,7 @@ function display2(uId) {
 function personal_update() {
     $.ajax({
         type: 'put',
-        url:'/weitao/user',
+        url:'/user',
         dataType: 'json',
         data:$('#checkout').serialize(),
         success: function (result) {
@@ -114,7 +129,7 @@ function personal_update() {
 function personal(uId) {
     $.ajax({
         type: "get",
-        url: "/weitao/user?uId="+uId,
+        url: "/user?uId="+uId,
         dataType: "json",
         data: null,
         success: function (result) {

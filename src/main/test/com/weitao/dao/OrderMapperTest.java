@@ -23,10 +23,9 @@ public class OrderMapperTest {
     @Test
     public void selectConditions() throws Exception {
         Map<String,Object> map=new HashMap<>();
-        map.put("userId",100);
         map.put("oId",1);
         map.put("sellerId",2);
-        System.out.println(orderMapper.selectConditions(map));
+        System.out.println(orderMapper.selectCondition1(map));
     }
 
     @Test

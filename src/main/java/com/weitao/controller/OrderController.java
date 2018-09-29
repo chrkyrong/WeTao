@@ -150,7 +150,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/1")
-    public Result getCondition1(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    public Result getCondition1(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
         int sellerId=2;
         Map<String,Object> map=new HashMap<>();
@@ -177,9 +177,9 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/1")
-    public Result getOrder1(int sellerId)
+    public Result getOrder1(Integer sellerId, @RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
-        List<Order> orderList=orderService.get1(sellerId);
+        PageInfo orderList=orderService.get1(2,pageNum,pageSize);
         if(orderList!=null)
             return ResultUtil.success(orderList);
         else
@@ -210,7 +210,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/2")
-    public Result getCondition2(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    public Result getCondition2(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
         int sellerId=2;
         Map<String,Object> map=new HashMap<>();
@@ -231,9 +231,9 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/2")
-    public Result getOrder2(int sellerId)
+    public Result getOrder2(Integer sellerId,@RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
-        List<Order> orderList=orderService.get2(sellerId);
+        PageInfo orderList=orderService.get2(2,pageNum,pageSize);
         if(orderList!=null)
             return ResultUtil.success(orderList);
         else
@@ -250,7 +250,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/3")
-    public Result getCondition3(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    public Result getCondition3(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
         int sellerId=2;
         Map<String,Object> map=new HashMap<>();
@@ -266,14 +266,14 @@ public class OrderController {
     }
 
     /**
-     * 根据商户id查询已发货订单
+     * 根据商户id查询已到货订单
      * @param sellerId
      * @return
      */
     @GetMapping("/order/get/3")
-    public Result getOrder3(int sellerId)
+    public Result getOrder3(Integer sellerId ,@RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
-        List<Order> orderList=orderService.get3(sellerId);
+        PageInfo orderList=orderService.get3(2,pageNum,pageSize);
         if(orderList!=null)
             return ResultUtil.success(orderList);
         else
@@ -290,7 +290,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/4")
-    public Result getCondition4(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    public Result getCondition4(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
         int sellerId=2;
         Map<String,Object> map=new HashMap<>();
@@ -311,9 +311,9 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/4")
-    public Result getOrder4(int sellerId)
+    public Result getOrder4(Integer sellerId,@RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
-        List<Order> orderList=orderService.get4(sellerId);
+        PageInfo orderList=orderService.get4(sellerId,pageNum,pageSize);
         if(orderList!=null)
             return ResultUtil.success(orderList);
         else
@@ -330,7 +330,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/5")
-    public Result getCondition5(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") int pageNum, @RequestParam(defaultValue="10")int pageSize)
+    public Result getCondition5(Integer oId,Integer userId ,String oAddress, @RequestParam(defaultValue="1") Integer pageNum, @RequestParam(defaultValue="3")Integer pageSize)
     {
         int sellerId=2;
         Map<String,Object> map=new HashMap<>();
@@ -351,9 +351,9 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/5")
-    public Result getOrder5(int sellerId)
+    public Result getOrder5(Integer sellerId,@RequestParam(defaultValue="1")Integer pageNum,@RequestParam(defaultValue="3")Integer pageSize)
     {
-        List<Order> orderList=orderService.get5(sellerId);
+        PageInfo orderList=orderService.get5(sellerId,pageNum,pageSize);
         if(orderList!=null)
             return ResultUtil.success(orderList);
         else
