@@ -1,5 +1,6 @@
 package com.weitao.service.serviceImpl;
 
+import com.weitao.bean.Car;
 import com.weitao.bean.ItemsCar;
 import com.weitao.dao.CarMapper;
 import com.weitao.service.CarService;
@@ -59,5 +60,15 @@ public class CarServiceImpl implements CarService {
     @Override
     public Integer findSellerId(Integer iId) {
         return carMapper.selectSellerIdByItemsId(iId);
+    }
+
+    @Override
+    public Integer isExistCar(Integer iId, Integer uId) {
+        return carMapper.isExistCar(iId, uId);
+    }
+
+    @Override
+    public int updateCar(Integer iId, Integer uId, Integer number) {
+        return carMapper.updateCarByIidAndUid(iId, uId, number);
     }
 }

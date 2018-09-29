@@ -1,5 +1,6 @@
 package com.weitao.dao;
 
+import com.weitao.bean.Car;
 import com.weitao.bean.ItemsCar;
 import org.apache.ibatis.annotations.Param;
 
@@ -21,9 +22,15 @@ public interface CarMapper {
     //5、部分减少    （根据商品的iId减少购物车商品数量）
     int updateCutCarItemsNumberByIid(@Param("iId") Integer iId,@Param("uId") Integer uId);
 
-    //6、增加购物
+    //6、增加购物（购物车中不存在该用户加购的商品）
     int insertCarByIidAndUid(@Param("iId") Integer iId,@Param("uId") Integer uId,@Param("number") Integer number,@Param("sId") Integer sId);
 
     //7、查找商品的商家id
     Integer selectSellerIdByItemsId(Integer iId);
+
+    //8、查找加入购物车的商品是否已经存在在购物车中
+    Integer isExistCar(@Param("iId") Integer iId, @Param("uId") Integer uId);
+
+    //9、增加购物（购物车中存在该用户加购的商品）
+    int updateCarByIidAndUid(@Param("iId") Integer iId,@Param("uId") Integer uId,@Param("number") Integer number);
 }
