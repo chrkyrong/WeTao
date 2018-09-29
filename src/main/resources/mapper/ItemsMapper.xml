@@ -117,6 +117,7 @@
       </if>
     </trim>
   </insert>
+  <!--修改items信息-->
   <update id="updateByPrimaryKeySelective" parameterType="com.weitao.bean.Items">
     update items
     <set>
@@ -279,4 +280,17 @@
         from items
         where i_id = #{VALUE }
     </select>
+
+  <!--查询相关店铺所有商品，包括状态为1的-->
+   <select id="selectAll" parameterType="com.weitao.bean.Items" resultType="com.weitao.bean.Items">
+      SELECT *  from items where items.store_id=#{VALUE}
+   </select>
+
+  <!--商家根据不同的条件查询自己店铺的商品-->
+  <select id="sellerItems" parameterType="com.weitao.bean.Items" resultType="com.weitao.bean.Items">
+      SELECT * from items
+      where  items.store_id =#{storeId}
+      and (items.i_id like '%${search}%' or items.i_name like '%${search}%')
+      and items.i_status = #{iStatus}
+  </select>
 </mapper>

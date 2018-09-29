@@ -26,7 +26,7 @@ public class OrderMapperTest {
         map.put("userId",100);
         map.put("oId",1);
         map.put("sellerId",2);
-        System.out.println(orderMapper.selectConditions(map));
+//        System.out.println(orderMapper.selectConditions(map));
     }
 
     @Test

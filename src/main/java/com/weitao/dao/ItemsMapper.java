@@ -46,4 +46,10 @@ public interface ItemsMapper {
     /*根據id查詢單個商品*/
     List<Items> selectByPrimaryKey1(Integer iId);
 
+    /*查询所有商品*/
+    List<Items> selectAll(Integer storeId);
+
+    /*商家根据不同条件查询自己的商品*/
+    List<Items> sellerItems(@Param("storeId") Integer storeId,@Param("search") String search,@Param("iStatus") Integer iStatus);
+
 }

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by lzr on 2018/9/4.
  */
-public class Result<T>{
+public class Result<T> {
 
     private String code;
     private String msg;
@@ -34,4 +34,5 @@ public class Result<T>{
     public void setData(T data) {
         this.data = data;
     }
+
 }

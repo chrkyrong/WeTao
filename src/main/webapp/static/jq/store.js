@@ -77,7 +77,7 @@ function onSearch1() {
 function onChange1() {
     var stName = $("#stName").val();
 //        怎么获得stId(找老姚沟通)
-    var stId;
+    var stId = 7000000;
     var stStatus = 0;
     // alert(stName);
     $.ajax({

@@ -22,6 +22,12 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class ItemsMapperTest {
     @Test
+    public void sellerItems() throws Exception {
+        List<Items> list=itemsMapper.sellerItems(1,"800000",0);
+        System.out.println(list);
+    }
+
+    @Test
     public void selectItemsAll() throws Exception {
         /*String search="鞋";*/
         List<Items> list=itemsMapper.selectByPrimaryKey1(1);

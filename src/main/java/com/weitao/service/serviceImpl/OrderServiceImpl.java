@@ -252,11 +252,92 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public PageInfo get1(Map<String, Object> map, int pageNum, int pageSize) {
+    public PageInfo getCondition1(Map<String, Object> map, int pageNum, int pageSize) {
         //分页信息
         PageHelper.startPage(pageNum, pageSize);
         //分页查询
-        PageInfo orderList = (PageInfo) orderMapper.selectConditions(map);
+        List<Order> list=orderMapper.selectCondition1(map);
+        PageInfo orderList=new PageInfo(list);
         return orderList;
     }
+
+    @Override
+    public List<Order> get1(int sellerId) {
+        List<Order> list=orderMapper.select1(sellerId);
+        return list;
+    }
+
+    @Override
+    public PageInfo getCondition2(Map<String, Object> map, int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum, pageSize);
+        //分页查询
+        List<Order> list=orderMapper.selectCondition2(map);
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
+    }
+
+    @Override
+    public List<Order> get2(int sellerId) {
+        List<Order> list=orderMapper.select2(sellerId);
+        return list;
+    }
+
+    @Override
+    public PageInfo getCondition3(Map<String, Object> map, int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum, pageSize);
+        //分页查询
+        List<Order> list=orderMapper.selectCondition3(map);
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
+    }
+
+    @Override
+    public List<Order> get3(int sellerId) {
+        List<Order> list=orderMapper.select3(sellerId);
+        return list;
+    }
+
+    @Override
+    public PageInfo getCondition4(Map<String, Object> map, int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum, pageSize);
+        //分页查询
+        List<Order> list=orderMapper.selectCondition4(map);
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
+    }
+
+    @Override
+    public List<Order> get4(int sellerId) {
+        List<Order> list=orderMapper.select4(sellerId);
+        return list;
+    }
+
+    @Override
+    public PageInfo getCondition5(Map<String, Object> map, int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum, pageSize);
+        //分页查询
+        List<Order> list=orderMapper.selectCondition5(map);
+        PageInfo orderList=new PageInfo(list);
+        return orderList;
+    }
+
+    @Override
+    public List<Order> get5(int sellerId) {
+        List<Order> list=orderMapper.select5(sellerId);
+        return list;
+    }
+
+    @Override
+    public Boolean sendOrder(int oId) {
+        //根据订单id确定订单
+        if (orderMapper.sendOrder(oId) > 0)
+            return true;
+        else
+            return false;
+    }
+
 }

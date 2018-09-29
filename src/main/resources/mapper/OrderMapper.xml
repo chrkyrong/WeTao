@@ -197,19 +197,20 @@
 
   <!--下面是商户-->
 
-  <!--多条件查询订单-->
-  <select id="selectConditions" parameterType="hashmap" resultMap="BaseResultMap">
+  <!--多条件查询待发货订单-->
+  <select id="selectCondition1" parameterType="hashmap" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List" />
     FROM `order`
     <where>
-      <if test="userId!=null">
+        AND seller_id=#{sellerId} AND o_status='1'
+      <if test="oId!=null and oId!=''">
+        AND o_id LIKE CONCAT(CONCAT('%',#{oId}),'%')
+      </if>
+      <if test="userId!=null and userId!=''" >
         AND user_id LIKE CONCAT(CONCAT('%',#{userId}),'%')
       </if>
-      <if test="oAddress!=null">
+      <if test="oAddress!=null and oAddress!=''">
         AND o_address LIKE CONCAT(CONCAT('%',#{oAddress}),'%')
-      </if>
-      <if test="sellerId!=null">
-        AND seller_id=#{sellerId}
       </if>
     </where>
   </select>
@@ -220,6 +221,106 @@
     FROM `order`
     WHERE seller_id=#{seller_id} AND o_status='1'
   </select>
+
+    <!--多条件查询已发货订单-->
+    <select id="selectCondition2" parameterType="hashmap" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM `order`
+        <where>
+            AND seller_id=#{sellerId} AND o_status='2'
+            <if test="oId!=null and oId!=''">
+                AND o_id LIKE CONCAT(CONCAT('%',#{oId}),'%')
+            </if>
+            <if test="userId!=null and userId!=''" >
+                AND user_id LIKE CONCAT(CONCAT('%',#{userId}),'%')
+            </if>
+            <if test="oAddress!=null and oAddress!=''">
+                AND o_address LIKE CONCAT(CONCAT('%',#{oAddress}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!--根据卖家id查询已发货订单-->
+    <select id="select2" parameterType="int" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM `order`
+        WHERE seller_id=#{seller_id} AND o_status='2'
+    </select>
+
+    <!--多条件查询已到货订单-->
+    <select id="selectCondition3" parameterType="hashmap" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM `order`
+        <where>
+            AND seller_id=#{sellerId} AND o_status='3'
+            <if test="oId!=null and oId!=''">
+                AND o_id LIKE CONCAT(CONCAT('%',#{oId}),'%')
+            </if>
+            <if test="userId!=null and userId!=''" >
+                AND user_id LIKE CONCAT(CONCAT('%',#{userId}),'%')
+            </if>
+            <if test="oAddress!=null and oAddress!=''">
+                AND o_address LIKE CONCAT(CONCAT('%',#{oAddress}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!--根据卖家id查询已到货订单-->
+    <select id="select3" parameterType="int" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM `order`
+        WHERE seller_id=#{seller_id} AND o_status='3'
+    </select>
+
+    <!--多条件查询退款中订单-->
+    <select id="selectCondition4" parameterType="hashmap" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM `order`
+        <where>
+            AND seller_id=#{sellerId} AND o_status='4'
+            <if test="oId!=null and oId!=''">
+                AND o_id LIKE CONCAT(CONCAT('%',#{oId}),'%')
+            </if>
+            <if test="userId!=null and userId!=''" >
+                AND user_id LIKE CONCAT(CONCAT('%',#{userId}),'%')
+            </if>
+            <if test="oAddress!=null and oAddress!=''">
+                AND o_address LIKE CONCAT(CONCAT('%',#{oAddress}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!--根据卖家id查询退款中订单-->
+    <select id="select4" parameterType="int" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM `order`
+        WHERE seller_id=#{seller_id} AND o_status='4'
+    </select>
+
+    <!--多条件查询退款完成订单-->
+    <select id="selectCondition5" parameterType="hashmap" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM `order`
+        <where>
+            AND seller_id=#{sellerId} AND o_status='5'
+            <if test="oId!=null and oId!=''">
+                AND o_id LIKE CONCAT(CONCAT('%',#{oId}),'%')
+            </if>
+            <if test="userId!=null and userId!=''" >
+                AND user_id LIKE CONCAT(CONCAT('%',#{userId}),'%')
+            </if>
+            <if test="oAddress!=null and oAddress!=''">
+                AND o_address LIKE CONCAT(CONCAT('%',#{oAddress}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!--根据卖家id查询退款完成订单-->
+    <select id="select5" parameterType="int" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM `order`
+        WHERE seller_id=#{seller_id} AND o_status='5'
+    </select>
 
     <!--By CC-->
     <!--生成订单，返回刚刚生成的主键-->
@@ -300,4 +401,10 @@
         </trim>
     </insert>
 
+    <!--根据订单id发货-->
+    <update id="sendOrder" parameterType="int">
+        UPDATE `order`
+        SET o_status='2'
+        WHERE o_id=#{value}
+    </update>
 </mapper>
