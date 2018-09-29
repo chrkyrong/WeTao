@@ -172,7 +172,7 @@ public class OrderController {
     }
 
     /**
-     * 根据卖家id查询订单
+     * 根据卖家id查询待发货订单
      * @param sellerId
      * @return
      */
@@ -321,7 +321,7 @@ public class OrderController {
     }
 
     /**
-     * 多条件查询退款中订单
+     * 多条件查询退款完成订单
      * @param oId
      * @param userId
      * @param oAddress
@@ -346,14 +346,14 @@ public class OrderController {
     }
 
     /**
-     * 根据商户id查询退款中订单
+     * 根据商户id查询退款完成订单
      * @param sellerId
      * @return
      */
     @GetMapping("/order/get/5")
     public Result getOrder5(Integer sellerId,@RequestParam(defaultValue="1")Integer pageNum,@RequestParam(defaultValue="3")Integer pageSize)
     {
-        PageInfo orderList=orderService.get5(sellerId,pageNum,pageSize);
+        PageInfo orderList=orderService.get5(2,pageNum,pageSize);
         if(orderList!=null)
             return ResultUtil.success(orderList);
         else
