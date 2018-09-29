@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @Author: hzb
- * @Description: WeTao1
+ * @Description: WeTao
  * @Version: 1.0
  * @Date: 2018/9/19
  * @Time: 14:51
@@ -31,7 +31,7 @@ public class CollectionController {
      * @return
      */
     @GetMapping("/coll/find")
-    public Result find(){
+    public Result find(@SessionAttribute(value = "uId", required = false)Integer uId){
         List<ItemsCollection> list = collectionService.findCollection(uId);
         return ResultUtil.success(list);
     }
@@ -43,7 +43,7 @@ public class CollectionController {
      * @return
      */
     @GetMapping("/coll/delete/{cId}")
-    public Result delete(@PathVariable("cId") int cId){
+    public Result delete(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("cId") int cId){
         int count = collectionService.removeCollection(cId);
         if(count!=0){
             return ResultUtil.success();
@@ -59,7 +59,7 @@ public class CollectionController {
      * @return
      */
     @GetMapping("/coll/add/{iId}")
-    public Result add(@PathVariable("iId") int iId){
+    public Result add(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") int iId){
         int count = collectionService.addCollection(iId,uId);
         if(count!=0){
             return ResultUtil.success();

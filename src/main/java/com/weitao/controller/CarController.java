@@ -12,16 +12,13 @@ import java.util.List;
 
 /**
  * @Author: hzb
- * @Description: WeTao1
+ * @Description: WeTao
  * @Version: 1.0
  * @Date: 2018/9/20
  * @Time: 21:19
  **/
 @RestController
 public class CarController {
-    //测试数据
-    private static final Integer uId=101;
-
     @Autowired
     private CarService carService;
 
@@ -30,7 +27,7 @@ public class CarController {
      * @return
      */
     @GetMapping("/car/find")
-    public Result find(){
+    public Result find(@SessionAttribute(value = "uId", required = false)Integer uId){
         List<ItemsCar> list = carService.findCar(uId);
         for(ItemsCar car:list){
             car.setTotalPrice(car.getiPrice().multiply(new BigDecimal(car.getNumber())));
@@ -44,7 +41,7 @@ public class CarController {
      * @return
      */
     @GetMapping("/car/delete/{iId}")
-    public Result delete(@PathVariable("iId") Integer iId){
+    public Result delete(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") Integer iId){
         int count = carService.removeCar(iId,uId);
         if (count!=0)
             return ResultUtil.success();
@@ -58,7 +55,7 @@ public class CarController {
      * @return
      */
     @GetMapping("/car/addNum/{iId}")
-    public Result addNum(@PathVariable("iId") Integer iId){
+    public Result addNum(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") Integer iId){
         int count = carService.updateAddCar(iId,uId);
         if (count!=0)
             return ResultUtil.success();
@@ -72,7 +69,7 @@ public class CarController {
      * @return
      */
     @GetMapping("/car/cutNum/{iId}")
-    public Result cutNum(@PathVariable("iId") Integer iId){
+    public Result cutNum(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") Integer iId){
         int count = carService.updateCutCar(iId,uId);
         if (count!=0)
             return ResultUtil.success();
@@ -87,7 +84,7 @@ public class CarController {
      * @return
      */
     @GetMapping("/car/add/{iId}/{number}")
-    public Result add(@PathVariable("iId") Integer iId,@PathVariable("number") Integer number){
+    public Result add(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") Integer iId,@PathVariable("number") Integer number){
         Integer sId = carService.findSellerId(iId);
         int count = carService.addCar(iId,uId,number,sId);
         if (count!=0)

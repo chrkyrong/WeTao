@@ -1,6 +1,5 @@
 package com.weitao.service.serviceImpl;
 
-import com.weitao.bean.Collection;
 import com.weitao.bean.ItemsCollection;
 import com.weitao.dao.CollectionMapper;
 import com.weitao.service.CollectionService;
@@ -11,7 +10,7 @@ import java.util.List;
 
 /**
  * @Author: hzb
- * @Description: WeTao1
+ * @Description: WeTao
  * @Version: 1.0
  * @Date: 2018/9/19
  * @Time: 14:55
