@@ -19,9 +19,6 @@ import java.util.List;
  **/
 @RestController
 public class CollectionController {
-    //测试数据
-    private static final Integer uId=101;
-
     @Autowired
     private CollectionService collectionService;
 

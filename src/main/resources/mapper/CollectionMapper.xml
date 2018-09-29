@@ -18,4 +18,13 @@
   <insert id="insertCollection">
     insert into collection (user_id, items_id) values (#{uId},#{iId})
   </insert>
+
+  <!--判断商品是否已经收藏-->
+  <select id="isExistCollection" resultType="Integer">
+    select count(*) from(
+    select *
+    from collection
+    where items_id=#{iId} and user_id=#{uId}
+    )as total
+  </select>
 </mapper>
