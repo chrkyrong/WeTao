@@ -88,8 +88,8 @@ public class CarController {
         int count = 0;
         if (isExist==0){
             count = carService.addCar(iId,uId,number,sId);
-        } else {
-            count = carService.updateCar(uId, iId, number);
+        } if (isExist==1){
+            count = carService.updateCar(iId, uId, number);
         }
         if (count==1)
             return ResultUtil.success();
