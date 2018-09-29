@@ -5,8 +5,6 @@ import com.weitao.service.CarService;
 import com.weitao.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -86,7 +84,13 @@ public class CarController {
     @GetMapping("/car/add/{iId}/{number}")
     public Result add(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") Integer iId,@PathVariable("number") Integer number){
         Integer sId = carService.findSellerId(iId);
-        int count = carService.addCar(iId,uId,number,sId);
+        int isExist = carService.isExistCar(iId, uId);
+        int count = 0;
+        if (isExist==0){
+            count = carService.addCar(iId,uId,number,sId);
+        } else {
+            count = carService.updateCar(uId, iId, number);
+        }
         if (count!=0)
             return ResultUtil.success();
         else
