@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>WeTao / Information</title>
+    <title>WeTao / SellerMessage</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,8 +34,38 @@
     <button type="button" class="fullmenu-close"><i class="fa fa-times"></i></button>
 
     <nav class="fullscreen-center-menu">
+
         <!--左上角隐藏的导航栏入口/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-        
+        <div id="dl-menu" class="dl-menuwrapper">
+            <ul class="dl-menu menu-item list-unstyled">
+
+
+                <li class="has-children ">
+                    <a href="#"><span>订单管理 <i class="arrow_carrot-right"></i> </span></a>
+                    <ul class="dl-submenu">
+
+                        <li><a href="Unfilled-Order.html"><span>待发货</span></a></li>
+                        <li><a href="Sent-Order.html"><span>已发货</span></a></li>
+                        <li><a href="Achieve-Order.html"><span>已完成</span></a></li>
+
+
+                    </ul>
+                </li>
+                
+                <li class="has-children ">
+                    <a href="shop-1.html"><span>售后 <i class="arrow_carrot-right"></i>  </span></a>
+                    <ul class="dl-submenu">
+                        <li><a href="Notrefund-Order.html"><span>待退款</span></a></li>
+                        <li><a href="Refund-Order.html"><span>已退款</span></a></li>
+                    </ul>
+                </li>
+                
+				<li><a href="about.html"><span>客服</span></a></li>
+                <li><a href="lookbook.html"><span>数据统计</span></a></li>
+                </ul>
+        </div>
+
+
     </nav>
 
 </div>
@@ -66,8 +96,6 @@
         <button class="search-close close" type="button"><i class="fa fa-times"></i>
         </button>
     </div>
-
-
     <header class="header-1 header header-color-black header-topbar-hidden header-boxed-width navbar-fixed-top header-background-trans header-navibox-1-left header-navibox-2-right">
         <div class="container container-boxed-width">
             <div class="top-bar">
@@ -104,21 +132,20 @@
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
                             <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="Manage-seller.html"><h5>商家管理</h5></a>
+                            <li><a href="items-Homepage.html"><h5>主 页</h5></a>
                             </li>
-                            <li><a href="Manage-store.html"><h5>商铺管理</h5></a>
+                            <li><a href="Store.html"><h5>店铺信息</h5></a>
                             </li>
-                            <li><a href="Manage-user.html"><h5>买家管理</h5></a>
+                            <li><a href="Evaluate.html"><h5>评论管理</h5></a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-navibox-2">
                         <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
                         <ul class="nav navbar-nav clearfix vcenter">
-                            <li><a href="Manage-items.html"><h5>商品管理</h5></a>
-                            <li><a href="Manage-control.html"><h5>权限管理</h5></a>
+                            
                             <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="ManagerMessage.html"><h5>个人信息</h5></a>
+                            <li><a href="seller_message.html"><h5>个人信息</h5></a>
                             </li>
                             <!-- <li><span class="header-cart"><a href="#"><i class="icon fa fa-shopping-cart"
                                                                          aria-hidden="true"></i></a><span
@@ -127,9 +154,9 @@
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
-                            <li><a href="#">登 陆</a>
+                            <li><a href="seller_login_register.html">登 陆</a>
                             </li>
-                            <li><a href="#">返 回</a>
+                            <li><a href="#">退 出</a>
                             </li>
                         </ul>
                         <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
@@ -144,71 +171,124 @@
         </div>
     </header>
     <!-- end .header-->
-    <div class="l-main-content">
+    <div class="l-main-content l-main-content_w-border">
         <div class="container">
-            <!--可扩展容器/////////////////////////////////////////////////////////////////////////////////////////-->
-        </div>
-        <section class="section-about">
-            <div class="container">
-                <div class="row">
+            <div class="row">
+                <div class="col-xs-12">
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
                             <!--第一行文字/////////////////////////////////////////////////////////////-->
-                            <li><a href=""><h4>商家信息</h4></a>
+                            <li><a href=""><h4>商家个人信息</h4></a>
                             </li>
                         </ol>
                     </div>
                     <div class="section-title-page section-title-page_mod-a">
                         <!--第二行文字/////////////////////////////////////////////////////////////-->
-                        <h1 class="ui-title-page"> B u s i n e s s e s M e s s a g e</h1>
+                        <h1 class="ui-title-page">S e l l e r   M e s s a g e</h1>
                     </div>
                 </div>
-                <div class="img-group">
-                    <div class="row">
-                        <div class="col-md-3">
-                        	<h4>商家头像</h4>
-                            <div class="img-group__item tilter tilter--1">
-                            <!--用户头像模块/////////////////////////////////////////////////////////////////////////////////////////-->
-                            	<a class="b-goods__media js-zoom-images"
-                                               href="static/wt/images/2_1.jpg">
-                                	<figure class="tilter__figure">                                    
-                          				<img alt="img" src="static/wt/images/2_1.jpg" class="img-responsive">
-                                	</figure></a>                                
-                            </div>                            
-                        </div>                        
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <!--个人信息描述模块/////////////////////////////////////////////////////////////////////////////////////////-->
-                        <h3 class="typography-title">信息 Information</h3><br><br>
-                        <ul class="list list-mark-2" id="stu">
-                            <li><h4>姓名(Name):对象name</h4><br></li>
-                            <li><h4>性别(Gender):对象gender</h4><br></li>
-                            <li><h4>联系电话(Tel):对象Tel</h4><br></li>
-                            <li><h4>地址(Address1):对象地址</h4><br></li>
-                        </ul>
-                        <div class="form-row place-order">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <!--修改个人信息按钮/////////////////////////////////////////////////////////////////////////////////////////-->           
-                        	<input type="button" class="button alt" id="place_order" value="返 回 Return"
-                                               data-value="Place order" style="line-height:1.3;border:0" onclick="window.history.back(-1)"/>
-                        </div>
-                    </div>
-                </div>
-                
             </div>
-            
-        </section>
-        <!-- end .section-about-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="woocommerce">
+                        <form class="checkout_coupon" method="post" style="display:none">
+                            <p class="form-row form-row-first">
+                                <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code"
+                                       id="coupon_code" value="">
+                            </p>
+                            <p class="form-row form-row-last">
+                                <input type="submit" class="button" name="apply_coupon" value="Apply Coupon">
+                            </p>
+                            <div class="clear"></div>
+                        </form>
+                        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
+                              enctype="multipart/form-data" _lpchecked="1">
+                            <div class="col2-set" id="customer_details">
+                            <!-- 信息显示 -->
+                                <div class="col-1">
+                                    <div class="woocommerce-billing-fields">
+                                        <!--信息表单/////////////////////////////////////////////////////////////-->
+                                        <h3>个人信息列表</h3>
+                                        <p class="form-row form-row form-row-wide">
+                                            <label>I D</label>
+                                            <!--商家ID，s_id/////////////////////////////////////////////////////////////-->
+                                            <!-- 动态获取ID，无法修改 -->
+                                            <label>123456</label>
+                                            <!-- <input type="text" class="input-text " name="uUsername"> -->
+                                        </p>
+                                        <p class="form-row form-row form-row-wide ">
+                                            <!--商家账号，s_account/////////////////////////////////////////////////////////////-->
+                                            <label>账 号(Account)</label>
+                                            <!-- 输入栏显示账号，可修改 -->
+                                            <input type="text" class="input-text " name="sUsername" placeholder="Account">
+                                        </p>
+                                        <p class="form-row form-row form-row-wide ">
+                                            <!--动态获取商家性别，s_sex/////////////////////////////////////////////////////////////-->
+                                            <label>性 别(Sex)</label>
+                                            <select class="textBox" name="sSex" style="height:40px;width:100px">
+      											<option value="男">男</option>
+      											<option value="女">女</option>
+     										</select>
+                                        </p>
+                                        <p class="form-row form-row form-row-wide ">
+                                            <!--动态获取商家电话，s_tel）/////////////////////////////////////////////////////////////-->
+                                            <label>电 话(Tel）</label>
+                                            <input type="text" class="input-text " name="sPhone" placeholder="TellPhone">
+                                        </p>
+                                        <p class="form-row form-row form-row-wide ">
+                                            <!--动态获取商家地址，s_address/////////////////////////////////////////////////////////////-->
+                                            <label>地 址(Address)</label>
+                                            <input type="text" class="input-text " name="sAddress" placeholder="Address">
+                                        </p>                         	
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="woocommerce-shipping-fields">
+                                        <h3>可修改个人头像</h3>
+                                        <p class="form-row form-row">
+                                            <!--右侧头像图位置/////////////////////////////////////////////////////////////-->
+                                            <a class="b-goods__media js-zoom-images"
+                                               href="static/wt/images/2_1.jpg">
+                                                <img class="img-responsive" src="static/wt/images/2_1.jpg" alt="img">
+                                            </a>
+                                            <p class="form-row form-row">
+                                           <input type="file" name="s_icon" class="webuploader-element-invisible" multiple accept="image/*">                                          
+                                           	<!--可以看到商家原来的头像s_icon/////////////////////////////////////////////////////////////-->
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<h3 id="order_review_heading">确认无误，保存</h3>-->
+                            <div id="order_review" class="woocommerce-checkout-review-order">
+
+                                <div id="payment" class="woocommerce-checkout-payment">
+
+                                    <div class="form-row place-order">
+
+                                        <input type="submit" class="button alt" id="place_order" value="保 存 信 息 Save Information"
+                                               data-value="Place order"/>
+                                    </div>
+                                    <div class="form-row place-order">
+                                        <input type="button" class="button alt" id="place_order" value="修 改 密 码 Change Password"
+                                               data-value="Place order" style="line-height:1.3;border:0" onclick="window.location='ChangePassword.html'"/>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- end .l-main-content-->
+
+
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <section class="footer-section">
-                        <h3 class="footer-section__title ui-title-inner">请 留 下 您 宝 贵 的 建 议</h3>
+                        <h3 class="footer-section__title ui-title-inner">写 下 您 宝 贵 的 建 议</h3>
                         <form class="footer-form">
                             <input class="footer-form__input form-control" type="email" placeholder="enter your advice">
                             <button class="footer-form__btn"><i class="icon fa fa-paper-plane"></i>
@@ -256,7 +336,7 @@
                                         <li class="footer-list__item"><a class="footer-list__link" href="">Warranty</a>
                                         </li>
                                         <!--帮助入口//////////////////////////////////////////////////////////////////////////////-->
-                                        <li class="footer-list__item"><a class="footer-list__link" href="display.html">Help</a>
+                                        <li class="footer-list__item"><a class="footer-list__link" href="about.html">Help</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -320,6 +400,9 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
+
 </body>
 
 </html>
+
+
