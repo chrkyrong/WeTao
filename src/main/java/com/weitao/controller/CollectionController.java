@@ -64,4 +64,13 @@ public class CollectionController {
             return ResultUtil.error("加入失败！","1");
         }
     }
+
+    @GetMapping("/coll/isExist/{iId}")
+    public Result isExist(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") int iId){
+        int result = collectionService.isExistCollection(iId,uId);
+        if (result==1)
+            return ResultUtil.success();
+        else
+            return ResultUtil.error("不存在","1");
+    }
 }
