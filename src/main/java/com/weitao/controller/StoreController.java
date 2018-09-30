@@ -55,7 +55,8 @@ public class StoreController {
                                     @RequestParam(value = "stStatus", defaultValue = "0") int stStatus) throws Exception {
 //        后台session获取卖家id
         Store store=new Store();
-        store.setSellerId(sellerId);
+//        store.setSellerId(sellerId);
+        store.setSellerId(2000001);
         store.setStStatus((byte) stStatus);
         List<Store> stores=storeService.seleteStore(store);
         return ResultUtil.success(stores);

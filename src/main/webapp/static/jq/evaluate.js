@@ -73,7 +73,6 @@ function Onload2(iId) {
 
 //提交评论
 function confirmEvaluate() {
-    console.log('submit');
     var form = new FormData(document.getElementById("formTest"));
     $.ajax({
         contentType: 'application/json;charset=UTF-8',   //定义编码

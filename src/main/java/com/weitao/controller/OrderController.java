@@ -167,6 +167,10 @@ public class OrderController {
 
     @RequestMapping("order/addOrders")
     public Result addOrders(@SessionAttribute(value = "uId",required = false) Integer userId, Byte oPost, String oAddress, String oMessage){
+//        测试用途
+        userId = 1000000;
+
+
         List<Order> orderList = orderService.addOrder(userId, oPost,oAddress,oMessage);
         return ResultUtil.success(orderList);
     }

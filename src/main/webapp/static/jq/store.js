@@ -55,7 +55,7 @@ function storeOnload2() {
             $("#tableOne").html(s);
         },
         error: function (result) {
-            alert(result.message)
+            alert(result.message);
         }
     })
 }
@@ -131,9 +131,9 @@ function onChange2(stId) {
         dataType: 'json',
         data: {stName: stName, stId: stId, stStatus: stStatus},
         success: function (result) {
-            alert("关闭店铺成功！");
+            // alert("关闭店铺成功！");
         }, error: function (result) {
-            alert(result.message());
+            // alert(result.message());
         }
     })
 }
@@ -146,10 +146,10 @@ function onChange3(stId, stStatus) {
         dataType: 'json',
         data: {stId: stId, stStatus: stStatus},
         success: function (result) {
-            alert("店铺状态更改成功！");
-            // 刷新当前页面
+            // alert("店铺状态更改成功！");
+            刷新当前页面
         }, error: function (result) {
-            alert(result.message());
+            // alert(result.message());
         }
     })
 }
