@@ -104,9 +104,10 @@ public class OrderServiceImpl implements OrderService {
 //            找出商品对象
             Items items = itemsMapper.selectByPrimaryKey(itemsCar.getItemsId());
             /*判断库存*/
-            if (itemsCar.getNumber() <= items.getiExsit()) {
+            if (itemsCar.getNumber() > items.getiExsit()) {
 //                库存大于购买数，key=true
-                key = true;
+                key = false;
+                break;
             }
         }
 
@@ -241,6 +242,7 @@ public class OrderServiceImpl implements OrderService {
                     errorMessage += "" + items.getiExsit();
                     errorMessage += "请重新选择商品数量";
                     mistake.setoMessage(errorMessage);
+                    System.out.println(mistake.getoMessage());
 //                前端判断List<Order>第一个对象的oId是否为空，为空时：输出oMessage信息
                     orderList.add(mistake);
                 }
