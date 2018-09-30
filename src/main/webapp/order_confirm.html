@@ -200,10 +200,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="woocommerce">
-                        <form action="" method="post" class="cart-table ">
+                        <form action="" method="post" class="cart-table " id="carForm">
                             <!--购物车清单的表格模块///////////////////////////////////////////////////////////////////////////////////////-->
                             <div class="b-table b-cart-table ">
-                                <table class="shop_table shop_table_responsive cart table" cellspacing="0">
+                                <table class="shop_table shop_table_responsive cart table" cellspacing="0" id="car">
                                     <thead>
                                     <tr>
                                         <td class="product-thumbnail" width="200">&nbsp;</td>
@@ -214,44 +214,6 @@
                                     </tr>
                                     </thead>
                                     <tbody id="cartTable">
-                                    <tr class="cart_item">
-                                        <td class="product-thumbnail">
-                                            <a href="catalog-product.html">
-                                                <!--添加产品图片模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                <img src="static/wt/images/1.jpg"
-                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                            </a></td>
-                                        <td data-title="Product">
-                                            <div class="caption">
-                                                <!--产品名称模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                <a class="product-name" href="/">Hyperion</a></div>
-                                        </td>
-                                        <td class="product-price" data-title="Price">
-                                            <span class="product-price total-price">
-                        <!--产品价格模块///////////////////////////////////////////////////////////////////////////////////////-->
-
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">£</span>875.00</span></span>
-                                        </td>
-                                        <!--产品数量模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <td class="product-quantity" data-title="Quantity">
-                                            <div class="enumerator">
-                                                1
-                                            </div>
-                                        </td>
-                                        <!--产品根据计算数量和单价得出的总价小计///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <td class="product-subtotal" data-title="Total">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <span class="woocommerce-Price-currencySymbol">£</span>875.00</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6" class="actions">
-                                            <strong>留 言：</strong><input type="text"
-                                                                        placeholder="有什么留言想对卖家说嘛?（要顺丰加急？易碎物品）"
-                                                                        style="width: 500px" id="oMessage"
-                                                                        name="oMessage"></td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -270,20 +232,14 @@
                                             </select>
                                         </td>
                                         <!--购物车所有东西加起来的总价格///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <td data-title="Total" style="width:50px;" id="totalPrice"><strong><span
-                                                class="woocommerce-Price-amount amount"><span
-                                                class="woocommerce-Price-currencySymbol">总价：£</span>888.00</span></strong>
+                                        <td data-title="Total" style="width:50px;" id="totalPrice">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <select class="selectpicker" data-width="100%" name="address"
                                                     id="address">
-                                                                                                <option value="默认地址">（地址一）</option>
-                                                <!--                                                &lt;!&ndash;动态获取商店名称，storeId/////////////////////////////////////////////////////////////&ndash;&gt;
-                                                                                                <option value="-1">请选择收货地址</option>
-                                                                                                <option value="地址二">（地址二）</option>
-                                                                                                <option value="地址三">（地址三）</option>-->
+                                                <option value="-1">请选择收货地址</option>
                                             </select>
                                         </td>
                                         <td>
@@ -298,7 +254,7 @@
 
                                     <!--确认下单按钮，缺少下单事件函数/////////////////////////////////////////////////////////////-->
                                     <a href="" class="checkout-button button alt wc-forward"
-                                       onclick="return false,orderConfirm()">
+                                       onclick="orderConfirm();return false">
                                         确 认 下 单(Proceed to Checkout)</a>
                                 </div>
                             </div>
@@ -430,7 +386,7 @@
         var userId = getId();
         var address = $("#address");
         $.ajax({
-            url: '/weitao/user?uId=' + userId,
+            url: '/user?uId=' + userId,
             type: 'get',
             success: function (result) {
                 var str = "<option value='" + result.data.uAddress1 + "'>" + result.data.uAddress1 + " </option>";
@@ -473,18 +429,23 @@
             dataType: 'json',
             data: {oPost: oPost, oAddress: address, oMessage: oMessage},
             success: function (result) {
+                var count = result.data.length;
+                alert(count);
 //                当返回一条数据时，需要检查是否为下单不成功
-                if(result.date.size() == 1){
+                if (count == 1) {
 //                    判断返回的oId是否为空，为空则库存不足，下单失败
-                    if(result.data.get(0).oId == null)
-                    {
-//                        输出带回来的库存不足信息
-                        alert(result.data.get(0).oMessage);
-//                        跳转回购物车界面
-//                        window.history.back(-1);
-                    }
+                    $.each(result.data, function (i, v) {
+                        if (v.oId == null) {
+                            alert(v.oMessage);
+                        }
+                        else {
+                            alert("下单成功");
+//                            跳转到我的订单页面
+                        }
+                    })
                 }
-                alert("下单成功");
+                else alert("下单成功");
+//                            跳转到我的订单页面
             }
         })
     }
@@ -496,12 +457,37 @@
         var userId = getId();
         var address = $("#address");
         $.ajax({
-            url: '/weitao/user?uId=' + userId,
+            url: '/car/find',
             type: 'get',
+            data: null,
             success: function (result) {
+                var s1 = "";
+                var s2 = "";
+                var money = 0.000;
+                $.each(result.data, function (i, v) {
+                    s1 += '<tr class="cart_item"><td class="product-thumbnail"><a href="shop_single.html?iId=' + v.itemsId + '">';
+                    s1 += '<img src="static/images/' + v.iPhotos + '" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"></a></td>';
+                    s1 += '<td data-title="Product"><div class="caption"><a class="product-name" href="shop_single.html?iId=' + v.itemsId + '">' + v.iName + '</a></div></td>';
+                    s1 += '<td class="product-price" >' + v.iPrice + '</td>';
+                    s1 += '<td class="product-quantity" >' + v.number + '</td>';
+                    s1 += '<td class="product-subtotal" data-title="Total"><span class="woocommerce-Price-amount amount">' + v.totalPrice + '</span></td>';
+                    s1 += '</tr>';
+                    money += (v.totalPrice) * 1;
+                })
+                s1 += '<tr><td colspan="6" class="actions"><strong>留 言：</strong><input type="text"';
+                s1 += 'placeholder="有什么留言想对卖家说嘛?（要顺丰加急？易碎物品）"';
+                s1 += 'style="width: 500px" id="oMessage" name="oMessage"></td></tr>';
 
+                $("#car").first("strong").append(s1);
+                s2 += '<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">总价：</span>';
+                s2 += money.toFixed(3);
+                s2 += '</span></strong>';
+                $("#totalPrice").first("tr").append(s2);
+
+
+            }, error: function () {
             }
-        });
+        })
     })
 </script>
 

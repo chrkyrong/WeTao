@@ -108,6 +108,8 @@ public class OrderServiceImpl implements OrderService {
 //                库存大于购买数，key=true
                 key = false;
                 break;
+            }else {
+                key = true;
             }
         }
 

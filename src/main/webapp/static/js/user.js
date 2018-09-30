@@ -108,7 +108,7 @@ function display1(uId) {
 function display2(uId) {
     $.ajax({
         type: "get",
-        url: "/weitao/user?uId="+uId,
+        url: "/user?uId="+uId,
         dataType: "json",
         data: null,
         success: function (result) {
