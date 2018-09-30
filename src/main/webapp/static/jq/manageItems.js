@@ -38,7 +38,7 @@ function xianshi(result) {
 */
         else{
             iStatus="售完"
-             hr="<a href='items-manager.html?iId="+items['iId']+"'>修改 </a>/<a onclick='delItems("+items['iId']+")'> 上架 </a>"
+             hr="<a href='items-manager.html?iId="+items['iId']+"'>修改 </a>/<a href='' onclick='delItems("+items['iId']+")'> 上架 </a>"
         }
 
         str+="<tr>" +
