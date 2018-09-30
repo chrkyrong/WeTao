@@ -22,4 +22,7 @@ public interface CollectionService {
 
     //判断商品是否已经收藏
     int isExistCollection(int iId,int uId);
+
+    //取消收藏
+    int cancelCollection(int iId,int uId);
 }

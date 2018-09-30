@@ -14,6 +14,7 @@ public enum ResultEnum {
 
     ITEMS_EXSIT("201","库存小于0"),
     ITEMS_INSERT_FAIL("202","商品添加失败"),
+    ITEMS_DELETE_FAIL("203","商品上架失败"),
 
     USER_GET_FAIL("103","查询用户失败"),
     USER_RSVISE_FAIL("104","用户信息修改失败"),
