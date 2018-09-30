@@ -27,4 +27,9 @@
     where items_id=#{iId} and user_id=#{uId}
     )as total
   </select>
+
+  <!--根据商品iId取消收藏商品-->
+  <delete id="deleteCollectionByCid">
+    delete from collection where items_id=#{iId} and user_id=#{uId}
+  </delete>
 </mapper>

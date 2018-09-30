@@ -61,5 +61,16 @@ public class CollectionServiceImpl implements CollectionService {
     public int isExistCollection(int iId, int uId) {
         return collectionMapper.isExistCollection(iId,uId);
     }
+
+    /**
+     * 取消收藏
+     * @param iId
+     * @param uId
+     * @return
+     */
+    @Override
+    public int cancelCollection(int iId, int uId) {
+        return collectionMapper.cancelCollectionByIid(iId, uId);
+    }
 }
 

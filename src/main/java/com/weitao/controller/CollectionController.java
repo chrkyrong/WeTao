@@ -57,17 +57,27 @@ public class CollectionController {
      */
     @GetMapping("/coll/add/{iId}")
     public Result add(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") int iId){
-        int count = collectionService.addCollection(iId,uId);
-        if(count!=0){
-            return ResultUtil.success();
-        } else {
-            return ResultUtil.error("加入失败！","1");
+        int result = collectionService.isExistCollection(iId, uId);
+        int count = 0;
+        if (result==1){
+            count = collectionService.cancelCollection(iId, uId);
+            if (count!=0)
+                return ResultUtil.success();
+            else
+                return ResultUtil.error("取消失败！","1");
+        }
+        else {
+            count = collectionService.addCollection(iId,uId);
+            if(count!=0)
+                return ResultUtil.success();
+             else
+                return ResultUtil.error("加入失败！","1");
         }
     }
 
     @GetMapping("/coll/isExist/{iId}")
     public Result isExist(@SessionAttribute(value = "uId", required = false)Integer uId,@PathVariable("iId") int iId){
-        int result = collectionService.isExistCollection(iId,uId);
+        int result = collectionService.isExistCollection(iId, uId);
         if (result==1)
             return ResultUtil.success();
         else

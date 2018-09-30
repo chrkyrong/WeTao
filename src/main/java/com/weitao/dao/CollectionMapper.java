@@ -18,4 +18,7 @@ public interface CollectionMapper {
 
     //判断商品是否已经收藏
     Integer isExistCollection(@Param("iId") Integer iId, @Param("uId") Integer uId);
+
+    //根据商品iId取消收藏商品
+    int cancelCollectionByIid(@Param("iId") Integer iId, @Param("uId") Integer uId);
 }
