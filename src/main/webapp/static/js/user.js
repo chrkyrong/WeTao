@@ -56,7 +56,8 @@ function register() {
         data: $('#checkout').serialize(),
         success: function (result) {
             if(result.code==0) {
-               alert("你的账号为:"+result.data.uId);
+               alert("注册成功，你的账号为:"+result.data.uId);
+               window.location.href="login.html";
             }
             else
                 alert("未知错误");

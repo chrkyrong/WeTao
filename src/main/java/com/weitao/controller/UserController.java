@@ -6,10 +6,7 @@ import com.weitao.service.UserService;
 import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -88,8 +85,9 @@ public class UserController {
      * @return
      */
     @PutMapping("/user")
-    public Result put(User user)
+    public Result put(@SessionAttribute(value = "uId", required = false)Integer uId,User user)
     {
+        user.setuId(uId);
         if(userService.revise(user))
             return ResultUtil.success();
         else
