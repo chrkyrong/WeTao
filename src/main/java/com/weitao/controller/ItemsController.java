@@ -207,8 +207,7 @@ public class ItemsController {
     public Result sellerItems(HttpServletRequest request,@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
                               @RequestParam(value = "storeId",defaultValue = "1") Integer storeId,
                               @RequestParam(value="search") String search,@RequestParam(value = "iStatus",defaultValue = "0") Integer iStatus){
-        search=request.getParameter("search");
-        iStatus= Integer.valueOf(request.getParameter("iStatus"));
+
      /*   System.out.println(search+iStatus+"Sssss");*/
         Integer pageSize=7;
      /*   System.out.println(iStatus+"asdhaijskdhakd");*/
@@ -217,3 +216,4 @@ public class ItemsController {
         return  ResultUtil.success(pageInfo);
     }
 }
+/**/

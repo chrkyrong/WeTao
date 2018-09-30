@@ -55,6 +55,11 @@ function register() {
         dataType: 'json',
         data: $('#checkout').serialize(),
         success: function (result) {
+            if(result.code==0) {
+               alert("你的账号为:"+result.data.uId);
+            }
+            else
+                alert("未知错误");
             console.log(result);
         }
     });

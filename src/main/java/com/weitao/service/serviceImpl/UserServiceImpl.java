@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Boolean register(User user) {
+    public User register(User user) {
         //密码加密
         String password= MD5.md5(user.getuPassword());
         user.setuPassword(password);
@@ -31,9 +31,9 @@ public class UserServiceImpl implements UserService {
         user.setuStatus((byte) 0);
         //注册用户
         if(userMapper.insertSelective(user)>0)
-            return true;
+            return user;
         else
-            return false;
+            return null;
     }
 
     @Override
