@@ -239,8 +239,9 @@
                         </div>
 
                         <!--收藏夹模块////////////////////////////////////////////////////////////-->
-                        <div class="b-goods-det-group"><span class="b-goods-det__link"><strong>加入收藏夹</strong>
-                            <i class="icon fa fa-heart"></i></span>
+                        <div class="b-goods-det-group" id="collection">
+                            <!--span class="b-goods-det__link" onclick="collection()"><strong >加入收藏夹</strong>
+                            <i class="icon fa fa-heart"></i></span>-->
                         </div>
                     </div>
                     <!-- end .b-goods-det__main-->
@@ -690,4 +691,50 @@
         })
     }
 </script>
-<!---->
+<!--加入收藏夹-->
+<script type="text/javascript">
+    function collection() {
+        var iId=getQueryString("iId");
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: "/coll/add/"+iId,
+                data:null,
+                success: function (r) {
+                    var str=$("#collect").text();
+                    if ($("#collect").html()=="取消收藏"){
+                        $("#collect").html("收藏");
+                    }else{
+                        $("#collect").html("取消收藏");
+                    }
+                },
+                error: function () {
+                    alert("加入失败！");
+                    /*   location.reload();*/
+                }
+            })
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        var iId=getQueryString("iId");
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            url: "/coll/isExist/"+iId,
+            data:null,
+            success: function (r) {
+                if(r.code==0) {
+                    $("#collection").append("<span class='b-goods-det__link' onclick='collection()'><strong ><span id='collect' style='color: #ac2925'>" +
+                        "取消收藏</span></strong>" +
+                        "<i class='icon fa fa-heart'></i></span>")
+                }
+                else {
+                    $("#collection").append("<span class='b-goods-det__link' onclick='collection()'>" +
+                        "<strong ><span id='collect' >收藏</span></strong>" +
+                        "<i class='icon fa fa-heart'></i></span>");
+                }
+            },
+        })
+    })
+</script>

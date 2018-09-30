@@ -1,8 +1,9 @@
 function selectAll(pageNum) {
+    var storeId=getQueryString("stId");
     var iStatus;
     $.ajax({
         type:'get',
-        data:"pageNum="+pageNum,
+        data:{pageNum:pageNum,storeId:storeId},
         dateType:'json',
         url:'selectAll',
         success:function (result) {
@@ -16,13 +17,30 @@ function selectAll(pageNum) {
 /*解析并显示*/
 function xianshi(result) {
     var str="";
+    var hr="";
     $.each(result.data.list,function (index,items) {
-        if(items['iExsit']&&items['iStatus']==0){
+
+        if(items['iExsit']>0&&items['iStatus']==0){
             iStatus="正常"
+            hr="<a href='items-manager.html?iId="+items['iId']+"'>修改 </a>/<a onclick='delItems("+items['iId']+")'> 下架 </a>";
+
         }
-        else {
-            iStatus="异常"
+        else if(items['iStatus']==2) {
+            iStatus="强制下架"
+            hr="没良心商家，已被强制下架，无法进行操作"
         }
+        else if(items['iExsit']>0&&items['iStatus']==1){
+            iStatus="暂时下架"
+            hr="<a href='items-manager.html?iId="+items['iId']+"'>修改 </a>/<a onclick='delItems("+items['iId']+")'> 上架 </a>"
+        }
+/*
+        (items['iExsit']<=0&&items['iStatus']==1)
+*/
+        else{
+            iStatus="售完"
+             hr="<a href='items-manager.html?iId="+items['iId']+"'>修改 </a>/<a onclick='delItems("+items['iId']+")'> 上架 </a>"
+        }
+
         str+="<tr>" +
             "<td>" + items['iId'] + "</td>" +
             "<td>" + items['iName'] + "</td>" +
@@ -38,7 +56,7 @@ function xianshi(result) {
             "<td>" + items['iSale'] + "</td>" +
             "<td>" + items['iPrice'] + "</td>" +
             "<td>" + iStatus + "</td>" +
-            "<td><a href='items-amend.html'>修改 </a>/<a href='#'> 删 除 </a></td></tr>"
+            "<td>"+hr+"</td></tr>"
     })
     $("#selectAll").html(str);
     $("#selectAll").show(str);
@@ -106,11 +124,12 @@ function chaxun() {
 
 
 function fenyechun(pageNum) {
+    var storeId=getQueryString("stId");
     var search=$("#search").val();
     var iStatus=$("#iStatus").val();
     $.ajax({
         type:'get',
-        data:{pageNum:pageNum,search:search,iStatus:iStatus},
+        data:{pageNum:pageNum,search:search,iStatus:iStatus,storeId:storeId},
         dateType:'json',
         url:'sellerItems',
         success:function (result) {
@@ -177,4 +196,21 @@ function  fenye1(result) {
     var navEle = $("<nav></nav>").append(ul);
     navEle.appendTo("#fenye");
 }
-/**/
+function delItems(iId) {
+    var storeId=iId;
+    $.ajax({
+        type:'get',
+        dataType:'json',
+        url:'/deleteItems/'+iId,
+        data:null,
+        success: function (result) {
+            if(result.code==0) {
+                alert("上架成功");
+                location.reload();
+            }
+            else {
+                alert(result.msg)
+            }
+        },
+    })
+}

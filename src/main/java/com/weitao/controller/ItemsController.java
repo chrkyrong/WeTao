@@ -12,6 +12,7 @@ import com.weitao.service.StoreService;
 import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import com.weitao.vo.ItemsVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -215,5 +216,21 @@ public class ItemsController {
         PageInfo<Items> pageInfo=new PageInfo<>(itemsService.sellerItems(storeId,search,iStatus));
         return  ResultUtil.success(pageInfo);
     }
+
+
+    /*根据商品id上下架产品*/
+    @GetMapping(value = "/deleteItems/{iId}")
+    public  Result deleteItems(@PathVariable("iId") int iId){
+
+    int count=itemsService.deleteItems(iId);
+    System.out.println(count+"---------------------------");
+        if (count>0)//返回值
+        {
+            return ResultUtil.success();
+        }
+        else {
+            return ResultUtil.error(ResultEnum.ITEMS_DELETE_FAIL);
+        }
+    }
 }
-/**/
+

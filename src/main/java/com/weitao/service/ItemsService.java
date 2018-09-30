@@ -2,7 +2,6 @@ package com.weitao.service;
 
 import com.weitao.bean.Items;
 import com.weitao.vo.ItemsVo;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,4 +41,7 @@ public interface ItemsService {
 
     /*卖家根据条件查询各店铺下的商品*/
     public List<Items> sellerItems(Integer storeId,String search,Integer iStatus);
+
+    /*根据商品id更改商品的状态*/
+    public int deleteItems(Integer iId);
 }

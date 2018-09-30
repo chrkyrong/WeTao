@@ -6,7 +6,6 @@ import com.weitao.exception.ResultEnum;
 import com.weitao.exception.UserException;
 import com.weitao.service.ItemsService;
 import com.weitao.vo.ItemsVo;
-import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -108,6 +107,30 @@ public class ItemsServiceImpl implements ItemsService {
     @Override
     public List<Items> sellerItems(Integer storeId, String search, Integer iStatus) {
         return itemsMapper.sellerItems(storeId,search,iStatus);
+    }
+
+    @Override
+    public int deleteItems(Integer iId) {
+        Items items=new Items();
+        items=itemsMapper.selectByPrimaryKey(iId);
+        int iStatus=items.getiStatus();/*判断他的状态*/
+        int iExsit=items.getiExsit();/*判断他的库存*/
+        System.out.println(items);
+        System.out.println(iStatus+"===========");
+        if(iStatus==0&&iExsit>0){/*假设商品正常要下架，状态变为暂时下架*/
+            System.out.println("----");
+            items.setiStatus((byte) 1);
+            return itemsMapper.updateByPrimaryKeySelective(items);
+        }
+        if (iStatus==1&&iExsit>0){
+            System.out.println("99999009090()");
+            items.setiStatus((byte) 0);
+            return itemsMapper.updateByPrimaryKeySelective(items);
+        }
+        else {
+            System.out.println("哈哈哈哈哈哈哈哈哈哈");
+            return 0;
+        }
     }
 
 }
