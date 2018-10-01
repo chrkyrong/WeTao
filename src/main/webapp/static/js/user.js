@@ -56,7 +56,8 @@ function register() {
         data: $('#checkout').serialize(),
         success: function (result) {
             if(result.code==0) {
-               alert("你的账号为:"+result.data.uId);
+               alert("注册成功，你的账号为:"+result.data.uId);
+               window.location.href="login.html";
             }
             else
                 alert("未知错误");
@@ -119,6 +120,7 @@ function display2(uId) {
     });
 }
 
+//修改信息
 function personal_update() {
     $.ajax({
         type: 'put',
@@ -126,11 +128,17 @@ function personal_update() {
         dataType: 'json',
         data:$('#checkout').serialize(),
         success: function (result) {
+            if(result.code==0)
+            {
+                alert("修改成功");
+                window.location.href="display.html";
+            }
             console.log(result);
         }
     });
 }
 
+//获取修改的信息
 function personal(uId) {
     $.ajax({
         type: "get",
@@ -144,7 +152,7 @@ function personal(uId) {
             $("#uAddress2").val(result.data.uAddress2);
             $("#uAddress3").val(result.data.uAddress3);
             $("#uSex").val(result.data.uSex);
-
+            $("#uId").val(result.data.uId);
             var img="";
             img+='<figure class="tilter__figure">';
             img+='<img class="img-responsive"  src="static/images/';
