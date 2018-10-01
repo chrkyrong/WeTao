@@ -80,4 +80,18 @@ public class Seller {
     public void setsStutas(Byte sStutas) {
         this.sStutas = sStutas;
     }
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "sId=" + sId +
+                ", sAccount='" + sAccount + '\'' +
+                ", sPassword='" + sPassword + '\'' +
+                ", sTel='" + sTel + '\'' +
+                ", sAddress='" + sAddress + '\'' +
+                ", sIcon='" + sIcon + '\'' +
+                ", sSex='" + sSex + '\'' +
+                ", sStutas=" + sStutas +
+                '}';
+    }
 }

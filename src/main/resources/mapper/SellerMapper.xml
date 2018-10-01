@@ -33,6 +33,10 @@
       #{sSex,jdbcType=VARCHAR}, #{sStutas,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.weitao.bean.Seller">
+    <!--返回自增主键-->
+    <selectKey keyProperty="sId" resultType="java.lang.Integer" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into seller
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="sId != null">
