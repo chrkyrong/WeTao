@@ -9,8 +9,11 @@ function addChatListFromServer(content) {
     if (id in map) {
         var value = map[key];
         value.append(content);
+        //给列表添加通知
     } else {
         map[id] = content;
+        //列表添加该信息
+
     }
 }
 
@@ -55,7 +58,6 @@ function append(list) {
     for(var i in list) {
         var li = $('<li>');
         var h3 = $('<h3>');
-        var img = $('<img>');
         if (list.toId === toId) {
             li.attr("style", "float: right; font-size: 30px");
             h3.append(list[i].content);
