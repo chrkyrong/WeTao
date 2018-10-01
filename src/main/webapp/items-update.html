@@ -209,8 +209,8 @@
                                 <div class="col-1">
                                     <div class="woocommerce-billing-fields">
                                         <!--注册表单/////////////////////////////////////////////////////////////-->
-                                        <h3>请输入商品信息</h3>
-                                        <input type="hidden" id="iId">
+                                        <h3>请修改商品信息</h3>
+                                        <input type="hidden" id="iId" name="iId"  >
                                         <p class="form-row form-row form-row-wide ">
                                             <label>商品名称(Name)</label>
                                             <!--商品名称，i_name/////////////////////////////////////////////////////////////-->
@@ -301,11 +301,11 @@
                             <div id="order_review" class="woocommerce-checkout-review-order">
 
 
-                                    <div class="form-row place-order">
+                                <div class="form-row place-order">
 
-                                        <input type="button" id="submit" class="button alt" id="place_order" value="登记商品 Confirm"
-                                               data-value="Place order" style="line-height:1.3;border:0"/>
-                                    </div>
+                                    <input type="button" id="submit" class="button alt" id="place_order" value="修改商品 Confirm"
+                                           data-value="Place order" style="line-height:1.3;border:0"/>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -440,14 +440,14 @@
         console.log('submit');
         var form = new FormData(document.getElementById("formTest"));
         $.ajax({
-            url:'/insertItems',
+            url:'/saveItems',
             type:'POST',
             data:form,
             processData:false,
             contentType:false,/*使用formdate一定要加上去*/
             success:function (result) {
                 if(result.code=="0") {
-                    alert("添加成功");
+                    alert("修改成功");
                     window.location.href=document.referrer;
                 }
                 else {
@@ -507,14 +507,13 @@
 <!--添加商品-->
 <script type="text/javascript">
     function  upfilePhoto() {
-        alert("ssss")
         $.ajaxFileUpload({
             url:"upFile",
             secureuri:false,//是否启动安全提交，默认为false
             fileElementId:"i_Photos",//需要上传的文件ID
             dataType:'text',
             success:function (data) {
-                alert(data+"----") //测试接受到什么数据
+               // alert(data+"----") //测试接受到什么数据
                 $("#photo").html("<img  width='200px' height='200px'  src='"+data+"'/>");
             }
         })
@@ -541,13 +540,12 @@
                 data:'json',
                 success:function (result) {
                     $.each(result.data,function (index,items) {
-                      $("#photo").append("<img class='img-responsive' alt='img'  src=" + 'static/images/' +
-                        items['iPhotos'] +
-                        ">")
+                        $("#photo").append("<img class='img-responsive' alt='img'  src=" + 'static/images/' +
+                            items['iPhotos'] +
+                            ">")
                     })
                 }
             })
         }
     })
-
 </script>

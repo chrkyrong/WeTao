@@ -43,23 +43,19 @@ public class ItemsController {
     /*插入商品*/
     @RequestMapping(value = "/insertItems", method = RequestMethod.POST)
     public Result insertItems(Model model, HttpServletRequest request,
-                              ItemsVo itemsVo, MultipartFile i_Photos) throws Exception {
-        itemsVo.setiPhotos(i_Photos.getOriginalFilename());//获得图片的初始名字
-        if(itemsService.insertItems(itemsVo))//返回值
-            return ResultUtil.success();
-        else
-            return ResultUtil.error(ResultEnum.ITEMS_INSERT_FAIL);
-    }
-
-    @RequestMapping(value = "/success")
-    public String insertItems() {
-        return "success";//返回成功页面 //这不是json
-    }
+                              Items items, MultipartFile i_Photos) throws Exception {
+            System.out.println(items.getiName()+"-----");
+            System.out.println("ycp==="+i_Photos.getOriginalFilename());
+            items.setiPhotos(i_Photos.getOriginalFilename());//获得图片的初始名字
+            if (itemsService.insertItems(items))//返回值
+                return ResultUtil.success();
+            else
+                return ResultUtil.error(ResultEnum.ITEMS_INSERT_FAIL);
+        }
 
     /*下拉框显示卖家有多少店铺*/
     @RequestMapping(value = "/findStore")
-    public List<Store> findStore(HttpServletRequest request,
-                                         @RequestParam(value = "sellerId", defaultValue = "2000000") int sellerId,
+    public List<Store> findStore(@SessionAttribute(value = "sId", required = false) int sellerId,
                                          @RequestParam(value = "stStatus", defaultValue = "0") int stStatus) {
         Store store=new Store();
         store.setSellerId(sellerId);
@@ -232,5 +228,23 @@ public class ItemsController {
             return ResultUtil.error(ResultEnum.ITEMS_DELETE_FAIL);
         }
     }
+/*修改商品*/
+    @RequestMapping(value = "/saveItems", method = RequestMethod.POST)
+    public Result saveItems(Model model, HttpServletRequest request,
+                              Items items, MultipartFile i_Photos) throws Exception {
+        System.out.println(items.getiId()+"-----");
+        if (i_Photos.getOriginalFilename().equals("")){
+            System.out.println(items.getiPhotos()+"ada");
+            items.setiPhotos(items.getiPhotos());
+        }
+        else {
+            items.setiPhotos(i_Photos.getOriginalFilename());//获得图片的初始名字
+        }
+        if (itemsService.updateItems(items)==1)//返回值
+            return ResultUtil.success();
+        else
+            return ResultUtil.error(ResultEnum.ITEMS_INSERT_FAIL);
+    }
+
 }
 

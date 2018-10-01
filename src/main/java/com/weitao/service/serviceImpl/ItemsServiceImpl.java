@@ -26,18 +26,18 @@ public class ItemsServiceImpl implements ItemsService {
     /*插入商品*/
     @Override
     public boolean insertItems(Items items) throws Exception {
-        ItemsVo itemsVo = new ItemsVo();
+       /* ItemsVo itemsVo = new ItemsVo();*/
         //将items表的属性copy过来
-        BeanUtils.copyProperties(items, itemsVo);
-        itemsVo.setiSale(0);
-        System.out.println(itemsVo.getiExsit() + "111");
-        if (itemsVo.getiExsit() <= 0)/*如果库存大于0就物品的状态为0，否则为1*/
+       /* BeanUtils.copyProperties(items, itemsVo);*/
+        items.setiSale(0);
+        System.out.println(items.getiExsit() + "111");
+        if (items.getiExsit() <= 0)/*如果库存大于0就物品的状态为0，否则为1*/
             throw new UserException(ResultEnum.ITEMS_EXSIT);
         else
-            itemsVo.setiStatus((byte) 0);
-        itemsVo.setiDate(new Date());
-        System.out.println(itemsVo.getiName() + "====");
-        int insert = itemsMapper.insert(itemsVo);
+            items.setiStatus((byte) 0);
+        items.setiDate(new Date());
+        System.out.println(items.getiName() + "====");
+        int insert = itemsMapper.insert(items);
         if (insert == 1) { //插入成功返回的是1
             return true;
         }
@@ -118,19 +118,29 @@ public class ItemsServiceImpl implements ItemsService {
         System.out.println(items);
         System.out.println(iStatus+"===========");
         if(iStatus==0&&iExsit>0){/*假设商品正常要下架，状态变为暂时下架*/
-            System.out.println("----");
             items.setiStatus((byte) 1);
             return itemsMapper.updateByPrimaryKeySelective(items);
         }
         if (iStatus==1&&iExsit>0){
-            System.out.println("99999009090()");
             items.setiStatus((byte) 0);
             return itemsMapper.updateByPrimaryKeySelective(items);
         }
         else {
-            System.out.println("哈哈哈哈哈哈哈哈哈哈");
             return 0;
         }
+    }
+
+    @Override
+    public int updateItems(Items items) {
+        if (items.getiExsit() <= 0)/*如果库存大于0就物品的状态为0，否则为1*/
+            throw new UserException(ResultEnum.ITEMS_EXSIT);
+        else
+            items.setiStatus((byte) 0);
+        items.setiDate(new Date());/*修改的时将商品的重新上架时间设为本地时间*/
+        int update=itemsMapper.updateByPrimaryKeySelective(items);
+        System.out.println(update+"ycp----");
+        return update;
+
     }
 
 }
