@@ -1,0 +1,33 @@
+.area {
+    width: 95%;
+    height: 100px;
+    border: hidden;
+    background-color: inherit;
+    outline-color: white;
+    resize: none
+}
+hr {
+    width: 100%;
+}
+div {
+    text-align: center;
+}
+#left_panel {
+    float: left;
+    width: 20%;
+    height: 100%;
+    position: absolute;
+}
+#talk_list {
+    overflow: auto;
+    height: 520px;
+}
+li {
+    list-style-type:none;
+    /*height: 60px;*/
+    padding-top: 20px;
+    margin: 20px;
+}
+#content_list {
+
+}
