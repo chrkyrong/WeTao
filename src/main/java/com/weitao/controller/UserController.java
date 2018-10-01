@@ -85,9 +85,8 @@ public class UserController {
      * @return
      */
     @PutMapping("/user")
-    public Result put(@SessionAttribute(value = "uId", required = false)Integer uId,User user)
+    public Result put(User user)
     {
-        user.setuId(uId);
         if(userService.revise(user))
             return ResultUtil.success();
         else
