@@ -43,12 +43,9 @@
                 <li class="has-children ">
                     <a href="#"><span>订单管理 <i class="arrow_carrot-right"></i> </span></a>
                     <ul class="dl-submenu">
-
                         <li><a href="Unfilled-Order.html"><span>待发货</span></a></li>
                         <li><a href="Sent-Order.html"><span>已发货</span></a></li>
                         <li><a href="Achieve-Order.html"><span>已完成</span></a></li>
-
-
                     </ul>
                 </li>
 
@@ -162,8 +159,8 @@
                         <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
                         <a class="navbar-brand scroll" href="home.html">
                             <!--导航栏最中间的logo/////////////////////////////////////////////////////////////////////////////////-->
-                            <img class="normal-logo" src="static/wt/images/logo.png" alt="logo">
-                            <img class="scroll-logo hidden-xs" src="static/wt/images/logo.png" alt="logo">
+                            <img class="normal-logo" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
+                            <img class="scroll-logo hidden-xs" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -195,18 +192,18 @@
                         <form action="">
                             <div class="row">
                                 <div class="col-md-6">
+                                    <!--模糊搜索店铺名////////////////////////////////////////////-->
                                     <input class="form-control" type="text" placeholder="Your Select" id="research" name="research">
                                     <!-- <input type="text" class="input-text "> -->
                                 </div>
                                 <div class="col-md-6">
-
-
                                     <!--查询-->
-                                    <select class="selectpicker" style="height:40px" id="condition" name="condition">
-                                        <option value="stId">店铺ID</option>
-                                        <option value="stName">店铺名</option>
+                                    <select class="selectpicker" style="height:40px" id="stStatus" name="stStatus">
+                                        <option value="0">营业中</option>
+                                        <option value="2">关闭中</option>
                                     </select>
                                     &nbsp;&nbsp;
+                                    <!--查询按钮////////////////////////////////////////////-->
                                     <input type="button" value="查询" class="ui-form__btn btn btn-dark"
                                            style="min-width:80px;font-size:14px;line-height:40px"/>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
