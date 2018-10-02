@@ -41,28 +41,24 @@ function exit() {
         dataType: 'json',
         data: null,
         success: function () {
-            console.log();
-            window.location.href="items-Homepage.html";
+            window.location.href="seller_login.html";
         }
     });
 }
 
-//用户注册
+//商家注册
 function register() {
     var account = $("#sAccount").val();
     var password = $("#sPassword").val();
     var tel = $("#sTel").val();
     var sex = $("#sSex").val();
     var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
-    var icon = $("#sIcon").val();
     $.post('/seller/register',{
-            sId : null,
             sAccount : account,
             sPassword : password,
             sSex : sex,
             sTel : tel,
             sAddress : address,
-            sIcon : icon
     },function (r) {
         if(r.code==0) {
             alert("你的账号为:"+r.data.sId);
@@ -71,11 +67,42 @@ function register() {
         else
             alert("未知错误");
     });
-
+}
+//展示商家的个人信息
+function display1() {
+    $.ajax({
+        type:'get',
+        url:'/seller/find',
+        dataType:'json',
+        data:null,
+        success:function (r) {
+            $("#sAccount").val(r.data.sAccount);
+            $("#sTel").val(r.data.sTel);
+        },
+    })
 }
 
+function update_info() {
+    var account = $("#sAccount").val();
+    var tel = $("#sTel").val();
+    var sex = $("#sSex").val();
+    var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
+    $.post('/seller/modify/info',{
+        sAccount : account,
+        sSex : sex,
+        sTel : tel,
+        sAddress : address,
+    },function (r) {
+        if(r.code==0) {
+            alert("个人信息修改成功");
+            location.href="items-Homepage.html";
+        }
+        else
+            alert("未知错误");
+    });
+}
 
-//用户个人信息显示
+/*//用户个人信息显示
 function display1(uId) {
     $.ajax({
         type: 'get',
@@ -164,4 +191,4 @@ function personal(uId) {
         }
     });
     
-}
+}*/
