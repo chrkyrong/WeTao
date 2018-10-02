@@ -28,6 +28,13 @@ public class StoreServiceImpl implements StoreService {
         return storeMapper.seleteStore(store);
     }
 
+    //    商家，根据店铺状态和搜索框模糊搜索自己拥有的所有店铺
+    @Override
+    public List<Store> sellerSelectByCondition(Integer sellerId, String research, Byte stStatus) {
+        List<Store> result = storeMapper.sellerSelectByCondition(sellerId, research, stStatus);
+        return result;
+    }
+
     //    管理员，搜索所有商店
     @Override
     public List<StoreVo> managerSeleteStore(int status) {
@@ -110,7 +117,7 @@ public class StoreServiceImpl implements StoreService {
         return false;
     }
 
-    //    买家修改店铺名/状态
+    //    卖家修改店铺名/状态
     @Override
     public boolean updateStore(Store store) throws Exception {
 //        判断是否修改成功的key
@@ -118,16 +125,21 @@ public class StoreServiceImpl implements StoreService {
 //        判断店铺名是否为空
         if (store.getStName().equals(null) || store.getStName().equals("")) {
 //                防止同时修改了名字
-            System.out.println(storeMapper.selectByPrimaryKey(store.getStId()).getStName());
             store.setStName(storeMapper.selectByPrimaryKey(store.getStId()).getStName());
+//            规定状态2
+//            store.setStStatus((byte) 2);
 //            关闭店铺
             if (storeMapper.updateByPrimaryKeySelective(store) != 0) {
-//                将其店铺下的所有商品状态都修改为1
+//                将其店铺下的所有商品状态都修改为2
                 List<Integer> stIdList = new ArrayList<>();
                 stIdList.add(store.getStId());
+                System.out.println("changed store's status success");
+                result = true;
                 if (itemsMapper.changeItemsStatus(stIdList, store.getStStatus()) > 0) {
-                    System.out.println("change store's information success");
-                    result = true;
+                    System.out.println("changed items's status success");
+                }
+                else {
+                    System.out.println("no items be changed");
                 }
             }
 
@@ -136,7 +148,7 @@ public class StoreServiceImpl implements StoreService {
             store.setStStatus((byte) 0);
 //            修改店铺名字
             if (storeMapper.updateByPrimaryKeySelective(store) != 0) {
-                System.out.println("change store's stName success");
+                System.out.println("changed store's stName success");
                 result = true;
             }
         }

@@ -108,4 +108,13 @@ public class StoreMapperTest {
 //        }
 
     }
+
+//    商家根据条件搜索自己所拥有的店铺
+    @Test
+    public void sellerSelectByConditionTest() throws Exception {
+        String research = "啊";
+        Byte stStatus = 0;
+        Integer sellerId = 2000001;
+        System.out.println(storeMapper.sellerSelectByCondition(sellerId, research, stStatus));
+    }
 }

@@ -11,13 +11,13 @@ import java.util.List;
 
 import static org.springframework.data.mongodb.core.query.Query.query;
 
-@Service
+//@Service
 public class ChatServiceImpl implements ChatService {
 
     /**
      * 引入mongodb的bean
      */
-    @Autowired
+//    @Autowired
     private MongoTemplate mongoTemplate;
 
     @Override

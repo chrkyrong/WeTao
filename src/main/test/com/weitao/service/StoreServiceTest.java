@@ -61,10 +61,9 @@ public class StoreServiceTest {
     @Test
     public void updateStoreTest() throws Exception {
         Store store = new Store();
-//        store.setStName("斐济店铺");
+        store.setStName("");
         store.setStStatus((byte) 0);
-        store.setStId(7000001);
+        store.setStId(7000004);
         boolean result = storeService.updateStore(store);
-        System.out.println(result);
     }
 }

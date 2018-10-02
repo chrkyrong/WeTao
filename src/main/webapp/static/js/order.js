@@ -96,7 +96,7 @@ function order3(id) {
                 s += '已到货</div></td>';
                 s += '<td data-title="Product" width="300"><div class="caption">' + v.oMessage + '</div></td>';
                 s += '<td class="product-remove" width="100"><div class="caption">';
-                s += '<a href="order_detail.html?oId=' +v.oId + '">查看</a><br><br><a href="/">评价</a><br/><br/><a onclick="orderrefund('+v.oId+')">申请退款</a></td></tr>';
+                s += '<a href="order_detail.html?oId=' +v.oId + '">查看</a><br><br><a href="evaluate.html?oId='+v.oId+'">评价</a><br/><br/><a onclick="orderrefund('+v.oId+')">申请退款</a></td></tr>';
             });
             $("#order3").html(s);
             console.log(result);
