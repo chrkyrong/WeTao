@@ -166,4 +166,15 @@
         </where>
     </select>
 
+    <!--商家根据条件搜索自己所拥有的店铺-->
+    <select id="sellerSelectByCondition" resultType="com.weitao.bean.Store">
+        SELECT *
+        FROM store
+        WHERE seller_id = #{sellerId}
+        AND st_status = #{stStatus}
+        <if test="research!=null and research!=''">
+            AND (st_id LIKE '%' #{research} '%' OR st_name LIKE '%' #{research} '%')
+        </if>
+    </select>
+
 </mapper>

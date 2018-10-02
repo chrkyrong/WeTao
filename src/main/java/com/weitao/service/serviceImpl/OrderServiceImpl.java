@@ -155,7 +155,7 @@ public class OrderServiceImpl implements OrderService {
                 System.out.println("创建订单");
                 Order order = new Order();
 //            自动生成的订单状态,默认为0
-                order.setoStatus((byte) 0);
+                order.setoStatus((byte) 1);
 //            留言
                 order.setoMessage(oMessage);
 //            收货地址

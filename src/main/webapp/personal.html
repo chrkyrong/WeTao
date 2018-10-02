@@ -219,7 +219,7 @@
 
 
                     <div class="woocommerce">
-                        <form id="checkout" class="checkout_coupon" method="post" style="display:none">
+                        <form class="checkout_coupon" method="post" style="display:none">
                             <p class="form-row form-row-first">
                                 <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code"
                                        id="coupon_code" value="">
@@ -229,7 +229,7 @@
                             </p>
                             <div class="clear"></div>
                         </form>
-                        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
+                        <form id="checkout" name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               enctype="multipart/form-data" _lpchecked="1">
                             <div class="col2-set" id="customer_details">
                                 <div class="col-1">
@@ -284,6 +284,8 @@
                                                 <option value="女">女</option>
                                                 <option value="其他">其他</option>
                                             </select>
+
+                                            <input type="text" class="input-text " id="uId" name="uId" hidden>
                                         </div>
 
 

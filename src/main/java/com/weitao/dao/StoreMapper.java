@@ -51,4 +51,9 @@ public interface StoreMapper {
                                            @Param("stName") String stName,
                                            @Param("sId") String sId,
                                            @Param("sAccount") String sAccount);
+
+    //    商家根据条件搜索自己所拥有的店铺
+    List<Store> sellerSelectByCondition(@Param("sellerId") Integer sellerId,
+                                        @Param("research") String research,
+                                        @Param("stStatus") Byte stStatus);
 }

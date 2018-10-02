@@ -13,10 +13,13 @@ public interface StoreService {
     //    商家，搜索自己拥有的所有店铺
     public List<Store> seleteStore(Store store);
 
-    //    商家，添加店铺
-    public boolean insertStore(String stName,Integer sellerId) throws Exception;
+    //    商家，根据店铺状态和搜索框模糊搜索自己拥有的所有店铺
+    public List<Store> sellerSelectByCondition(Integer sellerId, String research, Byte stStatus);
 
-    //    修改店铺信息
+    //    商家，添加店铺
+    public boolean insertStore(String stName, Integer sellerId) throws Exception;
+
+    //    商家，修改店铺信息
     public boolean updateStore(Store store) throws Exception;
 
     //    管理员，搜索所有店铺

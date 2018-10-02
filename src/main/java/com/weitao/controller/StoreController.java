@@ -30,7 +30,7 @@ public class StoreController {
     //    商家添加一个新的店铺
     @RequestMapping(value = "/addNewStore", method = RequestMethod.POST)
     public Result addNewStore(@RequestParam("stName") String stName,
-                              @SessionAttribute(value = "sellerId",required = false) Integer sellerId) throws Exception {
+                              @SessionAttribute(value = "sId", required = false) Integer sellerId) throws Exception {
 //        后台session获取卖家id
         if (storeService.insertStore(stName, sellerId))
 //            添加店铺成功后带上sellerId返回
@@ -51,14 +51,13 @@ public class StoreController {
 
     //    商家查找出所有状态为属于他的店铺
     @RequestMapping(value = "/sellerSearchStore", method = RequestMethod.POST)
-    public Result sellerSearchStore(@SessionAttribute(value = "sellerId",required = false) Integer sellerId,
+    public Result sellerSearchStore(@SessionAttribute(value = "sId", required = false) Integer sellerId,
                                     @RequestParam(value = "stStatus", defaultValue = "0") int stStatus) throws Exception {
 //        后台session获取卖家id
-        Store store=new Store();
-//        store.setSellerId(sellerId);
-        store.setSellerId(2000001);
+        Store store = new Store();
+        store.setSellerId(sellerId);
         store.setStStatus((byte) stStatus);
-        List<Store> stores=storeService.seleteStore(store);
+        List<Store> stores = storeService.seleteStore(store);
         return ResultUtil.success(stores);
     }
 
@@ -85,5 +84,17 @@ public class StoreController {
             return ResultUtil.success();
         else
             return ResultUtil.error(ResultEnum.STORE_CHANGE_FAIL);
+    }
+
+
+    //    商家根据店铺状态和搜索框模糊搜索自己拥有的所有店铺
+    @RequestMapping(value = "/selleResearchStore", method = RequestMethod.POST)
+    public Result selleResearchStore(@SessionAttribute(value = "sId", required = false) Integer sellerId,
+                                     String research, Byte stStatus) throws Exception {
+        List<Store> storeList = storeService.sellerSelectByCondition(sellerId, research, stStatus);
+        if (storeList.size() > 0)
+            return ResultUtil.success(storeList);
+        else
+            return ResultUtil.error(ResultEnum.STORE_NOT_FOUND);
     }
 }
