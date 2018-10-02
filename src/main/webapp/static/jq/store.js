@@ -49,7 +49,7 @@ function storeOnload2() {
                 s += "<tr><td>" + v.stId;
                 s += "</td><td>" + v.stName;
                 s += "</td><td>正常";
-                s += "</td><td><a href='StoreDetails.html?stId=" + v.stId + "'>进 入 店 铺</a>/";
+                s += "</td><td><a href='StoreDetails.html?stId=" + v.stId + "&stName=" + v.stName + "'>进 入 店 铺</a>/";
                 s += "<a href='' onclick='return false,onChange2(" + v.stId + ")'> 关 闭 店 铺</a></td></tr>";
             })
             $("#tableOne").html(s);
@@ -59,6 +59,17 @@ function storeOnload2() {
         }
     })
 }
+
+
+// 卖家店铺详情的预加载店铺名字
+// function storeOnload3() {
+//     var stName = getQueryString("stName");
+//     var s = "";
+//     s+='<div><input class="form-control" type="text"  id="stName" name="stName" placeholder="'+stName+'"></div>';
+//     alert(s);
+//     $("#inputName").html(s);
+// }
+
 
 // 管理员店铺按条件搜索
 function onSearch1() {
@@ -122,7 +133,7 @@ function onChange1() {
 //卖家关闭该店铺
 function onChange2(stId) {
     // 店铺状态为1
-    var stStatus = 1;
+    var stStatus = 2;
     // 默认店铺名字为空
     var stName = null;
     $.ajax({
@@ -131,12 +142,13 @@ function onChange2(stId) {
         dataType: 'json',
         data: {stName: stName, stId: stId, stStatus: stStatus},
         success: function (result) {
-            // alert("关闭店铺成功！");
+            alert("关闭店铺成功！");
         }, error: function (result) {
-            // alert(result.message());
+            alert(result.message());
         }
     })
 }
+
 
 // 管理员改变店铺状态
 function onChange3(stId, stStatus) {
@@ -155,8 +167,29 @@ function onChange3(stId, stStatus) {
 }
 
 
+//卖家重开该店铺
+function onChange4(stId) {
+    // 店铺状态为1
+    var stStatus = 0;
+    // 默认店铺名字为空
+    var stName = null;
+    $.ajax({
+        url: '/store/sellerChangeStore',
+        type: 'POST',
+        dataType: 'json',
+        data: {stName: stName, stId: stId, stStatus: stStatus},
+        success: function (result) {
+            alert("重开店铺成功！");
+        }, error: function (result) {
+            alert(result.message());
+        }
+    })
+}
+
+
+
 // 卖家添加店铺
-function onAdd1() {
+function storeOnAdd1() {
     var stName = $("#stName").val();
     $.ajax({
         url: '/store/addNewStore',
@@ -165,6 +198,7 @@ function onAdd1() {
         data: {stName: stName},
         success: function (result) {
             alert("添加店铺成功");
+            window.history.back(-1);
             // result.data.sellerId
 //                跳转回商家的店铺管理页面
         },

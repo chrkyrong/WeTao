@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/socket")
 public class WebSocketController {
 
-    @Autowired
+//    @Autowired
     private ChatService chatService;
 
     /**
