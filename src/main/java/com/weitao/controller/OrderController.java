@@ -90,7 +90,21 @@ public class OrderController {
      */
     @GetMapping("/order/user")
     public Result orderByUser(int userId) {
-        List<Order> orderList = orderService.getByUser(userId);
+        List<Order> orderList = orderService.getByUser9(userId);
+        if (orderList != null)
+            return ResultUtil.success(orderList);
+        else
+            return ResultUtil.error(ResultEnum.ORDER_USER_FAIL);
+    }
+
+    /**
+     * 根据用户id查询已评价订单
+     * @param uId
+     * @return
+     */
+    @GetMapping("/order/user/9")
+    public Result orderByUser9(int uId) {
+        List<Order> orderList = orderService.getByUser9(uId);
         if (orderList != null)
             return ResultUtil.success(orderList);
         else

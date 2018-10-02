@@ -167,6 +167,13 @@
   WHERE user_id=#{value} AND o_status='4' or o_status='5'
   </select>
 
+    <!--根据用户id查询退款中订单-->
+    <select id="selectByUser9" parameterType="int" resultType="com.weitao.bean.Order">
+        SELECT <include refid="Base_Column_List" />
+        FROM  `order`
+        WHERE user_id=#{value} AND o_status='9'
+    </select>
+
   <!--根据用户id查询所有订单-->
   <select id="selectByUser" parameterType="int" resultType="com.weitao.bean.Order">
     SELECT <include refid="Base_Column_List" />

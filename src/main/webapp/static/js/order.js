@@ -104,6 +104,41 @@ function order3(id) {
     });
 }
 
+//用户查看已发货订单
+function order9(id) {
+    $.ajax({
+        type: "get",
+        url: "/order/user/9?uId="+id,
+        dataType: "json",
+        data: null,
+        success: function (result) {
+            var s="";
+            $.each(result.data,function (i,v) {
+                s += '<tr class="cart_item"><td class="product-thumbnail">' + v.oId + '</td>';
+                s += '<td data-title="Product"><div class="caption">' + v.oDate + '</div></td>';
+                s += ' <td class="product-price" data-title="Price"> <span class="product-price total-price">';
+                s += '<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">¥</span>' + v.oPrice + '</span></span></td>';
+                s += '<td data-title="Product"><div class="caption">';
+                if (v.oPost==0)
+                    v.oPost = "平邮";
+                else
+                    v.oPost = "快递";
+                s +=v.oPost + '</div></td>';
+                s += '<td data-title="Product"><div class="caption">';
+                s +=v.oAddress;
+                s += '<td data-title="Product"><div class="caption">';
+                s += '已评价</div></td>';
+                s += '<td data-title="Product" width="300"><div class="caption">' + v.oMessage + '</div></td>';
+                s += '<td class="product-remove" width="100"><div class="caption">';
+                s += '<a href="order_eva_detail.html?oId=' +v.oId + '">查看</a></td></tr>';
+            });
+            $("#order9").html(s);
+            console.log(result);
+        }
+    });
+}
+
+
 //用户查看退款中订单
 function order4(id) {
     $.ajax({

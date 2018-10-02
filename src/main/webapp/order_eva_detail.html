@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>WeTao / Order</title>
+    <title>WeTao / OrderDetail</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,7 @@
     <meta content="no" http-equiv="imagetoolbar">
     <![endif]-->
 </head>
+
 <body>
 <!-- Loader-->
 <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span>
@@ -48,7 +49,7 @@
 
                     </ul>
                 </li>
-                <li><a href="about.html"><span>about</span></a></li>
+                <li><a href="display.html"><span>about</span></a></li>
                 <li><a href="lookbook.html"><span>lookbook</span></a></li>
 
                 <li>
@@ -57,7 +58,7 @@
                     <ul class="dl-submenu">
 
                         <li><a href="shop-1.html"><span>Catalog Grid 1</span></a></li>
-                        <li><a href="shop-2.html"><span>Catalog Grid 2</span></a></li>
+                        <li><a href="shop.html"><span>Catalog Grid 2</span></a></li>
                         <li><a href="shop-2-list.html"><span>Catalog List</span></a></li>
                         <li><a href="shop-single-1.html"><span>Product page 1</span></a></li>
                         <li><a href="shop_single.html"><span>Product page 2</span></a></li>
@@ -182,10 +183,10 @@
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li id="uId">
+                            <li><a href="display.html">Id：007</a>
                             </li>
                             <!--退出按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li class="active"><a href="login.html">退出</a>
+                            <li class="active"><a href="login.html">quit</a>
                             </li>
                         </ul>
                         <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
@@ -207,195 +208,59 @@
                     </div>
                     <!-- end .wrap-breadcrumb-->
                     <div class="section-title-page section-title-page_mod-a">
-                        <h1 class="ui-title-page">我 的 订 单(My Order List)</h1>
+                        <h1 class="ui-title-page">订单详情(Order Detail)</h1>
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
+
+
                     <div class="woocommerce">
+                        <form action="" method="post" class="cart-table ">
 
-                        <div class="tabs-type-2">
-                            <ul class="nav">
-                                <li class="active"><a href="#yet" data-toggle="tab">待发货</a>
-                                </li>
-                                <li><a href="#wait" data-toggle="tab" onclick="order2(getId())">待收货</a>
-                                </li>
-                                <li><a href="#toEvaluate" data-toggle="tab" onclick="order3(getId())">待评价</a>
-                                </li>
-                                <li><a href="#evaluated" data-toggle="tab" onclick="order9(getId())">已评价</a>
-                                </li>
-                                <li><a href="#afterSale" data-toggle="tab" onclick="order4(getId())">售后</a>
-                                </li>
-                            </ul>
-                            <!--待发货模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <div class="tab-content">
-                                <div class="tab-pane fade in active" id="yet">
-                                    <div class="b-table b-cart-table ">
-                                        <table class="shop_table shop_table_responsive cart table" cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <td class="product-thumbnail">订 单 号</td>
-                                                <td class="product-name"><h5>下单时间</h5></td>
-                                                <td class="product-price"><h5>总 价 格</h5></td>
-                                                <td class="product-price"><h5>邮寄方式</h5></td>
-                                                <td class="product-price"><h5>收货地址</h5></td>
-                                                <td class="product-price"><h5>订单状态</h5></td>
-                                                <td class="product-price"><h5>我的留言</h5></td>
-                                                <td class="product-remove"><h5>操 作</h5></td>
-                                            </tr>
-                                            </thead>
+                            <!--订单详情的表格模块///////////////////////////////////////////////////////////////////////////////////////-->
+                            <div class="b-table b-cart-table ">
+                                <table class="shop_table shop_table_responsive cart table" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <td class="product-thumbnail">&nbsp;</td><!--产品图片-->
+                                        <td class="product-subtotal"><h5>订 单 号</h5></td>
+                                        <td class="product-name"><h5>产 品 名</h5></td>
+                                        <td class="product-name"><h5>单 价</h5></td>
+                                        <td class="product-quantity"><h5>数 量</h5></td>
+                                        <td class="product-name"><h5>店 铺</h5></td>
+                                        <td class="product-name"><h5>操 作</h5></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="order_eva_details">
 
-                                            <tbody id="order1">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="form-row place-order">
+                        <div class="cart-collaterals">
 
-                                        <!--页面最下方，返回主页，按钮模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <a href="home.html"><input type="button" class="button alt"
-                                                                   value="返 回 back"/></a>
-                                    </div>
+                            <div class="cart_totals calculated_shipping">
+                                <div class="wc-proceed-to-checkout">
+                                    <!--返回订单列表按钮，提交提交表单///////////////////////////////////////////////////////////////////////////////////////-->
+                                    <a href="order.html" class="checkout-button button alt wc-forward">
+                                        订单列表(Order List)</a>
                                 </div>
 
-
-
-
-                                <div class="tab-pane fade" id="wait">
-                                    <div class="b-table b-cart-table ">
-                                        <!--待收货模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <table class="shop_table shop_table_responsive cart table" cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <td class="product-thumbnail">订 单 号</td>
-                                                <td class="product-name" ><h5>下单时间</h5></td>
-                                                <td class="product-price" ><h5>总 价 格</h5></td>
-                                                <td class="product-price" ><h5>邮寄方式</h5></td>
-                                                <td class="product-price" ><h5>收货地址</h5></td>
-                                                <td class="product-price" ><h5>订单状态</h5></td>
-                                                <td class="product-price"><h5>我的留言</h5></td>
-                                                <td class="product-remove"><h5>操 作</h5></td>
-                                            </tr>
-                                            </thead>
-
-                                            <tbody id="order2">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="form-row place-order">
-
-                                        <!--页面最下方，返回主页，按钮模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <a href="home.html"><input type="button" class="button alt"
-                                                                   value="返 回 back"/></a>
-                                    </div>
-                                </div>
-                                <!--待评价模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                <div class="tab-pane fade" id="toEvaluate">
-                                    <div class="b-table b-cart-table ">
-                                        <table class="shop_table shop_table_responsive cart table" cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <td class="product-thumbnail">订 单 号</td>
-                                                <td class="product-name" ><h5>下单时间</h5></td>
-                                                <td class="product-price" ><h5>总 价 格</h5></td>
-                                                <td class="product-price" ><h5>邮寄方式</h5></td>
-                                                <td class="product-price" ><h5>收货地址</h5></td>
-                                                <td class="product-price" ><h5>订单状态</h5></td>
-                                                <td class="product-price"><h5>我的留言</h5></td>
-                                                <td class="product-remove"><h5>操 作</h5></td>
-                                            </tr>
-                                            </thead>
-                                            <tbody id="order3">
-
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-
-                                    <div class="form-row place-order">
-
-                                        <!--页面最下方，返回主页，按钮模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <a href="home.html"><input type="button" class="button alt"
-                                                                   value="返 回 back"/></a>
-                                    </div>
-                                </div>
-
-                                <!--已评价模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                <div class="tab-pane fade" id="evaluated">
-                                    <div class="b-table b-cart-table ">
-                                        <!--已评价订单表格-->
-                                        <table class="shop_table shop_table_responsive cart table" cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <td class="product-thumbnail">订 单 号</td>
-                                                <td class="product-name"><h5>下单时间</h5></td>
-                                                <td class="product-price"><h5>总 价 格</h5></td>
-                                                <td class="product-price"><h5>邮寄方式</h5></td>
-                                                <td class="product-price"><h5>收货地址</h5></td>
-                                                <td class="product-price"><h5>评价状态</h5></td>
-                                                <td class="product-price"><h5>我的留言</h5></td>
-                                                <td class="product-remove"><h5>操 作</h5></td>
-                                            </tr>
-                                            </thead>
-                                            <tbody id="order9">
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-
-                                    <div class="form-row place-order">
-
-                                        <!--页面最下方，返回主页，按钮模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <a href="home.html"><input type="button" class="button alt"
-                                                                   value="返 回 back"/></a>
-                                    </div>
-                                </div>
-
-                                <!--售后模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                <div class="tab-pane fade" id="afterSale">
-                                    <div class="b-table b-cart-table ">
-                                        <!--已评价订单表格-->
-                                        <table class="shop_table shop_table_responsive cart table" cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <td class="product-thumbnail">订 单 号</td>
-                                                <td class="product-name"><h5>下单时间</h5></td>
-                                                <td class="product-price"><h5>总 价 格</h5></td>
-                                                <td class="product-price"><h5>邮寄方式</h5></td>
-                                                <td class="product-price"><h5>收货地址</h5></td>
-                                                <td class="product-price"><h5>订单状态</h5></td>
-                                                <td class="product-price"><h5>我的留言</h5></td>
-                                                <td class="product-remove"><h5>操 作</h5></td>
-                                            </tr>
-                                            </thead>
-                                            <tbody id="order4">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <div class="form-row place-order">
-
-                                        <!--页面最下方，返回主页，按钮模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                        <a href="home.html"><input type="button" class="button alt"
-                                                                   value="返 回 back"/></a>
-                                    </div>
-                                </div>
 
                             </div>
 
                         </div>
+
                     </div>
 
 
                 </div>
+
+
             </div>
-
-
         </div>
     </div>
     <footer class="footer">
@@ -452,7 +317,7 @@
                                         <li class="footer-list__item"><a class="footer-list__link" href="">Warranty</a>
                                         </li>
                                         <!--帮助入口//////////////////////////////////////////////////////////////////////////////-->
-                                        <li class="footer-list__item"><a class="footer-list__link" href="about.html">Help</a>
+                                        <li class="footer-list__item"><a class="footer-list__link" href="display.html">Help</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -517,16 +382,17 @@
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
 <!-- Main slider-->
-<script src="static/wt/js/jquery.sliderPro.min.js"></script>
-<script src="static/js/session.js"></script>
-<script src="static/js/user.js"></script>
-<script src="static/js/order.js"></script>
+<script src="static/wt//jquery.sliderPro.min.js"></script>
+<script src="static/js/order_detail.js"></script>
+<script src="static/js/get_param.js"></script>
 <script>
     $(function () {
-        var id=getId();
-        order1(id);
-        display2(id);
+        var oId= getUrlParam('oId');
+        order_eva_detail(oId);
     })
 </script>
 </body>
+
 </html>
+
+

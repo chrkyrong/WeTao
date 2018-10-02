@@ -20,6 +20,7 @@ public interface OrderMapper {
 
     List<Order> selectByUser3(int userId);//根据用户id查询已签收订单
 
+    List<Order> selectByUser9(int userId);//根据用户id查询已评价订单
 
     List<Order> selectByUser4(int userId);//根据用户id查询退款中订单
 
