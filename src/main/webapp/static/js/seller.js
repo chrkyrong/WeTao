@@ -1,26 +1,26 @@
 /**
- * Created by Administrator on 2018/9/13.
+ * Created by hzb on 2018/10/01.
  */
 
-//用户登陆
+//商家登陆
 function login() {
     $.ajax({
         type: 'post',
-        url: '/user/login',
+        url: '/seller/login',
         dataType: 'json',
-        data: $('#checkout').serialize(),
-        success: function (result) {
-            if(result.code==0) {
-                window.location.href = "home.html";
+        data: $('#login').serialize(),
+        success: function (r) {
+            if(r.code==0) {
+                window.location.href = "items-Homepage.html";
             }
-            else if(result.code==109) {
+            else if(r.code==109) {
                 alert("用户被锁定");
             }
-            else if(result.code==102)
+            else if(r.code==102)
             {
                 alert("用户名不存在");
             }
-            else if(result.code==105)
+            else if(r.code==105)
             {
                 alert("用户密码错误,请重试");
             }
@@ -28,7 +28,7 @@ function login() {
             {
                 alert("未知错误");
             }
-            console.log(result);
+            console.log(r);
         }
     });
 }
@@ -37,33 +37,41 @@ function login() {
 function exit() {
     $.ajax({
         type: 'get',
-        url: '/user/logout',
+        url: '/seller/logout',
         dataType: 'json',
         data: null,
         success: function () {
             console.log();
-            window.location.href="login.html";
+            window.location.href="items-Homepage.html";
         }
     });
 }
 
 //用户注册
 function register() {
-    $.ajax({
-        type: 'post',
-        url: '/user',
-        dataType: 'json',
-        data: $('#checkout').serialize(),
-        success: function (result) {
-            if(result.code==0) {
-               alert("注册成功，你的账号为:"+result.data.uId);
-               window.location.href="login.html";
-            }
-            else
-                alert("未知错误");
-            console.log(result);
+    var account = $("#sAccount").val();
+    var password = $("#sPassword").val();
+    var tel = $("#sTel").val();
+    var sex = $("#sSex").val();
+    var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
+    var icon = $("#sIcon").val();
+    $.post('/seller/register',{
+            sId : null,
+            sAccount : account,
+            sPassword : password,
+            sSex : sex,
+            sTel : tel,
+            sAddress : address,
+            sIcon : icon
+    },function (r) {
+        if(r.code==0) {
+            alert("你的账号为:"+r.data.sId);
+            location.reload();
         }
+        else
+            alert("未知错误");
     });
+
 }
 
 
@@ -120,7 +128,6 @@ function display2(uId) {
     });
 }
 
-//修改信息
 function personal_update() {
     $.ajax({
         type: 'put',
@@ -128,17 +135,11 @@ function personal_update() {
         dataType: 'json',
         data:$('#checkout').serialize(),
         success: function (result) {
-            if(result.code==0)
-            {
-                alert("修改成功");
-                window.location.href="display.html";
-            }
             console.log(result);
         }
     });
 }
 
-//获取修改的信息
 function personal(uId) {
     $.ajax({
         type: "get",
@@ -152,7 +153,7 @@ function personal(uId) {
             $("#uAddress2").val(result.data.uAddress2);
             $("#uAddress3").val(result.data.uAddress3);
             $("#uSex").val(result.data.uSex);
-            $("#uId").val(result.data.uId);
+
             var img="";
             img+='<figure class="tilter__figure">';
             img+='<img class="img-responsive"  src="static/images/';
