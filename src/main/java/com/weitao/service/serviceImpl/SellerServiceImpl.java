@@ -90,6 +90,8 @@ public class SellerServiceImpl implements SellerService {
      */
     @Override
     public Boolean modifySeller(Seller seller) {
+        if (seller.getsIcon()==null)
+            seller.setsIcon("seller_default.jpg");
         if (sellerMapper.updateByPrimaryKeySelective(seller)==1)
             return true;
         return false;
