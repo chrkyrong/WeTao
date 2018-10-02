@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>WeTao / OrderDetail</title>
+    <title>WeTao / ManageBuyer</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,6 @@
     <script src="assets/js/separate-js/html5shiv-3.7.2.min.js" type="text/javascript"></script>
     <meta content="no" http-equiv="imagetoolbar">
     <![endif]-->
-    
 </head>
 
 <body>
@@ -37,37 +36,7 @@
     <nav class="fullscreen-center-menu">
 
         <!--左上角隐藏的导航栏入口/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-        <div id="dl-menu" class="dl-menuwrapper">
-            <ul class="dl-menu menu-item list-unstyled">
-
-
-                <li class="has-children ">
-                    <a href="#"><span>订单管理 <i class="arrow_carrot-right"></i> </span></a>
-                    <ul class="dl-submenu">
-
-                        <li><a href="Unfilled-Order.html"><span>待发货</span></a></li>
-                        <li><a href="Sent-Order.html"><span>已发货</span></a></li>
-                        <li><a href="Achieve-Order.html"><span>已完成</span></a></li>
-
-
-                    </ul>
-                </li>
-                
-                <li class="has-children ">
-                    <a href="shop-1.html"><span>售后 <i class="arrow_carrot-right"></i>  </span></a>
-                    <ul class="dl-submenu">
-                        <li><a href="Notrefund-Order.html"><span>待退款</span></a></li>
-                        <li><a href="Refund-Order.html"><span>已退款</span></a></li>
-                    </ul>
-                </li>
-                
-				<li><a href="about.html"><span>客服</span></a></li>
-				<li><a href="lookbook.html"><span>数据统计</span></a></li>
-            </ul>
-
-        </div>
-
-
+        
     </nav>
 
 </div>
@@ -134,20 +103,21 @@
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
                             <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="items-Homepage.html"><h5>主 页</h5></a>
+                            <li><a href="manage_seller.html"><h5>商家管理</h5></a>
                             </li>
-                            <li><a href="Store.html"><h5>店铺信息</h5></a>
+                            <li><a href="manage_store.html"><h5>商铺管理</h5></a>
                             </li>
-                            <li><a href="Evaluate.html"><h5>评论管理</h5></a>
+                            <li><a href="manage_buyer.html"><h5>买家管理</h5></a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-navibox-2">
                         <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
                         <ul class="nav navbar-nav clearfix vcenter">
-                            
+                            <li><a href="manage_items.html"><h5>商品管理</h5></a>
+                            <li><a href="manage_permissions.html"><h5>权限管理</h5></a>
                             <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="SellerMessage.html"><h5>个人信息</h5></a>
+                            <li><a href="manager_password.html"><h5>修改密码</h5></a>
                             </li>
                             <!-- <li><span class="header-cart"><a href="#"><i class="icon fa fa-shopping-cart"
                                                                          aria-hidden="true"></i></a><span
@@ -156,7 +126,7 @@
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
-                            <li><a href="seller_login.html">登 陆</a>
+                            <li><a href="manager_login.html">登 陆</a>
                             </li>
                             <li><a href="#">退 出</a>
                             </li>
@@ -180,54 +150,98 @@
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
                             <!--第一行文字/////////////////////////////////////////////////////////////-->
-                            <li><a href=""><h4>订单详情</h4></a>
+                            <li><a href=""><h4>买家管理</h4></a>
                             </li>
                         </ol>
                     </div>
                     <div class="section-title-page section-title-page_mod-a">
                         <!--第二行文字/////////////////////////////////////////////////////////////-->
-                        <h1 class="ui-title-page">O r d e r D e t a i l s</h1>
+                        <h1 class="ui-title-page">M a n a g e m e n t B u y e r</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="woocommerce">
-                    	<p style="font-size:18px">订单列表</p>
-                         <!-- 表格form -->              
+                    	<!-- 查询 -->
+                    	<form action="">
+                    		<div class="row">
+                            	<div class="col-md-6">
+                            		<input class="form-control" type="text" placeholder="Your Select" >
+                            		<!-- <input type="text" class="input-text "> -->
+                            	</div>
+                            	<div class="col-md-6">
+									<select class="selectpicker" style="height:40px">
+										<option>用户ID</option>
+										<option>用户名</option>
+										<option>电话</option>
+										<option>地址</option>
+									</select>
+									&nbsp;&nbsp;
+									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>								
+                            	</div>
+                            </div>
+                    	</form>
                         <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               enctype="multipart/form-data" _lpchecked="1">
                             <div class="col2-set" id="customer_details">
                             	
                             	<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>                                
                                 <div class="table-container" style="width:1500px">
-                                	<table class="table table_primary" style="width:80%">
+                                	<table class="table table_primary" style="width:85%">
                                     	<thead>
                                         	<tr>
-                                                <th style="width:130px">订单号</th>
-                                                <th style="width:150px">商品名</th>
-                                                <th style="width:150px">店铺名</th>
-                                                <th style="width:100px">图片</th>
-                                                <th style="width:130px">单价</th>
-                                                <th style="width:130px">数量</th>                                             
+                                                <th style="width:150px">用户ID</th>
+                                                <th style="width:130px">用户名</th>
+                                                <th style="width:200px">头像</th>
+                                                <th style="width:100px">性别</th>
+                                                <th style="width:150px">电话</th>
+                                                <th style="width:200px">默认地址</th>
+                                                <th style="width:160px">地址二</th>
+                                                <th style="width:160px">地址三</th>
+                                                <th style="width:120px">状态</th>
+                                                <th style="width:130px">操作</th>
                                              </tr>
                                          </thead>
-                                       	 <tbody id="order_details">
+                                       	 <tbody>
+                                        	<tr>
+                                                <td>7000000</td>
+                                                <td>超级买家</td>
+                                                <td>
+                                                	<a class="b-goods__media js-zoom-images"
+                                               			href="static/wt/images/2_1.jpg">
+                                               		<img alt="img" src="static/wt/images/2_1.jpg" class="img-responsive">
+                                               		</a>
+                                                </td>
+                                                <td>男</td>
+                                                <td>12345678901</td>
+                                                <td>广东省肇庆市端州区xx街道xx楼</td>
+                                                <td>广东省肇庆市端州区xx街道xx楼</td>
+                                                <td>广东省肇庆市端州区xx街道xx楼</td>
+                                                <td>正常</td>
+                                                <td><a href="#"> 拉 黑 </a></td>
+                                           	</tr>
+                                           	<tr>
+                                                <td>7000001</td>
+                                                <td>zxc123</td>
+                                                <td>
+                                                	<a class="b-goods__media js-zoom-images"
+                                               			href="static/wt/images/2.jpg">
+                                               		<img alt="img" src="static/wt/images/2.jpg" class="img-responsive">
+                                               		</a>
+                                                </td>
+                                                <td>女</td>
+                                                <td>12345678902</td>
+                                                <td>广东省肇庆市端州区xx街道xx楼</td>
+                                                <td>无</td>
+                                                <td>无</td>
+                                                <td>正常</td>
+                                                <td><a href="#"> 拉 黑 </a></td>
+                                           	</tr>                                              
                                        	 </tbody>
                                		</table>	
-                             	</div>
-                             	
-                            </div>
-                            <div id="order_review" class="woocommerce-checkout-review-order">
-
-                                <div id="payment" class="woocommerce-checkout-payment">
-                                    <div class="form-row place-order">
-                                        <input type="button" class="button alt" id="place_order" value="返 回 Return"
-                                               data-value="Place order" style="line-height:1.3;border:0" onclick="window.history.back(-1)"/>                                        
-                                    </div>
-                                </div>
-                            </div>
-                            
+                             	</div>                             	
+                            </div>                            
                         </form>
                     </div>
                 </div>
@@ -353,15 +367,9 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-<script src="static/js/order_detail.js"></script>
-<script src="static/js/get_param.js"></script>
-<script>
-    $(function () {
-        var oId= getUrlParam('oId');
-        order_detail(oId);
-    })
-</script>
+
 </body>
+
 </html>
 
 

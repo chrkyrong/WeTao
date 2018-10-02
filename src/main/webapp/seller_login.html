@@ -207,23 +207,24 @@
                         			<form id="login" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               					enctype="multipart/form-data" _lpchecked="1">
                             			<div class="col2-set" id="seller_login">
-                                			<div class="col-1">
-                                    			<div class="woocommerce-billing-fields">
-                                        			<h3>请输入您的账号和密码</h3>
+                                			<div class="col-1" style="width: 1000px">
+                                                <h3 style="float:right;margin-right: 350px">请输入您的账号和密码</h3>
+                                    			<div class="woocommerce-billing-fields" style="float:right;margin-right: 250px">
+                                                    <p>&nbsp;</p>
                                         			<p class="form-row form-row form-row-wide">
-                                            			<input type="text" class="input-text " name="sId" placeholder="请输入您的账号">
+                                            			<input type="text" class="input-text " name="sId" placeholder="请输入您的账号" style="width: 500px">
                                         			</p>
                                         			<p class="form-row form-row form-row-wide ">
                                             			<input type="password" class="input-text " name="sPassword" placeholder="请输入您的密码">
                                         			</p>
-                                        			<div class="clear"></div>
                                     			</div>
                                 			</div>
                                 		</div>
                                 		<!-- 登陆按钮位置########################## -->
-                            			<div class="woocommerce-checkout-review-order">
+                            			<div class="woocommerce-checkout-review-order" style="float:right;margin-right: 300px">
 												<div class="form-row place-order">
-													<input type="submit" class="button alt" value="登 陆 login" data-value="Place order" onclick="login()"/>
+                                                    <p>&nbsp;</p>
+													<input type="submit" class="button alt" value="登 陆 login" data-value="Place order" onclick="login()" style="width: 400px"/>
                                     			</div>
                             			</div>
                         			</form>
@@ -235,6 +236,7 @@
                             			<div class="col2-set" id="seller_register">
                                 			<div class="col-1">
                                                     <h3>请输入个人信息</h3>
+                                                    <p>&nbsp;</p>
                                                     <table rules=none>
                                                         <tr>
                                                             <td  colspan="3">
@@ -289,8 +291,9 @@
                                 			<div class="col-2">
                                     			<div class="woocommerce-shipping-fields">
                                         			<h3>添加个人头像</h3>
+                                                    <p>&nbsp;</p>
                                         			<p class="form-row form-row">
-                                           				<input type="file" name="sIcon" class="webuploader-element-invisible" multiple accept="image/*">
+                                           				<input type="file" name="sIcon" class="webuploader-element-invisible" multiple accept="image/*" >
                                             			<!--上传头像模块，s_icon/////////////////////////////////////////////////////////////-->
                                         			</p>
                                     			</div>
@@ -299,7 +302,8 @@
                             			<!--信息确认无误就确认注册吧/////////////////////////////////////////////////////////-->
                             			<div class="woocommerce-checkout-review-order">
                                     			<div class="form-row place-order">
-                                        			<input type="submit" class="button alt" value="注 册 商 家 register" data-value="Place order" onclick="register()"/>
+                                                    <p>&nbsp;</p>
+                                        			<input type="button" class="button alt" value="注 册 商 家 register" data-value="Place order" onclick="register()" style="line-height:1.3;border:0"/>
                                     			</div>
                             			</div>
                         			<!--</form>-->
