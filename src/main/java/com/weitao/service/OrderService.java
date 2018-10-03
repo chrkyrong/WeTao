@@ -20,6 +20,8 @@ public interface OrderService {
 
     List<Order> getByUser(int userId);//根据用户id查询所有订单
 
+    List<Order> getByUser9(int userId);//根据用户id查询已评价订单
+
     Boolean confirmOrder(int oId);//根据订单id确定订单
 
     Boolean refundOrder(int oId);//根据订单id申请退款

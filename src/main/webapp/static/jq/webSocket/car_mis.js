@@ -1,7 +1,6 @@
-/*
- * $.ajax()函数
- *
-*/
+/**
+ * Created by hzb on 2018/10/01.
+ */
 
 var u1 = "/car/find";
 var u2 = "/car/delete/";

@@ -1,7 +1,6 @@
-/*
- * $.ajax()函数
- *
-*/
+/**
+ * Created by hzb on 2018/10/01.
+ */
 
 var u1 = "/coll/find";
 var u2 = "/coll/delete/";

@@ -225,7 +225,7 @@
                                 </li>
                                 <li><a href="#toEvaluate" data-toggle="tab" onclick="order3(getId())">待评价</a>
                                 </li>
-                                <li><a href="#evaluated" data-toggle="tab">已评价</a>
+                                <li><a href="#evaluated" data-toggle="tab" onclick="order9(getId())">已评价</a>
                                 </li>
                                 <li><a href="#afterSale" data-toggle="tab" onclick="order4(getId())">售后</a>
                                 </li>
@@ -337,79 +337,11 @@
                                                 <td class="product-price"><h5>邮寄方式</h5></td>
                                                 <td class="product-price"><h5>收货地址</h5></td>
                                                 <td class="product-price"><h5>评价状态</h5></td>
+                                                <td class="product-price"><h5>我的留言</h5></td>
                                                 <td class="product-remove"><h5>操 作</h5></td>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr class="cart_item">
-                                                <td class="product-thumbnail">
-                                                    <!--订单号，点击可以查看订单详情///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    666666</td>
-                                                <td data-title="Product">
-                                                    <!--下单时间模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    <div class="caption">
-                                                        2018-09-09
-                                                    </div>
-                                                </td>
-                                                <td class="product-price" data-title="Price">
-                                                    <span class="product-price total-price">
-                                                        <!--产品总价格模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                        <span class="woocommerce-Price-amount amount">
-                                                            <span class="woocommerce-Price-currencySymbol">£</span>875.00</span>
-                                                    </span>
-                                                </td>
-                                                <td data-title="Product">
-                                                    <!--邮寄方式模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    <div class="caption">
-                                                        快递
-                                                    </div>
-                                                </td>
-                                                <td data-title="Product">
-                                                    <!--订单状态模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    <div class="caption">
-                                                        已评价
-                                                    </div>
-                                                </td>
-
-                                                <td class="product-remove" width="100">
-                                                    <!--查看订单模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    <a href="/">查看</a></td>
-                                            </tr>
-
-                                            <tr class="cart_item">
-                                                <td class="product-thumbnail">
-                                                    <!--订单号，点击可以查看订单详情///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    777777</td>
-                                                <td data-title="Product">
-                                                    <!--下单时间模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    <div class="caption">
-                                                        2018-06-06
-                                                    </div>
-                                                </td>
-                                                <td class="product-price" data-title="Price">
-                                                    <span class="product-price total-price">
-                                                        <!--产品总价格模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                        <span class="woocommerce-Price-amount amount"><span
-                                                                class="woocommerce-Price-currencySymbol">£</span>876.00</span>
-                                                    </span>
-                                                </td>
-                                                <td data-title="Product">
-                                                    <!--邮寄方式模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    <div class="caption">
-                                                        平邮
-                                                    </div>
-                                                </td>
-
-                                                <td data-title="Product">
-                                                    <!--订单状态模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    <div class="caption">
-                                                        已评价
-                                                    </div>
-                                                </td>
-                                                <td class="product-remove" width="100">
-                                                    <!--查看订单模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                                    <a href="/">查看</a></td>
-                                            </tr>
+                                            <tbody id="order9">
                                             </tbody>
                                         </table>
 
