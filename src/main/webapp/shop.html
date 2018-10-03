@@ -243,22 +243,7 @@
 
                     <!--分页模块////////////////////////////////////////////////////////////-->
                     <!-- end .list-goods-->
-                    <ul class="pagination text-right">
-                        <li><a href="#"><i class="icon fa fa-angle-left"></i> prev</a>
-                        </li>
-                        <li><a href="#">1</a>
-                        </li>
-                        <li class="active"><a href="#">2</a>
-                        </li>
-                        <li><a href="#">3</a>
-                        </li>
-                        <li><a href="#">4</a>
-                        </li>
-                        <li><a href="#">5</a>
-                        </li>
-                        <li><a href="#"><i class="icon fa fa-angle-right"></i> Next</a>
-                        </li>
-                    </ul>
+                    <div id="fenye" style="float: right;margin-right: 295px"></div>
                 </div>
             </div>
         </div>
@@ -377,53 +362,21 @@
 <script src="static/wt/js/jquery.sliderPro.min.js"></script>
 <script src="static/jq/tool.js"></script>
 <script src="static/jq/showitems.js"></script>
+<script src="static/jq/selectItems.js"></script>
 </body>
 </html>
 <script type="text/javascript">
     $(function () {
-        var search=decodeURI(getQueryString("search"));
-        $.ajax({
-            type:"post",
-            url:"queryItemsSearch?search="+search,
-            dataType:"json",
-            success:function (result){
-                $.each(result.data,function(index,items){
-                    $("#show").append( "<div class='b-goods b-goods-4 b-goods_5-col '>" +
-                        "<a class='b-goods__media js-zoom-images' id='img' href=" + 'static/images/' +
-                        items['iPhotos'] +
-                        ">" +
-                        "<img class='img-responsive' alt='img'  src=" + 'static/images/' +
-                        items['iPhotos'] +
-                        ">" + "</a>" + "<span class='b-goods__main'><span class='b-goods__inner'><span  class='b-goods__categorie'>" +
-                        items['iName'] +
-                        "</span>" +
-                        "<a class='b-goods__title' href=" +
-                        'shop_single.html?iId=' + items['iId'] +
-                        ">" +
-                        items['iIntroduction'] +
-                        "</a></span><span class='b-goods__wrap'>" +
-                        "<span class='b-goods__price'>" +
-                        items['iPrice'] +
-                        "</span>" +
-                        "<a class='b-goods__cart' href=" +
-                        'cart.html?iId=' + items['iId'] +
-                        ">" +
-                            /*    加入购物车连接 + */
-                        ">add to cart</a></span></span></div></div>");
-                });
-                loadpicture();
-            }
-        });
+      selectItems(1);
     })
-</script><!--加载搜索显示的数据-->
-<!--<script src="static/jq/items.js"></script>-->
+</script>
 <script type="text/javascript">
     $(function () {
         $("#second").hide();//初始化第二个下拉框隐藏
     });
 </script><!--隐藏下拉框-->
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
     function a() {
         $("#show").html("");
         var search=decodeURI(getQueryString("search"));
@@ -458,29 +411,21 @@
                     "<span class='b-goods__price'>" +
                     items['iPrice'] +
                     "</span>" +
-                    "<a class='b-goods__cart' href=" +
-                    'cart.html?iId=' + items['iId'] +
-                    ">" +
-                        /*    加入购物车连接 + */
-                    ">add to cart</a></span></span></div></div>");
+                    "<a class='b-goods__cart' onclick='cart("+items['iId']+") '>" +
+                    ">add to cart</a></span></span>");
             });
             loadpicture();
             $("#show").html(str);
             $("#show").show();
         })
     }
-</script><!--升降序判断-->
-<script type="text/javascript">
+</script>--><!--升降序判断-->
+<!--<script type="text/javascript">
     function caSon() {
         a();
     }
-</script><!--子类点击事件-->
-<script type="text/javascript">
-    function caFather1() {
-      alert("cnm")
-    }
-</script>
-<script type="text/javascript">
+</script>--><!--子类点击事件-->
+<!--<script type="text/javascript">
     function updown() {
         $("#show").html("");
         var search=decodeURI(getQueryString("search"));
@@ -509,11 +454,8 @@
                         "<span class='b-goods__price'>" +
                         items['iPrice'] +
                         "</span>" +
-                        "<a class='b-goods__cart' href=" +
-                        'cart.html?iId=' + items['iId'] +
-                        ">" +
-                            /*    加入购物车连接 + */
-                        ">add to cart</a></span></span></div></div>");
+                        "<a class='b-goods__cart' onclick='cart("+items['iId']+") '>" +
+                        ">add to cart</a></span></span>");
                 });
                 loadpicture();
                 $("#show").html(str);
@@ -524,7 +466,8 @@
             a();
         }
     }
-</script><!--升降序-->
+</script>--><!--升降序-->
+<!--
 <script type="text/javascript">
     function  search1() {
         var search=$("#search").val();
@@ -532,4 +475,4 @@
         /*        open("shop.html?search="+search);*/
 
     }
-</script>
+</script>-->
