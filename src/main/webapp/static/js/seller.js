@@ -80,7 +80,6 @@ function display1() {
         success:function (r) {
             $("#sAccount").val(r.data.sAccount);
             $("#sTel").val(r.data.sTel);
-            alert(r.data.sIcon);
             var img = $('<img>');
             img.attr("src", "static/images/seller/"+r.data.sIcon);
             img.attr("style", "width: 250px;height: 250px;position: absolute;left: 610px;top: 100px");
@@ -127,7 +126,6 @@ function upload(f){
         fileElementId:"load",//需要上传的文件ID
         dataType:'text',
         success:function (data) {
-            alert(data);
             $("#sIcon").val(data);
         }
     })
@@ -149,7 +147,6 @@ function upload1(f){
         fileElementId:"load",//需要上传的文件ID
         dataType:'text',
         success:function (data) {
-            alert(data);
             $("#sIcon").val(data);
         }
     })
