@@ -25,7 +25,7 @@ public class Order_detailController {
      * @param oId
      * @return
      */
-    @GetMapping("/detail/orderId")
+    @GetMapping("/detail/oId")
     public Result getByOrderId(int oId)
     {
         List<Order_detail> order_detail=order_detailService.getOrderDetail(oId);

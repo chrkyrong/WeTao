@@ -2,7 +2,6 @@ package com.weitao.bean;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.weitao.utils.CustomDateSerializer;
-import com.weitao.utils.DateConverter;
 
 import java.math.BigDecimal;
 import java.util.Date;

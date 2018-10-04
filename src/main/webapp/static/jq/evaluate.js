@@ -83,11 +83,12 @@ function confirmEvaluate() {
         contentType: false, /*使用formdate一定要加上去*/
         success: function (result) {
             if (result.code == "0") {
-                alert("评论成功！")
-                window.location.href = 'shop_single.html?iId=8000003';
+                alert("评论成功！");
+                // 返回订单页面
+                location.href = "order.html";
             }
             else
-                alert("错误")
+                alert("错误");
         }
     });
 }

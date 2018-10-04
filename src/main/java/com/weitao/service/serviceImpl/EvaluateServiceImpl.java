@@ -56,6 +56,8 @@ public class EvaluateServiceImpl implements EvaluateService {
 //            执行添加操作
             int insert = evaluateMapper.insertSelective(evaluate);
             if (insert == 1) {
+                order.setoStatus((byte) 9);
+                orderMapper.updateByPrimaryKeySelective(order);
                 result = true;
             } else {
                 break;

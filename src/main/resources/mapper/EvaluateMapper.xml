@@ -173,8 +173,10 @@
             `user`.*,
             items.i_name,
             i_introduction
-        FROM evaluate, `user`, items
-        WHERE i_id = items_id AND user_id = u_id AND items_id = #{itemsId,jdbcType=INTEGER}
+        FROM evaluate, `user`, items, `order`
+        WHERE items.i_id = evaluate.items_id AND evaluate.user_id = user.u_id AND
+              evaluate.items_id = #{itemsId,jdbcType=INTEGER} AND `order`.o_id = evaluate.order_id
+        ORDER BY `order`.o_date
     </select>
 
     <!--5表扩展类EvaluateVo2的ResultMap-->
@@ -227,11 +229,27 @@
 
     <!--根据商家id,查询该商家的收到的所有的评价-->
     <select id="selectBySeller" resultMap="allEvaluate">
-        <include refid="evaluation"/>
+        SELECT
+        items.i_name,
+        store.st_name,
+        `user`.u_user_name,
+        evaluate.e_description,
+        evaluate.e_level,
+        evaluate.e_photos,
+        `order`.o_date,
+        `order`.o_price,
+        `order`.o_message
+        FROM evaluate
+        LEFT JOIN items ON evaluate.items_id = items.i_id
+        LEFT JOIN `user` ON `user`.u_id = evaluate.user_id
+        LEFT JOIN `order` ON `order`.o_id = evaluate.order_id
+        LEFT JOIN store ON store.st_id = evaluate.store_id
         WHERE evaluate.store_id
         IN (SELECT store.st_id
-        FROM store
+        FROM store,`order`
         WHERE store.seller_id = #{sellerId} AND store.st_status = 0)
+        AND `order`.o_id = evaluate.order_id
+        ORDER BY `order`.o_date DESC
     </select>
 
 
