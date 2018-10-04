@@ -435,12 +435,12 @@
 <script type="text/javascript" src="static/jq/tool.js"></script>
 <script type="text/javascript">
     $(function (orderId) {
-        orderId = getQueryString('orderId');
-        alert(orderId);
+        orderId = getQueryString('oId');
+//        alert(orderId);
         $.ajax({
             contentType: 'application/json;charset=UTF-8',
             type: 'get',
-            url: '/detail/orderId?orderId=' + orderId,
+            url: '/detail/oId?oId=' + orderId,
             dataType: 'json',
             data: null,
             success: function (result) {
@@ -449,7 +449,6 @@
                 var s3 = "<input type='hidden' name='order_id' id='order_id' value='" + orderId + "'/>";
                 $("#orderId").first("h2").append(s2);
                 $("#pa").first("input").append(s3);
-                // alert(s2);
                 $.each(result.data, function (i, v) {
                     s1 += '<tr><td>' + v.item.iPhotos;
                     s1 += '</td><td>' + v.item.iName + '</td><td>' + v.item.iPrice + '</td><td>' + v.orDeNumber + '</td>';

@@ -42,26 +42,35 @@ function orderConfirm() {
     var address = $("#address").val();
     var oPost = $("#oPost").val();
     var oMessage = $("#oMessage").val();
-    $.ajax({
-        url: '/order/addOrders',
-        type: 'post',
-        dataType: 'json',
-        data: {oPost: oPost, oAddress: address, oMessage: oMessage},
-        success: function (result) {
-            var count = result.data.length;
-//                alert(count);
-//                    判断返回的oId是否为空，为空则库存不足，下单失败
-            $.each(result.data, function (i, v) {
-                if (v.oId == null) {
-                    alert(v.oMessage);
-                    location.href="cart.html";
-                }
-                else {
-                    alert("下单成功");
+
+    if (oPost != -1 && address != -1) {
+        $.ajax({
+            url: '/order/addOrders',
+            type: 'post',
+            dataType: 'json',
+            data: {oPost: oPost, oAddress: address, oMessage: oMessage},
+            success: function (result) {
+                $.each(result.data, function (i, v) {
+                    if (v.oId == null) {
+                        alert(v.oMessage);
+                        location.href = "cart.html";
+                    }
+                    else {
+                        alert("下单成功");
 //                            跳转到我的订单页面
-                    location.href="order.html";
-                }
-            })
-        }
-    })
+                        location.href = "order.html";
+                    }
+                })
+            }
+        })
+    } else if (oPost == -1) {
+        alert("请选择一种邮寄方式");
+    } else if (address == -1) {
+        alert("请选择一个收货地址");
+    }
+}
+
+function addAddress() {
+    location.href = "personal.html";
+
 }

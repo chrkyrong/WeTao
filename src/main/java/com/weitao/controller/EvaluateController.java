@@ -96,7 +96,7 @@ public class EvaluateController {
         System.out.println(iId);
 
         List<EvaluateVo> evaluateVoList = evaluateService.selectEvaluate(iId);
-        System.out.println("========" + evaluateVoList);
+//        System.out.println("========" + evaluateVoList);
         if (evaluateVoList != null)
             return ResultUtil.success(evaluateVoList);
         else
