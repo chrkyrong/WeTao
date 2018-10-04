@@ -50,25 +50,31 @@ function exit() {
 function register() {
     var account = $("#sAccount").val();
     var password = $("#sPassword").val();
+    var rpt = $("#sPassword_rpt").val();
     var tel = $("#sTel").val();
     var sex = $("#sSex").val();
     var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
     var icon = $("#sIcon").val();
-    $.post('/seller/register',{
+    var add = $("#sAddress").val();
+    if (account.length > 0 && password.length > 0 && rpt.length > 0 && tel.length > 0 && add.length>0) {
+        $.post('/seller/register',{
             sAccount : account,
             sPassword : password,
             sSex : sex,
             sTel : tel,
             sAddress : address,
             sIcon: icon,
-    },function (r) {
-        if(r.code==0) {
-            alert("你的账号为:"+r.data.sId);
-            location.reload();
-        }
-        else
-            alert("未知错误");
-    });
+        },function (r) {
+            if(r.code==0) {
+                alert("你的账号为:"+r.data.sId);
+                location.reload();
+            }
+            else
+                alert("未知错误");
+        });
+    } else {
+        alert("请补全全部信息");
+    }
 }
 //展示商家的个人信息
 function display1() {
@@ -94,20 +100,24 @@ function update_info() {
     var sex = $("#sSex").val();
     var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
     var icon = $("#sIcon").val();
-    $.post('/seller/modify/info',{
-        sAccount : account,
-        sSex : sex,
-        sTel : tel,
-        sAddress : address,
-        sIcon : icon,
-    },function (r) {
-        if(r.code==0) {
-            alert("个人信息修改成功");
-            location.href="items-Homepage.html";
-        }
-        else
-            alert("未知错误");
-    });
+    if ($("#sAddress").val().length>0) {
+        $.post('/seller/modify/info',{
+            sAccount : account,
+            sSex : sex,
+            sTel : tel,
+            sAddress : address,
+            sIcon : icon,
+        },function (r) {
+            if(r.code==0) {
+                alert("个人信息修改成功");
+                location.href="items-Homepage.html";
+            }
+            else
+                alert("未知错误");
+        });
+    } else {
+        alert("请输入地址");
+    }
 }
 //修改并上传头像
 function upload(f){
