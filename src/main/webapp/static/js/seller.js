@@ -88,7 +88,7 @@ function display1() {
             $("#sTel").val(r.data.sTel);
             var img = $('<img>');
             img.attr("src", "static/images/seller/"+r.data.sIcon);
-            img.attr("style", "width: 250px;height: 250px;position: absolute;left: 610px;top: 100px");
+            img.attr("style", "width: 250px;height: 250px;position: absolute;left: 900px;top: 100px");
             $('#huixian').append(img);
         },
     })
@@ -126,7 +126,7 @@ function upload(f){
         var reader = new FileReader();
         reader.readAsDataURL(f[i]);
         reader.onload = function(e){
-            str+='<img src="'+e.target.result+'" style="width: 250px;height: 250px;position: absolute;left: 610px;top: 100px"/>';
+            str+='<img src="'+e.target.result+'" style="width: 250px;height: 250px;position: absolute;left: 900px;top: 100px"/>';
             document.getElementById("huixian").innerHTML = str;
         }
     }
@@ -140,14 +140,14 @@ function upload(f){
         }
     })
 }
-
+//修改并上传头像
 function upload1(f){
     var str = "";
     for(var i=0;i<f.length;i++){
         var reader = new FileReader();
         reader.readAsDataURL(f[i]);
         reader.onload = function(e){
-            str+='<img src="'+e.target.result+'" style="width: 250px;height: 250px;position: absolute;left: 530px;top: 220px"/>';
+            str+='<img src="'+e.target.result+'" style="width: 250px;height: 250px;position: absolute;left: 780px;top: 230px"/>';
             document.getElementById("huixian").innerHTML = str;
         }
     }
@@ -161,93 +161,27 @@ function upload1(f){
         }
     })
 }
-/*//用户个人信息显示
-function display1(uId) {
-    $.ajax({
-        type: 'get',
-        url: '/user?uId='+uId,
-        dataType: "json",
-        data: null,
-        success: function (result) {
-            var s = "";
-            s += '<li><h4>姓名(Name):';
-            s += result.data.uUserName + '</h4><br></li>';
-            s += '<li><h4>性别(Gender):';
-            s += result.data.uSex + '</h4><br></li>';
-            s += '<li><h4>联系电话(Tel):';
-            s += result.data.uTel + '</h4><br></li>';
-            s += '<li><h4>默认地址(Address1):';
-            s += result.data.uAddress1 + '</h4><br></li>';
-            s += '<li><h4>第二地址(Address2):';
-            if (result.data.uAddress2 != null) {
-                s += result.data.uAddress2 + '</h4><br></li>';
-            }
-            else
-                s += '</h4><br></li>';
-            s += '<li><h4>第三地址(Address3):';
-            if (result.data.uAddress3 != null)
-                s += result.data.uAddress3 + '</h4><br></li>';
-            $("#stu").first("li").append(s);
-
-            var img = "";
-            img += '<figure class="tilter__figure">';
-            img += '<img class="img-responsive"  src="static/images/';
-            img += result.data.uIcon;
-            img += '"alt="img">';
-            img += ' </figure>';
-            $("#img").first("figure").append(img);
-        }
-    });
-}
-//用户id显示（个人信息页面）
-function display2(uId) {
-    $.ajax({
-        type: "get",
-        url: "/user?uId="+uId,
-        dataType: "json",
-        data: null,
-        success: function (result) {
-            var id = "";
-            id += result.data.uId;
-            $("#uId").first("a").append(id);
-        }
-    });
+//修改商家登录密码
+function update_password() {
+    var tel = $("#sTel").val();
+    var password = $("#sPassword").val();
+    var rpt = $("#sPassword_rpt").val();
+    if (tel.length > 0 && password.length > 0 && rpt.length > 0) {
+        $.post('/seller/modify/pass',{
+            sTel : tel,
+            sPassword : password,
+        },function (r) {
+            if(r.code==0) {
+                alert("密码修改成功");
+                window.location.href = "items-Homepage.html";
+            } else if (r.code == 109) {
+                alert("用户被锁定,将退出登录");
+                exit();
+            } else if (r.code == 108) {
+                alert("您输入的手机有误，请重新输入");
+            } else
+                alert("未知错误");
+        });
+    }
 }
 
-function personal_update() {
-    $.ajax({
-        type: 'put',
-        url:'/user',
-        dataType: 'json',
-        data:$('#checkout').serialize(),
-        success: function (result) {
-            console.log(result);
-        }
-    });
-}
-
-function personal(uId) {
-    $.ajax({
-        type: "get",
-        url: "/user?uId="+uId,
-        dataType: "json",
-        data: null,
-        success: function (result) {
-            $("#uUserName").val(result.data.uUserName);
-            $("#uTel").val(result.data.uTel);
-            $("#uAddress1").val(result.data.uAddress1);
-            $("#uAddress2").val(result.data.uAddress2);
-            $("#uAddress3").val(result.data.uAddress3);
-            $("#uSex").val(result.data.uSex);
-
-            var img="";
-            img+='<figure class="tilter__figure">';
-            img+='<img class="img-responsive"  src="static/images/';
-            img+=result.data.uIcon;
-            img+='"alt="img">';
-            img+=' </figure>';
-            $("#img").first("figure").append(img);
-        }
-    });
-    
-}*/

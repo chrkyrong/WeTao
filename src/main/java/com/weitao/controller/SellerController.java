@@ -37,11 +37,16 @@ public class SellerController {
      */
     @PostMapping("/seller/login")
     public Result login(HttpSession httpSession, Seller seller) throws Exception{
-        if(sellerService.login(seller)) {
+        int result = sellerService.login(seller);
+        if(result==0) {
             httpSession.setAttribute("sId",seller.getsId());
             return ResultUtil.success();
-        }else{
-            return ResultUtil.error(ResultEnum.USER_LOGIN_FAIL);
+        }else if (result==1){
+            return ResultUtil.error(ResultEnum.USER_NOT_EXIST);
+        }else if (result==2){
+            return ResultUtil.error(ResultEnum.USER_LOCK);
+        }else {
+            return ResultUtil.error(ResultEnum.USER_PASSWROD_FAIL);
         }
     }
 
@@ -92,8 +97,13 @@ public class SellerController {
     @PostMapping("/seller/modify/pass")
     public Result modifyPass(@SessionAttribute(value = "sId", required = false)Integer sId,Seller seller) throws Exception{
         seller.setsId(sId);
-        if(sellerService.modifySellerPassword(seller))
+        int result = sellerService.modifySellerPassword(seller);
+        if(result==0)
             return ResultUtil.success();
+        else if (result==1)
+            return ResultUtil.error(ResultEnum.USER_LOCK);
+        else if (result == 2)
+            return ResultUtil.error(ResultEnum.USER_PHONE_FAIL);
         else
             return ResultUtil.error(ResultEnum.USER_RSVISE_FAIL);
     }
