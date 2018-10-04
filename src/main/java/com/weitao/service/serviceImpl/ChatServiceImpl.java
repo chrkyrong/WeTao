@@ -27,9 +27,17 @@ public class ChatServiceImpl implements ChatService {
         return mongoTemplate.find(query(criteria), ToUser.class);
     }
 
+    /**
+     * 聊天记录
+     * @param uId 用户自身
+     * @param targetId 对话的另一方
+     * @return
+     */
     @Override
-    public List<ToUser> getChatRecord(Long uId, Long targetId, int page) {
-        return null;
+    public List<ToUser> getChatRecord(Long uId, Long targetId) {
+        Criteria criteria = Criteria.where("fromId").is(uId).and("toId").is(targetId)
+                                    .orOperator(Criteria.where("fromId").is(targetId).and("toId").is(uId));
+        return mongoTemplate.find(query(criteria), ToUser.class);
     }
 
 }

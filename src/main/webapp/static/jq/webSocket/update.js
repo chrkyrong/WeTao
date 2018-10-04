@@ -7,13 +7,20 @@ document.write("<script language='javascript' src='/static/js/cacheMap.js'></scr
 function send() {
     var toId = $('#toId').val();
     var message = $('#text').val();
-    console.log(">>>" + toId + "<<<");
-    console.log(">>>>" + message + "<<<<");
-    var content = JSON.stringify({'message' : message, 'toId' : toId.toString()});
-    webSocket.send(content);
-    message.value = '';
-    addChatListFromClient(content)
-
+    if (message === '') {
+        layer.msg('不能发送空消息')
+    } else {
+        console.log(">>>" + toId + "<<<");
+        console.log(">>>>" + message + "<<<<");
+        var content = JSON.stringify({'message' : message, 'toId' : toId.toString()});
+        // webSocket.send(content);
+        message.value = '';
+        addChatListFromClient(content);
+        //更新列表
+        var arr = [];
+        arr.push(content);
+        append(arr);
+    }
 }
 /*
  * 列表的点击事件,同时搜索聊天记录
@@ -22,10 +29,13 @@ function li_click(id) {
     $('#talk_list').children().css('background', '#FFF');
     id.style.backgroundColor = '#ddd';
     //获取用户账号
+    var toId = $('#toId');
     var uId = $(id).find("h3").text();
-    $('#toId').val(uId);
-    var content_list = $('#content_list');
-    content_list.empty();
+    if (toId.val() !== uId) {
+        toId.val(uId);
+        var content_list = $('#content_list');
+        content_list.empty();
+    }
     //设置对话框头部信息
     var head = $('#sell_name'); head.empty();
     var path = $(id).find("img").attr('src');

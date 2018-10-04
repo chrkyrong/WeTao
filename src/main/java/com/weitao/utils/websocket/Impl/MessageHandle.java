@@ -2,47 +2,43 @@ package com.weitao.utils.websocket.Impl;
 
 
 import com.weitao.bean.message.ToUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import org.springframework.web.socket.WebSocketSession;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import static org.springframework.data.mongodb.core.query.Query.query;
+import static org.springframework.data.mongodb.core.query.Update.update;
 
 @Component
 public class MessageHandle {
 
-    //模拟缓存
-    private Map<String, List<ToUser>> messageCache = new HashMap<>();
+    @Autowired
+    private MongoTemplate template;
 
     /**
      * 异步调用消息存储
      * @param user
      */
     @Async
-    public void saveMsg(ToUser user) {
-        String userId = user.getToId();
-        //TODO 存储消息
-        if (messageCache.get(userId) == null) {
-            List<ToUser> list = new ArrayList<>();
-            list.add(user);
-            messageCache.put(userId, list);
-        } else {
-            messageCache.get(userId).add(user);
-        }
+    void saveMsg(ToUser user) {
+        template.save(user);
     }
 
+    /**
+     * 获取未读消息
+     * @param userId 用户的id
+     * @return 未读消息集
+     */
     List<ToUser> getUnReadMsg(String userId) {
-        //TODO 获取未读消息，同时更新状态
-        List<ToUser> list =  messageCache.get(userId);
-        messageCache.remove(userId);
+        Criteria criteria = Criteria.where("isRead").is(false).and("toId").is(userId);
+        List<ToUser> list =  template.find(query(criteria), ToUser.class);
+        //更新状态
+        template.updateMulti(query(criteria), update("isRead", true), ToUser.class);
         return list;
-    }
-
-    public void getMsg(WebSocketSession session) {
-
     }
 
 }
