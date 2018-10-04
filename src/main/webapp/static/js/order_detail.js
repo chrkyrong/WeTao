@@ -4,7 +4,7 @@
 function order_detail(oId) {
     $.ajax({
         type: "get",
-        url: "/detail/orderId?oId="+oId,
+        url: "/detail/oId?oId="+oId,
         dataType: "json",
         data: null,
         success: function (result) {

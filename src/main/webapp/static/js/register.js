@@ -1,6 +1,17 @@
 /**
  * Created by Administrator on 2018/10/3.
  */
+function checkuId() {
+    var uId=$("#uId").val();
+    if(uId=="undefined"|| uId == null|| uId == "")
+    {
+        alert("账号不能为空");
+        return false;
+    }
+    else
+        return true;
+}
+
 function checknickname() {
     var uUserName=$("#uUserName").val();
     if(uUserName=="undefined"|| uUserName == null|| uUserName == "")
@@ -47,8 +58,8 @@ function recheckpassword() {
 }
 
 function checkaddress() {
-    var address=$("#address").val();
-    if(address=="undefined"|| address == null|| address == "")
+    var uAddress1=$("#uAddress1").val();
+    if(uAddress1=="undefined"|| uAddress1 == null|| uAddress1 == "")
     {
         alert("默认地址不能为空");
         return false;
@@ -66,4 +77,27 @@ function checkregister() {
     {
         alert("输入信息有误，请检查");
     }
+}
+
+function checkchange() {
+    if(checknickname()==true&&checkphone()==true&&checkaddress()==true)
+    {
+        personal_update();
+    }
+    else
+    {
+        alert("输入信息有误，请检查");
+    }
+}
+
+function checkchangepassword() {
+    if(checkuId()==true&&checkphone()==true&&checkpassword()==true&&recheckpassword()==true)
+    {
+        rebackpassword();
+    }
+    else
+    {
+        alert("输入信息有误，请检查");
+    }
+    
 }
