@@ -41,5 +41,21 @@ function loadpicture() {
         }
     });
 }
-
+function cart(iId) {
+    var id=iId
+    var number=1;
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: "/car/add/"+id+"/"+number,
+        data:null,
+        success: function (r) {
+            if (r.code==0){
+                alert("加入成功")
+            }
+        },
+        error: function () {
+        }
+    })
+}
 

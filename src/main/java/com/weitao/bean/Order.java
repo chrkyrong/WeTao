@@ -2,7 +2,6 @@ package com.weitao.bean;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.weitao.utils.CustomDateSerializer;
-import com.weitao.utils.DateConverter;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -16,7 +15,7 @@ public class Order {
 
     @JsonSerialize(using = CustomDateSerializer.class)
     private Date oDate;
-    //    订单状态（如，待付款0，待发货1，已发货2，已签收3，退款中4，退款完成5，换货中6，换货完成7，待评价8，已评价9等）
+    //    订单状态（如，待付款0（默认下单后已付款），待发货1，已发货2，已签收3，退款中4，退款完成5,已评价9等）
     private Byte oStatus;
 
     private String oMessage;

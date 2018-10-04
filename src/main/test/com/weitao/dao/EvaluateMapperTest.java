@@ -43,7 +43,7 @@ public class EvaluateMapperTest {
     //    查询该商品所有评价
     @Test
     public void selectByItemsIdTest() throws Exception {
-        System.out.println(evaluateMapper.selectByItemsId(8000003));
+        System.out.println(evaluateMapper.selectByItemsId(8000002));
     }
 
     //    商家，查询该商家的收到的所有的评价

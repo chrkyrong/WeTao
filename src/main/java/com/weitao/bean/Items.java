@@ -12,7 +12,7 @@ public class Items {
     private String iName;
 
     private String iPhotos;
-
+    /*0为正常，1为销售量为0或者是商家自己下架，2位被强制下架 */
     private Integer iExsit;
 
     private Integer iSale;

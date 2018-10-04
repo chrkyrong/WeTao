@@ -66,6 +66,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> getByUser9(int userId) {
+        //根据用户id查询已评价订单
+        return orderMapper.selectByUser9(userId);
+    }
+
+    @Override
     public Boolean confirmOrder(int oId) {
         //根据订单id确定订单
         if (orderMapper.confirmOrder(oId) > 0)

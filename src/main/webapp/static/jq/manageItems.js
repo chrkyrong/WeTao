@@ -22,7 +22,7 @@ function xianshi(result) {
 
         if(items['iExsit']>0&&items['iStatus']==0){
             iStatus="正常"
-            hr="<a href='items-manager.html?iId="+items['iId']+"'>修改 </a>/<a onclick='delItems("+items['iId']+")'> 下架 </a>";
+            hr="<a href='items-update.html?iId="+items['iId']+"' >修改 </a>/<a onclick='delItems("+items['iId']+")'> 下架 </a>";
 
         }
         else if(items['iStatus']==2) {
@@ -31,14 +31,14 @@ function xianshi(result) {
         }
         else if(items['iExsit']>0&&items['iStatus']==1){
             iStatus="暂时下架"
-            hr="<a href='items-manager.html?iId="+items['iId']+"'>修改 </a>/<a onclick='delItems("+items['iId']+")'> 上架 </a>"
+            hr="<a href='items-update.html?iId="+items['iId']+"'>修改 </a>/<a onclick='delItems("+items['iId']+")'> 上架 </a>"
         }
 /*
         (items['iExsit']<=0&&items['iStatus']==1)
 */
         else{
             iStatus="售完"
-             hr="<a href='items-manager.html?iId="+items['iId']+"'>修改 </a>/<a href='' onclick='delItems("+items['iId']+")'> 上架 </a>"
+             hr="<a href='items-update.html?iId="+items['iId']+"'>修改</a>/<a onclick='delItems("+items['iId']+")'> 上架 </a>"
         }
 
         str+="<tr>" +
@@ -47,7 +47,7 @@ function xianshi(result) {
             "<td><a class='b-goods__media js-zoom-images' href=" + 'static/images/' +
             items['iPhotos'] +
             ">" +
-            "<img class='img-responsive' alt='img'  src=" + 'static/images/' +
+            "<img  class='img-responsive' alt='img'  src=" + 'static/images/' +
             items['iPhotos'] +
             ">" +
             "</a></td>" +
@@ -205,12 +205,37 @@ function delItems(iId) {
         data:null,
         success: function (result) {
             if(result.code==0) {
-                alert("上架成功");
-                location.reload();
+                var txt=  "操作成功";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                //alert("操作成功");
+                setTimeout("window.location.reload()",1300);
             }
             else {
-                alert(result.msg)
+                window.wxc.xcConfirm(result.msg, window.wxc.xcConfirm.typeEnum.error);
+                setTimeout("window.location.reload()",1300);
+           /*     alert(result.msg)*/
             }
         },
+    })
+}
+/*修改商品信息*/
+function updateItems(iId) {
+    var id=iId;
+    $.ajax({
+        type:'get',
+        url: "queryOneItems?iId="+id,
+        data:'json',
+        success:function (result) {
+            $.each(result.data,function (index,items) {
+                $("#iId").val(items['iId']);
+                $("#name").val(items['iName']);
+                $("#iPrice").val(items['iPrice']);
+                $("#iExsit").val(items['iExsit']);
+                $("#photo").val(items['iPhotos'])
+                $("#order_comments").val(items['iIntroduction'])
+                $("#second").val(items['catagoryId'])
+                $("#storeId").val(items['storeId'])
+            })
+        }
     })
 }

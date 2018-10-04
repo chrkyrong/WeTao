@@ -53,24 +53,24 @@ public class SellerServiceImpl implements SellerService {
      * @throws Exception
      */
     @Override
-    public Boolean login(Seller seller) throws Exception {
+    public int login(Seller seller) throws Exception {
         //1、根据输入的商家sId查找数据库中的商家
         Seller seller1 = sellerMapper.selectByPrimaryKey(seller.getsId());
 
         //2、判断商家是否存在
         if (seller1==null)
-            throw new SellerException(ResultEnum.USER_NOT_EXIST);
+            return 1;
 
         //3、判断商家是否违规
         if (seller1.getsStutas()==1)
-            throw new SellerException(ResultEnum.USER_LOCK);
+            return 2;
 
         //4、先将商家登录的密码进行MD5加密操作，再验证密码是否通过
         String password= MD5.md5(seller.getsPassword());
         if (!password.equals(seller1.getsPassword()))
-            throw new SellerException(ResultEnum.USER_PASSWROD_FAIL);
+            return 3;
 
-        return true;
+        return 0;
     }
 
     /**
@@ -90,6 +90,8 @@ public class SellerServiceImpl implements SellerService {
      */
     @Override
     public Boolean modifySeller(Seller seller) {
+        if (seller.getsIcon()==null)
+            seller.setsIcon("seller_default.jpg");
         if (sellerMapper.updateByPrimaryKeySelective(seller)==1)
             return true;
         return false;
@@ -101,17 +103,17 @@ public class SellerServiceImpl implements SellerService {
      * @return
      */
     @Override
-    public Boolean modifySellerPassword(Seller seller) {
+    public int modifySellerPassword(Seller seller) {
         //1、根据登录的商家sId
         Seller seller1 = sellerMapper.selectByPrimaryKey(seller.getsId());
 
         //2、判断商家的状态
         if (seller1.getsStutas()==1)
-            throw new SellerException(ResultEnum.USER_LOCK);
+            return 1;
 
         //3、验证电话号码
         if (!seller.getsTel().equals(seller1.getsTel()))
-            throw new SellerException(ResultEnum.USER_PHONE_FAIL);
+            return 2;
 
         //4、将输入的密码进行MD5加密，再替换seller里边的sPassword属性
         String password = MD5.md5(seller.getsPassword());
@@ -119,7 +121,7 @@ public class SellerServiceImpl implements SellerService {
 
         //5、修改商家密码
         if (sellerMapper.updateByPrimaryKeySelective(seller)==1)
-            return true;
-        return false;
+            return 0;
+        return 3;
     }
 }

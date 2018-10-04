@@ -14,7 +14,7 @@ public interface SellerService {
     Seller register(Seller seller);
 
     //登录
-    Boolean login(Seller seller) throws Exception;
+    int login(Seller seller) throws Exception;
 
     //根据商家sId查找商家信息
     Seller findSellerBySid(Integer sId);
@@ -23,5 +23,5 @@ public interface SellerService {
     Boolean modifySeller(Seller seller);
 
     //修改商家的登录密码
-    Boolean modifySellerPassword(Seller seller);
+    int modifySellerPassword(Seller seller);
 }

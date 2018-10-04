@@ -162,5 +162,32 @@ function personal(uId) {
             $("#img").first("figure").append(img);
         }
     });
-    
+}
+
+//找回用户密码
+function rebackpassword() {
+    $.ajax({
+        type: 'put',
+        url:'/user/password',
+        dataType: 'json',
+        data:$('#checkout').serialize(),
+        success: function (result) {
+            if(result.code==0)
+            {
+                alert("重置密码成功");
+                window.location.href="login.html";
+            }
+            else if(result.code==109)
+            {
+                alert("该用户被锁定");
+            }
+            else if(result.code==108)
+            {
+                alert("手机电话输入错误");
+            }
+            else
+                alert("未知错误");
+            console.log(result);
+        }
+    });
 }

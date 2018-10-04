@@ -1,7 +1,6 @@
-/*
- * $.ajax()函数
- *
-*/
+/**
+ * Created by hzb on 2018/10/01.
+ */
 
 var u1 = "/coll/find";
 var u2 = "/coll/delete/";
@@ -44,14 +43,14 @@ function del(cId, inputobj) {
         url: u2+cId,     // /ssm/stu/delete/2
         data:null,
         success: function (r) {
-            alert("删除成功！");
+            alert("取消收藏成功！");
             var parentTD = inputobj.parentNode;
             var parentTR = parentTD.parentNode;
             var parentTBODY = parentTR.parentNode;
             parentTBODY.removeChild(parentTR);
         },
         error: function () {
-            alert("删除失败！");
+            alert("取消收藏失败！");
         }
     })
 }
