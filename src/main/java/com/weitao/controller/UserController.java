@@ -28,8 +28,8 @@ public class UserController {
     @PostMapping("/user")
     public Result add (User user) throws Exception {
         User user1=userService.register(user);
-        if(user!=null)
-            return ResultUtil.success(user);
+        if(user1!=null)
+            return ResultUtil.success(user1);
         else
             return ResultUtil.error(ResultEnum.USER_REGISTER_FAIL);
     }

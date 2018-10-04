@@ -76,7 +76,7 @@ public class SellerController {
     @PostMapping("/seller/modify/info")
     public Result modifyInfo(@SessionAttribute(value = "sId", required = false)Integer sId,Seller seller) throws Exception{
         seller.setsId(sId);
-        System.out.println(seller.getsPassword());
+        System.out.println(seller.getsPassword()+seller.getsIcon());
         if(sellerService.modifySeller(seller))
             return ResultUtil.success();
         else
@@ -111,21 +111,22 @@ public class SellerController {
         return ResultUtil.error(ResultEnum.USER_GET_FAIL);
     }
 
+    /**
+     * 上传头像
+     * @param Photos
+     * @param session
+     * @return
+     * @throws IOException
+     */
     @RequestMapping(value = "uploadPhoto")
     public String uploadPhoto(MultipartFile Photos, HttpSession session) throws IOException {
         System.out.println("coming");
         Date date = new Date();
         Random random = new Random();
-        String fileName = String.format("%tY", date) + String.format("%tB", date) + String.format("%te", date);
-        for (int i=0;i<6;i++){
-            fileName += random.nextInt()*10;
-        }
-        /* 存储文件路径*/
-        String path = "D:\\workplace2018\\WeTao1\\src\\main\\webapp\\static\\images\\seller\\";
-        /*构建图片url路径，显示图片需要*/
-        String url_root=session.getServletContext().getContextPath();
-        String file_url = url_root + "/static/images/seller/" + Photos.getOriginalFilename();
-        /* 将图片写入 */
+        String fileName = date.getYear() + "" + date.getMonth() + "" + date.getDate();
+        fileName += random.nextInt()*10;
+        fileName += ".jpg";
+        String path = "D:\\workplace2018\\WeTao\\src\\main\\webapp\\static\\images\\seller\\";
         try {
             File file=new File(path,fileName);
             Photos.transferTo(file);
@@ -134,6 +135,6 @@ public class SellerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return file_url;
+        return fileName;
     }
 }

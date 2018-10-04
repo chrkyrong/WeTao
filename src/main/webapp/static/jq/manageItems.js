@@ -47,7 +47,7 @@ function xianshi(result) {
             "<td><a class='b-goods__media js-zoom-images' href=" + 'static/images/' +
             items['iPhotos'] +
             ">" +
-            "<img class='img-responsive' alt='img'  src=" + 'static/images/' +
+            "<img  class='img-responsive' alt='img'  src=" + 'static/images/' +
             items['iPhotos'] +
             ">" +
             "</a></td>" +
@@ -205,11 +205,15 @@ function delItems(iId) {
         data:null,
         success: function (result) {
             if(result.code==0) {
-                alert("操作成功");
-               location.reload();
+                var txt=  "操作成功";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                //alert("操作成功");
+                setTimeout("window.location.reload()",1300);
             }
             else {
-                alert(result.msg)
+                window.wxc.xcConfirm(result.msg, window.wxc.xcConfirm.typeEnum.error);
+                setTimeout("window.location.reload()",1300);
+           /*     alert(result.msg)*/
             }
         },
     })

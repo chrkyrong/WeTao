@@ -201,7 +201,7 @@
     SELECT items.* from items
     where  i_status=0 and (
     items.catagory_id IN
-    (SELECT ca_id FROM category WHERE ca_father like '%${search}%')
+    (SELECT ca_id FROM category WHERE ca_father like '%${search}%' OR ca_name like '%${search}%')
     or items.i_name like '%${search}%')
   </select>
 

@@ -62,7 +62,7 @@ public class ItemsServiceImpl implements ItemsService {
         System.out.println(caId+"===========");
         System.out.println(caFather+"========");
         System.out.println(iName+"======");
-        if(!caId.equals("")&&caId!= null){
+        if(!caId.equals("")&&caId!= null){/*当还没选定下拉框的时候为0*/
             iName="";
             System.out.println("=========================");
         }

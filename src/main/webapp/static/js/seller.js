@@ -53,12 +53,14 @@ function register() {
     var tel = $("#sTel").val();
     var sex = $("#sSex").val();
     var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
+    var icon = $("#sIcon").val();
     $.post('/seller/register',{
             sAccount : account,
             sPassword : password,
             sSex : sex,
             sTel : tel,
             sAddress : address,
+            sIcon: icon,
     },function (r) {
         if(r.code==0) {
             alert("你的账号为:"+r.data.sId);
@@ -78,20 +80,26 @@ function display1() {
         success:function (r) {
             $("#sAccount").val(r.data.sAccount);
             $("#sTel").val(r.data.sTel);
+            var img = $('<img>');
+            img.attr("src", "static/images/seller/"+r.data.sIcon);
+            img.attr("style", "width: 250px;height: 250px;position: absolute;left: 610px;top: 100px");
+            $('#huixian').append(img);
         },
     })
 }
-
+//修改商家信息
 function update_info() {
     var account = $("#sAccount").val();
     var tel = $("#sTel").val();
     var sex = $("#sSex").val();
     var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
+    var icon = $("#sIcon").val();
     $.post('/seller/modify/info',{
         sAccount : account,
         sSex : sex,
         sTel : tel,
         sAddress : address,
+        sIcon : icon,
     },function (r) {
         if(r.code==0) {
             alert("个人信息修改成功");
@@ -101,7 +109,48 @@ function update_info() {
             alert("未知错误");
     });
 }
+//修改并上传头像
+function upload(f){
+    var str = "";
+    for(var i=0;i<f.length;i++){
+        var reader = new FileReader();
+        reader.readAsDataURL(f[i]);
+        reader.onload = function(e){
+            str+='<img src="'+e.target.result+'" style="width: 250px;height: 250px;position: absolute;left: 610px;top: 100px"/>';
+            document.getElementById("huixian").innerHTML = str;
+        }
+    }
+    $.ajaxFileUpload({
+        url:"uploadPhoto",
+        secureuri:false,//是否启动安全提交，默认为false
+        fileElementId:"load",//需要上传的文件ID
+        dataType:'text',
+        success:function (data) {
+            $("#sIcon").val(data);
+        }
+    })
+}
 
+function upload1(f){
+    var str = "";
+    for(var i=0;i<f.length;i++){
+        var reader = new FileReader();
+        reader.readAsDataURL(f[i]);
+        reader.onload = function(e){
+            str+='<img src="'+e.target.result+'" style="width: 250px;height: 250px;position: absolute;left: 530px;top: 220px"/>';
+            document.getElementById("huixian").innerHTML = str;
+        }
+    }
+    $.ajaxFileUpload({
+        url:"uploadPhoto",
+        secureuri:false,//是否启动安全提交，默认为false
+        fileElementId:"load",//需要上传的文件ID
+        dataType:'text',
+        success:function (data) {
+            $("#sIcon").val(data);
+        }
+    })
+}
 /*//用户个人信息显示
 function display1(uId) {
     $.ajax({
