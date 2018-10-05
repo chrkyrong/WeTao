@@ -414,4 +414,13 @@
         SET o_status='2'
         WHERE o_id=#{value}
     </update>
+
+    <select id="selectAllOrderBySid" resultType="com.weitao.bean.Order">
+        SELECT o_date as o_date, sum(o_price) as o_price
+        FROM weitao.`order`
+        where seller_id = #{sId}
+        and str_to_date(o_date,'%Y-%m-%d') &gt; str_to_date(date_sub(now(), interval 7 month),'%Y-%m-%d')
+        and str_to_date(o_date,'%Y-%m-%d') &lt; str_to_date(date_sub(now(), interval 0 month),'%Y-%m-%d')
+        group by DATE_FORMAT(o_date,'%Y-%m')
+    </select>
 </mapper>

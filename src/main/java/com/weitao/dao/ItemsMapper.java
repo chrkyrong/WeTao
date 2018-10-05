@@ -52,4 +52,7 @@ public interface ItemsMapper {
     /*商家根据不同条件查询自己的商品*/
     List<Items> sellerItems(@Param("storeId") Integer storeId,@Param("search") String search,@Param("iStatus") Integer iStatus);
 
+    /*根据商家sId查询自己所有商品中销量top10的*/
+    List<Items> saleTop(int sId);
+
 }
