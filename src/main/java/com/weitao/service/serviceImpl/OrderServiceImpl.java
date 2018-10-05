@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.weitao.bean.*;
 import com.weitao.dao.*;
 import com.weitao.service.OrderService;
+import com.weitao.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -361,4 +362,8 @@ public class OrderServiceImpl implements OrderService {
             return false;
     }
 
+    @Override
+    public List<Order> selectAllOrderBySid(int sId) {
+        return orderMapper.selectAllOrderBySid(sId);
+    }
 }

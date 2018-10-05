@@ -47,4 +47,6 @@ public interface ItemsService {
 
     /*根据商品id更改商品信息*/
     public int updateItems(Items items);
+
+    List<Items> saleTop(int sId);
 }

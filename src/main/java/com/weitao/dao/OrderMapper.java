@@ -56,4 +56,6 @@ public interface OrderMapper {
     int insertAndGetId(Order order);//添加订单到数据库并获得新增的主键
 
     int sendOrder (int oId);//根据订单id发货
+
+    List<Order> selectAllOrderBySid(int sId);
 }

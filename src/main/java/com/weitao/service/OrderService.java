@@ -2,6 +2,7 @@ package com.weitao.service;
 
 import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Order;
+import com.weitao.vo.OrderVo;
 
 import java.util.List;
 import java.util.Map;
@@ -53,4 +54,6 @@ public interface OrderService {
     PageInfo get5(int sellerId,int pageNum, int pageSize);//根据卖家id查询退款完成订单
 
     Boolean sendOrder (int oId);//根据订单id发货
+
+    List<Order> selectAllOrderBySid(int sId);
 }

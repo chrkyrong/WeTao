@@ -1,0 +1,86 @@
+<head>
+    <title>销量top10的商品</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="static/jq/webSocket/jquery-3.3.1.min.js"></script>
+</head>
+第二步，准备一个放图表的容器
+<div id="chartmain" style="width:800px; height: 500px;"></div>
+第三步，设置参数，初始化图表
+
+<script type="text/javascript">
+    //获得json，并将json的格式由[{"name":"oppo","num":1},{"name":"vivo","num":2}]转成{"name":["oppo","vivo"],"num":[1,2]}
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: "/top10",
+        data: null,
+        success:function (r) {
+            var json = '{"iName":[';
+            $.each(r.data,function (i,v){
+                json+='"'+v.iName+'",'
+            })
+            json = json.slice(0, json.length - 1);
+            json += '],"iSale":[';
+            $.each(r.data,function (i,v){
+                json+='"'+v.iSale+'",'
+            })
+            json = json.slice(0, json.length - 1);
+            json += ']}';
+            var json2 = JSON.parse(json);
+            var option = {
+                title:{
+                    text:'您销量前十的商品'
+                },
+                tooltip:{},
+                legend:{
+                    data:['销售量']
+                },
+                xAxis:{
+                    data:json2.iName
+                },
+                yAxis:{},
+                series:{
+                    name:'销售量',
+                    type:'line',
+                    data:json2.iSale
+                }
+
+            };
+            //初始化echarts实例
+            var myChart = echarts.init(document.getElementById('chartmain'));
+            //使用制定的配置项和数据显示图表
+            myChart.setOption(option);
+        }
+    });
+</script>
+
+<!--
+<script type="text/javascript">
+    //指定图标的配置和数据
+    var option = {
+        title:{
+            text:'ECharts 数据统计'
+        },
+        tooltip:{},
+        legend:{
+            data:['用户来源']
+        },
+        xAxis:{
+            data:["Android","IOS","PC","Ohter"]
+        },
+        yAxis:{
+
+        },
+        series:[{
+            name:'访问量',
+            type:'line',//声明报表的格式；
+            data:[500,200,360,100]
+        }]
+    };
+    //初始化echarts实例
+    var myChart = echarts.init(document.getElementById('chartmain'));
+
+    //使用制定的配置项和数据显示图表
+    myChart.setOption(option);
+</script>-->

@@ -143,4 +143,8 @@ public class ItemsServiceImpl implements ItemsService {
 
     }
 
+    @Override
+    public List<Items> saleTop(int sId) {
+        return itemsMapper.saleTop(sId);
+    }
 }

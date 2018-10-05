@@ -1,0 +1,75 @@
+<!--
+1、指定图标的配置和数据
+var option = {
+    title:{ text:'标题'},
+    legend:{ data:['访问量','用户量'] },
+    xAxis:{data:['','','']},
+    yAxis:{},
+    series:[
+    { name:'访问量', type:'bar', data:[180,420,333,83] },
+    { name:'用户量', type:'bar', data:[125,330,230,60] }
+    ]
+};
+2、初始化echarts实例
+var myChart = echarts.init(document.getElementById('放报表的容器id'));
+3、使用制定的配置项和数据显示图表
+myChart.setOption(option);
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>您半年来的销售额</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="static/jq/webSocket/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div id="chartmain" style="width:1400px; height: 600px;"></div>
+<script type="text/javascript">
+//获得json，并将json的格式由[{"name":"oppo","num":1},{"name":"vivo","num":2}]转成{"name":["oppo","vivo"],"num":[1,2]}
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: "/half",
+        data: null,
+        success:function (r) {
+            var json = '{"price":[';
+            $.each(r.data,function (i,v){
+                json+='"'+v.order.oPrice+'",'
+            })
+            json = json.slice(0, json.length - 1);
+            json += '],"date":[';
+            $.each(r.data,function (i,v){
+                json+='"'+v.date+'",'
+            })
+            json = json.slice(0, json.length - 1);
+            json += ']}';
+            var json2 = JSON.parse(json);
+            var option = {
+                title:{
+                    text:'您销量前十的商品'
+                },
+                tooltip:{},
+                legend:{
+                    data:['销售量']
+                },
+                xAxis:{
+                    data:json2.date
+                },
+                yAxis:{},
+                series:{
+                    name:'销售量',
+                    type:'line',
+                    data:json2.price
+                }
+
+            };
+            //初始化echarts实例
+            var myChart = echarts.init(document.getElementById('chartmain'));
+            //使用制定的配置项和数据显示图表
+            myChart.setOption(option);
+        }
+    });
+</script>
+</body>
+</html>

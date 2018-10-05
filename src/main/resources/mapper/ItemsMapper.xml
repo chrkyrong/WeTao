@@ -293,4 +293,11 @@
       and (items.i_id like '%${search}%' or items.i_name like '%${search}%')
       and items.i_status = #{iStatus}
   </select>
+
+  <select id="saleTop" resultType="com.weitao.bean.Items">
+    select i_name,i_sale
+    from store,items
+    where store_id = st_id and seller_id = #{sId}
+    order by i_sale desc limit 10
+  </select>
 </mapper>
