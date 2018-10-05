@@ -8,25 +8,43 @@ function addChatListFromServer(content) {
     var id = msg.fromId;
     if (id in map) {
         var value = map[key];
-        value.append(content);
+        value.push(msg);
         //给列表添加通知
     } else {
-        map[id] = content;
-        //列表添加该信息
-
+        var arr = [];
+        arr.push(msg);
+        map[id] = arr;
+        //拼接会话列表中的li
+        var ul = $('#talk_list');
+        var img = $("<img>");
+        img.attr("style", "width: 30px; height: 30px;");
+        img.attr("src", msg.path);
+        var _content = $("<h3>");
+        _content.append(img);
+        _content.append(msg.userId);
+        var li = $('<li>');
+        li.attr("style", "padding: 20px 5px; border: thin #eeeeee; border-bottom-style: solid;");
+        li.attr("onclick", "li_click(this)");
+        ul.append(li);
+        //添加头像到缓存中
+        photoMap[msg.userId] = img;
     }
 }
 
 function addChatListFromClient(msg) {
     var id = msg.toId;
     if (id in map) {
-        var value = map[key];
-        value.append(content);
+        var value = map[id];
+        value.push(msg);
     } else {
-        map[id] = content;
+        var arr = [];
+        arr.push(msg);
+        map[id] = arr;
     }
 }
-
+/*
+ * 获取聊天记录
+ */
 function getChatRecord(id) {
     if (id in map) {
         append(map[id]);
@@ -35,10 +53,14 @@ function getChatRecord(id) {
         $.ajax({
             url : '/socket/chat_record',
             dataType : 'json',
-            data : {userId:id},
+            data : {targetId: id},
             type : 'GET',
             success : function (result) {
-                map[id] = result.data;
+                var arr = [];
+                var data = result.data;
+                for (var i in data)
+                    arr.push(data[i]);
+                map[id] = arr;
                 append(map[id]);
             },
             error : function () {
@@ -49,28 +71,42 @@ function getChatRecord(id) {
         })
     }
 }
-//拼接li
+//拼接对话框中的li
 //list{fromId:xxx, content:xxx, toId:xxx}
 function append(list) {
+    //测试用
+    myPhoto = '<img src="static/images/logo-dark.png" style="width: 30px; height: 30px;">';
+
     var toId = $('#toId').val();
     var contentList = $('#content_list');
-    contentList.empty();
+    // contentList.empty();
     for(var i in list) {
-        var li = $('<li>');
-        var h3 = $('<h3>');
-        if (list.toId === toId) {
-            li.attr("style", "float: right; font-size: 30px");
-            h3.append(list[i].content);
-            h3.append(photoMap[toId]);
-            li.append(h3);
+        //数组元素转为json
+        var data = JSON.parse(list[i]);
+        var li = $("<span>");
+        var div_img = $("<div>");
+        var div_font = $("<div>");
+        var font = $("<h4>");
+        if (data.toId === toId) {
+            li.attr("style", "text-align:right; font-size: 20px; margin-right: 1000px");
+            div_img.attr("style", "float: right; margin-left: 20px");
+            div_img.append(myPhoto);
+            div_font.attr("style", "float: right; text-align: left; max-width: 40%");
+            div_font.append(font);
+            font.append(data.message);
+            li.append(div_img);
+            li.append(div_font);
         } else {
-            li.attr("style", "float: left; font-size: 30px");
-            h3.append(list[i].content);
-            h3.append(myPhoto);
-            li.append(h3);
+            li.attr("style", "text-align:left; font-size: 20px; margin-right: 20px");
+            div_img.attr("style", "float: left; margin-right: 20px");
+            div_img.attr(photoMap[toId]);
+            div_font.attr("style", "text-align: left; width: 40%; padding-left: 50px");
+            div_font.append(font);
+            font.append(data.message);
+            li.append(div_img);
+            li.append(div_font);
         }
         contentList.append(li);
         contentList.append('<br>')
     }
-
 }

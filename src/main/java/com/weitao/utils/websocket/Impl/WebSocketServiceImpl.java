@@ -27,6 +27,7 @@ public class WebSocketServiceImpl implements WebSocketService {
 
     /**
      * 上线后将session存入缓存中
+     *
      * @param session
      * @throws IOException
      */
@@ -37,13 +38,14 @@ public class WebSocketServiceImpl implements WebSocketService {
         System.out.println("session连接开始：" + userId);
         //检索是否有未读消息，有就发送
         List<ToUser> list = messageHandle.getUnReadMsg(userId);
-        if (list!=null)
+        if (list != null)
             for (ToUser user : list)
                 send(user, session);
     }
 
     /**
      * 用户下线后移除缓存
+     *
      * @param session
      */
     @Override
@@ -57,18 +59,19 @@ public class WebSocketServiceImpl implements WebSocketService {
         WebSocketSession target = map.get(user.getToId());
         if (target != null && target.isOpen()) {
             user.setRead(true);
-//            messageHandle.saveMsg(user);
+            messageHandle.saveMsg(user);
             send(user, target);
         } else {
-            //对方不在线，缓存
+            //对方不在线
             user.setRead(false);
             messageHandle.saveMsg(user);
-            send(user, session);
+//            send(user, session);
         }
     }
 
     /**
      * 发送公告
+     *
      * @param user 封装了消息的实体
      * @throws IOException
      */
@@ -80,7 +83,8 @@ public class WebSocketServiceImpl implements WebSocketService {
 
     /**
      * 发送消息
-     * @param user 消息实体
+     *
+     * @param user    消息实体
      * @param session 指定的session
      * @throws IOException
      */

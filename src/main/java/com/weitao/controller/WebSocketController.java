@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@RestController
+@RestController
 @RequestMapping("/socket")
 public class WebSocketController {
 
@@ -21,9 +21,11 @@ public class WebSocketController {
      * @return 最近聊天列表
      */
     @GetMapping("/chat_list")
-    public Result getChatList(@SessionAttribute(value = "uId", required = false)Long uId) {
+    public Result getChatList(@SessionAttribute(value = "uId", required = false)Long uId,
+                              @SessionAttribute(value = "sId", required = false)Long sId) {
+        Long id = uId == null ? sId : uId;
         Result<List<ToUser>> result = new Result<>();
-        result.setData(chatService.getChatList(uId));
+        result.setData(chatService.getChatList(id));
         return result;
     }
 
@@ -35,10 +37,11 @@ public class WebSocketController {
      */
     @GetMapping("chat_record")
     public Result getChatRecord(@SessionAttribute(value = "uId", required = false)Long uId,
-                                @RequestParam("targetId")Long targetId,
-                                @RequestParam("page")int page) {
+                                @SessionAttribute(value = "sId", required = false)Long sId,
+                                @RequestParam("targetId")Long targetId) {
+        Long id = uId == null ? sId : uId;
         Result<List<ToUser>> result = new Result<>();
-        result.setData(chatService.getChatRecord(uId, targetId, page));
+        result.setData(chatService.getChatRecord(id, targetId));
         return result;
     }
 }

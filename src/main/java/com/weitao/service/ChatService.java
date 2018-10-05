@@ -8,5 +8,5 @@ public interface ChatService {
 
     List<ToUser> getChatList(Long uId);
 
-    List<ToUser> getChatRecord(Long uId, Long targetId, int page);
+    List<ToUser> getChatRecord(Long uId, Long targetId);
 }
