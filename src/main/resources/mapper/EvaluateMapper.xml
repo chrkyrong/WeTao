@@ -176,7 +176,7 @@
         FROM evaluate, `user`, items, `order`
         WHERE items.i_id = evaluate.items_id AND evaluate.user_id = user.u_id AND
               evaluate.items_id = #{itemsId,jdbcType=INTEGER} AND `order`.o_id = evaluate.order_id
-        ORDER BY `order`.o_date
+        ORDER BY `order`.o_date DESC
     </select>
 
     <!--5表扩展类EvaluateVo2的ResultMap-->
