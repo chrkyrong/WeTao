@@ -191,7 +191,7 @@ function rebackpassword() {
         }
     });
 }
-
+/*上传图片*/
 function  upfilePhoto() {
     $.ajaxFileUpload({
         url:"upFile1",

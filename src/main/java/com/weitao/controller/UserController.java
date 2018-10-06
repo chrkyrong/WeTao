@@ -126,6 +126,7 @@ public class UserController {
             System.out.println("sadasdasdasdasdasda");
             File file=new File(path,fileName);
             System.out.println("=====================================");
+            /**/
             photo.transferTo(file);
         }catch (IllegalStateException e) {
             e.printStackTrace();
