@@ -19,7 +19,7 @@ public class ChatServiceImpl implements ChatService {
     /**
      * 引入mongodb的bean
      */
-    @Autowired
+//    @Autowired
     private MongoTemplate mongoTemplate;
 
     @Autowired
