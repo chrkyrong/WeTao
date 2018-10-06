@@ -113,8 +113,7 @@
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
                             <!--第一行文字/////////////////////////////////////////////////////////////-->
-                            <li><h4>Hi~用户名</h4>
-                            </li>
+                            <li><h4>Hi~<br/>&nbsp;&nbsp;<h4 id="uuId"></h4></h4></li>
                         </ol>
                     </div>
                     <!-- end .wrap-breadcrumb-->
@@ -355,6 +354,7 @@
 <script type="text/javascript">
     $(function () {
         var uId=getId();
+        document.getElementById("uuId").innerHTML=uId+"的用户";
         personal(uId);
     })
 </script>
