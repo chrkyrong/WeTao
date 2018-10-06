@@ -9,8 +9,12 @@ function getQueryString(name) {
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
-    if (r != null)
-  //  return unescape(r[2]);//会中文乱码
+    if (r != null) {
+        //  return unescape(r[2]);//会中文乱码
+        var index = $('#index');
+        index.val(r[2]);
+        console.log('index value is ' + index.val());
         return decodeURI((r[2]));//解决了中文乱码
+    }
     return null;
 }
