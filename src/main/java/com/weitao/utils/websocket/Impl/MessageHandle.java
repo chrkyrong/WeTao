@@ -16,7 +16,7 @@ import static org.springframework.data.mongodb.core.query.Update.update;
 @Component
 public class MessageHandle {
 
-    @Autowired
+    //@Autowired
     private MongoTemplate template;
 
     /**
