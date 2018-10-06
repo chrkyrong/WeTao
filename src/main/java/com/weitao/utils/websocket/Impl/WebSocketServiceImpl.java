@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@Service
+/*@Service*/
 public class WebSocketServiceImpl implements WebSocketService {
 
     @Autowired

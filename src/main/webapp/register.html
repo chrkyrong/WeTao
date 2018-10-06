@@ -185,10 +185,16 @@
                                     <div class="woocommerce-shipping-fields">
                                         <h3>添加一个你的个性头像吧</h3>
                                         <p class="form-row form-row">
-                                            <label class="">上传</label>
-                                            <!--上传头像模块，u_icon/////////////////////////////////////////////////////////////-->
+                                            <label class=""></label>
+                                        <input type="hidden" name="uIcon" id="icon">
+                                        <div style="width:200px; height:200px; border:none; overflow:hidden;" id="photo">
+                                        </div>
+                                        <!--上传头像模块，i_photos/////////////////////////////////////////////////////////////-->
+                                        <input type="file" id="uIcon" name="photo" onchange="upfilePhoto()"
+                                               required="required">
                                         </p>
                                     </div>
+                                    <!---->
                                 </div>
                             </div>
                             <!--<h3 id="order_review_heading">信息确认无误就确认注册吧</h3>-->
@@ -320,8 +326,7 @@
 <script src="static/wt/js/main.js"></script>
 <script src="static/js/user.js"></script>
 <script src="static/js/register.js"></script>
+<script src="static/jq/ajaxfileupload.js"></script>
 </body>
 </html>
-
-
 <script type="text/javascript" src="static/jq/advice.js"></script>
