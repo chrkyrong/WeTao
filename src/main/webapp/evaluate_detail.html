@@ -25,78 +25,6 @@
 <!-- Loader end-->
 
 
-<!-- ==========================-->
-<!-- FULL SCREEN MENU-->
-<!-- ==========================-->
-<div class="wrap-fixed-menu" id="fixedMenu">
-
-
-    <button type="button" class="fullmenu-close"><i class="fa fa-times"></i></button>
-
-    <nav class="fullscreen-center-menu">
-
-        <div id="dl-menu" class="dl-menuwrapper">
-            <ul class="dl-menu menu-item list-unstyled">
-
-
-                <li class="has-children ">
-                    <a href="#"><span>Home <i class="arrow_carrot-right"></i> </span></a>
-                    <ul class="dl-submenu">
-
-                        <li><a href="home.html"><span>Home 1</span></a></li>
-                        <li><a href="home-2.html"><span>Home 2</span></a></li>
-
-
-                    </ul>
-                </li>
-                <li><a href="display.html"><span>about</span></a></li>
-                <li><a href="lookbook.html"><span>lookbook</span></a></li>
-
-                <li>
-                    <a href="shop-1.html"><span>shop <i class="arrow_carrot-right"></i>  </span></a>
-
-                    <ul class="dl-submenu">
-
-                        <li><a href="shop-1.html"><span>Catalog Grid 1</span></a></li>
-                        <li><a href="shop.html"><span>Catalog Grid 2</span></a></li>
-                        <li><a href="shop-2-list.html"><span>Catalog List</span></a></li>
-                        <li><a href="shop-single-1.html"><span>Product page 1</span></a></li>
-                        <li><a href="shop_single.html"><span>Product page 2</span></a></li>
-                        <li><a href="shop-single-3.html"><span>Product page 3</span></a></li>
-                        <li><a href="cart.html"><span>Cart page</span></a></li>
-                        <li><a href="checkout.html"><span>Checkout page </span></a></li>
-
-                    </ul>
-
-                </li>
-
-
-                <li class="has-children">
-                    <a href="#"><span> Blog <i class="arrow_carrot-right"></i> </span></a>
-                    <ul class="dl-submenu">
-
-                        <li><a href="blog-main.html"><span>Blog main</span></a></li>
-                        <li><a href="blog-main-2.html"><span>Blog main 2</span></a></li>
-                        <li><a href="blog-main-3.html"><span>Blog main 3</span></a></li>
-                        <li><a href="blog-post.html"><span>Blog post </span></a></li>
-
-                    </ul>
-                </li>
-
-                <li><a href="typography.html"><span>typography</span></a></li>
-                <li><a href="contact.html"><span>contact</span></a></li>
-
-
-            </ul>
-
-        </div>
-
-
-    </nav>
-
-</div>
-
-
 <div class="l-theme animated-css" data-header="sticky" data-header-top="200" data-canvas="container">
     <!-- ==========================-->
     <!-- SEARCH MODAL-->
@@ -108,8 +36,9 @@
                     <div class="navbar-search">
                         <form class="search-global">
                             <input class="search-global__input" type="text" placeholder="Type to search"
-                                   autocomplete="off" name="s" value="">
-                            <button class="search-global__btn"><i class="icon stroke icon-Search"></i>
+                                   autocomplete="off" name="search" value="" id="search">
+                            <button class="search-global__btn" onclick="search2()"><i
+                                    class="icon stroke icon-Search"></i>
                             </button>
                             <div class="search-global__note">Begin typing your search above and press return to
                                 search.
@@ -119,52 +48,28 @@
                 </div>
             </div>
         </div>
-        <button class="search-close close" type="button"><i class="fa fa-times"></i>
-        </button>
+        <button type="button" class="fullmenu-close"><i class="fa fa-times"></i></button>
     </div>
+
     <header class="header-1 header header-color-black header-topbar-hidden header-boxed-width navbar-fixed-top header-background-trans header-navibox-1-left header-navibox-2-right">
         <div class="container container-boxed-width">
-            <div class="top-bar">
-                <div class="container">
-                    <div class="header-topbarbox-1">
-                        <ul>
-                            <li>WE HELPING YOU: INFO@EXAMPLE.COM</li>
-                        </ul>
-                    </div>
-                    <div class="header-topbarbox-2">
-                        <ul class="social-links">
-                            <li><a href="/" target="_blank"><i class="social_icons fa fa-facebook-square"></i></a>
-                            </li>
-                            <li><a href="/" target="_blank"><i class="social_icons fa fa-youtube-square"></i></a>
-                            </li>
-                            <li><a href="/" target="_blank"><i class="social_icons fa fa-vimeo-square"></i></a>
-                            </li>
-                            <li><a href="/" target="_blank"><i class="social_icons fa fa-twitter-square"></i></a>
-                            </li>
-                            <li class="li-last"><a href="/" target="_blank"><i
-                                    class="social_icons fa fa-tumblr-square"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <nav class="navbar" id="nav">
                 <div class="container">
                     <div class="header-navibox-1">
                         <!-- Desctop Trigger Start-->
-                        <button class="menu-mobile-button js-toggle-screen toggle-menu-button"><i
-                                class="toggle-menu-button-icon"><span></span><span></span><span></span><span></span><span></span><span></span></i>
-                        </button>
+                        <!--<button class="menu-mobile-button js-toggle-screen toggle-menu-button"><i-->
+                        <!--class="toggle-menu-button-icon"><span></span><span></span><span></span><span></span><span></span><span></span></i>-->
+                        <!--</button>-->
                         <!-- Desctop Trigger End-->
                         <ul class="main-menu yamm nav navbar-nav">
-                            <!--主页模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>主 页</h5></a>
+                            <!--主页入口///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="home.html"><h5>主 页</h5></a>
                             </li>
-                            <!--售后模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop.html"><h5>售 后</h5></a>
+                            <!--售后入口///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="order_over.html"><h5>售 后</h5></a>
                             </li>
-                            <!--收藏夹模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="shop-1.html"><h5>收 藏</h5></a>
+                            <!--收藏夹入口///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="collection.html"><h5>收 藏</h5></a>
                             </li>
                         </ul>
                     </div>
@@ -172,27 +77,29 @@
                         <ul class="nav navbar-nav clearfix vcenter">
                             <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
                             </li>
-                            <!--用户个人信息模块///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#"><h5>我 的 微 淘</h5></a>
+                            <!--用户个人信息入口///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li><a href="order.html"><h5>我 的 订 单</h5></a>
                             </li>
                             <li><span class="header-cart">
-                            <!--购物车///////////////////////////////////////////////////////////////////////////////////////-->
-                                <a href="#"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
-                                    <span class="header-cart-count bg-primary">3</span></span>
+
+                            <!--购物车模块///////////////////////////////////////////////////////////////////////////////////////-->
+                                <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
+                                    </span>
                             </li>
                         </ul>
                         <ul class="nav-language list-inline">
-                            <!--登陆后的用户名展示///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="#">Id：007</a>
+                            <!--点击，进入个人信息展示display页面/////////////////////////////////////////////////////////////-->
+                            <li><a href="display.html">个人信息</a>
                             </li>
-                            <!--退出按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li class="active"><a href="#">quit</a>
+                            <!--退出登陆按钮///////////////////////////////////////////////////////////////////////////////////////-->
+                            <li class="active"><a href="login.html">注销</a>
                             </li>
                         </ul>
                         <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
+                        <!--点击，重新进入主页/////////////////////////////////////////////////////////////-->
                         <a class="navbar-brand scroll" href="home.html">
-                            <img class="normal-logo" src="static/wt/images/logo.png" alt="logo">
-                            <img class="scroll-logo hidden-xs" src="static/wt/images/logo.png" alt="logo">
+                            <img class="normal-logo" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
+                            <img class="scroll-logo hidden-xs" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -313,7 +220,7 @@
 
                             <div class="cart_totals calculated_shipping">
                                 <div class="wc-proceed-to-checkout">
-                                    <!--返回订单列表按钮，提交提交表单///////////////////////////////////////////////////////////////////////////////////////-->
+                                    <!--返回订单列表按钮///////////////////////////////////////////////////////////////////////////////////////-->
                                     <a href="order.html" class="checkout-button button alt wc-forward">
                                         订单列表(Order List)</a>
                                 </div>
