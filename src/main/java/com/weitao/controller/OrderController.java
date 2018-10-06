@@ -165,8 +165,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/1")
-    public Result getCondition1(Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        int sellerId = 2;
+    public Result getCondition1(@SessionAttribute(value = "sId", required = false)Integer sellerId,Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
         Map<String, Object> map = new HashMap<>();
         map.put("oId", oId);
         map.put("userId", userId);
@@ -195,8 +194,8 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/1")
-    public Result getOrder1(Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        PageInfo orderList = orderService.get1(2, pageNum, pageSize);
+    public Result getOrder1(@SessionAttribute(value = "sId", required = false)Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
+        PageInfo orderList = orderService.get1(sellerId, pageNum, pageSize);
         if (orderList != null)
             return ResultUtil.success(orderList);
         else
@@ -228,8 +227,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/2")
-    public Result getCondition2(Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        int sellerId = 2;
+    public Result getCondition2(@SessionAttribute(value = "sId", required = false)Integer sellerId,Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
         Map<String, Object> map = new HashMap<>();
         map.put("oId", oId);
         map.put("userId", userId);
@@ -249,8 +247,8 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/2")
-    public Result getOrder2(Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        PageInfo orderList = orderService.get2(2, pageNum, pageSize);
+    public Result getOrder2(@SessionAttribute(value = "sId", required = false)Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
+        PageInfo orderList = orderService.get2(sellerId, pageNum, pageSize);
         if (orderList != null)
             return ResultUtil.success(orderList);
         else
@@ -268,8 +266,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/3")
-    public Result getCondition3(Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        int sellerId = 2;
+    public Result getCondition3(@SessionAttribute(value = "sId", required = false)Integer sellerId,Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
         Map<String, Object> map = new HashMap<>();
         map.put("oId", oId);
         map.put("userId", userId);
@@ -289,8 +286,8 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/3")
-    public Result getOrder3(Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        PageInfo orderList = orderService.get3(2, pageNum, pageSize);
+    public Result getOrder3(@SessionAttribute(value = "sId", required = false)Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
+        PageInfo orderList = orderService.get3(sellerId, pageNum, pageSize);
         if (orderList != null)
             return ResultUtil.success(orderList);
         else
@@ -308,8 +305,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/4")
-    public Result getCondition4(Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        int sellerId = 2;
+    public Result getCondition4(@SessionAttribute(value = "sId", required = false)Integer sellerId,Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
         Map<String, Object> map = new HashMap<>();
         map.put("oId", oId);
         map.put("userId", userId);
@@ -329,7 +325,7 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/4")
-    public Result getOrder4(Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
+    public Result getOrder4(@SessionAttribute(value = "sId", required = false)Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
         PageInfo orderList = orderService.get4(sellerId, pageNum, pageSize);
         if (orderList != null)
             return ResultUtil.success(orderList);
@@ -348,8 +344,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/order/get/condition/5")
-    public Result getCondition5(Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        int sellerId = 2;
+    public Result getCondition5(@SessionAttribute(value = "sId", required = false)Integer sellerId,Integer oId, Integer userId, String oAddress, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
         Map<String, Object> map = new HashMap<>();
         map.put("oId", oId);
         map.put("userId", userId);
@@ -369,8 +364,8 @@ public class OrderController {
      * @return
      */
     @GetMapping("/order/get/5")
-    public Result getOrder5(Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
-        PageInfo orderList = orderService.get5(2, pageNum, pageSize);
+    public Result getOrder5(@SessionAttribute(value = "sId", required = false)Integer sellerId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "3") Integer pageSize) {
+        PageInfo orderList = orderService.get5(sellerId, pageNum, pageSize);
         if (orderList != null)
             return ResultUtil.success(orderList);
         else

@@ -16,7 +16,7 @@ import static org.springframework.data.mongodb.core.query.Update.update;
 /*@Component*/
 public class MessageHandle {
 
-    @Autowired
+    //@Autowired
     private MongoTemplate template;
 
     /**
@@ -25,6 +25,7 @@ public class MessageHandle {
      */
     @Async
     void saveMsg(ToUser user) {
+        System.out.println("存储的user对象：" + user);
         template.save(user);
     }
 

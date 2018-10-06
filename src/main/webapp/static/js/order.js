@@ -222,6 +222,8 @@ function orderrefund(oId) {
     });
 }
 
+/*************************商户***************************/
+
 //根据商户id查询待发货订单
 function getorder1(pageNum) {
     $.ajax({

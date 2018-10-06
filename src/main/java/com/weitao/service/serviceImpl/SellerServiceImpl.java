@@ -124,4 +124,9 @@ public class SellerServiceImpl implements SellerService {
             return 0;
         return 3;
     }
+
+    @Override
+    public Seller getSellerId(Long iId) {
+        return sellerMapper.getSellerId(iId);
+    }
 }

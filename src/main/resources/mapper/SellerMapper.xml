@@ -129,4 +129,13 @@
       s_stutas = #{sStutas,jdbcType=TINYINT}
     where s_id = #{sId,jdbcType=INTEGER}
   </update>
+    <select id="getSellerId" resultType="com.weitao.bean.Seller">
+        SELECT *
+        FROM seller
+        WHERE s_id = (SELECT seller_id
+                      FROM store
+                      WHERE st_id = (SELECT i.store_id
+                                     FROM items i
+                                     WHERE i.i_id = #{iId}))
+    </select>
 </mapper>

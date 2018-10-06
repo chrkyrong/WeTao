@@ -24,4 +24,6 @@ public interface SellerService {
 
     //修改商家的登录密码
     int modifySellerPassword(Seller seller);
+
+    Seller getSellerId(Long iId);
 }

@@ -46,22 +46,19 @@
 </head>
 <body style="overflow: hidden; margin: auto 0">
 <!--总的框架-->
-<div id="main" style="width: 100%; height: 100%; padding-top: 10px;">
+<div id="main" style="width: 100%; height: 100%;">
     <div id="left_panel" style="border: thin #eeeeee;border-right-style: solid;">
-        <div style="padding-top: 20px; padding-bottom: 60px; border: thin #eeeeee; border-bottom-style: solid;">
-            <h3 id="myInfo"><img src="static/images/logo-dark.png" style="width: 30px; height: 30px;">个人信息链接</h3>
+        <div style="padding-top: 20px; padding-bottom: 30px; border: thin #eeeeee; border-bottom-style: solid; ">
+            <h3 id="myInfo"></h3>
         </div>
         <div>
             <ul id="talk_list" class="social-links">
-                <li onclick="li_click(this)" style="padding: 20px 5px; border: thin #eeeeee; border-bottom-style: solid;">
-                    <h3><img src="static/images/logo-dark.png" style="width: 30px; height: 30px;">123</h3>
-                </li>
-                <li onclick="li_click(this)" style="padding: 20px 5px; border: thin #eeeeee; border-bottom-style: solid;">
-                    <h3><img src="static/images/head.jpg" style="width: 30px; height: 30px;">456</h3>
-                </li>
-                <li onclick="li_click(this)" style="padding: 20px 5px; border: thin #eeeeee; border-bottom-style: solid;">
-                    <h3><img src="static/images/xiaomi3.jpg" style="width: 30px; height: 30px;">789</h3>
-                </li>
+                <!--<li onclick="li_click(this)" style="padding: 20px 5px; border: thin #eeeeee; border-bottom-style: solid;">-->
+                    <!--<h3><img src="static/images/logo-dark.png" style="width: 30px; height: 30px;margin-right: 10px">123</h3>-->
+                <!--</li>-->
+                <!--<li onclick="li_click(this)" style="padding: 20px 5px; border: thin #eeeeee; border-bottom-style: solid;">-->
+                    <!--<h3><img src="static/images/head.jpg" style="width: 30px; height: 30px;">456</h3>-->
+                <!--</li>-->
             </ul>
         </div>
     </div>
@@ -74,47 +71,10 @@
         <hr>
         <!--显示对话的面板-->
         <div id="show" style="width: 100%; height: 350px;overflow: auto">
+            <div style="padding-bottom: 30px">
+                <a href="#" onclick="showHistory()">历史记录</a>
+            </div>
             <div id="content_list" style="padding: 0 50px">
-                <div class="left_div">
-                    <div style="float: left">
-                        <img src="static/images/logo-dark.png" style="width: 30px; height: 30px; margin-right: 20px">
-                    </div>
-                    <div class="left_font">
-                        <h4>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</h4>
-                    </div>
-                </div>
-                <div class="right_div">
-                    <div style="float: right">
-                        <img src="static/images/logo-dark.png" style="width: 30px; height: 30px; margin-left: 20px">
-                    </div>
-                    <div class="right_font">
-                        <h4>啊啊啊啊啊</h4>
-                    </div>
-                </div>
-                <div class="right_div">
-                    <div style="float: right">
-                        <img src="static/images/logo-dark.png" style="width: 30px; height: 30px; margin-left: 20px">
-                    </div>
-                    <div class="right_font">
-                        <h4>啊啊啊</h4>
-                    </div>
-                </div>
-                <div class="left_div">
-                    <div style="float: left">
-                        <img src="static/images/logo-dark.png" style="width: 30px; height: 30px; margin-right: 20px">
-                    </div>
-                    <div class="left_font">
-                        <h4>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</h4>
-                    </div>
-                </div>
-                <div class="left_div">
-                    <div style="float: left">
-                        <img src="static/images/logo-dark.png" style="width: 30px; height: 30px; margin-right: 20px">
-                    </div>
-                    <div class="left_font">
-                        <h4>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</h4>
-                    </div>
-                </div>
                 <div class="left_div">
                     <div style="float: left">
                         <img src="static/images/logo-dark.png" style="width: 30px; height: 30px; margin-right: 20px">
@@ -144,8 +104,8 @@
         <!--按钮-->
         <hr>
         <div>
-            <div style="float: right; padding-right: 20px">
-                <input type="button" value="test" id="server">
+            <div style="float: right; padding-right: 40px">
+                <!--<input type="button" value="test" id="server">-->
                 <button class="layui-btn" onclick="send()">发送</button>
             </div>
         </div>
@@ -157,6 +117,7 @@
 <script src="static/jq/webSocket/stomp.js" type="text/javascript"></script>
 <script src="static/jq/webSocket/update.js" type="text/javascript"></script>
 <script src="static/js/cacheMap.js" type="text/javascript"></script>
+<script src="static/jq/tool.js"></script>
 <script src="static/layer/layer.js"></script>
 <script type="text/javascript">
     var webSocket = null;
@@ -175,13 +136,13 @@
     webSocket.onopen = onOpen();
 
     function onOpen() {
-        console.log('webSocket链接打开')
+//        console.log('webSocket链接打开')
     }
 
     function onMessage(response) {
         console.log(response.data);
-        var msg = $.parseJSON(response.data);
-        addChatListFromServer(msg);
+//        var msg = $.parseJSON(response.data);
+        addChatListFromServer(response.data);
         //添加图标提示
         //添加提示音
         new Audio("static/music/system.mp3").play(); //声音文件地址，支持mp3 或者 ogg
@@ -198,7 +159,7 @@
             title: '在线客服',
             maxmin: true,
             shadeClose: false,
-            area: ['60%', '80%'],
+            area: ['60%', '75%'],
             content: 'sellerService.html'
         });
     });
@@ -206,22 +167,25 @@
     /*
      * 初始时获取目标对象的信息
      */
-//    $.get('/target', {}, function (result) {
-//
-//    });
-
+    $(function () {
+        var id=getQueryString("iId");
+        console.log('iId = ' + id);
+        $.get('/socket/getSellerId', {iId:id}, function (result) {
+            initChatList(result.data);
+        });
+    });
     /*
      * 获取个人信息
      */
     $.get('/user', {}, function (result) {
             var img = $('<img>');
-            img.attr("src", result.data.uIcon);
-            img.attr("style", "width: 30px; height: 30px;");
+            myPhoto = "static/images/" + result.data.uIcon;
+            img.attr("src", myPhoto);
+            img.attr("style", "width: 60px; height: 60px; margin-right:15px");
             var myInfo = $('#myInfo');
             myInfo.append(img);
             myInfo.append(result.data.uUserName);
-            myPhoto = img;
         }
-    )
+    );
 </script>
 </html>

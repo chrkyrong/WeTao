@@ -13,7 +13,7 @@ function getQueryString(name) {
         //  return unescape(r[2]);//会中文乱码
         var index = $('#index');
         index.val(r[2]);
-        console.log('index value is ' + index.val());
+        // console.log('index value is ' + index.val());
         return decodeURI((r[2]));//解决了中文乱码
     }
     return null;
