@@ -8,6 +8,7 @@ import com.weitao.bean.Items;
 import com.weitao.bean.Store;
 import com.weitao.exception.ResultEnum;
 import com.weitao.service.CategoryService;
+import com.weitao.service.DataService;
 import com.weitao.service.ItemsService;
 import com.weitao.service.StoreService;
 import com.weitao.utils.Result;
@@ -41,6 +42,8 @@ public class ItemsController {
     private StoreService storeService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private DataService dataService;
 
     /*插入商品*/
     @RequestMapping(value = "/insertItems", method = RequestMethod.POST)
@@ -253,6 +256,12 @@ public class ItemsController {
             return ResultUtil.success();
         else
             return ResultUtil.error(ResultEnum.ITEMS_INSERT_FAIL);
+    }
+
+    @GetMapping("/lzh")
+    public Result lzh(){
+        List<Items> itemsList = dataService.selectSale(123);
+        return ResultUtil.success(itemsList);
     }
 
 }

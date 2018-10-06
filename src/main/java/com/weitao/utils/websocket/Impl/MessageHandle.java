@@ -13,7 +13,7 @@ import java.util.List;
 import static org.springframework.data.mongodb.core.query.Query.query;
 import static org.springframework.data.mongodb.core.query.Update.update;
 
-@Component
+/*@Component*/
 public class MessageHandle {
 
     @Autowired
