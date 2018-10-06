@@ -737,14 +737,13 @@
 <script src="static/layer/layer.js"></script>
 <script type="text/javascript">
     $('#server').on('click', function () {
-        console.log('test');
         layer.open({
             type: 2,
             title: '在线客服',
             maxmin: true,
             shadeClose: false,
             area: ['60%', '80%'],
-            content: 'sellerService.html'
+            content: 'sellerService.html?iId=' + $('#index').val()
         });
     });
 </script>

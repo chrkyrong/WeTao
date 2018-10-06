@@ -70,7 +70,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/user")
-    public Result get(int uId)
+    public Result get(@SessionAttribute("uId") Integer uId)
     {
        User user=userService.look(uId);
        if(user!=null)

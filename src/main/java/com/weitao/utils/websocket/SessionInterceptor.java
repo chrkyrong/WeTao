@@ -20,8 +20,11 @@ public class SessionInterceptor implements HandshakeInterceptor {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
             HttpSession session = servletRequest.getServletRequest().getSession(false);
             if (session != null) {
-                String userName = (String) session.getAttribute("userId");  //这边获得登录时设置的唯一用户标识
-                attributes.put("userId", userName);  //将用户标识放入参数列表后，下一步的websocket处理器可以读取这里面的数据
+                Integer userName = (Integer) session.getAttribute("uId");  //这边获得登录时设置的唯一用户标识
+                if (userName == null) {
+                    userName = (Integer) session.getAttribute("sId");
+                }
+                attributes.put("userId", String.valueOf(userName));  //将用户标识放入参数列表后，下一步的websocket处理器可以读取这里面的数据
             }
         }
         return true;

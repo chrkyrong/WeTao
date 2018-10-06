@@ -18,4 +18,6 @@ public interface SellerMapper {
 
     int updateByPrimaryKey(Seller record);
 
+    Seller getSellerId(Long iId);
+
 }

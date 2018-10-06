@@ -36,8 +36,11 @@ public final class WebSocketHandler extends TextWebSocketHandler {
      */
     @Override
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
+        System.out.println("进入了handleMessage方法");
         ToUser user = (ToUser) JSONObject.toBean(JSONObject.fromObject(message.getPayload()), ToUser.class);
         user.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        user.setFromId((String)session.getAttributes().get("userId"));
+        System.out.println("user对象内容为：" + user.toString());
         if (String.valueOf(user.getFromId()).equals(SystemConfig.adminId)) {    //管理员推送系统消息
             webSocketService.sendToAllUsers(user);
         } else {

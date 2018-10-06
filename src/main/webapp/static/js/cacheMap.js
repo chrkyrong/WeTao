@@ -18,16 +18,16 @@ function addChatListFromServer(content) {
         var ul = $('#talk_list');
         var img = $("<img>");
         img.attr("style", "width: 30px; height: 30px;");
-        img.attr("src", msg.path);
+        img.attr("src", "/static/images/" + msg.sIcon);
         var _content = $("<h3>");
         _content.append(img);
-        _content.append(msg.userId);
+        _content.append(msg.sId);
         var li = $('<li>');
         li.attr("style", "padding: 20px 5px; border: thin #eeeeee; border-bottom-style: solid;");
         li.attr("onclick", "li_click(this)");
         ul.append(li);
         //添加头像到缓存中
-        photoMap[msg.userId] = img;
+        photoMap[msg.userId] = msg.path;
     }
 }
 
@@ -47,8 +47,9 @@ function addChatListFromClient(msg) {
 /*
  * 获取聊天记录
  */
-function getChatRecord(id) {
-    if (id in map) {
+function getChatRecord(id, isNew) {
+    $('#content_list').empty();
+    if (!isNew && id in map) {
         append(map[id], false);
     } else {  //查询记录
         //获取对话历史记录
@@ -60,8 +61,10 @@ function getChatRecord(id) {
             success : function (result) {
                 var arr = [];
                 var data = result.data;
-                for (var i in data)
+                for (var i in data) {
+                    console.log(data[i]);
                     arr.push(data[i]);
+                }
                 map[id] = arr;
                 append(map[id], false);
             },
@@ -77,7 +80,7 @@ function getChatRecord(id) {
 //list{fromId:xxx, content:xxx, toId:xxx}
 function append(list, isSingle) {
     //测试用
-    myPhoto = '<img src="static/images/logo-dark.png" style="width: 30px; height: 30px;">';
+    // myPhoto = '<img src="static/images/logo-dark.png" style="width: 30px; height: 30px;">';
     var toId = $('#toId').val();
     var contentList = $('#content_list');
     for(var i in list) {
@@ -85,7 +88,7 @@ function append(list, isSingle) {
         if (!isSingle) {
             //数组元素转为json
             var json = JSON.stringify(list[i]);
-            console.log(json);
+            // console.log(json);
             data = JSON.parse(json);
         } else {
             data = JSON.parse(list[i]);
@@ -94,10 +97,13 @@ function append(list, isSingle) {
         var div_img = $("<div>");
         var div_font = $("<div>");
         var font = $("<h4>");
+        var img = $('<img>');
         if (data.toId === toId) {
             li.addClass("right_div");
             div_img.attr("style", "float: right; margin-left: 20px");
-            div_img.append(myPhoto);
+            img.attr("src", myPhoto);
+            img.attr("style", "width: 30px; height: 30px; margin-right: 20px");
+            div_img.append(img);
             div_font.addClass("right_font");
             div_font.append(font);
             font.append(data.message);
@@ -106,7 +112,9 @@ function append(list, isSingle) {
         } else {
             li.addClass("left_div");
             div_img.attr("style", "float: left; margin-right: 20px");
-            div_img.attr(photoMap[toId]);
+            img.attr("src",photoMap[toId]);
+            img.attr("style", "width: 30px; height: 30px; margin-left: 20px");
+            div_img.attr(img);
             div_font.addClass("left_font");
             div_font.append(font);
             font.append(data.message);
@@ -116,4 +124,30 @@ function append(list, isSingle) {
         contentList.append(li);
         contentList.append('<br>')
     }
+}
+/*
+ * 初始对话列表
+ */
+function initChatList(msg) {
+    console.log(msg);
+    var json = JSON.parse(JSON.stringify(msg));
+    var id = json.sId;
+    var arr = [];
+    arr.push(json);
+    map[id] = arr;
+    //拼接会话列表中的li
+    var ul = $('#talk_list');
+    var img = $("<img>");
+    img.attr("style", "width: 30px; height: 30px; margin-right:10px");
+    img.attr("src", "/static/images/" + json.sIcon);
+    var _content = $("<h3>");
+    _content.append(img);
+    _content.append(json.sId);
+    var li = $('<li>');
+    li.attr("style", "padding: 20px 5px; border: thin #ddd; border-bottom-style: solid;");
+    li.attr("onclick", "li_click(this)");
+    li.append(_content);
+    ul.append(li);
+    //添加头像到缓存中
+    photoMap[msg.userId] = json.sIcon;
 }
