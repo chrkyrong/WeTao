@@ -33,7 +33,9 @@ function addChatListFromServer(content) {
 
 function addChatListFromClient(msg) {
     var id = msg.toId;
+    console.log('the id is ' + id);
     if (id in map) {
+        console.log('the id is in the map >>> ' + id);
         var value = map[id];
         value.push(msg);
     } else {
@@ -47,7 +49,7 @@ function addChatListFromClient(msg) {
  */
 function getChatRecord(id) {
     if (id in map) {
-        append(map[id]);
+        append(map[id], false);
     } else {  //查询记录
         //获取对话历史记录
         $.ajax({
@@ -61,7 +63,7 @@ function getChatRecord(id) {
                 for (var i in data)
                     arr.push(data[i]);
                 map[id] = arr;
-                append(map[id]);
+                append(map[id], false);
             },
             error : function () {
                 var error_li = $('<li>');
@@ -73,34 +75,39 @@ function getChatRecord(id) {
 }
 //拼接对话框中的li
 //list{fromId:xxx, content:xxx, toId:xxx}
-function append(list) {
+function append(list, isSingle) {
     //测试用
     myPhoto = '<img src="static/images/logo-dark.png" style="width: 30px; height: 30px;">';
-
     var toId = $('#toId').val();
     var contentList = $('#content_list');
-    // contentList.empty();
     for(var i in list) {
-        //数组元素转为json
-        var data = JSON.parse(list[i]);
-        var li = $("<span>");
+        var data;
+        if (!isSingle) {
+            //数组元素转为json
+            var json = JSON.stringify(list[i]);
+            console.log(json);
+            data = JSON.parse(json);
+        } else {
+            data = JSON.parse(list[i]);
+        }
+        var li = $("<div>");
         var div_img = $("<div>");
         var div_font = $("<div>");
         var font = $("<h4>");
         if (data.toId === toId) {
-            li.attr("style", "text-align:right; font-size: 20px; margin-right: 1000px");
+            li.addClass("right_div");
             div_img.attr("style", "float: right; margin-left: 20px");
             div_img.append(myPhoto);
-            div_font.attr("style", "float: right; text-align: left; max-width: 40%");
+            div_font.addClass("right_font");
             div_font.append(font);
             font.append(data.message);
             li.append(div_img);
             li.append(div_font);
         } else {
-            li.attr("style", "text-align:left; font-size: 20px; margin-right: 20px");
+            li.addClass("left_div");
             div_img.attr("style", "float: left; margin-right: 20px");
             div_img.attr(photoMap[toId]);
-            div_font.attr("style", "text-align: left; width: 40%; padding-left: 50px");
+            div_font.addClass("left_font");
             div_font.append(font);
             font.append(data.message);
             li.append(div_img);

@@ -118,7 +118,7 @@
                           <!--  <h1 class="b-goods-det__title">Split Sound & Fury Coach's Jacket</h1>-->
                             <span class="b-goods-det__brand">
                                  <!--客服模块，右上角的微淘logo////////////////////////////////////////////////////////////-->
-                                    <a href="shop_single.html"><img class="img-responsive"
+                                    <a href="#" id="server"><img class="img-responsive"
                                                                     src="static/wt/images/logo-kefu.png"
                                                                     alt="brand"></a>
                                 </span>
@@ -526,7 +526,7 @@
 <!-- .footer-->
 </div>
 <!-- end layout-theme-->
-
+<input type="hidden" id="index" value="">
 
 <!-- ++++++++++++-->
 <!-- MAIN SCRIPTS-->
@@ -595,9 +595,7 @@
 </script>
 
 <script src="static/jq/evaluate.js"></script>
-</body>
 
-</html>
 <script>
     $(function () {
         Onload1();
@@ -671,3 +669,17 @@
     })
 </script>
 <script type="text/javascript" src="static/jq/advice.js"></script>
+<script src="static/layer/layer.js"></script>
+<script type="text/javascript">
+    $('#server').on('click', function () {
+        console.log('test');
+        layer.open({
+            type: 2,
+            title: '在线客服',
+            maxmin: true,
+            shadeClose: false,
+            area: ['60%', '80%'],
+            content: 'sellerService.html'
+        });
+    });
+</script>
