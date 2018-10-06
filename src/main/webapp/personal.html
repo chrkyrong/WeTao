@@ -205,8 +205,13 @@
                                     <div class="woocommerce-shipping-fields">
                                         <h3>更改个人头像</h3>
                                         <p class="form-row form-row">
-                                            <label class="">上传</label>
-                                            <!--上传头像模块，u_icon/////////////////////////////////////////////////////////////-->
+                                            <label class=""></label>
+                                            <input type="hidden" name="uIcon" id="icon">
+                                        <div style="width:200px; height:200px; border:none; overflow:hidden;" id="photo">
+                                        </div>
+                                        <!--上传头像模块，i_photos/////////////////////////////////////////////////////////////-->
+                                        <input type="file" id="uIcon" name="photo" onchange="upfilePhoto()"
+                                               required="required">
                                         </p>
                                     </div>
                                 </div>
@@ -351,6 +356,7 @@
 <script src="static/js/user.js"></script>
 <script src="static/js/session.js"></script>
 <script src="static/js/register.js"></script>
+<script src="static/jq/ajaxfileupload.js"></script>
 <script type="text/javascript">
     $(function () {
         var uId=getId();

@@ -7,8 +7,14 @@ import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by lzr on 2018/9/11.
@@ -28,6 +34,7 @@ public class UserController {
     @PostMapping("/user")
     public Result add (User user) throws Exception {
         User user1=userService.register(user);
+
         if(user1!=null)
             return ResultUtil.success(user1);
         else
@@ -105,5 +112,26 @@ public class UserController {
             return ResultUtil.success();
         else
             return ResultUtil.error(ResultEnum.USER_REVISE_PASSWROD_FAIL);
+    }
+    /*加载图片*/
+    @RequestMapping(value = "upFile1")
+    public String upFile1(MultipartFile photo) throws IOException {
+        Date date = new Date();
+        Random random = new Random();
+        String fileName = date.getYear() + "" + date.getMonth() + "" + date.getDate();
+        fileName += random.nextInt()*10;
+        fileName += ".jpg";
+        String path = "E:\\ideaa\\WeTao\\src\\main\\webapp\\static\\images\\user\\";
+        try {
+            System.out.println("sadasdasdasdasdasda");
+            File file=new File(path,fileName);
+            System.out.println("=====================================");
+            photo.transferTo(file);
+        }catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileName;
     }
 }
