@@ -159,18 +159,18 @@
                                         <p class="form-row form-row form-row-first ">
                                             <label>姓 名(Name)</label>
                                             <!--用户姓名，u_user_name/////////////////////////////////////////////////////////////-->
-                                            <input type="text" class="input-text " id="uUserName" name="uUsername" onblur="checknickname()">
+                                            <input type="text" class="input-text " id="uUserName" name="uUsername" onchange="checknickname()">
                                         </p>
                                         <p class="form-row form-row form-row-last ">
                                             <!--用户电话号码，u_tel/////////////////////////////////////////////////////////////-->
                                             <label>联系电话(Tel)</label>
-                                            <input type="text" class="input-text " id="uTel" name="uTel" onblur="checkphone()">
+                                            <input type="text" class="input-text " id="uTel" name="uTel" onchange="checkphone()">
                                         </p>
                                         <div class="clear"></div>
                                         <p class="form-row form-row form-row-wide">
                                             <!--用户默认地址，地址一，u_address1/////////////////////////////////////////////////////////////-->
                                             <label>默认地址(必填，Address)</label>
-                                            <input type="text" class="input-text " id="uAddress1" name="uAddress1" onblur="checkaddress()">
+                                            <input type="text" class="input-text " id="uAddress1" name="uAddress1" onchange="checkaddress()">
                                         </p>
                                         <p class="form-row form-row form-row-wide">
                                             <!--用户地址，地址二，u_address2/////////////////////////////////////////////////////////////-->
@@ -195,6 +195,7 @@
                                             </select>
 
                                             <input type="text" class="input-text " id="uId" name="uId" hidden>
+                                            <input type="text" name="uIcon" id="uIcon" hidden>
                                         </div>
 
 
@@ -206,12 +207,10 @@
                                         <h3>更改个人头像</h3>
                                         <p class="form-row form-row">
                                             <label class=""></label>
-                                            <input type="hidden" name="uIcon" id="icon">
                                         <div style="width:200px; height:200px; border:none; overflow:hidden;" id="photo">
                                         </div>
                                         <!--上传头像模块，i_photos/////////////////////////////////////////////////////////////-->
-                                        <input type="file" id="uIcon" name="photo" onchange="upfilePhoto()"
-                                               required="required">
+                                        <input type="file" id="Icon" name="photo" onchange="upfilePhoto()">
                                         </p>
                                     </div>
                                 </div>

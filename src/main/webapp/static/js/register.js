@@ -3,7 +3,7 @@
  */
 function checkuId() {
     var uId=$("#uId").val();
-    if(uId == "")
+    if(uId == ""|| uId==null)
     {
         alert("账号不能为空或空格");
         return false;
@@ -14,7 +14,7 @@ function checkuId() {
 
 function checknickname() {
     var uUserName=$("#uUserName").val().replace(/(^\s*)|(\s*$)/g,"");
-    if(uUserName == "")
+    if(uUserName == ""|| uUserName==null)
     {
         alert("昵称不能为空或空格");
         return false;
@@ -35,7 +35,7 @@ function checkphone() {
 
 function checkpassword() {
     var password1=$("#uPassword").val().replace(/(^\s*)|(\s*$)/g,"");
-    if(password1 == ""||password1.length<6)
+    if(password1 == ""|| password1==null||password1.length<6)
     {
         alert("密码不能为空或空格并不小于6");
         return false;
@@ -59,7 +59,7 @@ function recheckpassword() {
 
 function checkaddress() {
     var uAddress1=$("#uAddress1").val().replace(/(^\s*)|(\s*$)/g,"");
-    if(uAddress1 == "")
+    if(uAddress1 == ""|| uAddress1==null)
     {
         alert("默认地址不能为空或空格");
         return false;

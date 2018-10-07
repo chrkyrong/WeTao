@@ -153,6 +153,7 @@ function personal(uId) {
             $("#uAddress3").val(result.data.uAddress3);
             $("#uSex").val(result.data.uSex);
             $("#uId").val(result.data.uId);
+            $("#uIcon").val(result.data.uIcon);
             var img="";
             img+='<figure class="tilter__figure">';
             img+='<img class="img-responsive"  src="static/images/user/';
@@ -196,12 +197,12 @@ function  upfilePhoto() {
     $.ajaxFileUpload({
         url:"upFile1",
         secureuri:false,//是否启动安全提交，默认为false
-        fileElementId:"uIcon",//需要上传的文件ID
+        fileElementId:"Icon",//需要上传的文件ID
         dataType:'text',
         success:function (data) {
             alert(data+"----") //测试接受到什么数据
             $("#photo").html("<img  width='200px' height='200px'  src='static/images/user/"+data+"'/>");
-            $("#icon").val(data);
+            $("#uIcon").val(data);
         }
     })
 }

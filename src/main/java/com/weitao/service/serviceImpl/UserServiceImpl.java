@@ -25,7 +25,8 @@ public class UserServiceImpl implements UserService {
         //密码加密
         String password= MD5.md5(user.getuPassword());
         user.setuPassword(password);
-        if(user.getuIcon()==null) {
+        System.out.println(user.getuIcon());
+        if(user.getuIcon()==null||user.getuIcon().equals("")==true) {
             user.setuIcon("Wetao_logo_icon.jpg");
         }
         user.setuStatus((byte) 0);
