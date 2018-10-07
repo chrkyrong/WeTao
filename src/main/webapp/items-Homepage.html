@@ -169,7 +169,7 @@
                             <ul class="nav">
                                 <li class="active"><a href="#chartmain" data-toggle="tab" style="font-size:20px">销量Top10</a>
                                 </li>
-                                <li><a href="#chartmain2" data-toggle="tab" style="font-size:20px">近期销量</a>
+                                <li><a href="#chartmain2" data-toggle="tab" style="font-size:20px">近半年销量</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -360,6 +360,7 @@
                 url: "/half",
                 data: null,
                 success:function (r) {
+                    //alert("coming")
                     var json = '{"price":[';
                     $.each(r.data,function (i,v){
                         json+='"'+v.order.oPrice+'",'
