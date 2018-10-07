@@ -259,7 +259,7 @@
         SELECT <include refid="Base_Column_List" />
         FROM `order`
         <where>
-            AND seller_id=#{sellerId} AND o_status='3'
+            AND seller_id=#{sellerId} AND (o_status='3' OR o_status='9')
             <if test="oId!=null and oId!=''">
                 AND o_id LIKE CONCAT(CONCAT('%',#{oId}),'%')
             </if>
@@ -276,7 +276,7 @@
     <select id="select3" parameterType="int" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List" />
         FROM `order`
-        WHERE seller_id=#{seller_id} AND o_status='3'
+        WHERE seller_id=#{seller_id} AND (o_status='3' OR o_status='9')
     </select>
 
     <!--多条件查询退款中订单-->
