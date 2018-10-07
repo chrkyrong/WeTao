@@ -33,7 +33,7 @@ public class SellerServiceImpl implements SellerService {
         seller.setsPassword(password);
 
         //2、对注册的商家没有上传头像的设置默认头像，并设置状态为0
-        if (seller.getsIcon()==null)
+        if (seller.getsIcon()==null || seller.getsIcon().equals(""))
             seller.setsIcon("seller_default.jpg");
         seller.setsStutas((byte) 0);
 
