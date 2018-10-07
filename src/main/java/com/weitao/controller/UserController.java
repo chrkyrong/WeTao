@@ -121,7 +121,7 @@ public class UserController {
         String fileName = date.getYear() + "" + date.getMonth() + "" + date.getDate();
         fileName += random.nextInt()*10;
         fileName += ".jpg";
-        String path = "E:\\ideaa\\WeTao\\src\\main\\webapp\\static\\images\\user\\";
+        String path = "D:\\WeTao\\src\\main\\webapp\\static\\images\\user\\";
         try {
             System.out.println("sadasdasdasdasdasda");
             File file=new File(path,fileName);
