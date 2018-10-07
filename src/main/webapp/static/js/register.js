@@ -35,9 +35,9 @@ function checkphone() {
 
 function checkpassword() {
     var password1=$("#uPassword").val().replace(/(^\s*)|(\s*$)/g,"");
-    if(password1 == "")
+    if(password1 == ""||password1.length<6)
     {
-        alert("密码不能为空或空格");
+        alert("密码不能为空或空格并不小于6");
         return false;
     }
     else
