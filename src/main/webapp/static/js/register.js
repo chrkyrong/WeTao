@@ -73,10 +73,6 @@ function checkregister() {
     {
         register();
     }
-    else
-    {
-        alert("输入信息有误，请检查");
-    }
 }
 
 function checkchange() {
