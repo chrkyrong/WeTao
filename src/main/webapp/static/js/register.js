@@ -2,7 +2,7 @@
  * Created by Administrator on 2018/10/3.
  */
 function checkuId() {
-    var uId=$("#uId").val();
+    var uId=$("#uId").val().replace(/(^\s*)|(\s*$)/g,"");
     if(uId == ""|| uId==null)
     {
         alert("账号不能为空或空格");
@@ -68,32 +68,24 @@ function checkaddress() {
         return true;
 }
 
+//注册验证
 function checkregister() {
     if(checknickname()==true&&checkphone()==true&&checkpassword()==true&&recheckpassword()==true&&checkaddress()==true)
     {
         register();
     }
 }
-
+//修改信息验证
 function checkchange() {
     if(checknickname()==true&&checkphone()==true&&checkaddress()==true)
     {
         personal_update();
     }
-    else
-    {
-        alert("输入信息有误，请检查");
-    }
 }
-
+//找回密码验证
 function checkchangepassword() {
     if(checkuId()==true&&checkphone()==true&&checkpassword()==true&&recheckpassword()==true)
     {
         rebackpassword();
     }
-    else
-    {
-        alert("输入信息有误，请检查");
-    }
-    
 }
