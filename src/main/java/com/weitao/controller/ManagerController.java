@@ -50,4 +50,11 @@ public class ManagerController {
             return ResultUtil.success(result);
         }
     }
+
+    @GetMapping("/manage/checkPower")
+    public Result checkPower(HttpSession httpSession){
+        Byte power = (Byte) httpSession.getAttribute("power");
+        System.out.println(power);
+        return null;
+    }
 }

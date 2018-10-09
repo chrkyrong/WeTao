@@ -97,7 +97,7 @@ function confirmEvaluate() {
 //文件上传
 function uploadPhoto() {
     $.ajaxFileUpload({
-        contentType: 'application/json;charset=UTF-8',
+        // contentType: 'application/json;charset=UTF-8',
         url: "/evaluate/upFile1",
         secureuri: false,//是否启动安全提交，默认为false
         fileElementId: "upfilePhotoId",//需要上传的文件ID
@@ -109,12 +109,10 @@ function uploadPhoto() {
 }
 
 // 买家查看评论页面预加载
-function Onload4(sellerId) {
-    sellerId = getQueryString('sellerId');
-
+function Onload4() {
     $.ajax({
-        type: 'get',
-        url: '/evaluate/sellerEvaluation?sellerId=' + sellerId,
+        type: 'post',
+        url: '/evaluate/sellerEvaluation' ,
         dataType: 'json',
         data: null,
         success: function (result) {
@@ -130,7 +128,7 @@ function Onload4(sellerId) {
                 }
                 else {
                     s += "</td><td><a class = 'b-goods__media js-zoom-images' href = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'>";
-                    s += "<img alt = 'img' src = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'class ='img-responsive'></a>";
+                    s += "<center><img alt = 'img' src = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'class ='img-responsive' style='height: 50px;width: 50px'></a></center>";
                 }
                 s += "</td><td>" + v.order.oDate;
                 s += "</td><td><div class = 'dropdown'><span style ='color:#FFC125'>详情</span><div class = 'dropdown-content'><p>总价：" + v.order.oPrice + "</p>";

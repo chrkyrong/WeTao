@@ -104,8 +104,8 @@ public class EvaluateController {
     }
 
     //    前端传来sellerId，根据sellerId查询该商家所拥有状态为0的商店，查询出所有评论
-    @GetMapping("/sellerEvaluation")
-    public Result sellerEvaluation(HttpServletRequest request, Integer sellerId) throws Exception {
+    @RequestMapping("/sellerEvaluation")
+    public Result sellerEvaluation(@SessionAttribute(value = "sId", required = false) Integer sellerId) throws Exception {
 //        输出商家id
         System.out.println("sellerId" + sellerId);
         List<EvaluateVo2> evaluateVo2List = evaluateService.sellerEvaluation(sellerId);
@@ -118,20 +118,9 @@ public class EvaluateController {
 
 
     @RequestMapping(value = "/searchEvaluation", method = RequestMethod.POST)
-    public Result searchEvaluation(HttpServletRequest request, String condition, String search, String date, String sellerId) throws Exception {
-//        获得表单中的卖家id
-        sellerId = request.getParameter("sellerId");
-//        获得表单中的搜索框内容
-        search = request.getParameter("search");
-        System.out.println(search);
-//        获得表单中的下拉框中的条件
-        condition = request.getParameter("condition");
-        System.out.println(condition);
-//        获得表单中的时间查询条件
-        date = request.getParameter("date");
-        System.out.println(date);
-//        返回查找的对象
-        List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(Integer.parseInt(sellerId), search, condition, date);
+    public Result searchEvaluation(@SessionAttribute(value = "sId", required = false) Integer sellerId,
+                                   String condition, String search, String date) throws Exception {
+        List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(sellerId, search, condition, date);
         for (EvaluateVo2 oo : evaluateVo2List) {
             System.out.println(oo);
         }
@@ -143,13 +132,9 @@ public class EvaluateController {
     }
 
     @RequestMapping(value = "/formTest", method = RequestMethod.POST)
-    public Result formTest(Model model, HttpServletRequest request, String search, String condition, String date, String sellerId) throws Exception {
-        System.out.println(sellerId);
-        sellerId = request.getParameter("sellerId");
-        search = request.getParameter("search");
-        condition = request.getParameter("condition");
-        date = request.getParameter("date");
-        List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(Integer.parseInt(sellerId), condition, search, date);
+    public Result formTest(@SessionAttribute(value = "sId", required = false) Integer sellerId,
+                           String search, String condition, String date ) throws Exception {
+        List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(sellerId, condition, search, date);
         if (evaluateVo2List != null)
             return ResultUtil.success(evaluateVo2List);
         else

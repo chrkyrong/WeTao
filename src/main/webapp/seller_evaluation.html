@@ -380,6 +380,7 @@
 <script src="static/wt/js/main.js"></script>
 <script src="static/jq/showitems.js"></script>
 <script src="static/js/seller.js"></script>
+<script src="static/jq/tool.js"></script>
 </body>
 
 </html>
@@ -390,16 +391,15 @@
     })
 </script>
 <script type="text/javascript">
-    function onSearch(sellerId) {
-        sellerId = getQueryString("sellerId");
+    function onSearch() {
         var search = $('#searchgo').val();
         var condition = $('#condition').val();
         var date = $('#date').val();
-//        alert(sellerId);
+//        alert(search+""+condition+""+date);
         $.ajax({
             url: '/evaluate/formTest',
             type: 'post',
-            data: {search: search, condition: condition, date: date, sellerId: sellerId},
+            data: {search: search, condition: condition, date: date },
             success: function (result) {
                 var s = "";
                 $.each(result.data, function (i, v) {
@@ -410,7 +410,7 @@
                     s += "</td><td>" + v.evaluateVo.evaluate.eLevel;
                     if (v.evaluateVo.evaluate.ePhotos != null || v.evaluateVo.evaluate.ePhotos != "") {
                         s += "</td><td><a class = 'b-goods__media js-zoom-images' href = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'>";
-                        s += "<img alt = 'img' src = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'class ='img-responsive'></a>";
+                        s += "<center><img alt = 'img' src = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'class ='img-responsive' style='height: 50px;width: 50px'></a></center>";
                     }
                     else {
                         s += "</td><td>无买家秀";
@@ -422,8 +422,8 @@
                 loadpicture();
                 $("#show").html(s);
             },
-            error: function (result) {
-                alert("失败了")
+            error: function () {
+                alert("搜索评论失败")
             }
         })
     }
