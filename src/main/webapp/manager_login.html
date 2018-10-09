@@ -148,8 +148,8 @@
     </header>
     <!-- end .header-->
     <div class="l-main-content l-main-content_w-border">
-
-            <div class="row" style="float: right;margin-right: 1050px">
+        <div class="container">
+            <div class="row" style="float: right;margin-right: 600px">
                 <div class="col-xs-12" >
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
@@ -166,13 +166,13 @@
             </div>
             <div class="row" >
                 <div class="col-md-12">
-                    <div class="woocommerce" style="width:1000px;float: right;margin-right: 180px">
+                    <div class="woocommerce" style="width:1000px;float: right;margin-right: 200px">
 
                         <form id="manager_login" name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               enctype="multipart/form-data" _lpchecked="1">
                             <div class="col2-set" id="customer_details">
                             <!-- 信息输入 -->
-                                <div class="col-1">
+                                <div class="col-1" style="float: right;margin-right: 100px">
                                     <div class="woocommerce-billing-fields"> 
                                     	<h3>输入您的账号和密码</h3>                                   
                                        	
@@ -191,19 +191,19 @@
                             </div>
                             <!-- 确认信息正确后，返回显示数据库自动生成的管理员ID，以用作管理员登陆的账号###########################-->
                             <div id="order_review" class="woocommerce-checkout-review-order">
-
+                                <div id="payment" class="woocommerce-checkout-payment" style="width:520px;float: right;margin-right: 80px">
                                     <div class="form-row place-order">
 		
                                         <input type="submit" class="button alt" id="place_order" value="登 陆 Login"
                                                data-value="Place order" style="width: 480px" onclick="manager_login()"/>
                                     </div>
-
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
+        </div>
     </div>
 
 
