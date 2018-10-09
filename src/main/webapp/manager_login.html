@@ -148,8 +148,8 @@
     </header>
     <!-- end .header-->
     <div class="l-main-content l-main-content_w-border">
-
-            <div class="row" style="float: right;margin-right: 800px">
+        <div class="container">
+            <div class="row" style="float: right;margin-right: 600px">
                 <div class="col-xs-12" >
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
@@ -166,44 +166,44 @@
             </div>
             <div class="row" >
                 <div class="col-md-12">
-                    <div class="woocommerce" style="width:1000px;float: right;">
-                       
-                        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
+                    <div class="woocommerce" style="width:1000px;float: right;margin-right: 200px">
+
+                        <form id="manager_login" name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               enctype="multipart/form-data" _lpchecked="1">
                             <div class="col2-set" id="customer_details">
                             <!-- 信息输入 -->
-                                <div class="col-1">
+                                <div class="col-1" style="float: right;margin-right: 100px">
                                     <div class="woocommerce-billing-fields"> 
                                     	<h3>输入您的账号和密码</h3>                                   
                                        	
                                         <p class="form-row form-row form-row-wide ">
                                             <!--账号，也就是管理员的ID）/////////////////////////////////////////////////////////////-->
                                             <label>账 号 (Password）</label>
-                                            <input class="form-control" type="text" placeholder="Account" name="account">
+                                            <input class="form-control" type="text" placeholder="Account" name="mId">
                                         </p>
                                         <p class="form-row form-row form-row-wide ">
                                             <!--密码，）/////////////////////////////////////////////////////////////-->
                                             <label>密 码 (True Password）</label>
-                                            <input class="form-control" type="text" placeholder="Password" name="password">
+                                            <input class="form-control" type="password" placeholder="Password" name="mPassword">
                                         </p>                     	
                                     </div>
                                 </div>                                
                             </div>
                             <!-- 确认信息正确后，返回显示数据库自动生成的管理员ID，以用作管理员登陆的账号###########################-->
                             <div id="order_review" class="woocommerce-checkout-review-order">
-
+                                <div id="payment" class="woocommerce-checkout-payment" style="width:520px;float: right;margin-right: 80px">
                                     <div class="form-row place-order">
 		
                                         <input type="submit" class="button alt" id="place_order" value="登 陆 Login"
-                                               data-value="Place order" style="width: 480px"/>
+                                               data-value="Place order" style="width: 480px" onclick="manager_login()"/>
                                     </div>
-
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
+        </div>
     </div>
 
 
@@ -325,6 +325,7 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
+<script src="static/js/manager.js"></script>
 
 </body>
 

@@ -3,12 +3,12 @@
  */
 
 //管理员登陆
-function login() {
+function manager_login() {
     $.ajax({
         type: 'post',
-        url: '/manager/login',
+        url: '/manage/login',
         dataType: 'json',
-        data: $('#login').serialize(),
+        data: $("#manager_login").serialize(),
         success: function (r) {
             if(r.code==0) {
                 window.location.href = "manage_seller.html";
