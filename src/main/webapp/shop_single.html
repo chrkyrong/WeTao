@@ -118,7 +118,7 @@
                           <!--  <h1 class="b-goods-det__title">Split Sound & Fury Coach's Jacket</h1>-->
                             <span class="b-goods-det__brand">
                                  <!--客服模块，右上角的微淘logo////////////////////////////////////////////////////////////-->
-                                    <a href="#" id="server"><img class="img-responsive"
+                                    <a href="" id="server"><img class="img-responsive"
                                                                     src="static/wt/images/logo-kefu.png"
                                                                     alt="brand"></a>
                                 </span>
@@ -648,13 +648,14 @@
 <script type="text/javascript">
     $(function () {
         var iId=getQueryString("iId");
+        $('#server').attr("href", "sellerService1.html?iId=" + iId);
         $.ajax({
             type: 'get',
             dataType: 'json',
             url: "/coll/isExist/"+iId,
             data:null,
             success: function (r) {
-                if(r.code==0) {
+                if(r.code===0) {
                     $("#collection").append("<span class='b-goods-det__link' onclick='collection()'><strong ><span id='collect' style='color: #ac2925'>" +
                         "取消收藏</span></strong>" +
                         "<i class='icon fa fa-heart'></i></span>")
@@ -664,21 +665,21 @@
                         "<strong ><span id='collect' >收藏</span></strong>" +
                         "<i class='icon fa fa-heart'></i></span>");
                 }
-            },
+            }
         })
     })
 </script>
 <script type="text/javascript" src="static/jq/advice.js"></script>
 <script src="static/layer/layer.js"></script>
 <script type="text/javascript">
-    $('#server').on('click', function () {
-        layer.open({
-            type: 2,
-            title: '在线客服',
-            maxmin: true,
-            shadeClose: false,
-            area: ['60%', '80%'],
-            content: 'sellerService.html?iId=' + $('#index').val()
-        });
-    });
+//    $('#server').on('click', function () {
+//        layer.open({
+//            type: 2,
+//            title: '在线客服',
+//            maxmin: true,
+//            shadeClose: false,
+//            area: ['60%', '80%'],
+//            content: 'sellerService.html?iId=' + $('#index').val()
+//        });
+//    });
 </script>
