@@ -27,10 +27,6 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public int login(Manager manager) {
-<<<<<<< HEAD
-=======
-        System.out.println(manager.getmId() + "/" + manager.getmPassword());
->>>>>>> ff1b22c59c36004c7373e6d7a84bbce718a45fe9
         //1、根据前端获得的管理员mId查找数据库中的管理员信息
         Manager manager1 = managerMapper.selectByPrimaryKey(manager.getmId());
 
