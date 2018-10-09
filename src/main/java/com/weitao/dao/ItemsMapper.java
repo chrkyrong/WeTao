@@ -55,4 +55,9 @@ public interface ItemsMapper {
     /*根据商家sId查询自己所有商品中销量top10的*/
     List<Items> saleTop(int sId);
 
+    /*管理员管理状态为0的和状态为2的商品*/
+    List<Items> managerItems();
+
+    /*管理员查询商品*/
+    List<Items> manageItems(@Param("search") String search,@Param("iStatus") Integer iStatus);
 }

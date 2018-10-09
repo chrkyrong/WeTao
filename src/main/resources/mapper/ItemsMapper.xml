@@ -300,4 +300,18 @@
     where store_id = st_id and seller_id = #{sId}
     order by i_sale desc limit 10
   </select>
+
+  <!--管理员管理状态为0的或者2的商品（即线上的和强制下架的）-->
+  <select id="managerItems" resultType="com.weitao.bean.Items">
+      select * from items
+      WHERE
+      items.i_status in(0,2)
+  </select>
+
+  <!--管理员查询商品-->
+  <select id="manageItems" parameterType="com.weitao.bean.Items" resultType="com.weitao.bean.Items">
+    SELECT * from items
+    where  items.i_status = #{iStatus}
+    and (items.i_id like '%${search}%' or items.i_name like '%${search}%')
+  </select>
 </mapper>
