@@ -57,4 +57,13 @@ public class ManagerController {
         System.out.println(power);
         return null;
     }
+
+    /**
+     * 退出登录
+     * @param httpSession
+     */
+    @GetMapping("/manage/logout")
+    public void logout(HttpSession httpSession){
+        httpSession.invalidate();
+    }
 }
