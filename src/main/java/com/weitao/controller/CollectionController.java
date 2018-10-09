@@ -1,10 +1,8 @@
 package com.weitao.controller;
 
-import com.weitao.bean.Collection;
 import com.weitao.bean.ItemsCollection;
 import com.weitao.service.CollectionService;
-import com.weitao.utils.Result;
-import com.weitao.utils.ResultUtil;
+import com.weitao.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

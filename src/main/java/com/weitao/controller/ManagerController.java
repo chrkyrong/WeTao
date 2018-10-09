@@ -63,4 +63,13 @@ public class ManagerController {
             return ResultUtil.error(ResultEnum.MANAGE_INSERT_NOPOWER);
         }
     }
+
+    /**
+     * 退出登录
+     * @param httpSession
+     */
+    @GetMapping("/manage/logout")
+    public void logout(HttpSession httpSession){
+        httpSession.invalidate();
+    }
 }

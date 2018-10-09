@@ -2,6 +2,7 @@ package com.weitao.controller;
 
 import com.weitao.bean.message.ToUser;
 import com.weitao.service.ChatService;
+import com.weitao.service.UserService;
 import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class WebSocketController {
 
     @Autowired
     private ChatService chatService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 获取聊天列表
@@ -54,5 +57,15 @@ public class WebSocketController {
     @GetMapping("/getSellerId")
     public Result getSellerId(@RequestParam(value = "iId")Long iId) {
         return ResultUtil.success(chatService.getSellerId(iId));
+    }
+
+    /**
+     *
+     * @param iId
+     * @return
+     */
+    @GetMapping("/getUserId")
+    public Result getUserId(@RequestParam(value = "iId")Integer iId) {
+        return ResultUtil.success(userService.look(iId));
     }
 }

@@ -15,11 +15,10 @@ function send() {
         var content = JSON.stringify({message : message, toId : toId.toString()});
         webSocket.send(content);
         $('#text').val("");
-        addChatListFromClient(JSON.parse(content));
+        var msg = JSON.parse(content);
+        addChatListFromClient(msg);
         //更新列表
-        var arr = [];
-        arr.push(content);
-        append(arr, true);
+        append(msg, true);
     }
 }
 /*
@@ -42,7 +41,7 @@ function li_click(id) {
         var name = $(id).find("h3").text();
         var img = $('<img>');
         img.attr("src", path);
-        img.attr("style", "width: 60px; height: 60px; margin-right: 10px");
+        img.attr("style", "width: 50px; height: 50px; margin-right: 10px");
         head.append(img);
         head.append(name);
     }
