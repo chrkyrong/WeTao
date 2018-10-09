@@ -41,7 +41,9 @@ public enum ResultEnum {
     STORE_INSERT_FAIL("702","店铺添加失败"),
     STORE_CHANGE_FAIL("703","修改店铺信息失败"),
 
-    MANAGE_INSERT_FAIL("901","添加管理员失败")
+    MANAGE_INSERT_FAIL("901","添加管理员失败"),
+    MANAGE_INSERT_GO("902","添加管理员失败"),
+    MANAGE_INSERT_NOPOWER("903","无权限添加管理员")
 
     ;
     private String code;

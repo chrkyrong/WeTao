@@ -32,4 +32,13 @@ public class ManageMapperTest {
 //        返回添加后的主键
         System.out.println(manager.getmId());
     }
+
+    @Test
+    public void name() throws Exception {
+        Integer aa = 0;
+        if(aa == 1){
+            System.out.println("dui");
+        }
+        else System.out.println(".......");
+    }
 }
