@@ -1,6 +1,6 @@
 package com.weitao.exception;
 
-import com.mysql.jdbc.log.LogFactory;
+//import com.mysql.jdbc.log.LogFactory;
 import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import org.slf4j.Logger;

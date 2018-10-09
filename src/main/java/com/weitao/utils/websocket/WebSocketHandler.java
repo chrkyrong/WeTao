@@ -17,7 +17,7 @@ import java.util.Date;
 /**
  * 消息收发类
  */
-@Service
+/*@Service*/
 public final class WebSocketHandler extends TextWebSocketHandler {
 
     @Autowired

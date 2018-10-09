@@ -86,6 +86,7 @@ function display1() {
         success:function (r) {
             $("#sAccount").val(r.data.sAccount);
             $("#sTel").val(r.data.sTel);
+            $("#sIcon").val(r.data.sIcon);
             var img = $('<img>');
             img.attr("src", "static/images/seller/"+r.data.sIcon);
             img.attr("style", "width: 250px;height: 250px;position: absolute;left: 900px;top: 100px");

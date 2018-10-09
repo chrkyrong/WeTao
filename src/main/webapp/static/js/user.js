@@ -97,7 +97,7 @@ function display1(uId) {
 
             var img = "";
             img += '<figure class="tilter__figure">';
-            img += '<img class="img-responsive"  src="static/images/';
+            img += '<img class="img-responsive"  src="static/images/user/';
             img += result.data.uIcon;
             img += '"alt="img">';
             img += ' </figure>';
@@ -153,9 +153,10 @@ function personal(uId) {
             $("#uAddress3").val(result.data.uAddress3);
             $("#uSex").val(result.data.uSex);
             $("#uId").val(result.data.uId);
+            $("#uIcon").val(result.data.uIcon);
             var img="";
             img+='<figure class="tilter__figure">';
-            img+='<img class="img-responsive"  src="static/images/';
+            img+='<img class="img-responsive"  src="static/images/user/';
             img+=result.data.uIcon;
             img+='"alt="img">';
             img+=' </figure>';
@@ -190,4 +191,18 @@ function rebackpassword() {
             console.log(result);
         }
     });
+}
+/*上传图片*/
+function  upfilePhoto() {
+    $.ajaxFileUpload({
+        url:"upFile1",
+        secureuri:false,//是否启动安全提交，默认为false
+        fileElementId:"Icon",//需要上传的文件ID
+        dataType:'text',
+        success:function (data) {
+            alert(data+"----") //测试接受到什么数据
+            $("#photo").html("<img  width='200px' height='200px'  src='static/images/user/"+data+"'/>");
+            $("#uIcon").val(data);
+        }
+    })
 }

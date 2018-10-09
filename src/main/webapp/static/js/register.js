@@ -2,10 +2,10 @@
  * Created by Administrator on 2018/10/3.
  */
 function checkuId() {
-    var uId=$("#uId").val();
-    if(uId=="undefined"|| uId == null|| uId == "")
+    var uId=$("#uId").val().replace(/(^\s*)|(\s*$)/g,"");
+    if(uId == ""|| uId==null)
     {
-        alert("账号不能为空");
+        alert("账号不能为空或空格");
         return false;
     }
     else
@@ -13,10 +13,10 @@ function checkuId() {
 }
 
 function checknickname() {
-    var uUserName=$("#uUserName").val();
-    if(uUserName=="undefined"|| uUserName == null|| uUserName == "")
+    var uUserName=$("#uUserName").val().replace(/(^\s*)|(\s*$)/g,"");
+    if(uUserName == ""|| uUserName==null)
     {
-        alert("昵称不能为空");
+        alert("昵称不能为空或空格");
         return false;
     }
     else
@@ -34,10 +34,10 @@ function checkphone() {
 }
 
 function checkpassword() {
-    var password1=$("#uPassword").val();
-    if(password1=="undefined"|| password1 == null|| password1 == "")
+    var password1=$("#uPassword").val().replace(/(^\s*)|(\s*$)/g,"");
+    if(password1 == ""|| password1==null||password1.length<6)
     {
-        alert("密码不能为空");
+        alert("密码不能为空或空格并不小于6");
         return false;
     }
     else
@@ -45,8 +45,8 @@ function checkpassword() {
 }
 
 function recheckpassword() {
-    var password1=$("#uPassword").val();
-    var password2=$("#uPassword2").val();
+    var password1=$("#uPassword").val().replace(/(^\s*)|(\s*$)/g,"");
+    var password2=$("#uPassword2").val().replace(/(^\s*)|(\s*$)/g,"");
     if(password1!=password2)
     {
         alert("两次密码输入不一致,请重新输入");
@@ -58,46 +58,34 @@ function recheckpassword() {
 }
 
 function checkaddress() {
-    var uAddress1=$("#uAddress1").val();
-    if(uAddress1=="undefined"|| uAddress1 == null|| uAddress1 == "")
+    var uAddress1=$("#uAddress1").val().replace(/(^\s*)|(\s*$)/g,"");
+    if(uAddress1 == ""|| uAddress1==null)
     {
-        alert("默认地址不能为空");
+        alert("默认地址不能为空或空格");
         return false;
     }
     else
         return true;
 }
 
+//注册验证
 function checkregister() {
     if(checknickname()==true&&checkphone()==true&&checkpassword()==true&&recheckpassword()==true&&checkaddress()==true)
     {
         register();
     }
-    else
-    {
-        alert("输入信息有误，请检查");
-    }
 }
-
+//修改信息验证
 function checkchange() {
     if(checknickname()==true&&checkphone()==true&&checkaddress()==true)
     {
         personal_update();
     }
-    else
-    {
-        alert("输入信息有误，请检查");
-    }
 }
-
+//找回密码验证
 function checkchangepassword() {
     if(checkuId()==true&&checkphone()==true&&checkpassword()==true&&recheckpassword()==true)
     {
         rebackpassword();
     }
-    else
-    {
-        alert("输入信息有误，请检查");
-    }
-    
 }

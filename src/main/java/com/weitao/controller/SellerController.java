@@ -81,7 +81,6 @@ public class SellerController {
     @PostMapping("/seller/modify/info")
     public Result modifyInfo(@SessionAttribute(value = "sId", required = false)Integer sId,Seller seller) throws Exception{
         seller.setsId(sId);
-        System.out.println(seller.getsPassword()+seller.getsIcon());
         if(sellerService.modifySeller(seller))
             return ResultUtil.success();
         else
