@@ -169,7 +169,7 @@
                             <ul class="nav">
                                 <li class="active"><a href="#chartmain" data-toggle="tab" style="font-size:20px">销量Top10</a>
                                 </li>
-                                <li><a href="#chartmain2" data-toggle="tab" style="font-size:20px">近半年销量</a>
+                                <li><a href="#chartmain2" data-toggle="tab" style="font-size:20px">近半年销售额</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -375,18 +375,18 @@
                     var json2 = JSON.parse(json);
                     var option = {
                         title:{
-                            text:'您所有商铺近期总销量'
+                            text:'您所有商铺近半年的总销售额'
                         },
                         tooltip:{},
                         legend:{
-                            data:['总销售量']
+                            data:['总销售额']
                         },
                         xAxis:{
                             data:json2.date
                         },
                         yAxis:{},
                         series:{
-                            name:'总销售量',
+                            name:'总销售额',
                             type:'line',
                             data:json2.price
                         }
