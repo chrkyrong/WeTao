@@ -1,5 +1,7 @@
 package com.weitao.service;
 
+import com.weitao.bean.Manager;
+
 /**
  * @Author: hzb
  * @Description: WeTao
@@ -8,4 +10,7 @@ package com.weitao.service;
  * @Time: 10:28
  **/
 public interface ManagerService {
+
+    //根据管理员的mId查找管理员信息
+    int login(Manager manager);
 }
