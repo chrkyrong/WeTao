@@ -202,14 +202,28 @@
     WHERE o_id=#{value}
   </update>
 
+
+
+
   <!--下面是商户-->
+
+
+
+    <!--订单联立用户状态-->
+    <resultMap id="orderAndUserMap" type="com.weitao.bean.Order" extends="BaseResultMap">
+       <association property="user" javaType="com.weitao.bean.User">
+           <id column="u_id" jdbcType="INTEGER" property="uId" />
+           <result column="u_status" jdbcType="TINYINT" property="uStatus" />
+       </association>
+    </resultMap>
+
 
   <!--多条件查询待发货订单-->
   <select id="selectCondition1" parameterType="hashmap" resultMap="BaseResultMap">
-    SELECT <include refid="Base_Column_List" />
-    FROM `order`
+    SELECT <include refid="Base_Column_List" />,user.u_status
+    FROM `order`,`user`
     <where>
-        AND seller_id=#{sellerId} AND o_status='1'
+        AND order.user_id=user.u_id AND seller_id=#{sellerId} AND o_status='1' AND u_status='0'
       <if test="oId!=null and oId!=''">
         AND o_id LIKE CONCAT(CONCAT('%',#{oId}),'%')
       </if>
@@ -223,10 +237,10 @@
   </select>
 
   <!--根据卖家id查询待发货订单-->
-  <select id="select1" parameterType="int" resultMap="BaseResultMap">
-    SELECT <include refid="Base_Column_List" />
-    FROM `order`
-    WHERE seller_id=#{seller_id} AND o_status='1'
+  <select id="select1" parameterType="int" resultMap="orderAndUserMap">
+    SELECT <include refid="Base_Column_List" />,user.u_status
+    FROM `order`,`user`
+    WHERE order.user_id=user.u_id AND seller_id=#{seller_id} AND o_status='1' AND u_status='0'
   </select>
 
     <!--多条件查询已发货订单-->
