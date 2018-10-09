@@ -191,8 +191,8 @@
                     <div class="woocommerce">
              			<div class="row" style="width:400px">
              				<p style="font-size:18px">店铺名</p>
-             				<div class="col-md-6">
-                                <input class="form-control" type="text"  id="stName" name="stName">
+             				<div class="col-md-6" id="inputName">
+                             <!--   <input class="form-control" type="text"  id="stName" name="stName">-->
              				</div>
 							<div class="col-md-6">
                                 <input type="button" value="修改" class="ui-form__btn btn btn-dark"
@@ -406,6 +406,11 @@
 <script type="text/javascript">
     $(function () {
         selectAll(1);
+        var stName = getQueryString("stName");
+        var s = "";
+        s += '<div><input class="form-control" type="text"  id="stName" name="stName" placeholder="' + stName + '"></div>';
+        $("#inputName").html(s);
+        window.location.refresh()
     })
 </script>
 
