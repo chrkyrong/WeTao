@@ -2,6 +2,9 @@ package com.weitao.dao;
 
 import com.weitao.bean.User;
 
+import java.util.List;
+import java.util.Map;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer uId);
 
@@ -13,4 +16,7 @@ public interface UserMapper {
 
     User selectByUserName(String userName);//根据用户名查询用户
 
+    List<User> selectUser();//查询所有用户
+
+    List<User> selectCondition(Map<String,Object> map);//多条件查询用户
 }

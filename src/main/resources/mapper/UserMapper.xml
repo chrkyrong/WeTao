@@ -140,4 +140,29 @@
     SELECT * FROM user WHERE u_user_name=#{arg0}
   </select>
 
+  <!--查询所有用户-->
+  <select id="selectUser" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM USER
+  </select>
+
+  <!--多条件查询用户信息-->
+  <select id="selectCondition" parameterType="hashmap" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM USER
+    <where>
+      <if test="uId!=null and uId!=''">
+        AND u_id LIKE CONCAT(CONCAT('%',#{uId}),'%')
+      </if>
+      <if test="uUserName!=null and uUserName!=''" >
+        AND u_user_name LIKE CONCAT(CONCAT('%',#{uUserName}),'%')
+      </if>
+      <if test="uTel!=null and uTel!=''" >
+        AND u_tel LIKE CONCAT(CONCAT('%',#{uTel}),'%')
+      </if>
+      <if test="uAddress1!=null and uAddress1!=''">
+        AND u_address1 LIKE CONCAT(CONCAT('%',#{uAddress1}),'%')
+      </if>
+    </where>
+  </select>
 </mapper>
