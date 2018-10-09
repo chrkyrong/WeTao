@@ -147,4 +147,39 @@ public class ItemsServiceImpl implements ItemsService {
     public List<Items> saleTop(int sId) {
         return itemsMapper.saleTop(sId);
     }
+
+    @Override
+    public List<Items> managerItems() {
+        return itemsMapper.managerItems();
+    }
+
+    @Override
+    public int managerdeleteItems(Integer iId) {
+        Items items=new Items();
+        items=itemsMapper.selectByPrimaryKey(iId);
+        int iStatus=items.getiStatus();/*判断他的状态*/
+        int iExsit=items.getiExsit();/*判断他的库存*/
+        System.out.println(items);
+        System.out.println(iStatus+"===========");
+        if(iStatus==0){/*假设商品正常要下架，状态变为暂时下架*/
+            items.setiStatus((byte) 2);
+            return itemsMapper.updateByPrimaryKeySelective(items);
+        }
+        if (iStatus==2&&iExsit>0){
+            items.setiStatus((byte) 0);
+            return itemsMapper.updateByPrimaryKeySelective(items);
+        }
+        if (iStatus==2&&iExsit<=0){
+            items.setiStatus((byte) 1);
+            return itemsMapper.updateByPrimaryKeySelective(items);
+        }
+        else {
+            return 0;
+        }
+    }
+
+    @Override
+    public List<Items> manageItems(String search, Integer iStatus) {
+        return itemsMapper.manageItems(search,iStatus);
+    }
 }

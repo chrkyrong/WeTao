@@ -10,7 +10,7 @@ function manager_login() {
         dataType: 'json',
         data: $("#manager_login").serialize(),
         success: function (r) {
-            if(r.code==0&&r.data.mAuthority==0) {
+            if(r.code==0) {
                 window.location.href = "manage_seller.html";
             } else if (r.code==102) {
                 alert("用户名不存在");
