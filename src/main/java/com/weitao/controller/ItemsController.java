@@ -8,7 +8,6 @@ import com.weitao.bean.Items;
 import com.weitao.bean.Store;
 import com.weitao.exception.ResultEnum;
 import com.weitao.service.CategoryService;
-import com.weitao.service.DataService;
 import com.weitao.service.ItemsService;
 import com.weitao.service.StoreService;
 import com.weitao.utils.Result;
@@ -23,9 +22,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -42,8 +43,6 @@ public class ItemsController {
     private StoreService storeService;
     @Autowired
     private CategoryService categoryService;
-    @Autowired
-    private DataService dataService;
 
     /*插入商品*/
     @RequestMapping(value = "/insertItems", method = RequestMethod.POST)
@@ -215,10 +214,10 @@ public class ItemsController {
     /*卖家根据条件查询各店铺下的商品*/
     @RequestMapping(value = "sellerItems")
     public Result sellerItems(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                              @RequestParam(value = "storeId", defaultValue = "1") Integer storeId,
-                              @RequestParam(value = "search") String search, @RequestParam(value = "iStatus", defaultValue = "0") Integer iStatus) {
+                              @RequestParam(value = "storeId") Integer storeId,
+                              @RequestParam(value = "search") String search, @RequestParam(value = "iStatus", defaultValue = "-1") Integer iStatus) {
 
-     /*   System.out.println(search+iStatus+"Sssss");*/
+       System.out.println(search+iStatus+"Sssss");
         Integer pageSize = 7;
      /*   System.out.println(iStatus+"asdhaijskdhakd");*/
         PageHelper.startPage(pageNum, pageSize);
@@ -258,11 +257,38 @@ public class ItemsController {
             return ResultUtil.error(ResultEnum.ITEMS_INSERT_FAIL);
     }
 
-    @GetMapping("/lzh")
-    public Result lzh(){
-        List<Items> itemsList = dataService.selectSale(123);
-        return ResultUtil.success(itemsList);
+    /*管理员管理状态为0的和状态为2的商品*/
+    @RequestMapping("managerItems")
+    public Result managerItems(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum){
+        Integer pageSize=7;
+        PageHelper.startPage(pageNum, pageSize);
+        PageInfo<Items> pageInfo = new PageInfo<>(itemsService.managerItems());
+        return ResultUtil.success(pageInfo);
     }
+    /*管理员修改商品的状态*/
+    @GetMapping(value = "/managerdeleteItems/{iId}")
+    public Result managerdeleteItems(@PathVariable("iId") int iId) {
 
+        int count = itemsService.managerdeleteItems(iId);
+        System.out.println(count + "---------------------------");
+        if (count > 0)//返回值
+        {
+            return ResultUtil.success();
+        } else {
+            return ResultUtil.error(ResultEnum.ITEMS_DELETE_FAIL);
+        }
+    }
+/*管理员查询商品*/
+    @RequestMapping(value = "manageItems")
+    public Result manageItems(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                              @RequestParam(value = "search") String search, @RequestParam(value = "iStatus", defaultValue = "-1") Integer iStatus) {
+
+        System.out.println(search+iStatus+"Sssss");
+        Integer pageSize = 7;
+     /*   System.out.println(iStatus+"asdhaijskdhakd");*/
+        PageHelper.startPage(pageNum, pageSize);
+        PageInfo<Items> pageInfo = new PageInfo<>(itemsService.manageItems( search, iStatus));
+        return ResultUtil.success(pageInfo);
+    }
 }
 

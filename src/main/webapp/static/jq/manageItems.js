@@ -196,6 +196,7 @@ function  fenye1(result) {
     var navEle = $("<nav></nav>").append(ul);
     navEle.appendTo("#fenye");
 }
+/*卖家上下架商品*/
 function delItems(iId) {
     var storeId=iId;
     $.ajax({
@@ -238,4 +239,209 @@ function updateItems(iId) {
             })
         }
     })
+}
+
+/*管理员管理商品*/
+function  managerItems(pageNum) {
+    $.ajax({
+        type:'get',
+        data:{pageNum:pageNum},
+        url:'managerItems',
+        success:function (result) {
+            managerxianshi(result);
+            managerfenye(result);
+        }
+    })
+}
+/*管理员查询完商品后分页*/
+function  managerfenye(result) {
+    var search=$("#search").val();
+    var iStatus=$("#iStatus").val();
+    $("#fenye").empty();
+    var ul = $("<ul></ul>").addClass("pagination");
+    var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"))
+    var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+    //如果没有下一页，则这两个按钮不能点
+    if (result.data.hasPreviousPage == false) {
+        firstPageLi.addClass("disabled");
+        prePageLi.addClass("disabled");
+    }else{
+        //为元素添加翻页事件
+        firstPageLi.click(function(){
+            managerItems(1);
+        });
+        prePageLi.click(function(){
+            managerItems(result.data.pageNum-1);
+        });
+    }
+    ul.append(firstPageLi).append(prePageLi);
+    //遍历navigatepageNums页码提示
+    $.each(result.data.navigatepageNums, function (index, item) {
+        var numLi = $("<li></li>").append($("<a></a>").append(item));
+        if (result.data.pageNum == item) {
+            numLi.addClass("active");
+        }
+        //添加条目单击事件
+        numLi.click(function(){
+            managerItems(item);
+        });
+        ul.append(numLi);
+    })
+    var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+    var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"))
+    if (result.data.hasNextPage == false) {
+        nextPageLi.addClass("disabled");
+        lastPageLi.addClass("disabled");
+    }else{
+        //为元素添加翻页事件
+        nextPageLi.click(function(){
+            managerItems(result.data.pageNum+1);
+        });
+        lastPageLi.click(function(){
+            managerItems(result.data.pages);
+        });
+
+    }
+    //添加下一页和末页的提示
+    ul.append(nextPageLi).append(lastPageLi);
+    //把ul添加到nav
+    var navEle = $("<nav></nav>").append(ul);
+    navEle.appendTo("#fenye");
+}
+
+/*管理员查询商品显示*/
+function managerxianshi(result) {
+    var str="";
+    var hr="";
+    $.each(result.data.list,function (index,items) {
+        if(items['iStatus']==0){
+            iStatus="正常"
+            hr="<a onclick='managerdelItems("+items['iId']+")'> 强制下架 </a>";
+
+        }
+        if (items['iStatus']==2) {
+            iStatus="强制下架"
+            hr="<a onclick='managerdelItems("+items['iId']+")'> 恢复 </a>";
+        }
+
+        str+="<tr>" +
+            "<td>" + items['iId'] + "</td>" +
+            "<td>" + items['iName'] + "</td>" +
+            "<td><a class='b-goods__media js-zoom-images' href=" + 'static/images/' +
+            items['iPhotos'] +
+            ">" +
+            "<img  class='img-responsive' alt='img'  src=" + 'static/images/' +
+            items['iPhotos'] +
+            ">" +
+            "</a></td>" +
+            "<td>" + items['iIntroduction'] + "</td>" +
+            "<td>" + items['iExsit'] + "</td>" +
+            "<td>" + items['iSale'] + "</td>" +
+            "<td>" + items['iPrice'] + "</td>" +
+            "<td>" + iStatus + "</td>" +
+            "<td>"+hr+"</td></tr>"
+    })
+    $("#selectAll").html(str);
+    $("#selectAll").show(str);
+    loadpicture();
+}
+/*管理员管理商品*/
+function managerdelItems(iId) {
+    var storeId=iId;
+    $.ajax({
+        type:'get',
+        dataType:'json',
+        url:'/managerdeleteItems/'+iId,
+        data:null,
+        success: function (result) {
+            if(result.code==0) {
+                var txt=  "操作成功";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                //alert("操作成功");
+                setTimeout("window.location.reload()",1300);
+            }
+            else {
+                window.wxc.xcConfirm(result.msg, window.wxc.xcConfirm.typeEnum.error);
+                setTimeout("window.location.reload()",1300);
+                /*     alert(result.msg)*/
+            }
+        },
+    })
+}
+/*管理员查询*/
+function managerchaxun() {
+    fenyechun1(1)
+}
+function fenyechun1(pageNum) {
+    var search=$("#search").val();
+    var iStatus=$("#iStatus").val();
+
+    $.ajax({
+        type:'get',
+        data:{pageNum:pageNum,search:search,iStatus:iStatus},
+        dateType:'json',
+        url:'manageItems',
+        success:function (result) {
+            /*解析并显示学生数据*/
+            managerxianshi(result);
+            /*解析并显示分页条信息*/
+            fenye2(result);
+        }
+    })
+}
+
+/*管理员查询后分页*/
+function  fenye2(result) {
+    var search=$("#search").val();
+    var iStatus=$("#iStatus").val();
+    $("#fenye").empty();
+    var ul = $("<ul></ul>").addClass("pagination");
+    var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"))
+    var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+    //如果没有下一页，则这两个按钮不能点
+    if (result.data.hasPreviousPage == false) {
+        firstPageLi.addClass("disabled");
+        prePageLi.addClass("disabled");
+    }else{
+        //为元素添加翻页事件
+        firstPageLi.click(function(){
+            fenyechun1(1);
+        });
+        prePageLi.click(function(){
+            fenyechun1(result.data.pageNum-1);
+        });
+    }
+    ul.append(firstPageLi).append(prePageLi);
+    //遍历navigatepageNums页码提示
+    $.each(result.data.navigatepageNums, function (index, item) {
+        var numLi = $("<li></li>").append($("<a></a>").append(item));
+        if (result.data.pageNum == item) {
+            numLi.addClass("active");
+        }
+        //添加条目单击事件
+        numLi.click(function(){
+            fenyechun1(item);
+        });
+        ul.append(numLi);
+    })
+    var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+    var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"))
+    if (result.data.hasNextPage == false) {
+        nextPageLi.addClass("disabled");
+        lastPageLi.addClass("disabled");
+    }else{
+        //为元素添加翻页事件
+        nextPageLi.click(function(){
+            fenyechun1(result.data.pageNum+1);
+        });
+        lastPageLi.click(function(){
+            fenyechun1(result.data.pages);
+        });
+
+    }
+    //添加下一页和末页的提示
+    ul.append(nextPageLi).append(lastPageLi);
+    //把ul添加到nav
+    var navEle = $("<nav></nav>").append(ul);
+    navEle.appendTo("#fenye");
 }

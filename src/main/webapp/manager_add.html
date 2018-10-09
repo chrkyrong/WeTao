@@ -120,13 +120,6 @@
                         <ul class="nav navbar-nav clearfix vcenter">
                             <li><a href="manage_items.html"><h5>商品管理</h5></a>
                             <li><a href="manage_permissions.html"><h5>权限管理</h5></a>
-                            <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
-                            <!--<li><a href="manager_password.html"><h5>修改密码</h5></a>-->
-                            </li>
-                            <!-- <li><span class="header-cart"><a href="#"><i class="icon fa fa-shopping-cart"
-                                                                         aria-hidden="true"></i></a><span
-                                    class="header-cart-count bg-primary">0</span></span>
-                            </li> -->
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
@@ -179,20 +172,13 @@
                                         <p class="form-row form-row form-row-wide ">
                                             <!--密码，）/////////////////////////////////////////////////////////////-->
                                             <label>密 码 (Password）</label>
-                                            <input class="form-control" type="text" placeholder="password" name="password">
+                                            <input class="form-control" type="text" placeholder="password" name="password" id="password1">
                                         </p>
                                         <p class="form-row form-row form-row-wide ">
-                                            <!--确认密码，）/////////////////////////////////////////////////////////////-->
+                                            <!--确认密码//////////////////失焦后就触发js校验/////////////////////////////////////////////////////////////-->
                                             <label>确 认密 码 (True Password）</label>
-                                            <input class="form-control" type="text" placeholder="Same as before" name="spassword">
+                                            <input class="form-control" type="text" placeholder="Same as before" name="spassword" id="password2" onblur="checkManagerPsw()">
                                         </p> 
-                                        <p class="form-row form-row form-row-wide ">
-                                            <!--确认权限，）/////////////////////////////////////////////////////////////-->
-                                            <label>权 限 (Permission）</label>
-                                            <select class="selectpicker" style="height:40px">
-												<option>普通管理员</option>
-											</select>
-                                        </p>                     	
                                     </div>
                                 </div>                                
                             </div>
@@ -204,7 +190,7 @@
                                     <div class="form-row place-order">
 		
                                         <input type="submit" class="button alt" id="place_order1" value="确 认 Save"
-                                               data-value="Place order" />
+                                               data-value="Place order" onclick="manageAdd()" />
                                     </div>
                                     <div class="form-row place-order">
                                         <input type="button" class="button alt" id="place_order2" value="返 回 Return"
@@ -341,5 +327,4 @@
 </body>
 
 </html>
-
-
+<script src="static/js/manager.js"></script>

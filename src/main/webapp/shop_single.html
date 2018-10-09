@@ -244,19 +244,19 @@
                         <!--商品图片展示模块，开始////////////////////////////////////////////////////////////-->
                         <div class="col-md-9 col-md-offset-1">
                             <center>
-                                <div class="entry-media">
-                                    <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
+                                <div class="entry-media" id="showimages">
+                                <!--    <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
                                         <img class="img-responsive" src="static/wt/images/680x500_1.jpg" alt="Foto">
-                                    </a>
-                                    <br><br><br><br>
+                                    </a>-->
+
                                 </div>
                             </center>
-                            <div class="entry-media">
+                          <!--  <div class="entry-media">
                                 <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
                                     <img class="img-responsive" src="static/wt/images/bg-1_1.jpg" alt="Foto">
                                 </a>
                                 <br><br><br><br>
-                            </div>
+                            </div>-->
                         </div>
 
                         <!--模板介绍模块，开始////////////////////////////////////////////////////////////-->
@@ -588,7 +588,15 @@
                     $("#introductionShow").append("<h4 class='b-blockquote__author color-primary'>"+
                         items['iIntroduction']+"</h4>"
                         );
+                    $("#showimages").append("<a class='js-zoom-images' href=" + 'static/images/' +
+                        items['iPhotos'] +
+                        ">"+
+                        "<img class='img-responsive' alt='Foto' src="+'static/images/' +
+                        items['iPhotos'] +
+                        ">"+
+                        "</a> <br><br><br><br>")
                 });
+                loadpicture();
             }
         })
     })

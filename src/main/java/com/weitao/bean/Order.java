@@ -30,6 +30,8 @@ public class Order {
 
     private String oExpress;
 
+    private User user;
+
     public String getoAddress() {
         return oAddress;
     }
@@ -118,6 +120,13 @@ public class Order {
         this.storeId = storeId;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {
@@ -144,6 +153,8 @@ public class Order {
                 .append(oAddress).append('\"');
         sb.append(",\"oExpress\":\"")
                 .append(oExpress).append('\"');
+        sb.append(",\"user\":")
+                .append(user);
         sb.append('}');
         return sb.toString();
     }

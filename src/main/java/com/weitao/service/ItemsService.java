@@ -49,4 +49,13 @@ public interface ItemsService {
     public int updateItems(Items items);
 
     List<Items> saleTop(int sId);
+
+    /*管理员管理状态为0的和状态为2的商品*/
+    public List<Items> managerItems();
+
+    /*g管理员修改商品状态为0和的商品*/
+    public int managerdeleteItems(Integer iId);
+
+    /*管理员查询商品*/
+    public List<Items> manageItems(String search,Integer iStatus);
 }

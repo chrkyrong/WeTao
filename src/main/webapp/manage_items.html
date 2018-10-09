@@ -16,6 +16,7 @@
     <script src="assets/js/separate-js/html5shiv-3.7.2.min.js" type="text/javascript"></script>
     <meta content="no" http-equiv="imagetoolbar">
     <![endif]-->
+    <link rel="stylesheet" href="static/css/xcConfirm.css">
 </head>
 
 <body>
@@ -167,18 +168,16 @@
                     	<form action="">
                     		<div class="row">
                             	<div class="col-md-6">
-                            		<input class="form-control" type="text" placeholder="Your Select" >
+                            		<input class="form-control" type="text" placeholder="Your Select" id="search">
                             		<!-- <input type="text" class="input-text "> -->
                             	</div>
                             	<div class="col-md-6">
-									<select class="selectpicker" style="height:40px">
-										<option>商品ID</option>
-										<option>商品名</option>
-										<option>商铺名</option>
-										<option>简介</option>
+									<select class="selectpicker" style="height:40px" id="iStatus" name="iStatus">
+                                        <option value="0">正在销售</option>
+                                        <option value="2">强制下架</option>
 									</select>
 									&nbsp;&nbsp;
-									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>								
+									<input type="button" value="查询"  onclick="managerchaxun()" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>
                             	</div>
                             </div>
                     	</form>
@@ -192,56 +191,20 @@
                                     	<thead>
                                         	<tr>
                                                 <th style="width:130px">商品ID</th>
-                                                <th style="width:130px">商品名</th>
-                                                <th style="width:130px">商铺名</th>
-                                                <th style="width:200px">图片</th>
-                                                <th style="width:110px">单价</th>
-                                                <th style="width:120px">销售量</th>
-                                                <th style="width:200px">简介</th>
-                                                <th style="width:120px">状态</th>
-                                                <th style="width:130px">操作</th>
+                                                <th style="width:200px">商品名</th>
+                                                <th style="width:200px">商品图片</th>
+                                                <th style="width:300px">商品简介</th>
+                                                <th style="width:130px">库存</th>
+                                                <th style="width:150px">销售量</th>
+                                                <th style="width:150px">商品单价</th>
+                                                <th style="width:130px">状态</th>
+                                                <th style="width:200px">操作</th>
                                              </tr>
                                          </thead>
-                                       	 <tbody>
-                                        	<tr>
-                                                <td>7000000</td>
-                                                <td>超级假发</td>
-                                                <td>程序员的假发小店</td>
-                                                <td>
-                                                	<a class="b-goods__media js-zoom-images"
-                                               			href="static/wt/images/2_1.jpg">
-                                               		<img alt="img" src="static/wt/images/2_1.jpg" class="img-responsive">
-                                               		</a>
-                                                </td>
-                                                <td>800</td>
-                                                <td>1051</td>
-                                                <td>由于允许同时控制多重页面的样式和布局，
-                                                		CSS 可以称得上 WEB 设计领域的一个突破。
-                                                		作为网站开发者，你能够为每个 HTML 元素定义样式，
-                                                		并将之应用于你希望的任意多的页面中。如需进行全局的更新，
-                                                		只需简单地改变样式，然后网站中的所有元素均会自动地更新。
-                                                </td>
-                                                <td>正常</td>
-                                                <td><a href="#"> 下 架 </a></td>
-                                           	</tr>
-                                           	<tr>
-                                                <td>7000001</td>
-                                                <td>柠檬薄片</td>
-                                                <td>良品铺子</td>
-                                                <td>
-                                                	<a class="b-goods__media js-zoom-images"
-                                               			href="static/wt/images/3.jpg">
-                                               		<img alt="img" src="static/wt/images/3.jpg" class="img-responsive">
-                                               		</a>
-                                                </td>
-                                                <td>18</td>
-                                                <td>123456</td>
-                                                <td>广东省肇庆市端州区xx街道xx楼</td>
-                                                <td>正常</td>
-                                                <td><a href="#"> 下 架 </a></td>
-                                           	</tr>                                              
+                                       	 <tbody id="selectAll">
                                        	 </tbody>
-                               		</table>	
+                               		</table>
+                                    <div id="fenye" style="float: right;margin-right: 295px"></div>
                              	</div>                             	
                             </div>                            
                         </form>
@@ -369,9 +332,15 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-
+<script src="static/js/xcConfirm.js"></script>
 </body>
-
 </html>
+<script type="text/javascript">
+    $(function () {
+        managerItems(1);
+    })
+</script>
+<script src="static/jq/manageItems.js"></script>
+<script src="static/jq/showitems.js"></script>
 
 

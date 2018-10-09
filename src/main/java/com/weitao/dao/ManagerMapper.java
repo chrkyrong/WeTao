@@ -15,4 +15,8 @@ public interface ManagerMapper {
     int updateByPrimaryKeySelective(Manager record);
 
     int updateByPrimaryKey(Manager record);
+
+//    edited by Cc
+//    添加普通权限管理员
+    int addManager (Manager manager);
 }

@@ -17,6 +17,8 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:applicationContext.xml"})
 public class ItemsServiceTest {
+
+
     @Test
     public void selectItems1() throws Exception {
         System.out.println(itemsService.selectItems1());
