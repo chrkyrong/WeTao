@@ -39,7 +39,9 @@ public enum ResultEnum {
 
     STORE_NOT_FOUND("701","没有符合该查询条件的店铺"),
     STORE_INSERT_FAIL("702","店铺添加失败"),
-    STORE_CHANGE_FAIL("703","修改店铺信息失败")
+    STORE_CHANGE_FAIL("703","修改店铺信息失败"),
+
+    MANAGE_INSERT_FAIL("901","添加管理员失败")
 
     ;
     private String code;

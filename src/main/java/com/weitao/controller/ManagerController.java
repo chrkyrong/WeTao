@@ -31,4 +31,16 @@ public class ManagerController {
         else
             return ResultUtil.error(ResultEnum.USER_PASSWROD_FAIL);
     }
+
+    @PostMapping("/manage/addManager")
+    public Result addManager(Manager manager){
+        int result = managerService.addManager(manager);
+        if (result == 0){
+//            添加管理员失败
+            return ResultUtil.error(ResultEnum.MANAGE_INSERT_FAIL);
+        }else {
+//            添加管理员成功
+            return ResultUtil.success(result);
+        }
+    }
 }
