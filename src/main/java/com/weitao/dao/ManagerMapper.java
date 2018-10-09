@@ -9,6 +9,7 @@ public interface ManagerMapper {
 
     int insertSelective(Manager record);
 
+    //根据管理员的mId查找管理员
     Manager selectByPrimaryKey(Integer mId);
 
     int updateByPrimaryKeySelective(Manager record);
