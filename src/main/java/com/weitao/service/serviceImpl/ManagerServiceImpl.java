@@ -21,17 +21,18 @@ public class ManagerServiceImpl implements ManagerService {
 
     /**
      * 根据管理员mId查找管理员的信息
+     *
      * @param manager
      * @return
      */
     @Override
     public int login(Manager manager) {
-        System.out.println(manager.getmId()+"/"+manager.getmPassword());
+        System.out.println(manager.getmId() + "/" + manager.getmPassword());
         //1、根据前端获得的管理员mId查找数据库中的管理员信息
-        Manager manager1 =  managerMapper.selectByPrimaryKey(manager.getmId());
+        Manager manager1 = managerMapper.selectByPrimaryKey(manager.getmId());
 
         //2、判断管理员是否存在
-        if (manager1==null)
+        if (manager1 == null)
             return 1;
 
         //3、验证密码是否正确
@@ -43,5 +44,21 @@ public class ManagerServiceImpl implements ManagerService {
             return 2;
 
         return 0;
+    }
+
+    @Override
+    public int addManager(Manager manager) {
+        String password = MD5.md5(manager.getmPassword());
+//        管理员密码加密
+        manager.setmPassword(password);
+//        权限设置为0
+        manager.setmAuthority((byte) 0);
+
+        if (managerMapper.addManager(manager) != 0) {
+//            假如添加管理员成功，则返回刚刚新管理员的id
+            return manager.getmId();
+        } else {
+            return 0;
+        }
     }
 }
