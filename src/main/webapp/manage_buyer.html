@@ -166,11 +166,26 @@
                     	<!-- 查询 -->
                     	<form action="">
                     		<div class="row">
-                            	<div class="col-md-6">
+                            	<!--<div class="col-md-6">
                             		<input class="form-control" type="text" placeholder="Your Select" >
-                            		<!-- <input type="text" class="input-text "> -->
-                            	</div>
-                            	<div class="col-md-6">
+                            		&lt;!&ndash; <input type="text" class="input-text "> &ndash;&gt;
+                            	</div>-->
+                                <div class="col-md-12">
+                                    <label>用户ID：</label>
+                                    <input name="uId"  type="text" placeholder="输入用户ID" id="uId">
+                                    <label>用户名：</label>
+                                    <input name="uUserName"  type="text" placeholder="输入用户名" id="uUserName">
+                                    <label>用户电话：</label>
+                                    <input name="uTel"  type="text" placeholder="输入用户电话" id="uTel">
+                                    <br/>
+                                    <br/>
+                                    <label>用户默认地址：</label>
+                                    <input name="uAddress1"  type="text" placeholder="输入用户默认地址" style="width:400px" id="uAddress1">
+                                    <!--<input name="time" class="form-control" type="date" style="font-size:20px"/>-->
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px" onclick="getUsersConditions()"/>
+                                </div>
+                            <!--	<div class="col-md-6">
 									<select class="selectpicker" style="height:40px">
 										<option>用户ID</option>
 										<option>用户名</option>
@@ -179,7 +194,7 @@
 									</select>
 									&nbsp;&nbsp;
 									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>								
-                            	</div>
+                            	</div>-->
                             </div>
                     	</form>
                         <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
@@ -203,43 +218,11 @@
                                                 <th style="width:130px">操作</th>
                                              </tr>
                                          </thead>
-                                       	 <tbody>
-                                        	<tr>
-                                                <td>7000000</td>
-                                                <td>超级买家</td>
-                                                <td>
-                                                	<a class="b-goods__media js-zoom-images"
-                                               			href="static/wt/images/2_1.jpg">
-                                               		<img alt="img" src="static/wt/images/2_1.jpg" class="img-responsive">
-                                               		</a>
-                                                </td>
-                                                <td>男</td>
-                                                <td>12345678901</td>
-                                                <td>广东省肇庆市端州区xx街道xx楼</td>
-                                                <td>广东省肇庆市端州区xx街道xx楼</td>
-                                                <td>广东省肇庆市端州区xx街道xx楼</td>
-                                                <td>正常</td>
-                                                <td><a href="#"> 拉 黑 </a></td>
-                                           	</tr>
-                                           	<tr>
-                                                <td>7000001</td>
-                                                <td>zxc123</td>
-                                                <td>
-                                                	<a class="b-goods__media js-zoom-images"
-                                               			href="static/wt/images/2.jpg">
-                                               		<img alt="img" src="static/wt/images/2.jpg" class="img-responsive">
-                                               		</a>
-                                                </td>
-                                                <td>女</td>
-                                                <td>12345678902</td>
-                                                <td>广东省肇庆市端州区xx街道xx楼</td>
-                                                <td>无</td>
-                                                <td>无</td>
-                                                <td>正常</td>
-                                                <td><a href="#"> 拉 黑 </a></td>
-                                           	</tr>                                              
+                                       	 <tbody id="users">
                                        	 </tbody>
-                               		</table>	
+                               		</table>
+                                </div>
+                                <div id="fenye"></div>
                              	</div>                             	
                             </div>                            
                         </form>
@@ -367,9 +350,13 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-
+<script src="static/js/manager_buyer.js"></script>
 </body>
-
+<script>
+    $(function () {
+        getusers(1);
+    })
+</script>
 </html>
 
 

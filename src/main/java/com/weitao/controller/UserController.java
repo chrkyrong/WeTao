@@ -1,5 +1,7 @@
 package com.weitao.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.sun.org.apache.regexp.internal.RE;
 import com.weitao.bean.User;
 import com.weitao.exception.ResultEnum;
 import com.weitao.service.UserService;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -134,5 +138,75 @@ public class UserController {
             e.printStackTrace();
         }
         return fileName;
+    }
+
+    /**
+     * 根据id封号
+     * @param uId
+     * @return
+     */
+    @GetMapping("/user/lock")
+    public Result lockByUserId(int uId)
+    {
+        if(userService.lockByUserId(uId))
+            return ResultUtil.success();
+        else
+            return ResultUtil.error(ResultEnum.USER_LOCK_FAIL);
+    }
+
+    /**
+     * 根据id解封
+     * @param uId
+     * @return
+     */
+    @GetMapping("/user/unlock")
+    public Result unlockByUserId(int uId)
+    {
+        if(userService.unlockByUserId(uId))
+            return ResultUtil.success();
+        else
+            return ResultUtil.error(ResultEnum.USER_UNLOCK_FAIL);
+    }
+
+    /**
+     * 分页查询所有用户
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("/user/all")
+    public Result getUsers(@RequestParam(defaultValue = "1")Integer pageNum,@RequestParam(defaultValue = "3")Integer pageSize)
+    {
+        PageInfo pageInfo=userService.lookUsers(pageNum,pageSize);
+        if(pageInfo!=null)
+            return ResultUtil.success(pageInfo);
+        else
+            return ResultUtil.error(ResultEnum.USER_GET_FAIL);
+
+    }
+
+    /**
+     * 多条件查询用户
+     * @param uId
+     * @param uUserName
+     * @param uTel
+     * @param uAddress1
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/user/get/conditions")
+    public Result getConditions(Integer uId,String uUserName,String uTel,String uAddress1,@RequestParam(defaultValue = "1")Integer pageNum,@RequestParam(defaultValue = "3")Integer pageSize)
+    {
+        Map<String,Object> map=new HashMap<>();
+        map.put("uId",uId);
+        map.put("uUserName",uUserName);
+        map.put("uTel",uTel);
+        map.put("uAddress1",uAddress1);
+        PageInfo pageInfo=userService.getConditions(map,pageNum,pageSize);
+        if(pageInfo!=null)
+            return ResultUtil.success(pageInfo);
+        else
+            return ResultUtil.error(ResultEnum.USER_GET_FAIL);
     }
 }

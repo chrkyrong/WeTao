@@ -1,6 +1,9 @@
 package com.weitao.service;
 
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.User;
+
+import java.util.Map;
 
 /**
  * Created by lzr on 2018/9/11.
@@ -17,4 +20,12 @@ public interface UserService {
     Boolean revise(User user);//修改用户信息
 
     Boolean revisePassword(User user);//修改用户密码
+
+    Boolean lockByUserId(int userId);//封用户
+
+    Boolean unlockByUserId(int userId);//解封用户
+
+    PageInfo lookUsers(int pageNum, int pageSize);//分页查询所有用户
+
+    PageInfo getConditions(Map<String,Object> map,int pageNum, int pageSize);//分页查询所有用户
 }

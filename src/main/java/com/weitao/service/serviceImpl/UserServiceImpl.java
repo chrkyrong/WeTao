@@ -1,5 +1,7 @@
 package com.weitao.service.serviceImpl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.User;
 import com.weitao.dao.UserMapper;
 import com.weitao.exception.ResultEnum;
@@ -10,6 +12,9 @@ import com.weitao.utils.Result;
 import com.weitao.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lzr on 2018/9/11.
@@ -96,5 +101,53 @@ public class UserServiceImpl implements UserService {
             return true;
         else
             return false;
+    }
+
+    @Override
+    public Boolean lockByUserId(int userId) {
+        //根据用户id查询用户
+        User user=userMapper.selectByPrimaryKey(userId);
+        //封号
+        user.setuStatus((byte) 1);
+        //修改用户状态
+        if(userMapper.updateByPrimaryKeySelective(user)>0)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public Boolean unlockByUserId(int userId) {
+        //根据用户id查询用户
+        User user=userMapper.selectByPrimaryKey(userId);
+        //解封
+        user.setuStatus((byte) 0);
+        //修改用户状态
+        if(userMapper.updateByPrimaryKeySelective(user)>0)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public PageInfo lookUsers(int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum,pageSize);
+        //查询所有用户
+        List<User> userList=userMapper.selectUser();
+        //封装到分页对象
+        PageInfo pageInfo=new PageInfo(userList);
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo getConditions(Map<String, Object> map, int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum,pageSize);
+        //多条件查询用户
+        List<User> userList=userMapper.selectCondition(map);
+        //封装到分页对象
+        PageInfo pageInfo=new PageInfo(userList);
+        return pageInfo;
     }
 }
