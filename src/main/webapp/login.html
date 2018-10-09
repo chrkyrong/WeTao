@@ -36,8 +36,8 @@
                         <form class="search-global">
                             <input class="search-global__input" type="text" placeholder="Type to search"
                                    autocomplete="off" name="search" value="" id="search">
-                            <button class="search-global__btn" onclick="search2()"><i
-                                    class="icon stroke icon-Search"></i>
+                            <button class="search-global__btn" onclick="search2()">
+                                <i class="icon stroke icon-Search"></i>
                             </button>
                             <div class="search-global__note">Begin typing your search above and press return to
                                 search.
@@ -57,7 +57,7 @@
                     <div class="header-navibox-1">
                         <ul class="main-menu yamm nav navbar-nav">
                             <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a><h5>       </h5></a>
+                            <li><a><h5></h5></a>
                             </li>
                             <li><a href="home.html"><h5>主 页</h5></a>
                             </li>
@@ -66,23 +66,6 @@
                         </ul>
                     </div>
                     <div class="header-navibox-2">
-                        <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
-                        <ul class="nav navbar-nav clearfix vcenter">
-                            <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
-                            </li>
-
-                            <!--购物车模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
-                                    </span>
-                            </li>
-                        </ul>
-                        <ul class="nav-language list-inline">
-                            <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
-                            <li><a href="register.html">注 册</a>
-                            </li>
-                            <li><a href="home.html">返 回</a>
-                            </li>
-                        </ul>
                         <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
                         <a class="navbar-brand scroll" href="home.html">
                             <img class="normal-logo" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
@@ -101,17 +84,17 @@
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
                             <!--第一行文字/////////////////////////////////////////////////////////////-->
-                            <li><a href=""><h4>登陆微淘吧</h4></a>
+                            <li><a href=""><h4>登陆微淘吧~</h4></a>
                             </li>
                         </ol>
                     </div>
                     <div class="section-title-page section-title-page_mod-a">
                         <!--第二行文字/////////////////////////////////////////////////////////////-->
-                        <h1 class="ui-title-page">L o g i n</h1>
+                        <h1 class="ui-title-page"><strong>L o g i n</strong></h1>
                     </div>
                     <div class="woocommerce-info">没有账号?&nbsp; &nbsp;
                         <!--点击此处跳转到登陆界面/////////////////////////////////////////////////////////////-->
-                        <a href="register.html" class="showcoupon">点击此处注册</a></div>
+                        <a href="register.html" class="showcoupon"><strong>点击此处注册</strong></a></div>
                     <br/>
                 </div>
             </div>
@@ -120,19 +103,19 @@
 
 
                     <div class="woocommerce">
-                        <form class="checkout_coupon" method="post" style="display:none">
-                            <p class="form-row form-row-first">
-                                <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code"
-                                       id="coupon_code" value="">
-                            </p>
-                            <p class="form-row form-row-last">
-                                <input type="submit" class="button" name="apply_coupon" value="Apply Coupon">
-                            </p>
-                            <div class="clear"></div>
-                        </form>
+
                         <form id="checkout" method="post" class="checkout woocommerce-checkout"
                               enctype="multipart/form-data" _lpchecked="1">
                             <div class="col2-set" id="customer_details">
+                                <div class="col-2">
+                                    <!--<div class="woocommerce-shipping-fields">-->
+                                        <!--<p class="form-row form-row">-->
+                                            <!--右侧图标位置/////////////////////////////////////////////////////////////-->
+                                            <img class="img-responsive" width="350" height="350"
+                                                 src="static/wt/images/WeTao_logo_big.jpg" alt="img">
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                </div>
                                 <div class="col-1">
                                     <div class="woocommerce-billing-fields">
                                         <!--注册表单/////////////////////////////////////////////////////////////-->
@@ -150,33 +133,16 @@
                                         <br/>
                                         <div class="woocommerce-info">忘记密码?&nbsp; &nbsp;
                                             <!--点击此处跳转到登陆界面/////////////////////////////////////////////////////////////-->
-                                            <a href="change_password.html" class="showcoupon">点击此处找回密码</a></div>
+                                            <a href="change_password.html" class="showcoupon"><strong>点击此处找回密码</strong></a></div>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="woocommerce-shipping-fields">
-                                        <!--<h3>欢迎来到微淘</h3>-->
-                                        <p class="form-row form-row">
-                                            <!--右侧图标位置/////////////////////////////////////////////////////////////-->
-                                            <a class="b-goods__media js-zoom-images"
-                                               href="assets/media/content/goods/group-4/2.jpg">
-                                                <img class="img-responsive" width="300" height="300" src="static/wt/images/WeTao_logo_big.jpg" alt="img">
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
+
                             </div>
                             <!--<h3 id="order_review_heading">确认无误，登陆</h3>-->
                             <div id="order_review" class="woocommerce-checkout-review-order">
-
-                                <div id="payment" class="woocommerce-checkout-payment">
-
-                                    <div class="form-row place-order">
-
-                                        <input type="button" class="button alt" id="place_order" value="登 陆 login" data-value="Place order" onclick="login()" />
-                                    </div>
-                                </div>
+                                <input type="button" class="button alt" id="place_order" value="登 陆 login"
+                                       style="width: 550px" onclick="login()"/>
                             </div>
                         </form>
                     </div>
