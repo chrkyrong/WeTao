@@ -39,7 +39,9 @@ public class ManagerServiceImpl implements ManagerService {
         if (!password.equals(manager1.getmPassword()))
             return 2;
 
-        return 0;
+        if (manager1.getmAuthority()==0)
+            return 0;
+        return 3;
     }
 
     @Override

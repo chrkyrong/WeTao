@@ -7,6 +7,8 @@ import com.weitao.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @Author:Cc
  * @Date:2018/10/9
@@ -22,10 +24,15 @@ public class ManagerController {
     private ManagerService managerService;
 
     @PostMapping("/manage/login")
-    public Result login(Manager manager) {
+    public Result login(HttpSession httpSession, Manager manager) {
         int result = managerService.login(manager);
-        if (result==0)
+        if (result==0) {
+            httpSession.setAttribute("power",0);
             return ResultUtil.success();
+        } else if (result==3){
+            httpSession.setAttribute("power",1);
+            return ResultUtil.success();
+        }
         else if (result==1)
             return ResultUtil.error(ResultEnum.USER_NOT_EXIST);
         else
