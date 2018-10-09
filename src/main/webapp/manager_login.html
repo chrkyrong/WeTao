@@ -121,7 +121,7 @@
                             <li><a href="manage_items.html"><h5>商品管理</h5></a>
                             <li><a href="manage_permissions.html"><h5>权限管理</h5></a>
                             <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="manager_password.html"><h5>修改密码</h5></a>
+                            <!--<li><a href="manager_password.html"><h5>修改密码</h5></a>-->
                             </li>
                             <!-- <li><span class="header-cart"><a href="#"><i class="icon fa fa-shopping-cart"
                                                                          aria-hidden="true"></i></a><span
@@ -138,8 +138,8 @@
                         <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
                         <a class="navbar-brand scroll" href="home.html">
                             <!--导航栏最中间的logo/////////////////////////////////////////////////////////////////////////////////-->
-                            <img class="normal-logo" src="static/wt/images/logo.png" alt="logo">
-                            <img class="scroll-logo hidden-xs" src="static/wt/images/logo.png" alt="logo">
+                            <img class="normal-logo" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
+                            <img class="scroll-logo hidden-xs" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -148,9 +148,9 @@
     </header>
     <!-- end .header-->
     <div class="l-main-content l-main-content_w-border">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
+
+            <div class="row" style="float: right;margin-right: 800px">
+                <div class="col-xs-12" >
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
                             <!--第一行文字/////////////////////////////////////////////////////////////-->
@@ -164,9 +164,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-12">
-                    <div class="woocommerce">
+                    <div class="woocommerce" style="width:1000px;float: right;">
                        
                         <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
                               enctype="multipart/form-data" _lpchecked="1">
@@ -192,20 +192,18 @@
                             <!-- 确认信息正确后，返回显示数据库自动生成的管理员ID，以用作管理员登陆的账号###########################-->
                             <div id="order_review" class="woocommerce-checkout-review-order">
 
-                                <div id="payment" class="woocommerce-checkout-payment">
-
                                     <div class="form-row place-order">
 		
                                         <input type="submit" class="button alt" id="place_order" value="登 陆 Login"
-                                               data-value="Place order"/>
+                                               data-value="Place order" style="width: 480px"/>
                                     </div>
-                                </div>
+
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 
 
@@ -298,10 +296,7 @@
 
 <!-- ++++++++++++-->
 <!-- MAIN SCRIPTS-->
-<!-- ++++++++++++-->
-<script src="../js/jquery-1.12.4.min.js"></script>
-<script src="../js/jquery-migrate-1.2.1.js"></script>
-<script src="../js/modernizr.custom.js"></script>
+
 <!-- Bootstrap-->
 <script src="static/wt/js/jquery-1.12.4.min.js"></script>
 <script src="static/wt/js/jquery-migrate-1.2.1.js"></script>
