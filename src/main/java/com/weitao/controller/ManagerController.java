@@ -23,7 +23,7 @@ public class ManagerController {
 
     @PostMapping("/manage/login")
     public Result login(Manager manager) {
-        int result = managerService.logitgin(manager);
+        int result = managerService.login(manager);
         if (result==0)
             return ResultUtil.success();
         else if (result==1)
