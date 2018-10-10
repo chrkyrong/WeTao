@@ -107,6 +107,9 @@ public class UserServiceImpl implements UserService {
     public Boolean lockByUserId(int userId) {
         //根据用户id查询用户
         User user=userMapper.selectByPrimaryKey(userId);
+        //验证是否被锁定
+        if(user.getuStatus()==1)
+            throw new UserException(ResultEnum.USER_LOCK);
         //封号
         user.setuStatus((byte) 1);
         //修改用户状态
@@ -120,6 +123,9 @@ public class UserServiceImpl implements UserService {
     public Boolean unlockByUserId(int userId) {
         //根据用户id查询用户
         User user=userMapper.selectByPrimaryKey(userId);
+        //验证是否是正常
+        if(user.getuStatus()==0)
+            throw new UserException(ResultEnum.USER_NORMAL);
         //解封
         user.setuStatus((byte) 0);
         //修改用户状态

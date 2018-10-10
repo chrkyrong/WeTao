@@ -105,6 +105,10 @@ function lockUser(uId) {
                 alert("成功封了该用户");
                 window.location.reload();
             }
+            if(result.code==109)
+            {
+                alert("该用户已被封");
+            }
             console.log(result);
         }
     });
@@ -121,6 +125,10 @@ function unlockUser(uId) {
             if(result.code==0) {
                 alert("成功解封该用户");
                 window.location.reload();
+            }
+            if(result.code==112)
+            {
+                alert("该用户状态正常");
             }
             console.log(result);
         }
