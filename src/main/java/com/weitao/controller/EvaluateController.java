@@ -1,5 +1,7 @@
 package com.weitao.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Evaluate;
 import com.weitao.bean.Order;
 import com.weitao.bean.Order_detail;
@@ -105,12 +107,17 @@ public class EvaluateController {
 
     //    前端传来sellerId，根据sellerId查询该商家所拥有状态为0的商店，查询出所有评论
     @RequestMapping("/sellerEvaluation")
-    public Result sellerEvaluation(@SessionAttribute(value = "sId", required = false) Integer sellerId) throws Exception {
+    public Result sellerEvaluation(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                 @SessionAttribute(value = "sId", required = false) Integer sellerId) throws Exception {
+        Integer pageSize=6;//每页显示的条数
 //        输出商家id
         System.out.println("sellerId" + sellerId);
-        List<EvaluateVo2> evaluateVo2List = evaluateService.sellerEvaluation(sellerId);
-        if (evaluateVo2List != null)
-            return ResultUtil.success(evaluateVo2List);
+        PageHelper.startPage(pageNum,pageSize);//用pagehelper插件
+
+        PageInfo<EvaluateVo2> pageInfo=new PageInfo<>(evaluateService.sellerEvaluation(sellerId));
+  /*      List<EvaluateVo2> evaluateVo2List = evaluateService.sellerEvaluation(sellerId);*/
+        if (pageInfo != null)
+            return ResultUtil.success(pageInfo);
         else {
             return ResultUtil.error(ResultEnum.EVALUATE_NOT_FOUND_EVALUATION);
         }
@@ -132,11 +139,15 @@ public class EvaluateController {
     }
 
     @RequestMapping(value = "/formTest", method = RequestMethod.POST)
-    public Result formTest(@SessionAttribute(value = "sId", required = false) Integer sellerId,
+    public Result formTest(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                            @SessionAttribute(value = "sId", required = false) Integer sellerId,
                            String search, String condition, String date ) throws Exception {
-        List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(sellerId, condition, search, date);
-        if (evaluateVo2List != null)
-            return ResultUtil.success(evaluateVo2List);
+        Integer pageSize=6;
+        PageHelper.startPage(pageNum,pageSize);
+        PageInfo<EvaluateVo2> pageInfo=new PageInfo<>(evaluateService.searchEvaluation(sellerId, condition, search, date));
+/*        List<EvaluateVo2> evaluateVo2List = evaluateService.searchEvaluation(sellerId, condition, search, date);*/
+        if (pageInfo != null)
+            return ResultUtil.success(pageInfo);
         else
             return ResultUtil.error(ResultEnum.EVALUATE_NOT_FOUND_EVALUATION);
     }

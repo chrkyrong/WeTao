@@ -254,6 +254,7 @@
                                         <tbody id="show">
                                         </tbody>
                                     </table>
+                                    <div id="fenye" style="float: right;margin-right: 295px"></div>
                                 </div>
                             </div>
                         </form>
@@ -378,55 +379,18 @@
 <script src="static/wt/js/imagesloaded.pkgd.min.js"></script>
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
-<script src="static/jq/showitems.js"></script>
-<script src="static/js/seller.js"></script>
-<script src="static/jq/tool.js"></script>
+
 </body>
 
 </html>
-<script type="text/javascript" charset="UTF-8" src="static/jq/evaluate.js"></script>
 <script type="text/javascript">
     $(function () {
-        Onload4();
+        Onload4(1);
     })
 </script>
-<script type="text/javascript">
-    function onSearch() {
-        var search = $('#searchgo').val();
-        var condition = $('#condition').val();
-        var date = $('#date').val();
-//        alert(search+""+condition+""+date);
-        $.ajax({
-            url: '/evaluate/formTest',
-            type: 'post',
-            data: {search: search, condition: condition, date: date },
-            success: function (result) {
-                var s = "";
-                $.each(result.data, function (i, v) {
-                    s += "<tr><td>" + v.evaluateVo.items.iName;
-                    s += "</td><td>" + v.store.stName;
-                    s += "</td><td>" + v.evaluateVo.user.uUserName;
-                    s += "</td><td>" + v.evaluateVo.evaluate.eDescription;
-                    s += "</td><td>" + v.evaluateVo.evaluate.eLevel;
-                    if (v.evaluateVo.evaluate.ePhotos != null || v.evaluateVo.evaluate.ePhotos != "") {
-                        s += "</td><td><a class = 'b-goods__media js-zoom-images' href = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'>";
-                        s += "<center><img alt = 'img' src = 'static/images/" + v.evaluateVo.evaluate.ePhotos + "'class ='img-responsive' style='height: 50px;width: 50px'></a></center>";
-                    }
-                    else {
-                        s += "</td><td>无买家秀";
-                    }
-                    s += "</td><td>" + v.order.oDate;
-                    s += "</td><td><div class = 'dropdown'><span style ='color:#FFC125'>详情</span><div class = 'dropdown-content'><p>总价：" + v.order.oPrice + "</p>";
-                    s += "<p>留言：" + v.order.oMessage + "</p></div></div></td></tr>";
-                })
-                loadpicture();
-                $("#show").html(s);
-            },
-            error: function () {
-                alert("搜索评论失败")
-            }
-        })
-    }
-</script>
+<script src="static/jq/showitems.js"></script>
+<script src="static/js/seller.js"></script>
+<script src="static/jq/tool.js"></script>
+<script src="static/jq/evaluate.js"></script>
 
 
