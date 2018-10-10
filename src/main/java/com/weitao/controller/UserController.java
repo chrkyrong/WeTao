@@ -182,7 +182,6 @@ public class UserController {
             return ResultUtil.success(pageInfo);
         else
             return ResultUtil.error(ResultEnum.USER_GET_FAIL);
-
     }
 
     /**

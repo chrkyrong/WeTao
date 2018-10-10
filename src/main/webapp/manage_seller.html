@@ -166,9 +166,9 @@
                     	<!-- 查询 -->
                     	<form action="">
                     		<div class="row">
-                            	<div class="col-md-6">
+                            	<!--<div class="col-md-6">
                             		<input class="form-control" type="text" placeholder="Your Select" >
-                            		<!-- <input type="text" class="input-text "> -->
+                            		&lt;!&ndash; <input type="text" class="input-text "> &ndash;&gt;
                             	</div>
                             	<div class="col-md-6">
 									<select class="selectpicker" style="height:40px">
@@ -179,7 +179,18 @@
 									</select>
 									&nbsp;&nbsp;
 									<input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px"/>								
-                            	</div>
+                            	</div>-->
+                                <div class="col-md-12">
+                                    <label>商家ID：</label>
+                                    <input name="sId"  type="text" placeholder="输入商家ID" id="sId">
+                                    <label>商家昵称：</label>
+                                    <input name="sAccount"  type="text" placeholder="输入商家昵称" id="sAccount">
+                                    <label>商家电话：</label>
+                                    <input name="sTel"  type="text" placeholder="输入商家电话" id="sTel">
+                                    <!--<input name="time" class="form-control" type="date" style="font-size:20px"/>-->
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="button" value="查询" class="ui-form__btn btn btn-dark" style="min-width:80px;font-size:14px;line-height:40px" onclick="getSellersConditions()"/>
+                                </div>
                             </div>
                     	</form>
                         <form name="checkout" method="post" class="checkout woocommerce-checkout" action="checkout/"
@@ -192,7 +203,7 @@
                                     	<thead>
                                         	<tr>
                                                 <th style="width:150px">商家ID</th>
-                                                <th style="width:150px">商家账号</th>
+                                                <th style="width:150px">商家昵称</th>
                                                 <th style="width:200px">头像</th>
                                                 <th style="width:100px">性别</th>
                                                 <th style="width:180px">电话</th>
@@ -201,40 +212,11 @@
                                                 <th style="width:150px">操作</th>
                                              </tr>
                                          </thead>
-                                       	 <tbody>
-                                        	<tr>
-                                                <td>7000000</td>
-                                                <td>asd123</td>
-                                                <td>
-                                                	<a class="b-goods__media js-zoom-images"
-                                               			href="static/wt/images/2_1.jpg">
-                                               		<img alt="img" src="static/wt/images/2_1.jpg" class="img-responsive">
-                                               		</a>
-                                                </td>
-                                                <td>男</td>
-                                                <td>12345678901</td>
-                                                <td>广东省肇庆市端州区xx街道xx楼</td>
-                                                <td>正常</td>
-                                                <td><a href="#"> 拉 黑 </a></td>
-                                           	</tr>
-                                           	<tr>
-                                                <td>7000001</td>
-                                                <td>zxc123</td>
-                                                <td>
-                                                	<a class="b-goods__media js-zoom-images"
-                                               			href="static/wt/images/2.jpg">
-                                               		<img alt="img" src="static/wt/images/2.jpg" class="img-responsive">
-                                               		</a>
-                                                </td>
-                                                <td>女</td>
-                                                <td>12345678902</td>
-                                                <td>广东省肇庆市端州区xx街道xx楼</td>
-                                                <td>正常</td>
-                                                <td><a href="#"> 拉 黑 </a></td>
-                                           	</tr>                                              
+                                       	 <tbody id="sellers">
                                        	 </tbody>
                                		</table>	
-                             	</div>                             	
+                             	</div>
+                                <div id="fenye"></div>
                             </div>                            
                         </form>
                     </div>
@@ -362,8 +344,13 @@
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
 <script src="static/js/manager.js"></script>
+<script src="static/js/manager_seller.js"></script>
 </body>
-
+<script>
+    $(function () {
+        getsellers(1);
+    })
+</script>
 </html>
 
 

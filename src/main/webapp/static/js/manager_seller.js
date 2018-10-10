@@ -1,46 +1,39 @@
 /**
- * Created by Administrator on 2018/10/9.
+ * Created by Administrator on 2018/10/10.
  */
-
-//分页查询所有用户
-function getusers(pageNum) {
+//分页查询所有卖家
+function getsellers(pageNum) {
     $.ajax({
         type: "get",
-        url: "/user/all",
+        url: "/seller/all",
         dataType: "json",
         data: "pageNum="+pageNum,
         success: function (result) {
             var s="";
             $.each(result.data.list,function (i,v) {
-                s += '<tr class="cart_item"><td class="product-thumbnail">' + v.uId + '</td>';
-                s += '<td data-title="Product"><div class="caption">' + v.uUserName + '</div></td>';
-                s += '<td><img width="180px" height="180px" src="static/images/user/'+v.uIcon+'"></td>';
-                s += '<td data-title="Product"><div class="caption">' + v.uSex + '</div></td>';
-                s += '<td data-title="Product">'+v.uTel+'</td>';
-                s += '<td data-title="Product">'+v.uAddress1+'</td>';
-                if(v.uAddress2==null||v.uAddress2=='')
-                    v.uAddress2="无";
-                s += '<td data-title="Product">'+v.uAddress2+'</td>';
-                if(v.uAddress3==null||v.uAddress3=='')
-                    v.uAddress3="无";
-                s += '<td data-title="Product">'+v.uAddress3+'</td>';
-                if (v.uStatus == 0)
-                    v.uStatus = "正常";
+                s += '<tr class="cart_item"><td class="product-thumbnail">' + v.sId + '</td>';
+                s += '<td data-title="Product"><div class="caption">' + v.sAccount + '</div></td>';
+                s += '<td><img width="180px" height="180px" src="static/images/seller/'+v.sIcon+'"></td>';
+                s += '<td data-title="Product"><div class="caption">' + v.sSex + '</div></td>';
+                s += '<td data-title="Product">'+v.sTel+'</td>';
+                s += '<td data-title="Product">'+v.sAddress+'</td>';
+                if (v.sStutas == 0)
+                    v.sStutas = "正常";
                 else
-                    v.uStatus = "被封";
-                s += '<td data-title="Product">'+v.uStatus+'</td>';
-                s += '<td><a onclick="lockUser('+v.uId+')">封号</a><br/><br/><a onclick="unlockUser('+v.uId+')">解封</a></td></tr>';
+                    v.sStutas = "被封";
+                s += '<td data-title="Product">'+v.sStutas+'</td>';
+                s += '<td><a onclick="lockSellers('+v.sId+')">封号</a><br/><br/><a onclick="unlockSellers('+v.sId+')">解封</a></td></tr>';
             });
-            $("#users").html(s);
-            $("#users").show(s);
+            $("#sellers").html(s);
+            $("#sellers").show(s);
             console.log(result);
-            fenyeByUsers(result);
+            fenyeBySellers(result);
         },
     });
 }
 
-//分页查询所有用户
-function  fenyeByUsers(result) {
+//分页查询所有卖家
+function  fenyeBySellers(result) {
     $("#fenye").empty();
     var ul = $("<ul></ul>").addClass("pagination");
     var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"))
@@ -52,10 +45,10 @@ function  fenyeByUsers(result) {
     }else{
         //为元素添加翻页事件
         firstPageLi.click(function(){
-            getusers(1);
+            getsellers(1);
         });
         prePageLi.click(function(){
-            getusers(result.data.pageNum-1);
+            getsellers(result.data.pageNum-1);
         });
     }
     ul.append(firstPageLi).append(prePageLi);
@@ -67,7 +60,7 @@ function  fenyeByUsers(result) {
         }
         //添加条目单击事件
         numLi.click(function(){
-            getusers(v);
+            getsellers(v);
         });
         ul.append(numLi);
     })
@@ -79,10 +72,10 @@ function  fenyeByUsers(result) {
     }else{
         //为元素添加翻页事件
         nextPageLi.click(function(){
-            getusers(result.data.pageNum+1);
+            getsellers(result.data.pageNum+1);
         });
         lastPageLi.click(function(){
-            getusers(result.data.pages);
+            getsellers(result.data.pages);
         });
 
     }
@@ -94,20 +87,20 @@ function  fenyeByUsers(result) {
 }
 
 //封号
-function lockUser(uId) {
+function lockSellers(sId) {
     $.ajax({
         type: "get",
-        url: "/user/lock?uId="+uId,
+        url: "/seller/lock?sId="+sId,
         dataType: "json",
         data: null,
         success: function (result) {
             if(result.code==0) {
-                alert("成功封了该用户");
+                alert("成功封了该卖家");
                 window.location.reload();
             }
             if(result.code==109)
             {
-                alert("该用户已被封");
+                alert("该卖家已被封");
             }
             console.log(result);
         }
@@ -115,77 +108,69 @@ function lockUser(uId) {
 }
 
 //解封
-function unlockUser(uId) {
+function unlockSellers(sId) {
     $.ajax({
         type: "get",
-        url: "/user/unlock?uId="+uId,
+        url: "/seller/unlock?sId="+sId,
         dataType: "json",
         data: null,
         success: function (result) {
             if(result.code==0) {
-                alert("成功解封该用户");
+                alert("成功解封该卖家");
                 window.location.reload();
             }
             if(result.code==112)
             {
-                alert("该用户状态正常");
+                alert("该卖家状态正常");
             }
             console.log(result);
         }
     });
 }
 
-//多条件查询用户
-function getUsersConditions(pageNum) {
-    var uId=$("#uId").val();
-    var uUserName=$("#uUserName").val();
-    var uTel=$("#uTel").val();
-    var uAddress1=$("#uAddress1").val();
+//多条件查询卖家
+function getSellersConditions(pageNum) {
+    var sId=$("#sId").val();
+    var sAccount=$("#sAccount").val();
+    var sTel=$("#sTel").val();
     $.ajax({
         type: "post",
-        url: "/user/get/conditions",
+        url: "/seller/get/conditions",
         dataType: "json",
         data:
             {
-                uId:uId,
-                uUserName:uUserName,
-                uAddress1:uAddress1,
-                uTel:uTel,
+                sId:sId,
+                sAccount:sAccount,
+                sTel:sTel,
                 pageNum:pageNum,
             },
         success: function (result) {
-            $("#users").empty();
+            $("#sellers").empty();
             var s="";
             $.each(result.data.list,function (i,v) {
-                s += '<tr class="cart_item"><td class="product-thumbnail">' + v.uId + '</td>';
-                s += '<td data-title="Product"><div class="caption">' + v.uUserName + '</div></td>';
-                s += '<td><img width="180px" height="180px" src="static/images/user/'+v.uIcon+'"></td>';
-                s += '<td data-title="Product"><div class="caption">' + v.uSex + '</div></td>';
-                s += '<td data-title="Product">'+v.uTel+'</td>';
-                s += '<td data-title="Product">'+v.uAddress1+'</td>';
-                if(v.uAddress2==null||v.uAddress2=='')
-                    v.uAddress2="无";
-                s += '<td data-title="Product">'+v.uAddress2+'</td>';
-                if(v.uAddress3==null||v.uAddress3=='')
-                    v.uAddress3="无";
-                s += '<td data-title="Product">'+v.uAddress3+'</td>';
-                if (v.uStatus == 0)
-                    v.uStatus = "正常";
+                s += '<tr class="cart_item"><td class="product-thumbnail">' + v.sId + '</td>';
+                s += '<td data-title="Product"><div class="caption">' + v.sAccount + '</div></td>';
+                s += '<td><img width="180px" height="180px" src="static/images/seller/'+v.sIcon+'"></td>';
+                s += '<td data-title="Product"><div class="caption">' + v.sSex + '</div></td>';
+                s += '<td data-title="Product">'+v.sTel+'</td>';
+                s += '<td data-title="Product">'+v.sAddress+'</td>';
+                if (v.sStutas == 0)
+                    v.sStutas = "正常";
                 else
-                    v.uStatus = "被封";
-                s += '<td data-title="Product">'+v.uStatus+'</td>';
-                s += '<td><a onclick="lockUser('+v.uId+')">封号</a><br/><br/><a onclick="unlockUser('+v.uId+')">解封</a></td></tr>';
+                    v.sStutas = "被封";
+                s += '<td data-title="Product">'+v.sStutas+'</td>';
+                s += '<td><a onclick="lockSellers('+v.sId+')">封号</a><br/><br/><a onclick="unlockSellers('+v.sId+')">解封</a></td></tr>';
             });
-            $("#users").html(s);
-            $("#users").show(s);
+            $("#sellers").html(s);
+            $("#sellers").show(s);
             console.log(result);
-            fenyeByUsersConditions(result);
+            fenyeBySellersConditions(result);
         },
     });
 }
 
-//分页多条件查询用户
-function  fenyeByUsersConditions(result) {
+//分页多条件查询卖家
+function  fenyeBySellersConditions(result) {
     $("#fenye").empty();
     var ul = $("<ul></ul>").addClass("pagination");
     var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"))
@@ -197,10 +182,10 @@ function  fenyeByUsersConditions(result) {
     }else{
         //为元素添加翻页事件
         firstPageLi.click(function(){
-            getUsersConditions(1);
+            getSellersConditions(1);
         });
         prePageLi.click(function(){
-            getUsersConditions(result.data.pageNum-1);
+            getSellersConditions(result.data.pageNum-1);
         });
     }
     ul.append(firstPageLi).append(prePageLi);
@@ -212,7 +197,7 @@ function  fenyeByUsersConditions(result) {
         }
         //添加条目单击事件
         numLi.click(function(){
-            getUsersConditions(v);
+            getSellersConditions(v);
         });
         ul.append(numLi);
     })
@@ -224,10 +209,10 @@ function  fenyeByUsersConditions(result) {
     }else{
         //为元素添加翻页事件
         nextPageLi.click(function(){
-            getUsersConditions(result.data.pageNum+1);
+            getSellersConditions(result.data.pageNum+1);
         });
         lastPageLi.click(function(){
-            getUsersConditions(result.data.pages);
+            getSellersConditions(result.data.pages);
         });
 
     }

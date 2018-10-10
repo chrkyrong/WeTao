@@ -27,5 +27,5 @@ public interface UserService {
 
     PageInfo lookUsers(int pageNum, int pageSize);//分页查询所有用户
 
-    PageInfo getConditions(Map<String,Object> map,int pageNum, int pageSize);//分页查询所有用户
+    PageInfo getConditions(Map<String,Object> map,int pageNum, int pageSize);//多条件查询用户
 }
