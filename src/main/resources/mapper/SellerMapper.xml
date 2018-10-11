@@ -129,7 +129,7 @@
       s_stutas = #{sStutas,jdbcType=TINYINT}
     where s_id = #{sId,jdbcType=INTEGER}
   </update>
-    <select id="getSellerId" resultType="com.weitao.bean.Seller">
+  <select id="getSellerId" resultType="com.weitao.bean.Seller">
         SELECT *
         FROM seller
         WHERE s_id = (SELECT seller_id
@@ -138,4 +138,28 @@
                                      FROM items i
                                      WHERE i.i_id = #{iId}))
     </select>
+
+  <!--查询所有卖家-->
+  <select id="selectSellers" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM seller
+  </select>
+
+  <!--多条件查询卖家-->
+  <select id="selectCondition" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM seller
+    <where>
+      <if test="sId!=null and sId!=''">
+        AND s_id LIKE CONCAT(CONCAT('%',#{sId}),'%')
+      </if>
+      <if test="sAccount!=null and sAccount!=''" >
+        AND s_account LIKE CONCAT(CONCAT('%',#{sAccount}),'%')
+      </if>
+      <if test="sTel!=null and sTel!=''" >
+        AND s_tel LIKE CONCAT(CONCAT('%',#{sTel}),'%')
+      </if>
+    </where>
+  </select>
+
 </mapper>

@@ -1,13 +1,22 @@
 package com.weitao.service.serviceImpl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Seller;
+import com.weitao.bean.Store;
 import com.weitao.dao.SellerMapper;
+import com.weitao.dao.StoreMapper;
 import com.weitao.exception.ResultEnum;
 import com.weitao.exception.SellerException;
+import com.weitao.exception.UserException;
 import com.weitao.service.SellerService;
+import com.weitao.service.StoreService;
 import com.weitao.utils.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: hzb
@@ -21,6 +30,11 @@ public class SellerServiceImpl implements SellerService {
     @Autowired
     private SellerMapper sellerMapper;
 
+    @Autowired
+    private StoreMapper storeMapper;
+
+    @Autowired
+    private StoreService storeService;
     /**
      * 商家注册
      * @param seller
@@ -128,5 +142,86 @@ public class SellerServiceImpl implements SellerService {
     @Override
     public Seller getSellerId(Long iId) {
         return sellerMapper.getSellerId(iId);
+    }
+
+    @Override
+    public PageInfo lookSellers(int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum,pageSize);
+        //查询所有卖家
+        List<Seller> sellerList=sellerMapper.selectSellers();
+        //封装到分页对象
+        PageInfo pageInfo=new PageInfo(sellerList);
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo getConditions(Map<String, Object> map, int pageNum, int pageSize) {
+        //分页信息
+        PageHelper.startPage(pageNum,pageSize);
+        //多条件查询卖家
+        List<Seller> sellerList=sellerMapper.selectCondition(map);
+        //封装到分页对象
+        PageInfo pageInfo=new PageInfo(sellerList);
+        return pageInfo;
+    }
+
+    @Override
+    public Boolean lockBySellerId(int sellerId) {
+        //根据卖家id查询卖家
+        Seller seller=sellerMapper.selectByPrimaryKey(sellerId);
+        //验证是否被锁定
+        if(seller.getsStutas()==1)
+            throw new UserException(ResultEnum.USER_LOCK);
+        //封号
+        seller.setsStutas((byte) 1);
+        //修改卖家状态
+        if(sellerMapper.updateByPrimaryKeySelective(seller)>0) {
+            //查询该卖家下的所有店
+            Store store=new Store();
+            store.setSellerId(sellerId);
+            store.setStStatus((byte) 0);
+            //查询该卖家下的未被封的店
+            List<Store> storeList=storeMapper.seleteStore(store);
+            //封该卖家下的所有店和商品
+            for(int i=0;i<storeList.size();i++)
+            {
+                storeList.get(i).setStStatus((byte) 1);
+                storeService.changeStoreStatus(storeList.get(i));
+            }
+            return true;
+        }
+        else
+            return false;
+    }
+
+    @Override
+    public Boolean unlockBySellerId(int sellerId) {
+        //根据卖家id查询卖家
+        Seller seller=sellerMapper.selectByPrimaryKey(sellerId);
+        //验证是否被锁定
+        if(seller.getsStutas()==0)
+            throw new UserException(ResultEnum.USER_NORMAL);
+        //解封
+        seller.setsStutas((byte) 0);
+        //修改卖家状态
+        if(sellerMapper.updateByPrimaryKeySelective(seller)>0)
+        {
+            //查询该卖家下的所有店
+            Store store=new Store();
+            store.setSellerId(sellerId);
+            store.setStStatus((byte) 1);
+            //查询该卖家下的被封的店
+            List<Store> storeList=storeMapper.seleteStore(store);
+            //封该卖家下的所有店和商品
+            for(int i=0;i<storeList.size();i++)
+            {
+                storeList.get(i).setStStatus((byte) 0);
+                storeService.changeStoreStatus(storeList.get(i));
+            }
+            return true;
+        }
+        else
+            return false;
     }
 }

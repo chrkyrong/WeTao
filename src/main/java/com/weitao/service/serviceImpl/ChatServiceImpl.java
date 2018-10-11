@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.springframework.data.mongodb.core.query.Query.query;
 
-@Service
+//@Service
 public class ChatServiceImpl implements ChatService {
 
     /**

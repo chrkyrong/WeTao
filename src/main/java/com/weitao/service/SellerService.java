@@ -1,6 +1,9 @@
 package com.weitao.service;
 
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Seller;
+
+import java.util.Map;
 
 /**
  * @Author: hzb
@@ -26,4 +29,12 @@ public interface SellerService {
     int modifySellerPassword(Seller seller);
 
     Seller getSellerId(Long iId);
+
+    PageInfo lookSellers(int pageNum, int pageSize);//分页查询所有卖家
+
+    PageInfo getConditions(Map<String,Object> map, int pageNum, int pageSize);//多条件查询卖家
+
+    Boolean lockBySellerId(int sellerId);//封用户
+
+    Boolean unlockBySellerId(int sellerId);//解封用户
 }

@@ -23,6 +23,9 @@ public enum ResultEnum {
     USER_REVISE_PASSWROD_FAIL("107","用户修改密码错误"),
     USER_PHONE_FAIL("108","用户电话输入错误"),
     USER_LOCK("109","用户被锁定"),
+    USER_LOCK_FAIL("110","封号失败"),
+    USER_UNLOCK_FAIL("111","解封失败"),
+    USER_NORMAL("112","用户状态正常"),
 
 
     ORDER_USER_FAIL("301","订单查询错误"),
@@ -41,7 +44,9 @@ public enum ResultEnum {
     STORE_INSERT_FAIL("702","店铺添加失败"),
     STORE_CHANGE_FAIL("703","修改店铺信息失败"),
 
-    MANAGE_INSERT_FAIL("901","添加管理员失败")
+    MANAGE_INSERT_FAIL("901","添加管理员失败"),
+    MANAGE_INSERT_GO("902","添加管理员失败"),
+    MANAGE_INSERT_NOPOWER("903","无权限添加管理员")
 
     ;
     private String code;

@@ -1,5 +1,6 @@
 package com.weitao.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.weitao.bean.Seller;
 import com.weitao.exception.ResultEnum;
 import com.weitao.service.SellerService;
@@ -140,5 +141,72 @@ public class SellerController {
             e.printStackTrace();
         }
         return fileName;
+    }
+
+    /**
+     * 查询所有卖家
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("/seller/all")
+    public Result getUsers(@RequestParam(defaultValue = "1")Integer pageNum,@RequestParam(defaultValue = "3")Integer pageSize)
+    {
+        PageInfo pageInfo=sellerService.lookSellers(pageNum,pageSize);
+        if(pageInfo!=null)
+            return ResultUtil.success(pageInfo);
+        else
+            return ResultUtil.error(ResultEnum.USER_GET_FAIL);
+    }
+
+    /**
+     * 多条件查询卖家
+     * @param sId
+     * @param sAccount
+     * @param sTel
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @PostMapping("/seller/get/conditions")
+    public Result getConditions(Integer sId,String sAccount,String sTel,@RequestParam(defaultValue = "1")Integer pageNum,@RequestParam(defaultValue = "3")Integer pageSize)
+    {
+        Map<String,Object> map=new HashMap<>();
+        map.put("sId",sId);
+        map.put("sAccount",sAccount);
+        map.put("sTel",sTel);
+        PageInfo pageInfo=sellerService.getConditions(map,pageNum,pageSize);
+        if(pageInfo!=null)
+            return ResultUtil.success(pageInfo);
+        else
+            return ResultUtil.error(ResultEnum.USER_GET_FAIL);
+    }
+
+    /**
+     * 根据id封号
+     * @param sId
+     * @return
+     */
+    @GetMapping("/seller/lock")
+    public Result lockByUserId(int sId)
+    {
+        if(sellerService.lockBySellerId(sId))
+            return ResultUtil.success();
+        else
+            return ResultUtil.error(ResultEnum.USER_LOCK_FAIL);
+    }
+
+    /**
+     * 根据id解封
+     * @param sId
+     * @return
+     */
+    @GetMapping("/seller/unlock")
+    public Result unlockByUserId(int sId)
+    {
+        if(sellerService.unlockBySellerId(sId))
+            return ResultUtil.success();
+        else
+            return ResultUtil.error(ResultEnum.USER_UNLOCK_FAIL);
     }
 }

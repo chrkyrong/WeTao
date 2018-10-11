@@ -2,6 +2,9 @@ package com.weitao.dao;
 
 import com.weitao.bean.Seller;
 
+import java.util.List;
+import java.util.Map;
+
 public interface SellerMapper {
     int deleteByPrimaryKey(Integer sId);
 
@@ -20,4 +23,7 @@ public interface SellerMapper {
 
     Seller getSellerId(Long iId);
 
+    List<Seller> selectSellers();//查询所有卖家
+
+    List<Seller> selectCondition(Map<String,Object> map);//多条件查询卖家
 }

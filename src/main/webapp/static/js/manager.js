@@ -57,3 +57,16 @@ function checkManagerPsw() {
         return true;
     }
 }
+
+//管理员退出
+function exit() {
+    $.ajax({
+        type: 'get',
+        url: '/manage/logout',
+        dataType: 'json',
+        data: null,
+        success: function () {
+            window.location.href="manager_login.html";
+        }
+    });
+}
