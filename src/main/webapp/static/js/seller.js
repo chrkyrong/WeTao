@@ -52,7 +52,7 @@ function register() {
     var password = $("#sPassword").val();
     var rpt = $("#sPassword_rpt").val();
     var tel = $("#sTel").val();
-    var sex = $("#sSex").val();
+    var sex = $("input:radio:checked").val();
     var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
     var icon = $("#sIcon").val();
     var add = $("#sAddress").val();
@@ -87,6 +87,10 @@ function display1() {
             $("#sAccount").val(r.data.sAccount);
             $("#sTel").val(r.data.sTel);
             $("#sIcon").val(r.data.sIcon);
+            if ($("#r.data.sSex") == "男")
+                $("input:radio:first").attr('checked', 'checked');
+            else
+                $("input:radio:last").attr('checked', 'checked');
             var img = $('<img>');
             img.attr("src", "static/images/seller/"+r.data.sIcon);
             img.attr("style", "width: 250px;height: 250px;position: absolute;left: 900px;top: 100px");
@@ -98,7 +102,7 @@ function display1() {
 function update_info() {
     var account = $("#sAccount").val();
     var tel = $("#sTel").val();
-    var sex = $("#sSex").val();
+    var sex = $("input:radio:checked").val();
     var address = $("#ddlProvince").find("option:selected").text()+$("#ddlCity").find("option:selected").text()+$("#ddlDistrict").find("option:selected").text()+$("#sAddress").val();
     var icon = $("#sIcon").val();
     if ($("#sAddress").val().length>0) {
