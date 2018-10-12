@@ -101,42 +101,16 @@
                 <div class="container">
                     <div class="header-navibox-1">
                         <!-- Desctop Trigger Start-->
-                        <button class="menu-mobile-button js-toggle-screen toggle-menu-button"><i
-                                class="toggle-menu-button-icon"><span></span><span></span><span></span><span></span><span></span><span></span></i>
-                        </button>
+
                         <!-- Desctop Trigger End-->
-                        <ul class="main-menu yamm nav navbar-nav">
-                            <!--logo左边导航栏////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="manage_seller.html"><h5>商家管理</h5></a>
-                            </li>
-                            <li><a href="manage_store.html"><h5>商铺管理</h5></a>
-                            </li>
-                            <li><a href="manage_buyer.html"><h5>买家管理</h5></a>
-                            </li>
-                        </ul>
+
                     </div>
                     <div class="header-navibox-2">
                         <!--logo右边导航栏///////////////////////////////////////////////////////////////////////////////////////-->
-                        <ul class="nav navbar-nav clearfix vcenter">
-                            <li><a href="manage_items.html"><h5>商品管理</h5></a>
-                            <li><a href="manage_permissions.html"><h5>权限管理</h5></a>
-                            <!--个人资料/////////////////////////////////////////////////////////////////////////////////////////-->
-                            <!--<li><a href="manager_password.html"><h5>修改密码</h5></a>-->
-                            </li>
-                            <!-- <li><span class="header-cart"><a href="#"><i class="icon fa fa-shopping-cart"
-                                                                         aria-hidden="true"></i></a><span
-                                    class="header-cart-count bg-primary">0</span></span>
-                            </li> -->
-                        </ul>
-                        <ul class="nav-language list-inline">
-                            <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
-                            <li><a href="manager_login.html">登 陆</a>
-                            </li>
-                            <li><a href="#">退 出</a>
-                            </li>
-                        </ul>
+
+
                         <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
-                        <a class="navbar-brand scroll" href="home.html">
+                        <a class="navbar-brand scroll" href=>
                             <!--导航栏最中间的logo/////////////////////////////////////////////////////////////////////////////////-->
                             <img class="normal-logo" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
                             <img class="scroll-logo hidden-xs" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
@@ -154,13 +128,10 @@
                     <div class="wrap-breadcrumb">
                         <ol class="breadcrumb">
                             <!--第一行文字/////////////////////////////////////////////////////////////-->
-                            <li><a href=""><h4>欢迎登陆微淘管理员后台</h4></a>
+                            <li><h2>欢迎登陆微淘管理员后台</h2>
                             </li>
+                            <p>&nbsp;</p>
                         </ol>
-                    </div>
-                    <div class="section-title-page section-title-page_mod-a">
-                        <!--第二行文字/////////////////////////////////////////////////////////////-->
-                        <h1 class="ui-title-page">M a n g e r L o g i n</h1>
                     </div>
                 </div>
             </div>
@@ -214,8 +185,10 @@
                     <section class="footer-section">
                         <h3 class="footer-section__title ui-title-inner">写 下 您 宝 贵 的 建 议</h3>
                         <form class="footer-form">
-                            <input class="footer-form__input form-control" type="email" placeholder="enter your advice">
-                            <button class="footer-form__btn"><i class="icon fa fa-paper-plane"></i>
+                            <input class="footer-form__input form-control" type="text" placeholder="enter your advice"
+                                   id="advice">
+                            <button class="footer-form__btn" onclick="sendAdvice()"><i
+                                    class="icon fa fa-paper-plane"></i>
                             </button>
                         </form>
                     </section>
@@ -235,32 +208,25 @@
                                 <div class="col-md-5">
                                     <ul class="footer-list list-unstyled">
                                         <!--关于我们入口//////////////////////////////////////////////////////////////////////////////-->
-                                        <li class="footer-list__item"><a class="footer-list__link" href="blog1.html">About
-                                            Us</a>
+                                        <li class="footer-list__item"><a href="seller_login.html"
+                                                                         class="footer-list__link">商家入驻</a>
                                         </li>
-                                        <li class="footer-list__item"><a class="footer-list__link" href="">Careers</a>
+                                        <li class="footer-list__item"><a class="footer-list__link">Careers</a>
                                         </li>
-                                        <li class="footer-list__item"><a class="footer-list__link"
-                                                                         href="">International</a>
+                                        <li class="footer-list__item"><a class="footer-list__link">International</a>
                                         </li>
-                                        <!--<li class="footer-list__item"><a class="footer-list__link"-->
-                                        <!--href="privacy-policy.html">Privacy</a>-->
-                                        <!--</li>-->
-                                        <!--<li class="footer-list__item"><a class="footer-list__link"-->
-                                        <!--href="terms-of-use.html">Terms</a>-->
-                                        <!--</li>-->
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
                                     <ul class="footer-list list-unstyled">
-                                        <li class="footer-list__item"><a class="footer-list__link" href="">Contact</a>
+                                        <li class="footer-list__item"><a class="footer-list__link">Contact</a>
                                         </li>
-                                        <li class="footer-list__item"><a class="footer-list__link" href="">Returns</a>
+                                        <li class="footer-list__item"><a class="footer-list__link">Returns</a>
                                         </li>
-                                        <li class="footer-list__item"><a class="footer-list__link" href="">Warranty</a>
+                                        <li class="footer-list__item"><a class="footer-list__link">Warranty</a>
                                         </li>
                                         <!--帮助入口//////////////////////////////////////////////////////////////////////////////-->
-                                        <li class="footer-list__item"><a class="footer-list__link" href="about.html">Help</a>
+                                        <li class="footer-list__item"><a class="footer-list__link">Help</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -272,17 +238,20 @@
             <div class="footer-btm">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="footer-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel
-                            ultrices velit. Etiam pellentesque nibh at quam facilisis, eu maximus dolor tincidunt. Cras
-                            porta luctus pretium. Nam posuere libero a neque rhoncus, eu
-                            viverra mauris volutpat. Integer at venenatis mi. Sed sagittis lobortis gravida. Phasellus
-                            ac finibus sem, et mattis dolor. Vestibulum vitae hendrerit urna, id volutpat magna.
+                        <div class="footer-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            我们用心服务每一位用户，诚信经营每一件商品，严格的审核商家进驻本平台。<br>
+                            拒绝并抵制假冒伪劣产品的出现与售卖。从自身做起，树立诚信，向假冒伪劣产品宣战，自觉接受相关部门的监督管理和接受广大消费者的监督。
+                            履行经营者的义务，保证所生产经销的商品符合保障人身财产安全的要求和商品应当具有的质量和使用性能；<br>
+                            不掺杂使假、以假充真、以次充好；不生产销售有毒有害、失效、腐烂变质的食品和不合格的食品；<br>
+                            不使用不规范、不合格的计量器具销售商品；不销售应当检验、检疫而未检验、检疫的商品或检验、检疫不合格的商品；
+                            不销售国家明令禁止上市或淘汰的商品；
+                            不作虚假宣传，不误导消费者。
                         </div>
                     </div>
                     <div class="col-md-6 col-md-offset-2">
                         <div class="copyright"><span
-                                class="copyright__main">©  2018 WeTao  ® All Right Reserved</span><a
-                                class="copyright__link" href="home.html"> Created by Cc</a>
+                                class="copyright__main">©  2018 WeTao  ® All Right Reserved</span>
+                            <a class="copyright__link"> Created by Cc</a>
                         </div>
                     </div>
                 </div>
@@ -326,7 +295,8 @@
 <script src="static/wt/js/anime.min.js"></script>
 <script src="static/wt/js/main.js"></script>
 <script src="static/js/manager.js"></script>
-
+<!--底部jq-->
+<script type="text/javascript" src="static/jq/advice.js"></script>
 </body>
 
 </html>
