@@ -193,7 +193,16 @@ function rebackpassword() {
     });
 }
 /*上传图片*/
-function  upfilePhoto() {
+function  upfilePhoto(f) {
+    var str = "";
+    for(var i=0;i<f.length;i++){
+        var reader = new FileReader();
+        reader.readAsDataURL(f[i]);
+        reader.onload = function(e){
+            str+='<img src="'+e.target.result+'" style="width: 250px;height: 250px;position: absolute;left: 900px;top: 100px"/>';
+            document.getElementById("huixian").innerHTML = str;
+        }
+    }
     $.ajaxFileUpload({
         url:"upFile1",
         secureuri:false,//是否启动安全提交，默认为false
@@ -201,7 +210,7 @@ function  upfilePhoto() {
         dataType:'text',
         success:function (data) {
             alert(data+"----") //测试接受到什么数据
-            $("#photo").html("<img  width='200px' height='200px'  src='static/images/user/"+data+"'/>");
+            //$("#photo").html("<img  width='200px' height='200px'  src='static/images/user/"+data+"'/>");
             $("#uIcon").val(data);
         }
     })

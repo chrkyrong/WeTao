@@ -173,15 +173,14 @@
                                         <p class="form-row form-row">
                                             <label class=""></label>
                                         <input type="hidden" name="uIcon" id="uIcon">
-                                        <div style="width:200px; height:200px; border:none; overflow:hidden;" id="photo">
                                         </div>
                                         <!--上传头像模块，i_photos/////////////////////////////////////////////////////////////-->
-                                        <input type="file" id="Icon" name="photo" onchange="upfilePhoto()">
-                                        </p>
+                                        <input type="file" id="Icon" name="photo" onchange="upfilePhoto(this.files)" >
                                     </div>
+                                        <div id="huixian"></div>
+                                        </p>
                                     <!---->
                                 </div>
-                            </div>
                             <div id="order_review" class="woocommerce-checkout-review-order">
                                 <br><input type="button" class="button alt" id="place_order" value="注  册 register" data-value="Place order" onclick="checkregister()" style="width: 550px"/>
                             </div>
