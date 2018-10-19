@@ -85,17 +85,18 @@ function onSearch1() {
                 if (v.stStatus == 0) {
                     s += '</td><td>正常';
                     s += '</td><td>';
-                    s += '<a href = "seller_message.html?sellerId=' + v.sellerId + '">查看商家</a>&nbsp;&nbsp;OR&nbsp;&nbsp;';
+                    // s += '<a href = "seller_message.html?sellerId=' + v.sellerId + '">查看商家</a>&nbsp;&nbsp;OR&nbsp;&nbsp;';
                     s += '<a href = "" class="button-btn" onclick="return false,onChange3(' + v.stId + ',1); ">封锁商店</a></td></tr>';
                 }else if(v.stStatus == 1){
                     s += '</td><td><p style="color: #ac2925">违规</p>';
                     s += '</td><td>';
-                    s += '<a href = "seller_message.html?sellerId=' + v.sellerId + '">查看商家</a>&nbsp;&nbsp;OR&nbsp;&nbsp;';
+                    // s += '<a href = "seller_message.html?sellerId=' + v.sellerId + '">查看商家</a>&nbsp;&nbsp;OR&nbsp;&nbsp;';
                     s += '<a href = "" class="button-btn" style="color: #ac2925" onclick="return false,onChange3(' + v.stId + ',0) ">解封商店</a></td></tr>';
                 }else {
                     s += '</td><td><p style="color: #ac2925">停业中</p>';
                     s += '</td><td>';
-                    s += '<a href = "seller_message.html?sellerId=' + v.sellerId + '">查看商家</a>';
+                    // s += '<a href = "seller_message.html?sellerId=' + v.sellerId + '">查看商家</a>';
+                    s += '<a href = "" class="button-btn" style="color: #ac2925" onclick="return false,onChange3(' + v.stId + ',1) ">封锁商店</a>';
                     s += '</td></tr>';
                 }
             })

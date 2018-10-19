@@ -90,7 +90,7 @@ public class ItemsController {
         //获取上传的文件名
         String originalFilename = i_Photos.getOriginalFilename();
         /* 存储文件路径*/
-        String path = "E:\\ideaa\\WeTao\\src\\main\\webapp\\static\\images\\";
+        String path = "E:\\mavenProject\\WeTao\\src\\main\\webapp\\static\\images\\";
         String root_path = session.getServletContext().getRealPath("images");// 获取自定义缓存文件夹路径
         File file = new File(root_path);
         /*如果文件夹不存在，则创建*/

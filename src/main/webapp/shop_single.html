@@ -98,343 +98,354 @@
         </nav>
     </header>
 
-<div class="l-main-content l-main-content_w-border">
-    <section class="b-goods-det b-goods-det_mod-a">
-        <div class="container-flex container-flex_pdn_0 container-flex_md">
-            <div class="row">
-                <div class="col-lg-6 col-lg-push-6 col-md-7 col-md-push-5">
-                    <div class="b-goods-det__main">
+    <div class="l-main-content l-main-content_w-border">
+        <section class="b-goods-det b-goods-det_mod-a">
+            <div class="container-flex container-flex_pdn_0 container-flex_md">
+                <div class="row">
+                    <div class="col-lg-6 col-lg-push-6 col-md-7 col-md-push-5">
+                        <div class="b-goods-det__main">
 
-                        <div class="b-goods-det__header" id="iNameShow">
-                            <!--商品名称模块////////////////////////////////////////////////////////////-->
-                          <!--  <h1 class="b-goods-det__title">Split Sound & Fury Coach's Jacket</h1>-->
-                            <span class="b-goods-det__brand">
+                            <div class="b-goods-det__header" id="iNameShow">
+                                <!--商品名称模块////////////////////////////////////////////////////////////-->
+                                <!--  <h1 class="b-goods-det__title">Split Sound & Fury Coach's Jacket</h1>-->
+                                <span class="b-goods-det__brand">
                                  <!--客服模块，右上角的微淘logo////////////////////////////////////////////////////////////-->
                                     <a href="" id="server"><img class="img-responsive"
-                                                                    src="static/wt/images/logo-kefu.png"
-                                                                    alt="brand"></a>
+                                                                src="static/wt/images/logo-kefu.png"
+                                                                alt="brand"></a>
                                 </span>
-                        </div>
-                        <form class="b-goods-det__form">
-                            <div class="row" >
-                                <div class="col-md-6" ><!--价格展示-->
-
-                                    <div id="priceShow">
-                                        <!--商品价格模块////////////////////////////////////////////////////////////-->
-                                        <!--  <div class="b-goods-det__price">$ 1880.00</div>-->
-                                    </div>
-                                    <p>&nbsp;</p>
-                                    <p>&nbsp;</p>
-                                    <div>
-                                        <h5>服务承诺</h5>
-                                        <p>全国联保&nbsp;&nbsp;&nbsp;&nbsp;正品保证&nbsp;&nbsp;&nbsp;&nbsp;极速退款
-                                            &nbsp;&nbsp;&nbsp;&nbsp;赠运费险&nbsp;&nbsp;&nbsp;&nbsp;七天无理由退款</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <!--商品数量控制模块////////////////////////////////////////////////////////////-->
-                                    <div class="enumerator"><span
-                                            class="enumerator__btn enumerator__btn_minus js-minus_btn"></span>
-                                        <input class="enumerator__input" type="text" value="1" size="3" id="number"><span
-                                                class="enumerator__btn enumerator__btn_plus js-plus_btn"></span>
-                                    </div>
-                                    <!--加入购物车模块////////////////////////////////////////////////////////////-->
-                                    <button class="b-goods-det__btn btn  btn-default btn-lg" type="button" onclick="cart()"><h5>
-                                        加入购物车</h5></button>
-                                </div>
                             </div>
-                        </form>
-                        <!--分类标签模块////////////////////////////////////////////////////////////-->
-                     <!--   <div class="b-goods-det-group">
-                        <div class="b-goods-det-group__title">Tags</div>
-                        <div class="b-goods-det-group__info"><a class="b-goods-det__tag"
-                        href="shop-single-1.html">jacket</a><a
-                        class="b-goods-det__tag" href="shop-single-1.html">modern</a>
-                        </div>
-                        </div>-->
+                            <form class="b-goods-det__form">
+                                <div class="row">
+                                    <div class="col-md-6"><!--价格展示-->
 
-                        <!--商品好评率模块////////////////////////////////////////////////////////////-->
-                        <div class="b-goods-det-group">
-                            <div class="b-goods-det-group__title"><strong>商品好评率</strong></div>
-                            <div class="b-goods-det-group__info"><strong>100%</strong></div>
-                        </div>
+                                        <div id="priceShow">
+                                            <!--商品价格模块////////////////////////////////////////////////////////////-->
+                                            <!--  <div class="b-goods-det__price">$ 1880.00</div>-->
+                                        </div>
+                                        <p>&nbsp;</p>
+                                        <p>&nbsp;</p>
+                                        <div>
+                                            <h5>服务承诺</h5>
+                                            <p>全国联保&nbsp;&nbsp;&nbsp;&nbsp;正品保证&nbsp;&nbsp;&nbsp;&nbsp;极速退款
+                                                &nbsp;&nbsp;&nbsp;&nbsp;赠运费险&nbsp;&nbsp;&nbsp;&nbsp;七天无理由退款</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!--商品数量控制模块////////////////////////////////////////////////////////////-->
+                                        <div class="enumerator"><span
+                                                class="enumerator__btn enumerator__btn_minus " onclick="checkMinNumber()"></span>
+                                            <input class="enumerator__input" type="text" value="1" size="3" id="number" onblur="checkNum()"><span
+                                                    class="enumerator__btn enumerator__btn_plus " onclick="checkAddNumber()"></span>
+                                        </div>
+                                        <!--加入购物车模块////////////////////////////////////////////////////////////-->
+                                            <input type="hidden" id="items_exist" name="items_exist">
+                                        <button class="b-goods-det__btn btn  btn-default btn-lg" type="button"
+                                                onclick="cart()"><h5>
+                                            加入购物车</h5></button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--分类标签模块////////////////////////////////////////////////////////////-->
+                            <!--   <div class="b-goods-det-group">
+                               <div class="b-goods-det-group__title">Tags</div>
+                               <div class="b-goods-det-group__info"><a class="b-goods-det__tag"
+                               href="shop-single-1.html">jacket</a><a
+                               class="b-goods-det__tag" href="shop-single-1.html">modern</a>
+                               </div>
+                               </div>-->
 
-                        <!--收藏夹模块////////////////////////////////////////////////////////////-->
-                        <div class="b-goods-det-group" id="collection">
-                            <!--span class="b-goods-det__link" onclick="collection()"><strong >加入收藏夹</strong>
-                            <i class="icon fa fa-heart"></i></span>-->
-                        </div>
-                    </div>
-                    <!-- end .b-goods-det__main-->
-                </div>
-                <div class="col-lg-6 col-lg-pull-6 col-md-5 col-md-pull-7">
-                    <div class="b-goods-det__slider">
-                        <div class="slider-thumbnail-3 slider-pro" >
-                            <!--大图展示////////////////////////////////////////////////////////////-->
-                            <div class="sp-slides" >
-                                <div class=" sp-slide" id="iPhoneShow">
-                                   <!-- <img class="img-responsive" alt="foto" src="static/wt/images/big_photo.jpg" >-->
-                                </div>
-                                <div class="sp-slide" id="iPhoneShow1">
-                                <!--<img class="img-responsive" alt="foto" src="static/wt/images/big_photo.jpg" >-->
-                                </div>
+                            <!--商品好评率模块////////////////////////////////////////////////////////////-->
+                            <div class="b-goods-det-group">
+                                <div class="b-goods-det-group__title"><strong>商品好评率</strong></div>
+                                <div class="b-goods-det-group__info"><strong>100%</strong></div>
                             </div>
-                            <!--小图展示////////////////////////////////////////////////////////////-->
-                            <!--<div class="sp-thumbnails">-->
-                            <!--<div class="sp-thumbnail">-->
-                            <!--<img class="sp-image" src="images/small1.jpg" alt="img">-->
-                            <!--</div>-->
-                            <!--<div class="sp-thumbnail">-->
-                            <!--<img class="sp-image" src="images/small2.jpg" alt="img">-->
-                            <!--</div>-->
-                            <!--<div class="sp-thumbnail">-->
-                            <!--<img class="sp-image" src="images/small3.jpg" alt="img">-->
-                            <!--</div>-->
-                            <!--<div class="sp-thumbnail">-->
-                            <!--<img class="sp-image" src="images/small4.jpg" alt="img">-->
-                            <!--</div>-->
-                            <!--</div>-->
+
+                            <!--收藏夹模块////////////////////////////////////////////////////////////-->
+                            <div class="b-goods-det-group" id="collection">
+                                <!--span class="b-goods-det__link" onclick="collection()"><strong >加入收藏夹</strong>
+                                <i class="icon fa fa-heart"></i></span>-->
+                            </div>
                         </div>
-                        <!-- end .b-thumb-slider-->
+                        <!-- end .b-goods-det__main-->
                     </div>
-                    <!-- end .b-goods-det__slider-->
+                    <div class="col-lg-6 col-lg-pull-6 col-md-5 col-md-pull-7">
+                        <div class="b-goods-det__slider">
+                            <div class="slider-thumbnail-3 slider-pro">
+                                <!--大图展示////////////////////////////////////////////////////////////-->
+                                <div class="sp-slides">
+                                    <div class=" sp-slide" id="iPhoneShow">
+                                        <!-- <img class="img-responsive" alt="foto" src="static/wt/images/big_photo.jpg" >-->
+                                    </div>
+                                    <div class="sp-slide" id="iPhoneShow1">
+                                        <!--<img class="img-responsive" alt="foto" src="static/wt/images/big_photo.jpg" >-->
+                                    </div>
+                                </div>
+                                <!--小图展示////////////////////////////////////////////////////////////-->
+                                <!--<div class="sp-thumbnails">-->
+                                <!--<div class="sp-thumbnail">-->
+                                <!--<img class="sp-image" src="images/small1.jpg" alt="img">-->
+                                <!--</div>-->
+                                <!--<div class="sp-thumbnail">-->
+                                <!--<img class="sp-image" src="images/small2.jpg" alt="img">-->
+                                <!--</div>-->
+                                <!--<div class="sp-thumbnail">-->
+                                <!--<img class="sp-image" src="images/small3.jpg" alt="img">-->
+                                <!--</div>-->
+                                <!--<div class="sp-thumbnail">-->
+                                <!--<img class="sp-image" src="images/small4.jpg" alt="img">-->
+                                <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                            <!-- end .b-thumb-slider-->
+                        </div>
+                        <!-- end .b-goods-det__slider-->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <div class="tabs-type-1 tabs-type-1_w_border">
-        <ul class="nav">
-            <!--活页卡模块////////////////////////////////////////////////////////////-->
-            <li class="active"><a href="#detail" data-toggle="tab">商 品 详 情(Goods Details)</a>
-            </li>
-            <li><a href="#evaluation" data-toggle="tab">购 买 心 得(Buying Tips)</a>
-            </li>
-        </ul>
+        </section>
+        <div class="tabs-type-1 tabs-type-1_w_border">
+            <ul class="nav">
+                <!--活页卡模块////////////////////////////////////////////////////////////-->
+                <li class="active"><a href="#detail" data-toggle="tab">商 品 详 情(Goods Details)</a>
+                </li>
+                <li><a href="#evaluation" data-toggle="tab">购 买 心 得(Buying Tips)</a>
+                </li>
+            </ul>
 
-        <div class="tab-content">
-            <!--左边活页卡模块////////////////////////////////////////////////////////////-->
-            <div class="tab-pane fade in active" id="detail">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!--商品介绍模块，开始////////////////////////////////////////////////////////////-->
+            <div class="tab-content">
+                <!--左边活页卡模块////////////////////////////////////////////////////////////-->
+                <div class="tab-pane fade in active" id="detail">
+                    <div class="container-fluid">
                         <div class="row">
+                            <!--商品介绍模块，开始////////////////////////////////////////////////////////////-->
+                            <div class="row">
+                                <div class="col-md-9 col-md-offset-1">
+                                    <blockquote class="b-blockquote b-blockquote-2 typography-blockquote">
+                                        <!--<p>商品的简介啊。。。。Lorem ipsum dolor sit amet consecteur adipiscing elit sed eiusmod
+                                            tempor ncididue labor dolore magna aliqua. Ut enim nim veniam qu nostrud
+                                            exercitat ullamco laborisnisi ut aliquip commodo consequat duis
+                                            autes adm irure ex ea dolor repetord.</p>-->
+                                        <!--    <span class="b-blockquote__author color-primary" ></span>-->
+                                        <footer class="b-blockquote__footer">
+                                            <cite class="b-blockquote-_cite" title="Blockquote Title"><span
+                                                    class="b-blockquote__author color-primary"
+                                                    id="introductionShow"></span></cite>
+                                        </footer>
+                                    </blockquote>
+                                    <!-- end .b-blockquote-->
+                                </div>
+                            </div>
+                            <!--商品图片展示模块，开始////////////////////////////////////////////////////////////-->
                             <div class="col-md-9 col-md-offset-1">
-                                <blockquote class="b-blockquote b-blockquote-2 typography-blockquote" >
-                                    <!--<p>商品的简介啊。。。。Lorem ipsum dolor sit amet consecteur adipiscing elit sed eiusmod
-                                        tempor ncididue labor dolore magna aliqua. Ut enim nim veniam qu nostrud
-                                        exercitat ullamco laborisnisi ut aliquip commodo consequat duis
-                                        autes adm irure ex ea dolor repetord.</p>-->
-                              <!--    <span class="b-blockquote__author color-primary" ></span>-->
-                                    <footer class="b-blockquote__footer">
-                                        <cite class="b-blockquote-_cite" title="Blockquote Title"><span
-                                                class="b-blockquote__author color-primary" id="introductionShow"></span></cite>
-                                    </footer>
-                                </blockquote>
-                                <!-- end .b-blockquote-->
+                                <center>
+                                    <div class="entry-media" id="showimages">
+                                        <!--    <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
+                                                <img class="img-responsive" src="static/wt/images/680x500_1.jpg" alt="Foto">
+                                            </a>-->
+
+                                    </div>
+                                </center>
+                                <!--  <div class="entry-media">
+                                      <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
+                                          <img class="img-responsive" src="static/wt/images/bg-1_1.jpg" alt="Foto">
+                                      </a>
+                                      <br><br><br><br>
+                                  </div>-->
                             </div>
-                        </div>
-                        <!--商品图片展示模块，开始////////////////////////////////////////////////////////////-->
-                        <div class="col-md-9 col-md-offset-1">
-                            <center>
-                                <div class="entry-media" id="showimages">
-                                <!--    <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
-                                        <img class="img-responsive" src="static/wt/images/680x500_1.jpg" alt="Foto">
-                                    </a>-->
 
-                                </div>
-                            </center>
-                          <!--  <div class="entry-media">
-                                <a class="js-zoom-images" href="assets/media/content/posts/730x400/2.jpg">
-                                    <img class="img-responsive" src="static/wt/images/bg-1_1.jpg" alt="Foto">
-                                </a>
-                                <br><br><br><br>
-                            </div>-->
-                        </div>
-
-                        <!--模板介绍模块，开始////////////////////////////////////////////////////////////-->
-                        <div class="section-advantages wrap-inl-bl">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="b-advantages"><i class="b-advantages__icon flaticon-fabric-1"></i>
-                                            <div class="b-advantages__info">Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing
+                            <!--模板介绍模块，开始////////////////////////////////////////////////////////////-->
+                            <div class="section-advantages wrap-inl-bl">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="b-advantages"><i
+                                                    class="b-advantages__icon flaticon-fabric-1"></i>
+                                                <div class="b-advantages__info">Lorem ipsum dolor sit amet, consectetur
+                                                    adipiscing
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="b-advantages"><i
-                                                class="b-advantages__icon flaticon-measuring-tape"></i>
-                                            <div class="b-advantages__info">Etiam rhoncus nibh a urna vestibulum,
-                                                ultrices tristique
+                                        <div class="col-sm-3">
+                                            <div class="b-advantages"><i
+                                                    class="b-advantages__icon flaticon-measuring-tape"></i>
+                                                <div class="b-advantages__info">Etiam rhoncus nibh a urna vestibulum,
+                                                    ultrices tristique
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="b-advantages"><i
-                                                class="b-advantages__icon flaticon-spool-of-thread"></i>
-                                            <div class="b-advantages__info">Ut eu facilisis nisi, vel molestie magna
-                                                volutpat
+                                        <div class="col-sm-3">
+                                            <div class="b-advantages"><i
+                                                    class="b-advantages__icon flaticon-spool-of-thread"></i>
+                                                <div class="b-advantages__info">Ut eu facilisis nisi, vel molestie magna
+                                                    volutpat
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="b-advantages"><i class="b-advantages__icon flaticon-iron"></i>
-                                            <div class="b-advantages__info">Nulla a porttitor est. Phasellus rhoncus
-                                                risus quis
-                                                sagittis
+                                        <div class="col-sm-3">
+                                            <div class="b-advantages"><i class="b-advantages__icon flaticon-iron"></i>
+                                                <div class="b-advantages__info">Nulla a porttitor est. Phasellus rhoncus
+                                                    risus quis
+                                                    sagittis
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="b-advantages"><i class="b-advantages__icon flaticon-zipper"></i>
-                                            <div class="b-advantages__info">Vestibulum facilisis massa lorem, et
-                                                tristique dui tincidunt
-                                                nec
+                                        <div class="col-sm-3">
+                                            <div class="b-advantages"><i class="b-advantages__icon flaticon-zipper"></i>
+                                                <div class="b-advantages__info">Vestibulum facilisis massa lorem, et
+                                                    tristique dui tincidunt
+                                                    nec
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="b-advantages"><i class="b-advantages__icon flaticon-mannequin"></i>
-                                            <div class="b-advantages__info">Vestibulum ornare urna sed dolor bibendum
-                                                ornare
+                                        <div class="col-sm-3">
+                                            <div class="b-advantages"><i
+                                                    class="b-advantages__icon flaticon-mannequin"></i>
+                                                <div class="b-advantages__info">Vestibulum ornare urna sed dolor
+                                                    bibendum
+                                                    ornare
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="b-advantages"><i class="b-advantages__icon flaticon-material"></i>
-                                            <div class="b-advantages__info">Ut imperdiet ex at tellus consectetur,
-                                                sagittis tincidunt
+                                        <div class="col-sm-3">
+                                            <div class="b-advantages"><i
+                                                    class="b-advantages__icon flaticon-material"></i>
+                                                <div class="b-advantages__info">Ut imperdiet ex at tellus consectetur,
+                                                    sagittis tincidunt
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="b-advantages"><i class="b-advantages__icon flaticon-button-3"></i>
-                                            <div class="b-advantages__info">Aliquam fermentum eleifend dolor fermentum
-                                                elementum
+                                        <div class="col-sm-3">
+                                            <div class="b-advantages"><i
+                                                    class="b-advantages__icon flaticon-button-3"></i>
+                                                <div class="b-advantages__info">Aliquam fermentum eleifend dolor
+                                                    fermentum
+                                                    elementum
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--模板介绍模块，结束////////////////////////////////////////////////////////////-->
+                            <!--模板介绍模块，结束////////////////////////////////////////////////////////////-->
 
-                        <!--商品描述和尺码表模块，开始////////////////////////////////////////////////////////////-->
-                        <div class="b-goods-det__section-group section-area">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <!--商品介绍模块////////////////////////////////////////////////////////////-->
-                                        <section class="b-goods-det__section b-goods-det__section_l">
-                                            <h2 class="ui-title-inner">&nbsp;&nbsp;&nbsp;商品描述</h2>
-                                            <p>J46 is an old dog with an arsenal of new tricks. Climashield® continuous
-                                                filament
-                                                insulation on the inside. 2L Gore Windstopper® shell fabric on the
-                                                outside. Press
-                                                buttons and an 8 MM 2-way metal zip protect the center
-                                                line. An additional 5 MM zip ingeniously converts the collar to protect
-                                                your neck. Two
-                                                front facing flap pockets nod to tradition; while 2 canted WR zipped
-                                                back pockets have
-                                                an eye on the approaching horizon. All
-                                                held together by impeccable Acronym tailoring, and an internally or
-                                                externally
-                                                deployable JacketSlingæ.</p>
-                                            <h2 class="ui-title-inner">Fabric Technology</h2>
-                                            <p>2L GORE WINDSTOPPER® shell fabric (78% PES, 22% ePTFE)
-                                                <br>CLIMASHIELD® continuous filament insulation (100% PES)</p>
-                                        </section>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <section class="b-goods-det__section b-goods-det__section_r">
-                                            <!--衣服尺码表格模块////////////////////////////////////////////////////////////-->
-                                            <h2 class="ui-title-inner">Sizing</h2>
-                                            <div class="table-container">
-                                                <table class="b-goods-det-table">
-                                                    <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>S</th>
-                                                        <th>M</th>
-                                                        <th>L</th>
-                                                        <th>XL</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>1/2 Chest</td>
-                                                        <td>59.5</td>
-                                                        <td>62.5</td>
-                                                        <td>65.5</td>
-                                                        <td>68.5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Length</td>
-                                                        <td>59.5</td>
-                                                        <td>62.5</td>
-                                                        <td>65.5</td>
-                                                        <td>68.5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Shoulders</td>
-                                                        <td>59.5</td>
-                                                        <td>62.5</td>
-                                                        <td>65.5</td>
-                                                        <td>68.5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Sleeves</td>
-                                                        <td>59.5</td>
-                                                        <td>62.5</td>
-                                                        <td>65.5</td>
-                                                        <td>68.5</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </section>
+                            <!--商品描述和尺码表模块，开始////////////////////////////////////////////////////////////-->
+                            <div class="b-goods-det__section-group section-area">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <!--商品介绍模块////////////////////////////////////////////////////////////-->
+                                            <section class="b-goods-det__section b-goods-det__section_l">
+                                                <h2 class="ui-title-inner">&nbsp;&nbsp;&nbsp;商品描述</h2>
+                                                <p>J46 is an old dog with an arsenal of new tricks. Climashield®
+                                                    continuous
+                                                    filament
+                                                    insulation on the inside. 2L Gore Windstopper® shell fabric on the
+                                                    outside. Press
+                                                    buttons and an 8 MM 2-way metal zip protect the center
+                                                    line. An additional 5 MM zip ingeniously converts the collar to
+                                                    protect
+                                                    your neck. Two
+                                                    front facing flap pockets nod to tradition; while 2 canted WR zipped
+                                                    back pockets have
+                                                    an eye on the approaching horizon. All
+                                                    held together by impeccable Acronym tailoring, and an internally or
+                                                    externally
+                                                    deployable JacketSlingæ.</p>
+                                                <h2 class="ui-title-inner">Fabric Technology</h2>
+                                                <p>2L GORE WINDSTOPPER® shell fabric (78% PES, 22% ePTFE)
+                                                    <br>CLIMASHIELD® continuous filament insulation (100% PES)</p>
+                                            </section>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <section class="b-goods-det__section b-goods-det__section_r">
+                                                <!--衣服尺码表格模块////////////////////////////////////////////////////////////-->
+                                                <h2 class="ui-title-inner">Sizing</h2>
+                                                <div class="table-container">
+                                                    <table class="b-goods-det-table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>S</th>
+                                                            <th>M</th>
+                                                            <th>L</th>
+                                                            <th>XL</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>1/2 Chest</td>
+                                                            <td>59.5</td>
+                                                            <td>62.5</td>
+                                                            <td>65.5</td>
+                                                            <td>68.5</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Length</td>
+                                                            <td>59.5</td>
+                                                            <td>62.5</td>
+                                                            <td>65.5</td>
+                                                            <td>68.5</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Shoulders</td>
+                                                            <td>59.5</td>
+                                                            <td>62.5</td>
+                                                            <td>65.5</td>
+                                                            <td>68.5</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Sleeves</td>
+                                                            <td>59.5</td>
+                                                            <td>62.5</td>
+                                                            <td>65.5</td>
+                                                            <td>68.5</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </section>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!--商品描述和尺码表模块，结束////////////////////////////////////////////////////////////-->
                         </div>
-                        <!--商品描述和尺码表模块，结束////////////////////////////////////////////////////////////-->
                     </div>
                 </div>
-            </div>
-            <!--右边活页卡模块////////////////////////////////////////////////////////////-->
-            <div class="tab-pane fade in" id="evaluation">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <!--评价表格////////////////////////////////////////////////////////////-->
-                            <h3 class="typography-title">&nbsp;&nbsp;&nbsp;&nbsp;看看大家购买宝贝后的买家秀吧</h3>
-                            <br><br>
-                            <div class="table-container">
-                                <table class="table table_primary" id="evaluated">
-                                    <thead>
-                                    <tr>
-                                        <th>&nbsp;</th>
-                                        <th>买 家 昵 称</th>
-                                        <th>宝 贝 评 分</th>
-                                        <th>买 家 秀</th>
-                                        <th>评 价</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <!--评论内容模块////////////////////////////////////////////////////////////-->
-                                    </tbody>
-                                </table>
+                <!--右边活页卡模块////////////////////////////////////////////////////////////-->
+                <div class="tab-pane fade in" id="evaluation">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <!--评价表格////////////////////////////////////////////////////////////-->
+                                <h3 class="typography-title">&nbsp;&nbsp;&nbsp;&nbsp;看看大家购买宝贝后的买家秀吧</h3>
+                                <br><br>
+                                <div class="table-container">
+                                    <table class="table table_primary" id="evaluated">
+                                        <thead>
+                                        <tr>
+                                            <th>&nbsp;</th>
+                                            <th>买 家 昵 称</th>
+                                            <th>宝 贝 评 分</th>
+                                            <th>买 家 秀</th>
+                                            <th>评 价</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <!--评论内容模块////////////////////////////////////////////////////////////-->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end .tabs-type-1-->
     </div>
-    <!-- end .tabs-type-1-->
-</div>
-<!-- end .l-main-content-->
+    <!-- end .l-main-content-->
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -514,7 +525,7 @@
             </div>
         </div>
     </footer>
-<!-- .footer-->
+    <!-- .footer-->
 </div>
 <!-- end layout-theme-->
 <input type="hidden" id="index" value="">
@@ -559,32 +570,33 @@
 
 <script type="text/javascript">
     $(function () {
-        var id=getQueryString("iId");
+        var id = getQueryString("iId");
         $.ajax({
             type: "GET",//请求方式
-            url: "queryOneItems?iId="+id,//地址，就是json文件的请求路径
+            url: "queryOneItems?iId=" + id,//地址，就是json文件的请求路径
             dataType: "json",//数据类型可以为 text xml json  script  jsonp
             success: function (result) {
                 $.each(result.data, function (index, items) {
-                    $("#priceShow").append( "<div class='b-goods-det__price'>"+'￥'+ items['iPrice']+"</div>");
-                    $("#iNameShow").append("<h1 class='b-goods-det__title'>"+ items['iName']+"</h1>");
+                    $("#items_exist").val(items['iExsit']);
+                    $("#priceShow").append("<div class='b-goods-det__price'><p style='color:#c12e2a;'>" + '￥' + items['iPrice'] + "</p></div>");
+                    $("#iNameShow").append("<h1 class='b-goods-det__title'>" + items['iName'] + "</h1>");
                     $("#iPhoneShow").append(
-                    "<img class='img-responsive' height='500px' width='500px' alt='foto' src="+'static/images/' +
-                    items['iPhotos'] +
-                    ">");
-                    $("#iPhoneShow1").append(
-                        "<img class='img-responsive' height='500px' width='500px' alt='foto' src="+'static/images/' +
+                        "<img class='img-responsive' height='500px' width='500px' alt='foto' src=" + 'static/images/' +
                         items['iPhotos'] +
                         ">");
-                    $("#introductionShow").append("<h4 class='b-blockquote__author color-primary'>"+
-                        items['iIntroduction']+"</h4>"
-                        );
+                    $("#iPhoneShow1").append(
+                        "<img class='img-responsive' height='500px' width='500px' alt='foto' src=" + 'static/images/' +
+                        items['iPhotos'] +
+                        ">");
+                    $("#introductionShow").append("<h4 class='b-blockquote__author color-primary'>" +
+                        items['iIntroduction'] + "</h4>"
+                    );
                     $("#showimages").append("<a class='js-zoom-images' href=" + 'static/images/' +
                         items['iPhotos'] +
-                        ">"+
-                        "<img class='img-responsive' alt='Foto' src="+'static/images/' +
+                        ">" +
+                        "<img class='img-responsive' alt='Foto' src=" + 'static/images/' +
                         items['iPhotos'] +
-                        ">"+
+                        ">" +
                         "</a> <br><br><br><br>")
                 });
                 loadpicture();
@@ -601,21 +613,22 @@
     })
 </script>
 <script type="text/javascript">
-    var iId=getQueryString("iId");
+    var iId = getQueryString("iId");
+
     function cart() {
-        var number=$("#number").val();
+        var number = $("#number").val();
         $.ajax({
             type: 'get',
             dataType: 'json',
-            url: "/car/add/"+iId+"/"+number,
-            data:null,
+            url: "/car/add/" + iId + "/" + number,
+            data: null,
             success: function (r) {
                 alert("加入成功！");
 
             },
             error: function () {
                 alert("加入失败！");
-             /*   location.reload();*/
+                /*   location.reload();*/
             }
         })
     }
@@ -623,38 +636,38 @@
 <!--加入收藏夹-->
 <script type="text/javascript">
     function collection() {
-        var iId=getQueryString("iId");
-            $.ajax({
-                type: 'get',
-                dataType: 'json',
-                url: "/coll/add/"+iId,
-                data:null,
-                success: function (r) {
-                    var str=$("#collect").text();
-                    if ($("#collect").html()=="取消收藏"){
-                        $("#collect").html("收藏");
-                    }else{
-                        $("#collect").html("取消收藏");
-                    }
-                },
-                error: function () {
-                    alert("加入失败！");
-                    /*   location.reload();*/
+        var iId = getQueryString("iId");
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            url: "/coll/add/" + iId,
+            data: null,
+            success: function (r) {
+                var str = $("#collect").text();
+                if ($("#collect").html() == "取消收藏") {
+                    $("#collect").html("收藏");
+                } else {
+                    $("#collect").html("取消收藏");
                 }
-            })
+            },
+            error: function () {
+                alert("加入失败！");
+                /*   location.reload();*/
+            }
+        })
     }
 </script>
 <script type="text/javascript">
     $(function () {
-        var iId=getQueryString("iId");
+        var iId = getQueryString("iId");
         $('#server').attr("href", "sellerService1.html?iId=" + iId);
         $.ajax({
             type: 'get',
             dataType: 'json',
-            url: "/coll/isExist/"+iId,
-            data:null,
+            url: "/coll/isExist/" + iId,
+            data: null,
             success: function (r) {
-                if(r.code===0) {
+                if (r.code === 0) {
                     $("#collection").append("<span class='b-goods-det__link' onclick='collection()'><strong ><span id='collect' style='color: #ac2925'>" +
                         "取消收藏</span></strong>" +
                         "<i class='icon fa fa-heart'></i></span>")
@@ -671,14 +684,41 @@
 <script type="text/javascript" src="static/jq/advice.js"></script>
 <script src="static/layer/layer.js"></script>
 <script type="text/javascript">
-//    $('#server').on('click', function () {
-//        layer.open({
-//            type: 2,
-//            title: '在线客服',
-//            maxmin: true,
-//            shadeClose: false,
-//            area: ['60%', '80%'],
-//            content: 'sellerService.html?iId=' + $('#index').val()
-//        });
-//    });
+    //点击加号的function
+    function checkAddNumber() {
+        var now = $("#number").val();
+        var exsit = $("#items_exist").val();
+        if (now==exsit){
+            alert("所选商品数量大于库存，库存剩"+parseInt(exsit)+"件");
+        }
+        else{
+            $("#number").val($("#number").val()*1+1);
+        }
+    }
+    //输入框改变的function
+    function checkNum() {
+        var reg = /^[0-9]*[1-9][0-9]*$/;
+        var now = $("#number").val();
+        var exsit = $("#items_exist").val();
+        //先进行正则表达式验证是否存在非法输入
+        if (reg.test(now)) {
+            if (parseInt(now)>parseInt(exsit)){
+                alert("所选商品数量大于库存，库存剩"+parseInt(exsit)+"件");
+                $("#number").val($("#items_exist").val()*1);
+            }
+        }
+        else{
+            alert("您进行了非法输入！");
+            $("#number").val(1);
+        }
+    }
+    //点击减号的function
+    function checkMinNumber() {
+        if($("#number").val()==1){
+            alert("所选商品数量不能少于一件");
+        }
+        else {
+            $("#number").val($("#number").val()*1-1);
+        }
+    }
 </script>
