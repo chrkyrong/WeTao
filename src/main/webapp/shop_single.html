@@ -157,7 +157,7 @@
 
                             <!--商品好评率模块////////////////////////////////////////////////////////////-->
                             <div class="b-goods-det-group">
-                                <div class="b-goods-det-group__title"><strong>商品好评率</strong></div>
+                                <div class="b-goods-det-group__title"><strong>商品热度</strong></div>
                                 <div class="b-goods-det-group__info"><strong>100%</strong></div>
                             </div>
 
@@ -360,7 +360,7 @@
                                         <div class="col-md-6">
                                             <section class="b-goods-det__section b-goods-det__section_r">
                                                 <!--衣服尺码表格模块////////////////////////////////////////////////////////////-->
-                                                <h2 class="ui-title-inner">Sizing</h2>
+                                                <h2 class="ui-title-inner">Sizing(该尺码表仅使用于衣物商品)</h2>
                                                 <div class="table-container">
                                                     <table class="b-goods-det-table">
                                                         <thead>
@@ -578,7 +578,7 @@
             success: function (result) {
                 $.each(result.data, function (index, items) {
                     $("#items_exist").val(items['iExsit']);
-                    $("#priceShow").append("<div class='b-goods-det__price'><p style='color:#c12e2a;'>" + '￥' + items['iPrice'] + "</p></div>");
+                    $("#priceShow").append("<div class='b-goods-det__price'><strong><p style='color:#c12e2a;'>" + '￥' + items['iPrice'] + "</p></strong> <strong><p> <br>库存："+ items['iExsit'] +"件</p></strong></div>");
                     $("#iNameShow").append("<h1 class='b-goods-det__title'>" + items['iName'] + "</h1>");
                     $("#iPhoneShow").append(
                         "<img class='img-responsive' height='500px' width='500px' alt='foto' src=" + 'static/images/' +
