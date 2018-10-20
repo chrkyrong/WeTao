@@ -152,10 +152,7 @@
                         </ul>
                         <ul class="nav-language list-inline">
                             <!--右上角的登陆、退出按钮/////////////////////////////////////////////////////////////-->
-                            <li><a href="seller_login.html">登 陆</a>
-                            </li>
-                            <li><a onclick="exit()">退 出</a>
-                            </li>
+                            <a onclick="exit()">退 出</a>
                         </ul>
                         <!--点击主logo回到home.html主页/////////////////////////////////////////////////////////////////////-->
                         <a class="navbar-brand scroll" href="items-Homepage.html">
@@ -210,12 +207,12 @@
                                         <div class="b-filter__group" >
                                             <p class="form-row form-row form-row-first">
                                                 <label>商品价格</abbr></label>
-                                                <input type="text" class="input-text " name="iPrice" id="iPrice">
+                                                <input type="text" class="input-text " name="iPrice" id="iPrice" onblur="checkPrice()">
                                             </p>
                                             <p class="form-row form-row form-row-last ">
                                                 <!--商品库存,数据库拼写是i_exsit/////////////////////////////////////////////////////////////-->
                                                 <label>商品库存(exist)</label>
-                                                <input type="text" class="input-text " name="iExsit" id="iExsit">
+                                                <input type="text" class="input-text " name="iExsit" id="iExsit" onblur="checkExit()">
                                             </p>
                                         </div>
 
@@ -502,6 +499,24 @@
                 $("#photo").html("<img  width='200px' height='200px'  src='"+data+"'/>");
             }
         })
+    }
+    function checkPrice() {
+        var reg = /^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/
+        var price = $("#iPrice").val();
+        var p = "10.00";
+        if (!reg.test(price)){
+            alert("您输入的商品价格不合法，请重新输入");
+            $("#iPrice").val(p);
+        }
+    }
+    function checkExit() {
+        var reg = /^\d+$/;
+        var exit = $("#iExsit").val();
+        var p = "10";
+        if (!reg.test(exit)) {
+            alert("您输入的商品库存不合法，请重新输入");
+            $("#iExsit").val(p);
+        }
     }
 </script>
 
