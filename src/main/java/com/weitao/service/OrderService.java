@@ -55,5 +55,6 @@ public interface OrderService {
 
     Boolean sendOrder (int oId);//根据订单id发货
 
+    //根据商家sId查找近半年所有订单
     List<Order> selectAllOrderBySid(int sId);
 }
