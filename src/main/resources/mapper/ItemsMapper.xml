@@ -136,9 +136,9 @@
       <if test="iPrice != null">
         i_price = #{iPrice,jdbcType=DECIMAL},
       </if>
-      <if test="iDate != null">
+    <!--  <if test="iDate != null">
         i_date = #{iDate,jdbcType=TIMESTAMP},
-      </if>
+      </if>-->
       <if test="iStatus != null">
         i_status = #{iStatus,jdbcType=TINYINT},
       </if>
