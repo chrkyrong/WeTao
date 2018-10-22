@@ -206,15 +206,10 @@ function delItems(iId) {
         data:null,
         success: function (result) {
             if(result.code==0) {
-                var txt=  "操作成功";
-                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                //alert("操作成功");
-                setTimeout("window.location.reload()",1300);
+                alert("操作成功");
             }
             else {
-                window.wxc.xcConfirm(result.msg, window.wxc.xcConfirm.typeEnum.error);
-                setTimeout("window.location.reload()",1300);
-           /*     alert(result.msg)*/
+                alert(result.msg)
             }
         },
     })
@@ -355,15 +350,10 @@ function managerdelItems(iId) {
         data:null,
         success: function (result) {
             if(result.code==0) {
-                var txt=  "操作成功";
-                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                //alert("操作成功");
-                setTimeout("window.location.reload()",1300);
+                alert("操作成功");
             }
             else {
-                window.wxc.xcConfirm(result.msg, window.wxc.xcConfirm.typeEnum.error);
-                setTimeout("window.location.reload()",1300);
-                /*     alert(result.msg)*/
+                     alert(result.msg);
             }
         },
     })
