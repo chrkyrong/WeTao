@@ -131,7 +131,7 @@ public class SellerController {
         String fileName = date.getYear() + "" + date.getMonth() + "" + date.getDate();
         fileName += random.nextInt()*10;
         fileName += ".jpg";
-        String path = "D:\\workplace2018\\WeTao\\src\\main\\webapp\\static\\images\\seller\\";
+        String path = "E:\\mavenProject\\WeTao\\src\\main\\webapp\\static\\images\\seller\\";
         try {
             File file=new File(path,fileName);
             Photos.transferTo(file);
