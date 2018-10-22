@@ -161,10 +161,10 @@
       i_exsit = #{iExsit,jdbcType=INTEGER},
       i_sale = #{iSale,jdbcType=INTEGER},
       i_price = #{iPrice,jdbcType=DECIMAL},
-      i_date = #{iDate,jdbcType=TIMESTAMP},
+   /*   i_date = #{iDate,jdbcType=TIMESTAMP},*/
       i_status = #{iStatus,jdbcType=TINYINT},
-      store_id = #{storeId,jdbcType=INTEGER},
-      catagory_id = #{catagoryId,jdbcType=INTEGER},
+   /*   store_id = #{storeId,jdbcType=INTEGER},
+      catagory_id = #{catagoryId,jdbcType=INTEGER},*/
       i_introduction = #{iIntroduction,jdbcType=LONGVARCHAR}
     where i_id = #{iId,jdbcType=INTEGER}
   </update>
