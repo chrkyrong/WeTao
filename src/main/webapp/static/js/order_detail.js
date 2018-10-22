@@ -11,8 +11,8 @@ function order_detail(oId) {
             var s="";
             $.each(result.data,function (i,v)
             {
-                s +='<tr class="cart_item"><td class="product-thumbnail"><img width="180px" height="180px" src="static/images/'+v.item.iPhotos+'"></td>';
-                s +='<td data-title="Product">'+v.item.iId+'</td>';
+                s +='<tr class="cart_item"><td class="product-thumbnail"><a href="shop_single.html?iId='+v.item.iId+'"><img width="180px" height="180px" src="static/images/'+v.item.iPhotos+'"></td>';
+                s +='<td data-title="Product">'+v.orderId+'</td>';
                 s +='<td data-title="Product">'+v.item.iName+'</td>';
                 s +='<td data-title="Product">'+v.item.iPrice+'</td>';
                 s +='<td data-title="Product">'+v.orDeNumber+'</td>';
@@ -35,7 +35,7 @@ function order_eva_detail(oId) {
             $.each(result.data,function (i,v)
             {
                 s +='<tr class="cart_item"><td class="product-thumbnail"><a href="shop_single.html?iId='+v.item.iId+'"><img width="180px" height="180px" src="static/images/'+v.item.iPhotos+'"></a></td>';
-                s +='<td data-title="Product">'+v.item.iId+'</td>';
+                s +='<td data-title="Product">'+v.orderId+'</td>';
                 s +='<td data-title="Product">'+v.item.iName+'</td>';
                 s +='<td data-title="Product">'+v.item.iPrice+'</td>';
                 s +='<td data-title="Product">'+v.orDeNumber+'</td>';

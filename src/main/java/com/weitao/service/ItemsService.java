@@ -48,6 +48,7 @@ public interface ItemsService {
     /*根据商品id更改商品信息*/
     public int updateItems(Items items);
 
+    //根据商家sId查找销量前十的商品
     List<Items> saleTop(int sId);
 
     /*管理员管理状态为0的和状态为2的商品*/
