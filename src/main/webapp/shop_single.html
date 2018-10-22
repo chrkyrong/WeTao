@@ -53,42 +53,38 @@
             <div class="container">
                 <div class="header-navibox-1">
                     <ul class="main-menu yamm nav navbar-nav">
-                        <!--售后入口，为空///////////////////////////////////////////////////////////////////////////////////////-->
                         <li>
-                            <a><h5></h5></a>
+                            <a><h5>&nbsp;</h5></a>
                         </li>
                         <!--主页入口///////////////////////////////////////////////////////////////////////////////////////-->
-                        <li><a href="home.html"><h5>主 页</h5></a>
+                        <li><a href="home.html"><h5>首 页</h5></a>
                         </li>
                         <!--收藏夹入口///////////////////////////////////////////////////////////////////////////////////////-->
                         <li><a href="collection.html"><h5>收 藏</h5></a>
+                        </li>
+                        <li><a href="order.html"><h5>我 的 订 单</h5></a>
                         </li>
                     </ul>
                 </div>
                 <div class="header-navibox-2">
                     <ul class="nav navbar-nav clearfix vcenter">
-                        <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
+                        <li>
+                            <a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
                         </li>
-                        <!--用户个人信息入口///////////////////////////////////////////////////////////////////////////////////////-->
-                        <li><a href="order.html"><h5>我 的 订 单</h5></a>
-                        </li>
-                        <li><span class="header-cart">
-
+                        <li>
+                            <span class="header-cart">
                                 <!--购物车模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                    <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
-                                        </span>
+                                <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
+                            </span>
+                        </li>
+                        <li><h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="display.html">个 人 信 息</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                        </li>
+                        <li class="active"><h5>
+                            <a onclick="exit()">退出</a></h5>
                         </li>
                     </ul>
-                    <ul class="nav-language list-inline">
-                        <!--点击，进入个人信息展示display页面/////////////////////////////////////////////////////////////-->
-                        <li><a href="display.html">个人信息</a>
-                        </li>
-                        <!--退出登陆按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                        <li class="active"><a href="login.html">注销</a>
-                        </li>
-                    </ul>
-                    <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
-                    <!--点击，重新进入主页/////////////////////////////////////////////////////////////-->
                     <a class="navbar-brand scroll" href="home.html">
                         <img class="normal-logo" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
                         <img class="scroll-logo hidden-xs" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
@@ -105,15 +101,7 @@
                     <div class="col-lg-6 col-lg-push-6 col-md-7 col-md-push-5">
                         <div class="b-goods-det__main">
 
-                            <div class="b-goods-det__header" id="iNameShow">
-                                <!--商品名称模块////////////////////////////////////////////////////////////-->
-                                <!--  <h1 class="b-goods-det__title">Split Sound & Fury Coach's Jacket</h1>-->
-                                <span class="b-goods-det__brand">
-                                 <!--客服模块，右上角的微淘logo////////////////////////////////////////////////////////////-->
-                                    <a href="" id="server"><img class="img-responsive"
-                                                                src="static/wt/images/logo-kefu.png"
-                                                                alt="brand"></a>
-                                </span>
+                            <div class="b-goods-det__header" id="iNameShow" style="height: 100px">
                             </div>
                             <form class="b-goods-det__form">
                                 <div class="row">
@@ -146,16 +134,8 @@
                                     </div>
                                 </div>
                             </form>
-                            <!--分类标签模块////////////////////////////////////////////////////////////-->
-                            <!--   <div class="b-goods-det-group">
-                               <div class="b-goods-det-group__title">Tags</div>
-                               <div class="b-goods-det-group__info"><a class="b-goods-det__tag"
-                               href="shop-single-1.html">jacket</a><a
-                               class="b-goods-det__tag" href="shop-single-1.html">modern</a>
-                               </div>
-                               </div>-->
 
-                            <!--商品好评率模块////////////////////////////////////////////////////////////-->
+                            <!--商品热度模块////////////////////////////////////////////////////////////-->
                             <div class="b-goods-det-group">
                                 <div class="b-goods-det-group__title"><strong>商品热度</strong></div>
                                 <div class="b-goods-det-group__info"><strong>100%</strong></div>

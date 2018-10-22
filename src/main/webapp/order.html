@@ -54,42 +54,38 @@
                 <div class="container">
                     <div class="header-navibox-1">
                         <ul class="main-menu yamm nav navbar-nav">
-                            <!--售后入口，为空///////////////////////////////////////////////////////////////////////////////////////-->
                             <li>
-                                <a><h5></h5></a>
+                                <a><h5>&nbsp;</h5></a>
                             </li>
                             <!--主页入口///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="home.html"><h5>主 页</h5></a>
+                            <li><a href="home.html"><h5>首 页</h5></a>
                             </li>
                             <!--收藏夹入口///////////////////////////////////////////////////////////////////////////////////////-->
                             <li><a href="collection.html"><h5>收 藏</h5></a>
+                            </li>
+                            <li><a href="order.html"><h5>我 的 订 单</h5></a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-navibox-2">
                         <ul class="nav navbar-nav clearfix vcenter">
-                            <li><a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
+                            <li>
+                                <a class="btn_header_search" href="#"><i class="icon fa fa-search"></i></a>
                             </li>
-                            <!--用户个人信息入口///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li><a href="order.html"><h5>我 的 订 单</h5></a>
-                            </li>
-                            <li><span class="header-cart">
-
+                            <li>
+                            <span class="header-cart">
                                 <!--购物车模块///////////////////////////////////////////////////////////////////////////////////////-->
-                                    <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
-                                        </span>
+                                <a href="cart.html"><i class="icon icon_cart_alt" aria-hidden="true"></i></a>
+                            </span>
+                            </li>
+                            <li><h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="display.html">个 人 信 息</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                            </li>
+                            <li class="active"><h5>
+                                <a onclick="exit()">退出</a></h5>
                             </li>
                         </ul>
-                        <ul class="nav-language list-inline">
-                            <!--点击，进入个人信息展示display页面/////////////////////////////////////////////////////////////-->
-                            <li><a href="display.html">个人信息</a>
-                            </li>
-                            <!--退出登陆按钮///////////////////////////////////////////////////////////////////////////////////////-->
-                            <li class="active"><a onclick="exit()">注销</a>
-                            </li>
-                        </ul>
-                        <!--正中间的Logo标志///////////////////////////////////////////////////////////////////////////////////////-->
-                        <!--点击，重新进入主页/////////////////////////////////////////////////////////////-->
                         <a class="navbar-brand scroll" href="home.html">
                             <img class="normal-logo" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
                             <img class="scroll-logo hidden-xs" src="static/wt/images/WeTao_logo_small.jpg" alt="logo">
@@ -120,15 +116,15 @@
 
                         <div class="tabs-type-2">
                             <ul class="nav">
-                                <li class="active"><a href="#yet" data-toggle="tab">待发货</a>
+                                <li class="active"><a href="#yet" data-toggle="tab"><h5>待发货</h5></a>
                                 </li>
-                                <li><a href="#wait" data-toggle="tab" onclick="order2(getId())">待收货</a>
+                                <li><a href="#wait" data-toggle="tab" onclick="order2(getId())"><h5>待收货</h5></a>
                                 </li>
-                                <li><a href="#toEvaluate" data-toggle="tab" onclick="order3(getId())">待评价</a>
+                                <li><a href="#toEvaluate" data-toggle="tab" onclick="order3(getId())"><h5>待评价</h5></a>
                                 </li>
-                                <li><a href="#evaluated" data-toggle="tab" onclick="order9(getId())">已评价</a>
+                                <li><a href="#evaluated" data-toggle="tab" onclick="order9(getId())"><h5>已评价</h5></a>
                                 </li>
-                                <li><a href="#afterSale" data-toggle="tab" onclick="order4(getId())">售后</a>
+                                <li><a href="#afterSale" data-toggle="tab" onclick="order4(getId())"><h5>售后</h5></a>
                                 </li>
                             </ul>
                             <!--待发货模块///////////////////////////////////////////////////////////////////////////////////////-->
