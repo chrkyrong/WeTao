@@ -139,15 +139,15 @@
     <!--  <if test="iDate != null">
         i_date = #{iDate,jdbcType=TIMESTAMP},
       </if>-->
-      <if test="iStatus != null">
-        i_status = #{iStatus,jdbcType=TINYINT},
-      </if>
-      <if test="storeId != null">
-        store_id = #{storeId,jdbcType=INTEGER},
-      </if>
-      <if test="catagoryId != null">
-        catagory_id = #{catagoryId,jdbcType=INTEGER},
-      </if>
+      <!--<if test="iStatus != null">-->
+        <!--i_status = #{iStatus,jdbcType=TINYINT},-->
+      <!--</if>-->
+      <!--<if test="storeId != null">-->
+        <!--store_id = #{storeId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="catagoryId != null">-->
+        <!--catagory_id = #{catagoryId,jdbcType=INTEGER},-->
+      <!--</if>-->
       <if test="iIntroduction != null">
         i_introduction = #{iIntroduction,jdbcType=LONGVARCHAR},
       </if>
