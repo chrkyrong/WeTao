@@ -193,8 +193,8 @@
                                     <div class="form-row place-order">
 
                                         <!--确认评价按钮////////////////////////////////////////////////////////////////////-->
-                                        <input id="submit" type="button" class="button alt" value="确认评价 Confirm"
-                                               onclick="confirmEvaluate()"/>
+                                        <center><input id="submit" type="button" class="button alt" value="确认评价 Confirm"
+                                               onclick="confirmEvaluate()" style="width: 50%"/></center>
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +326,6 @@
 <script type="text/javascript">
     $(function (orderId) {
         orderId = getQueryString('oId');
-//        alert(orderId);
         $.ajax({
             contentType: 'application/json;charset=UTF-8',
             type: 'get',
@@ -340,7 +339,7 @@
                 $("#orderId").first("h2").append(s2);
                 $("#pa").first("input").append(s3);
                 $.each(result.data, function (i, v) {
-                    s1 += '<tr><td>' + v.item.iPhotos;
+                    s1 += '<tr><td><img width="60px" height="60px" src="static/images/'+ v.item.iPhotos+ '"/>';
                     s1 += '</td><td>' + v.item.iName + '</td><td>' + v.item.iPrice + '</td><td>' + v.orDeNumber + '</td>';
                     s1 += '</tr>';
                 })
